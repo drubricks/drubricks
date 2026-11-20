@@ -1,0 +1,6 @@
+{# Kit progress bar: span.progress > i (width = value %). #}
+{% set pct = value < 0 ? 0 : (value > 100 ? 100 : value) %}
+<span{{ attributes.addClass('flex', 'items-center', 'gap-3') }}>
+  <span class="progress"{% if color %} style="--c: {{ color(color) }}"{% endif %} role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}"{% if aria_label or label %} aria-label="{{ aria_label ?: label }}"{% endif %}><i style="width: {{ pct }}%"></i></span>
+  {%- if label %}<span class="dim text-xs">{{ label }}</span>{% endif -%}
+</span>

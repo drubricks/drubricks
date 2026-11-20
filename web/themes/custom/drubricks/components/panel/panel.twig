@@ -1,0 +1,5 @@
+{# Kit panel: .panel > h3 (icon, title, spacer, link) + rows. #}
+<div{{ attributes.addClass('panel') }}{{ busy ? ' aria-busy="true"' }}>
+  {%- if title %}<h3>{{ icon('kit', 'i-' ~ (icon)) }} {{ title }}{% if link_label %}<span class="spacer"></span><a class="link text-xs font-medium"{% if link_url %} href="{{ link_url }}"{% endif %}>{{ link_label }}</a>{% endif %}</h3>{% endif %}
+  {% block content %}{{ content }}{% endblock %}
+</div>

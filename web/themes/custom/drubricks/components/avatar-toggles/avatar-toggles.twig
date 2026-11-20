@@ -1,0 +1,7 @@
+{# Kit avatar toggles: .avatar-toggles > button[.on] > .avatar. #}
+<span{{ attributes.addClass('avatar-toggles') }}>
+  {%- for person in people -%}
+    {% set initials = person.initials ?: (person.name|split(' ')|slice(0, 2)|map(w => w|first|upper)|join) %}
+    <button type="button" class="{{ attribute(person, 'on') ? 'on' }}" title="{{ person.name ?: initials }}" aria-pressed="{{ attribute(person, 'on') ? 'true' : 'false' }}"{% if person.value is defined %} data-value="{{ person.value }}"{% endif %}><span class="avatar"{% if person.color %} style="background: {{ color(person.color) }}"{% endif %}>{{ initials }}</span></button>
+  {%- endfor -%}
+</span>

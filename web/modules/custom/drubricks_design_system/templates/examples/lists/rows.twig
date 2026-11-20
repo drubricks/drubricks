@@ -1,0 +1,5 @@
+{% include 'drubricks:list-section' with {label: 'Today'} only %}
+{% include 'drubricks:row' with {row_id: 1, title: 'Project kickoff', meta: '9:41 AM', subtitle: 'Agenda and goals for Q1', text: 'Title, meta on the right, subtitle and two lines of secondary text.', dot: 'blue', selected: true} only %}
+{% embed 'drubricks:row' with {row_id: 2, title: 'Design review', meta: '8:15 AM', subtitle: 'Sidebar, toolbar & spacing'} only %}
+  {% block text_markup %}Feedback from the team about the new layout and <mark>colors</mark>.{% endblock %}
+{% endembed %}

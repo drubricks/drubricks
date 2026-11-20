@@ -1,0 +1,16 @@
+{# Views style "Drubricks list": kit rows. Variables: rows[{title,meta,subtitle,text,link}]. #}
+<div class="drubricks-views-list">
+  {% for row in rows %}
+    {% set tag = row.link ? 'a' : 'div' %}
+    <{{ tag }} class="row"{% if row.link %} href="{{ row.link }}"{% endif %}>
+      <div class="row-gutter"></div>
+      <div class="row-body">
+        <div class="row-top"><span class="row-title">{{ row.title }}</span>{% if row.meta %}<span class="row-meta">{{ row.meta }}</span>{% endif %}</div>
+        {% if row.subtitle %}<div class="row-subtitle">{{ row.subtitle }}</div>{% endif %}
+        {% if row.text %}<div class="row-text">{{ row.text }}</div>{% endif %}
+      </div>
+    </{{ tag }}>
+  {% else %}
+    <div class="empty-state">{{ 'Nothing here yet'|t }}</div>
+  {% endfor %}
+</div>

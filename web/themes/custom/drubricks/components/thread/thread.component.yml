@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Comment thread
+status: stable
+group: Comments & feed
+description: 'Kit comment thread (.thread, .thread.bubbles for speech bubbles). Put drubricks:comment items in the slot.'
+props:
+  type: object
+  properties:
+    bubbles: { type: boolean, title: Speech bubbles }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Comments

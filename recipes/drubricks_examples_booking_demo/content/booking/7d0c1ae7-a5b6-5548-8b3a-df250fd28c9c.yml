@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 7d0c1ae7-a5b6-5548-8b3a-df250fd28c9c
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    0111125f-4353-54a7-b7b8-a393cc8fe542: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Persona workshop'
+  resource:
+    -
+      entity: 0111125f-4353-54a7-b7b8-a393cc8fe542
+  starts:
+    -
+      value: '2026-11-09T10:00:00'
+  ends:
+    -
+      value: '2026-11-09T11:30:00'
+  state:
+    -
+      value: confirmed

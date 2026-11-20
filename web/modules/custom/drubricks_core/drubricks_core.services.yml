@@ -1,0 +1,43 @@
+services:
+  _defaults:
+    autowire: true
+  drubricks_core.navigation:
+    class: Drupal\drubricks_core\Navigation\NavigationBuilder
+  Drupal\drubricks_core\Navigation\NavigationBuilder: '@drubricks_core.navigation'
+  drubricks_core.kit:
+    class: Drupal\drubricks_core\KitInfo
+    arguments: ['@theme.manager', '@extension.list.theme', '@language_manager', '@config.factory', '@string_translation', '@plugin.manager.icon_pack']
+  Drupal\drubricks_core\KitInfo: '@drubricks_core.kit'
+  drubricks_core.twig_extension:
+    class: Drupal\drubricks_core\Twig\DrubricksTwigExtension
+    tags:
+      - { name: twig.extension }
+  drubricks_core.screen_access:
+    class: Drupal\drubricks_core\Access\ScreenAccessCheck
+    tags:
+      - { name: access_check, applies_to: _drubricks_screen_access }
+  # BigPipe for full page loads only: HTMX fragments get their placeholders
+  # rendered in the same response (HtmxBigPipeStrategy).
+  drubricks_core.htmx_big_pipe_strategy:
+    class: Drupal\drubricks_core\Render\Placeholder\HtmxBigPipeStrategy
+    decorates: placeholder_strategy.big_pipe
+    decoration_on_invalid: ignore
+    arguments: ['@.inner', '@request_stack']
+  drubricks_core.htmx_subscriber:
+    class: Drupal\drubricks_core\EventSubscriber\HtmxSubscriber
+    tags:
+      - { name: event_subscriber }
+  drubricks_core.user_routes_subscriber:
+    class: Drupal\drubricks_core\Routing\UserRoutesSubscriber
+    tags:
+      - { name: event_subscriber }
+  drubricks_core.demo_content_subscriber:
+    class: Drupal\drubricks_core\EventSubscriber\DemoContentSubscriber
+    tags:
+      - { name: event_subscriber }
+  drubricks_core.api_exception_subscriber:
+    class: Drupal\drubricks_core\EventSubscriber\ApiExceptionSubscriber
+    tags:
+      - { name: event_subscriber }
+  # Helpers for hook_query_ENTITY_TYPE_access_alter() (like node's access alter).
+  Drupal\drubricks_core\Access\QueryAccess: {}

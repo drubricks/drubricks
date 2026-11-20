@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 6bab3bce-f611-588c-9359-c3fa6ad31d2a
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'VR headset'
+  color:
+    -
+      value: purple
+  kind:
+    -
+      value: equipment
+  location:
+    -
+      value: 'IT desk · Floor 1'
+  capacity:
+    -
+      value: 0
+  opens:
+    -
+      value: 8
+  closes:
+    -
+      value: 18
+  rules:
+    -
+      value: 'Needs approval by Facilities (client demos first).'

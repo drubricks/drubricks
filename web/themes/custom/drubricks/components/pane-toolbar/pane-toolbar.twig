@@ -1,0 +1,7 @@
+{# Kit pane toolbar: .pane-toolbar > .pane-toolbar-start + .pane-toolbar-end. #}
+{% set start_html %}{% block start %}{{ start }}{% endblock %}{% endset %}
+{% set end_html %}{% block end %}{{ end }}{% endblock %}{% endset %}
+<div{{ attributes.addClass('pane-toolbar') }}>
+  <div class="pane-toolbar-start">{{ start_html }}</div>
+  {%- if end_html|trim is not empty %}<div class="pane-toolbar-end">{{ end_html }}</div>{% endif %}
+</div>

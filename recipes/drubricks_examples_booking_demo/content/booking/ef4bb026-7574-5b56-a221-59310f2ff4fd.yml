@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: ef4bb026-7574-5b56-a221-59310f2ff4fd
+  depends:
+    dd7c322a-b246-53da-88d1-5846f3e5f810: user
+    6eac9dcc-4368-51f9-ba91-a1d0a61215ed: booking_resource
+default:
+  uid:
+    -
+      entity: dd7c322a-b246-53da-88d1-5846f3e5f810
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Riverside site visit'
+  resource:
+    -
+      entity: 6eac9dcc-4368-51f9-ba91-a1d0a61215ed
+  starts:
+    -
+      value: '2026-11-12T06:00:00'
+  ends:
+    -
+      value: '2026-11-12T10:00:00'
+  state:
+    -
+      value: confirmed

@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: b9ee8592-2c50-5a18-99a0-e5b2de2f35d1
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Marek Nowak'
+  mail:
+    -
+      value: marek.nowak@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

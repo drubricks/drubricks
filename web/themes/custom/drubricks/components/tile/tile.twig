@@ -1,0 +1,4 @@
+{# Kit letter tile: span.tile[.xl] style="--c: …". #}
+{% set attributes = attributes.addClass(['tile', size == 'xl' ? 'xl']|filter(c => c)).setAttribute('style', '--c: ' ~ color(color|default('gray'))) %}
+{% if name %}{% set attributes = attributes.setAttribute('title', name) %}{% endif %}
+<span{{ attributes }}>{{ letter ?: name|default('?')|first|upper }}</span>

@@ -1,0 +1,34 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: a56e0cef-a00d-52e6-aab2-a8abc7decd84
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Podcast mic set'
+  color:
+    -
+      value: orange
+  kind:
+    -
+      value: equipment
+  location:
+    -
+      value: 'Studio cupboard'
+  capacity:
+    -
+      value: 0
+  opens:
+    -
+      value: 8
+  closes:
+    -
+      value: 18

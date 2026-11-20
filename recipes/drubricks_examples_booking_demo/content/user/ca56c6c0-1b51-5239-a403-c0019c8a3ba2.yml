@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: ca56c6c0-1b51-5239-a403-c0019c8a3ba2
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Sam Okoro'
+  mail:
+    -
+      value: sam.okoro@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

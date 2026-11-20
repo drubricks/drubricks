@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_project
+  uuid: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Kestrel Onboarding'
+  color:
+    -
+      value: green
+  state:
+    -
+      value: active
+  due_date:
+    -
+      value: '2026-12-18'
+  members:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa

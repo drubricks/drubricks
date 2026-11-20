@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 25fae458-89a1-5308-8124-5576d3b263f3
+  depends:
+    4c770c2c-a25e-54ff-9bdf-0353b5287c59: user
+    4413d38a-c4f6-54c5-b879-155d0fb9cfe6: pm_project
+default:
+  uid:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Moodboard presentation'
+  project:
+    -
+      entity: 4413d38a-c4f6-54c5-b879-155d0fb9cfe6
+  state:
+    -
+      value: done
+  priority:
+    -
+      value: medium
+  assignee:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  due_date:
+    -
+      value: '2026-11-05'
+  weight:
+    -
+      value: 3

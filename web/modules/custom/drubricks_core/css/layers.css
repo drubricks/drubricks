@@ -1,0 +1,3 @@
+/* Cascade layer order for the whole page. Loaded first (base group), so CSS
+   of modules that use @layer components cannot reorder Tailwind's layers. */
+@layer properties, theme, base, components, utilities;

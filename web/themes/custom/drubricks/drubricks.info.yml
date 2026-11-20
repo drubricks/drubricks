@@ -1,0 +1,40 @@
+name: Drubricks
+type: theme
+description: 'Front-end theme for Drubricks applications, built on its UI kit (kit/).'
+package: Drubricks
+core_version_requirement: ^12
+base theme: false
+# color() in the templates and the shell JS come from drubricks_core.
+dependencies:
+  - drubricks_core:drubricks_core
+libraries:
+  - drubricks/kit-head
+  - drubricks/global
+# Dropbuttons (View operations, …) open the kit menu instead of core's list;
+# styles in src/views.css.
+libraries-override:
+  core/drupal.dropbutton:
+    js:
+      misc/dropbutton/dropbutton.js: js/dropbutton.js
+    css:
+      component:
+        misc/dropbutton/dropbutton.css: false
+# Bulk forms of Views: "N selected" in the action bar.
+libraries-extend:
+  core/drupal.tableselect:
+    - drubricks/views-bulk
+regions:
+  sidebar: 'Sidebar'
+  header: 'Header (pages that are not app screens)'
+  content: 'Content'
+  # Rendered by the home page (/apps) between the greeting and the app tiles.
+  dashboard_stats: 'Dashboard: stat tiles'
+  dashboard: 'Dashboard: panels'
+  hidden: 'Hidden'
+# Read by drubricks_core (KitInfo): the kit package. Icons: drubricks.icons.yml.
+drubricks:
+  kit: kit
+# Interface translations shipped with the code (translations/<project>.<langcode>.po),
+# imported by core's locale module when a language is added or updated.
+interface translation project: drubricks
+interface translation server pattern: 'themes/custom/%project/translations/%project.%language.po'

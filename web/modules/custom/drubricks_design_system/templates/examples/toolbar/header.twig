@@ -1,0 +1,16 @@
+{% embed 'drubricks:toolbar' with {title: 'Inbox', subtitle: '12 messages, 3 unread', attributes: create_attribute({'class': ['w-full']})} only %}
+  {% block actions %}
+    {% embed 'drubricks:tb-group' only %}{% block content %}
+      {% include 'drubricks:tb-btn' with {icon: 'compose', title: 'New'} only %}
+    {% endblock %}{% endembed %}
+    {% embed 'drubricks:tb-group' only %}{% block content %}
+      {% include 'drubricks:tb-btn' with {icon: 'reply', title: 'Reply'} only %}
+      {% include 'drubricks:tb-btn' with {icon: 'flag', title: 'Flag', on: true} only %}
+      {% include 'drubricks:tb-btn' with {icon: 'trash', title: 'Delete'} only %}
+    {% endblock %}{% endembed %}
+  {% endblock %}
+  {% block end %}
+    {% include 'drubricks:search' with {placeholder: 'Search'} only %}
+    {% include 'drubricks:icon-button' with {icon: 'sidebar-right', title: 'Inspector (on)', on: true} only %}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Pane
+status: stable
+group: App shell
+description: 'A kit shell pane — .column (list), .content (details) or .inspector (right sidebar) — with a header slot (drubricks:toolbar) and a scrolling .pane-body. Must be a direct child of .app: render it straight from an app screen template. The ids drubricks-list / drubricks-detail / drubricks-inspector are the HTMX swap targets of drubricks_core.'
+props:
+  type: object
+  properties:
+    kind: { type: string, enum: [column, content, inspector], default: content }
+    id: { type: string, title: Id }
+    body_id: { type: string, title: Id of the .pane-body }
+    label: { type: string, title: Accessible label }
+    resizer: { type: boolean, title: Resizable (.resizer), default: true }
+    selectable: { type: boolean, title: Selectable text in the body }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  header:
+    title: Header (drubricks:toolbar)
+  body:
+    title: Body

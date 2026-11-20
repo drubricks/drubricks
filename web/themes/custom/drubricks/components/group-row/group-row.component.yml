@@ -1,0 +1,19 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Group row
+status: stable
+group: Grouped lists
+description: 'Kit .group-row: a label that takes the free space (.grow) and a control or value on the right (slot), or a label + value pair.'
+props:
+  type: object
+  properties:
+    label: { type: string, title: Label }
+    value: { type: string, title: Value (text on the right) }
+    muted: { type: boolean, title: Secondary label colour (text-ink-2) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Control
+    description: Switch, seg, field… on the right.

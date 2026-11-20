@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+  theme:
+    - drubricks
+id: drubricks_crm_won
+theme: drubricks
+region: dashboard_stats
+weight: 101
+provider: null
+plugin: drubricks_examples_crm_won
+settings:
+  id: drubricks_examples_crm_won
+  label: 'Won'
+  label_display: '0'
+  provider: drubricks_examples_crm
+visibility: {}

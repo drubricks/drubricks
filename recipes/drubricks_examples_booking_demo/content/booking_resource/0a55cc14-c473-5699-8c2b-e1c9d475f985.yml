@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 0a55cc14-c473-5699-8c2b-e1c9d475f985
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Nurse
+  color:
+    -
+      value: red
+  kind:
+    -
+      value: specialist
+  location:
+    -
+      value: 'Health room · Floor 1'
+  capacity:
+    -
+      value: 1
+  opens:
+    -
+      value: 9
+  closes:
+    -
+      value: 13
+  rules:
+    -
+      value: 'Vaccinations and health checks; private and confidential.'

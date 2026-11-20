@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_booking
+id: booking_resource_delete_action
+label: 'Delete resources'
+type: booking_resource
+plugin: 'entity:delete_action:booking_resource'
+configuration: {}

@@ -1,0 +1,20 @@
+{% set month = 'now'|date('Y-m') %}
+<div class="panel w-64">
+  {% include 'drubricks:month-grid' with {month: month, interactive: true,
+    selected: month ~ '-17',
+    marks: {
+      (month ~ '-20'): {color: 'green', title: 'Launch day'},
+      (month ~ '-25'): {color: 'purple', title: 'Team offsite'},
+      (month ~ '-26'): {color: 'purple', title: 'Team offsite'},
+      (month ~ '-06'): {color: 'orange', style: 'ring', title: 'Deadline'},
+    },
+    prev_url: '#calendar', next_url: '#calendar',
+  } only %}
+</div>
+<div class="grid gap-2 text-ink-2">
+  <span class="flex items-center gap-2"><span class="cal-day today w-7">13</span> .today</span>
+  <span class="flex items-center gap-2"><span class="cal-day sel w-7">17</span> .sel</span>
+  <span class="flex items-center gap-2"><span class="cal-day fill w-7" style="--c: var(--green)">20</span> .fill + --c</span>
+  <span class="flex items-center gap-2"><span class="cal-day ring w-7" style="--c: var(--orange)">6</span> .ring + --c</span>
+  <span class="flex items-center gap-2"><span class="cal-day out w-7">31</span> .out</span>
+</div>

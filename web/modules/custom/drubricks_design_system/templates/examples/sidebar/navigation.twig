@@ -1,0 +1,8 @@
+{% embed 'drubricks:sidebar-section' with {title: 'Favorites'} only %}
+  {% block content %}
+    {% include 'drubricks:sidebar-item' with {label: 'Inbox', icon: 'tray', count: 12, active: true, no_select: true} only %}
+    {% include 'drubricks:sidebar-item' with {label: 'Flagged', icon: 'flag', icon_color: 'orange', count: 3, no_select: true} only %}
+    {% include 'drubricks:sidebar-item' with {label: 'Trash', icon: 'trash', icon_color: 'gray', no_select: true} only %}
+    {% include 'drubricks:sidebar-item' with {label: 'New folder', add: true} only %}
+  {% endblock %}
+{% endembed %}

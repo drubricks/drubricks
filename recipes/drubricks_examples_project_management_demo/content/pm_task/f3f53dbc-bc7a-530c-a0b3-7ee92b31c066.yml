@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: f3f53dbc-bc7a-530c-a0b3-7ee92b31c066
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    b43cb71a-a3af-5da2-898d-e7a2bbf9d82d: pm_project
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Fix crash on login'
+  project:
+    -
+      entity: b43cb71a-a3af-5da2-898d-e7a2bbf9d82d
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  due_date:
+    -
+      value: '2026-11-13'
+  weight:
+    -
+      value: 5

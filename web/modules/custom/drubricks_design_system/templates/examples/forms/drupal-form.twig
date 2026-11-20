@@ -1,0 +1,12 @@
+// Nothing kit-specific in the form array: the theme's templates/form/*.html.twig
+// add .form, .field, .checkbox / .radio / .switch, .btn (+ .primary / .destructive),
+// inline errors (.field-error) and hints (.field-hint).
+$form['title'] = ['#type' => 'textfield', '#title' => $this->t('Title'), '#required' => TRUE];
+$form['row'] = ['#type' => 'container', '#attributes' => ['class' => ['form-row']]];   // two columns
+$form['row']['status'] = ['#type' => 'select', '#title' => $this->t('Status'), '#options' => $options];
+$form['row']['due'] = ['#type' => 'date', '#title' => $this->t('Due date')];
+$form['digest'] = ['#type' => 'checkbox', '#title' => $this->t('Email digest'), '#attributes' => ['class' => ['switch']]];
+$form['advanced'] = ['#type' => 'details', '#title' => $this->t('Advanced settings')];   // a kit .group
+$form['actions']['delete'] = ['#type' => 'submit', '#value' => $this->t('Delete'), '#button_type' => 'danger'];
+$form['actions']['submit'] = ['#type' => 'submit', '#value' => $this->t('Save'), '#button_type' => 'primary'];
+// Opt out of the stacked layout (e.g. a one-line filter): $form['#attributes']['data-drubricks-form'] = 'plain';

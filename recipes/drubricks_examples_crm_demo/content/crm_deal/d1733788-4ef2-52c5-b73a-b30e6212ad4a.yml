@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: d1733788-4ef2-52c5-b73a-b30e6212ad4a
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    c79ee643-7a28-5a14-b053-9d6fda47c304: crm_company
+    3473c10b-c6bf-5d59-8ef6-20b58380e4ae: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Supply chain analytics'
+  company:
+    -
+      entity: c79ee643-7a28-5a14-b053-9d6fda47c304
+  contact:
+    -
+      entity: 3473c10b-c6bf-5d59-8ef6-20b58380e4ae
+  value:
+    -
+      value: '36000.00'
+  stage:
+    -
+      value: lead
+  close_date:
+    -
+      value: '2026-12-28'

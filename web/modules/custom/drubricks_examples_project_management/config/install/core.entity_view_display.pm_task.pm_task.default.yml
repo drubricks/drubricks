@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_examples_project_management
+    - options
+    - user
+id: pm_task.pm_task.default
+targetEntityType: pm_task
+bundle: pm_task
+mode: default
+content:
+  assignee:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {}
+    weight: 3
+    region: content
+  description:
+    type: basic_string
+    label: above
+    settings: {}
+    third_party_settings: {}
+    weight: 5
+    region: content
+  due_date:
+    type: datetime_custom
+    label: inline
+    settings:
+      timezone_override: ''
+      date_format: 'j M Y'
+    third_party_settings: {}
+    weight: 4
+    region: content
+  priority:
+    type: list_default
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 2
+    region: content
+  project:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {}
+    weight: 0
+    region: content
+  state:
+    type: list_default
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 1
+    region: content
+  uid:
+    type: author
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 90
+    region: content
+hidden:
+  changed: true
+  color: true
+  created: true
+  name: true

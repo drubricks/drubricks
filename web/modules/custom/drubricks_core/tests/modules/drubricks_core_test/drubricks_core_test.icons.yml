@@ -1,0 +1,10 @@
+# An app module's own icon pack (core svg extractor): "drubricks_test:star"
+# in sidebar items, actions and dashboard widgets.
+drubricks_test:
+  label: 'Drubricks test icons'
+  extractor: svg
+  config:
+    sources:
+      - icons/{icon_id}.svg
+  template: >-
+    <svg{{ attributes.setAttribute('viewBox', '0 0 24 24').setAttribute('aria-hidden', 'true').addClass('test-icon') }}>{{ content }}</svg>

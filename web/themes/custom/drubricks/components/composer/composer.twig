@@ -1,0 +1,8 @@
+{# Kit composer: .composer > input.field + .btn.primary. #}
+{% set tag = action ? 'form' : 'div' %}
+{% set attributes = attributes.addClass('composer') %}
+{% if action %}{% set attributes = attributes.setAttribute('action', action).setAttribute('method', 'post') %}{% endif %}
+<{{ tag }}{{ attributes }}>
+  <input class="field" name="{{ name|default('body') }}" placeholder="{{ placeholder }}" aria-label="{{ label|default(placeholder|default('Message'|t)) }}">
+  <button class="btn primary" type="{{ action ? 'submit' : 'button' }}">{{ button|default('Send'|t) }}</button>
+</{{ tag }}>

@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Status pill
+status: stable
+group: Avatars, tags & badges
+description: 'Kit status pill (.pill), colour from a token (--c), optional icon.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Label }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    icon: { type: string, title: Icon }
+    tip: { type: string, title: Kit tooltip (data-tip; makes the pill focusable) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

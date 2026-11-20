@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Select
+status: stable
+group: Forms
+description: 'Kit select (select.field). Options as a list of { value, label } (or a plain value → label map via options_map).'
+props:
+  type: object
+  properties:
+    options:
+      type: array
+      title: Options
+      items:
+        type: object
+        properties:
+          value: { type: [string, number] }
+          label: { type: string }
+          disabled: { type: boolean }
+    value: { type: [string, number], title: Selected value }
+    aria_label: { type: string, title: Accessible label (when there is no visible label) }
+    name: { type: string, title: Name }
+    id: { type: string, title: Id }
+    required: { type: boolean, title: Required }
+    disabled: { type: boolean, title: Disabled }
+    invalid: { type: boolean, title: Invalid (aria-invalid) }
+    label: { type: string, title: Label, description: Shown above the control (inside a .form it uses the kit label style). }
+    hint: { type: string, title: Hint (.field-hint) }
+    error: { type: string, title: Error message (.field-error), description: Also marks the control invalid. }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

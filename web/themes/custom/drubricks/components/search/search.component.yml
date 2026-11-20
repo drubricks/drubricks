@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Search field
+status: stable
+group: Forms
+description: 'Kit search field (label.search): icon, input, clear button (the kit handles clear and Esc), optional scope token (.search-token).'
+props:
+  type: object
+  properties:
+    placeholder: { type: string, title: Placeholder }
+    value: { type: string, title: Value }
+    name: { type: string, title: Name, default: q }
+    token: { type: string, title: Scope token (.search-token) }
+    label: { type: string, title: Accessible label }
+    hide: { type: string, title: Hide when the pane is narrow, enum: ['', sm, md] }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

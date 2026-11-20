@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Group
+status: stable
+group: Grouped lists
+description: 'Kit settings group (.group) with an optional .group-title above it. Put drubricks:group-row items in the slot.'
+props:
+  type: object
+  properties:
+    title: { type: string, title: Title (.group-title) }
+    first: { type: boolean, title: No top margin on the title }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Rows

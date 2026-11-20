@@ -1,0 +1,73 @@
+/* Views in the app (table view): exposed filters, bulk form, kit table,
+   dropbutton. The markup is core's (views-exposed-form, views_form, table,
+   dropbutton.js); templates/views/ adds the kit classes it can. */
+@layer components {
+  .drubricks-table-view { display: grid; gap: 12px; align-content: start; }
+  .drubricks-table-view form.drubricks-form.form { max-width: none; }
+
+  /* Filter bar: the filters in a row, the buttons at its end. The table view
+     shows it in the toolbar row of the view header (.pane-toolbar). */
+  .pane-toolbar-start > form.views-exposed-form { flex: 1 1 auto; max-width: none; }
+  .drubricks-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; }
+  .drubricks-filters > .form-item { flex: 1 1 140px; max-width: 220px; }
+  .drubricks-filters .form-item .field { height: 28px; }
+  .drubricks-filters > .form-fieldset.form-item { flex: 1 1 260px; max-width: 300px; display: block; }
+  .drubricks-form .drubricks-filters > .form-fieldset > .fieldset-wrapper { display: flex; gap: 6px; }
+  .drubricks-filters > .form-fieldset > .fieldset-wrapper > .form-item { flex: 1 1 0; }
+  .drubricks-filters > .form-fieldset .form-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .drubricks-filters > .form-fieldset > .form-legend { margin-bottom: 5px; }
+  .drubricks-filters > .form-fieldset > .form-legend .fieldset-legend { font-size: 12px; font-weight: 500; }
+  .drubricks-form .drubricks-filters > .form-actions { display: flex; gap: 6px; margin: 0; }
+
+  /* Bulk operations: "N selected · Action · Apply" above the table. */
+  .drubricks-table-view .drubricks-form [data-drupal-selector="edit-header"] > .form-wrapper {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px;
+    padding: 8px 10px; border-radius: var(--radius-lg); background: var(--bg-raised); box-shadow: inset 0 0 0 .5px var(--sep);
+  }
+  .drubricks-table-view [data-drupal-selector="edit-header"] .form-item { flex: 0 1 220px; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 8px; }
+  .drubricks-table-view [data-drupal-selector="edit-header"] .form-item .field { height: 28px; }
+  .drubricks-table-view .drubricks-form [data-drupal-selector="edit-header"] .form-actions { margin: 0; }
+  /* core repeats the Apply button under the table: one is enough. */
+  .drubricks-table-view .drubricks-form > [data-drupal-selector="edit-actions"] { display: none; }
+  .drubricks-bulk-count { align-self: center; margin-right: auto; font-size: 12.5px; font-weight: 500; color: var(--label-2); }
+  .drubricks-table-view [data-drubricks-bulk="0"] :is(.form-item, .form-actions) { opacity: .5; pointer-events: none; }
+
+  /* Table: the bulk checkbox column narrow, links in the kit accent, sort
+     links fill the header cell. */
+  .drubricks-table-view .data-table th > a { color: inherit; }
+  .drubricks-table-view .data-table :is(th, td).select-all,
+  .drubricks-table-view .data-table td.views-field-crm-deal-bulk-form,
+  .drubricks-table-view .data-table td:has(> .form-type-checkbox) { width: 1%; }
+  .drubricks-table-view .data-table td .form-item { display: block; }
+  .drubricks-table-view .data-table td a:not(.btn) { color: var(--accent); }
+  .drubricks-table-view .data-table td { white-space: nowrap; }
+  .drubricks-table-view .data-table td.views-field-name { white-space: normal; min-width: 160px; }
+  .drubricks-table-view .data-table td.views-field-operations { width: 1%; text-align: right; }
+  .drubricks-table-view .views-empty, .drubricks-table-view .data-table td.views-empty { color: var(--label-2); }
+  .drubricks-table-view .pager { justify-content: flex-end; margin-top: 12px; }
+}
+
+/* Dropbutton (js/dropbutton.js replaces core's): the first action is a kit
+   button, the arrow next to it opens the other actions in the kit menu. */
+@layer components {
+  .dropbutton-wrapper { display: inline-flex; vertical-align: middle; }
+  .dropbutton-wrapper .dropbutton-widget { display: inline-flex; }
+  .dropbutton-wrapper .dropbutton { display: inline-flex; margin: 0; padding: 0; list-style: none; }
+  .dropbutton-wrapper .dropbutton > li { margin: 0; padding: 0; }
+  .dropbutton-wrapper .dropbutton > li.secondary-action { display: none; }
+  .dropbutton-wrapper .dropbutton > li:first-child > :is(a, button, input),
+  .dropbutton-wrapper .dropbutton-arrow-btn {
+    display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 7px;
+    font-size: 12.5px; font-weight: 500; color: var(--label); text-decoration: none;
+    background: var(--bg-control); box-shadow: var(--control-shadow);
+  }
+  .dropbutton-wrapper.dropbutton-multiple .dropbutton > li:first-child > :is(a, button, input) { border-radius: 7px 0 0 7px; }
+  .dropbutton-wrapper .dropbutton-arrow-btn { width: 24px; padding: 0; justify-content: center; margin-left: 1px; border-radius: 0 7px 7px 0; cursor: pointer; }
+  .dropbutton-wrapper .dropbutton-arrow-btn::after {
+    content: ""; border-style: solid; border-width: 5px 4px 0; border-color: currentColor transparent transparent; color: var(--label-2);
+  }
+  .dropbutton-wrapper .dropbutton-arrow-btn[aria-expanded="true"] { background: var(--hover); }
+  .dropbutton-wrapper .dropbutton > li > :is(a, button):focus-visible, .dropbutton-wrapper .dropbutton-arrow-btn:focus-visible {
+    outline: 3px solid var(--accent-ring); outline-offset: 1px; position: relative; z-index: 1;
+  }
+}

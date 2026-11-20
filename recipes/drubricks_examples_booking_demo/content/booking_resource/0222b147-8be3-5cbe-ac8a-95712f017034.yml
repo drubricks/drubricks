@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 0222b147-8be3-5cbe-ac8a-95712f017034
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Fjord
+  color:
+    -
+      value: teal
+  kind:
+    -
+      value: room
+  location:
+    -
+      value: 'HQ · Floor 2'
+  capacity:
+    -
+      value: 4
+  opens:
+    -
+      value: 7
+  closes:
+    -
+      value: 20
+  rules:
+    -
+      value: 'Leave the whiteboard clean.'

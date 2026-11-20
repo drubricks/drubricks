@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: 1ddf0b21-e251-5fac-913e-e31dc98e8060
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Kestrel Freight'
+  color:
+    -
+      value: teal
+  industry:
+    -
+      value: Logistics
+  city:
+    -
+      value: Seattle
+  size:
+    -
+      value: 250
+  website:
+    -
+      uri: 'https://kestrelfreight.example'
+      title: null
+      options: {}

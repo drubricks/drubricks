@@ -1,0 +1,11 @@
+{
+    "name": "drubricks/drubricks_base",
+    "description": "Drubricks base recipe: theme, core module and shared configuration.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12",
+        "drupal/gin_login": "^2.1",
+        "drupal/login_emailusername": "^3"
+    }
+}

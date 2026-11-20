@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_crm
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: chart
+    color: ''
+id: drubricks_crm_pipeline_by_stage
+theme: drubricks
+region: dashboard
+weight: 102
+provider: null
+plugin: drubricks_examples_crm_pipeline_by_stage
+settings:
+  id: drubricks_examples_crm_pipeline_by_stage
+  label: 'Pipeline by stage'
+  label_display: visible
+  provider: drubricks_examples_crm
+visibility: {}

@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * A contact: header (avatar, stage, job title, company), contact details,
+ * the company card, deals and a timeline. compact: the side panel of a board
+ * (the panel shows the name, so no header).
+ */
+#}
+{% set sub %}
+  {%- if stage %}{{ include('drubricks:pill', {label: stage.label, color: stage.color}, with_context = false) }}{% endif %}
+  {%- if job_title %}<span>{{ job_title }}</span>{% endif %}
+  {%- if company %}{% if job_title %}<span aria-hidden="true">·</span>{% endif %}
+    {%- if company.link %}<a class="link" href="{{ company.link.url }}"{{ company.link.attributes }}>{{ company.title }}</a>{% else %}<span>{{ company.title }}</span>{% endif %}
+  {%- endif %}
+{% endset %}
+{% set actions %}
+  {%- if email %}{{ include('drubricks:button', {label: 'Email'|t, icon: 'envelope', url: 'mailto:' ~ email, size: compact ? 'small' : 'default'}, with_context = false) }}{% endif %}
+  {%- if phone %}{{ include('drubricks:button', {label: 'Call'|t, icon: 'phone', url: 'tel:' ~ phone|replace({' ': ''}), size: compact ? 'small' : 'default'}, with_context = false) }}{% endif %}
+{% endset %}
+{% set body %}
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {title: 'Details'|t, first: compact, facts: facts} only %}
+  {{ fields }}
+
+  {% if company %}
+    {{ include('drubricks:group-title', {title: 'Company'|t}, with_context = false) }}
+    {% embed 'drubricks:minis' with {company: company} only %}
+      {% block content %}{{ include('drubricks:mini', {title: company.title, subtitle: company.subtitle, tile_color: company.color}|merge(company.link), with_context = false) }}{% endblock %}
+    {% endembed %}
+  {% endif %}
+
+  <div class="group-title">{{ 'Deals'|t }} <span class="dim">{{ deals|length }}</span></div>
+  {{ deal_rows }}
+
+  {% if feed %}
+    {{ include('drubricks:group-title', {title: 'Timeline'|t}, with_context = false) }}
+    {% embed 'drubricks:feed' with {feed: feed} only %}
+      {% block content %}{% for event in feed %}
+        {% embed 'drubricks:feed-item' with {icon: event.icon, color: event.color, solid: true, meta: event.meta, event: event} only %}
+          {% block text_markup %}{{ event.text }}{% endblock %}
+        {% endembed %}
+      {% endfor %}{% endblock %}
+    {% endembed %}
+  {% endif %}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  <div class="d-sub mb-2">{{ sub }}</div>
+  {% if actions|trim is not empty %}<div class="d-actions mb-1">{{ actions }}</div>{% endif %}
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, avatar_color: color|default(''), sub: sub, actions: actions, body: body} only %}
+    {% block subtitle_markup %}{{ sub }}{% endblock %}
+    {% block actions %}{{ actions }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

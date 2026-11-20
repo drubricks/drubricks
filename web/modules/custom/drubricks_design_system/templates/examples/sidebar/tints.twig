@@ -1,0 +1,15 @@
+{% for item in [
+  {label: 'Flagged', icon: 'flag', icon_color: 'orange'},
+  {label: 'Overdue', icon: 'alert', icon_color: 'red'},
+  {label: 'Done', icon: 'checkmark-circle', icon_color: 'green'},
+  {label: 'Starred', icon: 'star', icon_color: 'yellow'},
+  {label: 'Scheduled', icon: 'calendar', icon_color: 'blue'},
+  {label: 'Synced', icon: 'cloud', icon_color: 'teal'},
+  {label: 'Someday', icon: 'moon', icon_color: 'indigo'},
+  {label: 'Ideas', icon: 'sparkles', icon_color: 'purple'},
+  {label: 'Favourites', icon: 'heart', icon_color: 'pink'},
+  {label: 'Trash', icon: 'trash', icon_color: 'gray'},
+] %}
+  {% include 'drubricks:sidebar-item' with item|merge({no_select: true}) only %}
+{% endfor %}
+{% include 'drubricks:sidebar-item' with {label: 'Archive (drop target)', icon: 'archive', count: 4, drop_target: true, no_select: true} only %}

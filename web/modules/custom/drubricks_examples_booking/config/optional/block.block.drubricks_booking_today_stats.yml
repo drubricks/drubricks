@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_booking
+  theme:
+    - drubricks
+id: drubricks_booking_today_stats
+theme: drubricks
+region: dashboard_stats
+weight: 300
+provider: null
+plugin: drubricks_examples_booking_today_stats
+settings:
+  id: drubricks_examples_booking_today_stats
+  label: 'Bookings today'
+  label_display: '0'
+  provider: drubricks_examples_booking
+visibility: {}

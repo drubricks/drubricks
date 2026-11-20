@@ -1,0 +1,62 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Button
+status: stable
+group: Buttons & controls
+description: 'Kit push button (.btn). A link when url is set, a <button> otherwise.'
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+    icon:
+      type: string
+      title: Icon
+      description: Kit or Lucide icon name shown before the label.
+    icon_after:
+      type: string
+      title: Icon after
+      description: Icon shown after the label (e.g. chevron-down of a dropdown).
+    variant:
+      type: string
+      title: Variant
+      enum: [default, primary, destructive]
+      default: default
+    size:
+      type: string
+      title: Size
+      enum: [default, small, large]
+      default: default
+    full:
+      type: boolean
+      title: Full width (.btn.full)
+    loading:
+      type: boolean
+      title: Loading (.btn.loading, disabled)
+    disabled:
+      type: boolean
+      title: Disabled
+    url:
+      type: string
+      title: URL
+      description: Renders an <a> instead of a <button>.
+    type:
+      type: string
+      title: Button type
+      enum: [button, submit, reset]
+      default: button
+    title:
+      type: string
+      title: Title (native tooltip / accessible name)
+    tip:
+      type: string
+      title: Tooltip
+      description: Kit tooltip text (data-tip). Plain text.
+    tip_kbd:
+      type: string
+      title: Tooltip shortcut
+      description: Key cap shown in the tooltip (data-tip-kbd), e.g. ⌘K.
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

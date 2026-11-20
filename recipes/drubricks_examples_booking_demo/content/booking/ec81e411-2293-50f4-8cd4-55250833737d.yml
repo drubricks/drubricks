@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: ec81e411-2293-50f4-8cd4-55250833737d
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    0111125f-4353-54a7-b7b8-a393cc8fe542: booking_resource
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Hiring interview'
+  resource:
+    -
+      entity: 0111125f-4353-54a7-b7b8-a393cc8fe542
+  starts:
+    -
+      value: '2026-11-18T14:00:00'
+  ends:
+    -
+      value: '2026-11-18T15:00:00'
+  state:
+    -
+      value: confirmed

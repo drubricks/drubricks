@@ -1,0 +1,6 @@
+{# Kit avatar: span.avatar[.xs|.sm|.xl]. #}
+{% set initials = initials ?: (name|default('')|split(' ')|filter(w => w)|slice(0, 2)|map(w => w|first|upper)|join) %}
+{% set attributes = attributes.addClass(['avatar', size in ['xs', 'sm', 'xl'] ? size, accent ? 'bg-none', accent ? 'bg-accent', accent ? 'text-on-accent']|filter(c => c)) %}
+{% if color and not accent %}{% set attributes = attributes.setAttribute('style', 'background: ' ~ color(color)) %}{% endif %}
+{% if tip %}{% set attributes = attributes.setAttribute('data-tip', tip) %}{% elseif name %}{% set attributes = attributes.setAttribute('title', name) %}{% endif %}
+<span{{ attributes }}>{{ initials }}</span>

@@ -1,0 +1,23 @@
+name: 'Booking example'
+description: 'Rooms, equipment, cars and specialists booked in a calendar, with no double bookings (example app).'
+type: 'App'
+recipes:
+  - drubricks_base
+install:
+  - drubricks_examples_booking
+config:
+  # A recipe installs only simple config from the modules: the config
+  # entities of config/install (admin views, bulk actions) are imported here.
+  import:
+    drubricks_examples_booking: '*'
+  actions:
+    # Everyone signed in sees the resources and the calendar and books;
+    # they edit and cancel their own bookings. Resources are managed by
+    # "administer booking" (e.g. facilities).
+    user.role.authenticated:
+      grantPermissions:
+        - 'view any booking_resource'
+        - 'view any booking'
+        - 'create booking'
+        - 'edit own booking'
+        - 'delete own booking'

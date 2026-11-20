@@ -1,0 +1,26 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Month grid
+status: stable
+group: Month grid & date picker
+description: 'Kit month grid (.cal-grid) rendered on the server: weekday labels (Monday first), .cal-day cells with .out, .today, .sel and marks (.fill / .ring in a colour token, with a title). interactive = day buttons; a click selects the day and fires "drubricks:date" ({ date }). For a keyboard date picker use drubricks:date-picker.'
+props:
+  type: object
+  properties:
+    month: { type: string, title: Month (YYYY-MM), description: 'Default: the current month.' }
+    today: { type: string, title: Today (YYYY-MM-DD), description: 'Default: today.' }
+    selected: { type: string, title: Selected day (YYYY-MM-DD) }
+    marks:
+      type: object
+      title: Marked days
+      description: '{ "2026-11-20": { color: "green", style: "fill" | "ring", title: "Launch day" } }'
+    interactive: { type: boolean, title: Day buttons }
+    title: { type: boolean, title: Month name + previous / next buttons above the grid, default: true }
+    prev_url: { type: string, title: Previous month link }
+    next_url: { type: string, title: Next month link }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

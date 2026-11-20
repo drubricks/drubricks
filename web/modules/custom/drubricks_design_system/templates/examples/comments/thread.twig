@@ -1,0 +1,10 @@
+{% embed 'drubricks:thread' with {attributes: create_attribute({'class': ['max-w-xl']})} only %}
+  {% block content %}
+    {% embed 'drubricks:comment' with {author: 'Maya Lindqvist', color: 'teal', time: '2 h ago', actions: [{label: 'Reply'}, {label: 'Edit'}]} only %}
+      {% block text_markup %}The revised quote is attached. <span class="mention">@Priya Raman</span> can you check the delivery terms?{% endblock %}
+    {% endembed %}
+    {% embed 'drubricks:comment' with {author: 'Priya Raman', color: 'purple', time: '35 min ago', highlight: true, actions: [{label: 'Reply'}]} only %}
+      {% block text_markup %}Terms look fine. <span class="mention me">@Alex Morgan</span> — over to you for sign-off.{% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endembed %}

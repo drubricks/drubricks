@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: dd98be6f-9bd8-56a7-a272-f6500210847c
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    c473735e-7d42-53da-9a4c-abfdfd4bc3c8: pm_project
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Send onboarding summary'
+  project:
+    -
+      entity: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  due_date:
+    -
+      value: '2026-11-12'
+  weight:
+    -
+      value: 4
+  description:
+    -
+      value: 'Recap of the kickoff: timeline, owners, open questions about the 40-truck pilot.'

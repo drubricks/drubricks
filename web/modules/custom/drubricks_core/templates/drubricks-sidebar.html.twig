@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * App sidebar (kit .sidebar) built from the "drubricks" menu. It renders the
+ * <aside> itself: the kit CSS needs .app > .sidebar > children directly.
+ *
+ * Variables: brand{name,logo,hide_name,url,attributes} (header: logo + site
+ * name, a link to Home; NULL = none), sections[{id,title,items[{id,title,url,icon,color,count,attributes}]}],
+ * account{name,email,initials,items} — items go to UI.setAccountMenu().
+ */
+#}
+<aside class="sidebar" id="drubricks-sidebar" aria-label="{{ 'Sidebar'|t }}">
+  <header class="pane-header">
+    {% if brand %}
+      {{ include('drubricks:brand', {name: brand.name, logo: brand.logo|default(''), hide_name: brand.hide_name, url: brand.url, attributes: create_attribute(brand.attributes).addClass(['mr-auto', 'min-w-0'])}, with_context = false) }}
+    {% endif %}
+    <button class="icon-btn" type="button" data-action="toggle-sidebar" title="{{ 'Hide Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>
+  </header>
+  <nav class="pane-body" aria-label="{{ 'Apps'|t }}">
+    {% for section in sections %}
+      <div class="sb-section" data-section="{{ section.id }}">
+        {% if section.title %}<button class="sb-heading" type="button">{{ section.title }} <span class="hint">{{ 'Hide'|t }}</span></button>{% endif %}
+        <div class="sb-items">
+          {% for item in section.items %}
+            <a class="sb-item" href="{{ item.url }}" data-key="{{ item.id }}"{{ create_attribute(item.attributes) }}>
+              {% set ref = (item.icon ?: 'link')|split(':', 2) %}{{ icon(ref|length > 1 ? ref|first : 'kit', ref|length > 1 ? ref|last : 'i-' ~ ref|last, {class: item.color ?: ''}) }}<span class="label">{{ item.title }}</span>
+              {% if item.count is not null %}<span class="count" data-count-for="{{ item.id }}">{{ item.count }}</span>{% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </nav>
+  {% if account %}
+    <footer class="sb-footer">
+      <button class="sb-account" type="button" data-account data-name="{{ account.name }}" data-email="{{ account.email }}"
+        data-drubricks-account-menu="{{ account.items|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE')) }}" aria-haspopup="menu" aria-expanded="false" title="{{ 'Account'|t }}">
+        <span class="avatar sm bg-none bg-accent text-on-accent">{{ account.initials }}</span>
+        <span class="sb-account-text"><span class="sb-account-name">{{ account.name }}</span><span class="sb-account-sub">{{ account.email }}</span></span>
+        {{ icon('kit', 'i-chevrons-up-down') }}
+      </button>
+    </footer>
+  {% endif %}
+  <div class="resizer"></div>
+</aside>

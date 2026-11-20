@@ -1,0 +1,19 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Pager
+status: stable
+group: Data table & pager
+description: 'Kit pager (nav.pager): .pager-info, previous / next, page numbers with gaps (1 … 4 5 6 … 20). Links from links (page → URL) or url ({page} = zero-based page, like Drupal ?page=), buttons with data-go otherwise.'
+props:
+  type: object
+  required: [current, total]
+  properties:
+    current: { type: integer, title: Current page (1-based), minimum: 1 }
+    total: { type: integer, title: Number of pages, minimum: 1 }
+    url: { type: string, title: URL pattern, examples: ['?page={page}'] }
+    links: { type: object, title: Page links, description: 'URL of each page, keyed by the 1-based page number (wins over url); Drupal pagers get them from the theme.' }
+    info: { type: string, title: Info text, examples: ['1–20 of 132'] }
+    label: { type: string, title: Accessible label }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: aeb5939f-c803-54f4-a0a8-e81cd12f2d8d
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    1ddf0b21-e251-5fac-913e-e31dc98e8060: crm_company
+    dc8a4671-7f5a-50f3-a47b-40389f7bf70b: crm_contact
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Warehouse expansion add-on'
+  company:
+    -
+      entity: 1ddf0b21-e251-5fac-913e-e31dc98e8060
+  contact:
+    -
+      entity: dc8a4671-7f5a-50f3-a47b-40389f7bf70b
+  value:
+    -
+      value: '22000.00'
+  stage:
+    -
+      value: proposal
+  close_date:
+    -
+      value: '2026-11-21'

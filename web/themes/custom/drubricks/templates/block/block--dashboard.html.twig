@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * A block in the dashboard's panel grid (region "dashboard"): a kit panel
+ * with the block label as heading.
+ *
+ * Variables of block.html.twig, plus dashboard (DashboardHooks): size
+ * (narrow / wide / full), icon and color of the heading, link (title, url,
+ * attributes: the "Show all" link of a dashboard block, or NULL).
+ */
+#}
+{% set classes = {wide: ['@min-[652px]:col-span-2'], full: ['col-span-full']}[dashboard.size]|default([]) %}
+{% set attributes = attributes.addClass(classes).setAttribute('data-drubricks-dashboard', plugin_id) %}
+{% if dashboard.color %}{% set title_attributes = title_attributes.setAttribute('style', '--c: ' ~ color(dashboard.color)) %}{% endif %}
+{% embed 'drubricks:panel' with {attributes: attributes, title_attributes: title_attributes, title_prefix: title_prefix, title_suffix: title_suffix, label: label, dashboard: dashboard, content: content} only %}
+  {% block content %}
+    {{ title_prefix }}
+    {% if label %}
+      <h3{{ title_attributes }}>{% if dashboard.icon %}{% set ref = dashboard.icon|split(':', 2) %}{{ icon(ref|length > 1 ? ref|first : 'kit', ref|length > 1 ? ref|last : 'i-' ~ ref|last, {class: dashboard.color ? 'text-[var(--c)]' : ''}) }} {% endif %}{{ label }}
+        {%- if dashboard.link %}<span class="spacer"></span><a class="link text-xs font-medium" href="{{ dashboard.link.url }}"{{ create_attribute(dashboard.link.attributes) }}>{{ dashboard.link.title }}</a>{% endif -%}
+      </h3>
+    {% endif %}
+    {{ title_suffix }}
+    {{ content }}
+  {% endblock %}
+{% endembed %}

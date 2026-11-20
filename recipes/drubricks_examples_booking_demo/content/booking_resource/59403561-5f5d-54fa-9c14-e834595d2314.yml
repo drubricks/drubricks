@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 59403561-5f5d-54fa-9c14-e834595d2314
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Focus pod'
+  color:
+    -
+      value: pink
+  kind:
+    -
+      value: room
+  location:
+    -
+      value: 'HQ · Floor 2'
+  capacity:
+    -
+      value: 1
+  opens:
+    -
+      value: 7
+  closes:
+    -
+      value: 20
+  rules:
+    -
+      value: 'One person, two hours at most.'

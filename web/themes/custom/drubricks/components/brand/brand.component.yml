@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: App brand
+status: stable
+group: Sidebar
+description: 'Kit app brand (.brand + .brand-mark, a gradient from the current palette, or the site logo) for the sidebar header. A link when url is set.'
+props:
+  type: object
+  required: [name]
+  properties:
+    name: { type: string, title: Name }
+    url: { type: string, title: URL }
+    logo: { type: string, title: Logo, description: 'URL of a logo image shown instead of the gradient mark (the theme settings logo).' }
+    hide_name: { type: boolean, title: 'Hide name', description: 'Logo only; the name becomes its alt text.' }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

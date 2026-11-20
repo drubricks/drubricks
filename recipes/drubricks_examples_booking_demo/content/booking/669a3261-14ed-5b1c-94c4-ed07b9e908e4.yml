@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 669a3261-14ed-5b1c-94c4-ed07b9e908e4
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    0222b147-8be3-5cbe-ac8a-95712f017034: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Design stand-up'
+  resource:
+    -
+      entity: 0222b147-8be3-5cbe-ac8a-95712f017034
+  starts:
+    -
+      value: '2026-11-16T08:30:00'
+  ends:
+    -
+      value: '2026-11-16T08:45:00'
+  state:
+    -
+      value: confirmed

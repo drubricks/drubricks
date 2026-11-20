@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+id: crm_company_unpublish_action
+label: 'Deactivate companies'
+type: crm_company
+plugin: 'entity:unpublish_action:crm_company'
+configuration: {}

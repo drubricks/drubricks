@@ -1,0 +1,10 @@
+name: 'Drubricks example: CRM'
+type: module
+description: 'Example app: companies, contacts and deals on Drubricks entities. Adds a CRM section to the sidebar with plugins only. Copy it to start a client app.'
+package: Drubricks examples
+core_version_requirement: ^12
+dependencies:
+  - drubricks_core:drubricks_core
+  - drupal:datetime
+  - drupal:options
+  - drupal:link

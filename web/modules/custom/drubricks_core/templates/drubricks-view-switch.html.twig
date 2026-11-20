@@ -1,0 +1,6 @@
+{# Board / List switch (kit segmented control). Variables: views[{title,url,icon,active,attributes}]. #}
+<nav class="seg" aria-label="{{ 'View'|t }}">
+  {% for view in views %}
+    <a href="{{ view.url }}" class="{{ view.active ? 'active' }}" title="{{ view.title }}"{{ view.active ? ' aria-current="page"' }}{{ create_attribute(view.attributes) }}>{{ icon('kit', 'i-' ~ (view.icon)) }}<span class="vh">{{ view.title }}</span></a>
+  {% endfor %}
+</nav>

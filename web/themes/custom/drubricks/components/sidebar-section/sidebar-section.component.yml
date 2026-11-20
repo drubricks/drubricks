@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Sidebar section
+status: stable
+group: Sidebar
+description: 'Kit sidebar section (.sb-section): a collapsible heading (.sb-heading with a Hide / Show hint) and its items. In the app sidebar the kit folds it (.collapsed) and remembers it. drubricks_core builds the real sidebar from plugins; use this for other navigation lists.'
+props:
+  type: object
+  properties:
+    title: { type: string, title: Heading }
+    collapsed: { type: boolean, title: Collapsed }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Items (drubricks:sidebar-item)

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Table view of an entity type: one details pane with a core View.
+ *
+ * Variables: title, subtitle (the record count), views (view switch),
+ * add{url,title,attributes}, filters (the exposed form), table_attributes (the
+ * HTMX region: pager and sort links reload only the table), table (the
+ * View: bulk form, table, pager — themed by the drubricks
+ * theme's views templates), inspector (the record opened with ?open=ID).
+ */
+#}
+<main class="content" id="drubricks-detail" tabindex="-1" aria-label="{{ title }}">
+  {% embed '@drubricks_core/drubricks-screen-header.html.twig' with {title: title, subtitle: subtitle, views: views, add: add, filters: filters} only %}
+    {# The View's exposed filters (core's "exposed form in a block"). #}
+    {% block filters %}{{ filters }}{% endblock %}
+  {% endembed %}
+  <div{{ create_attribute(table_attributes).addClass(['pane-body', 'drubricks-table-view']) }}>
+    {{ table }}
+  </div>
+</main>
+{{ inspector }}

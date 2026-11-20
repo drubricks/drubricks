@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_booking
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: chart
+    color: ''
+id: drubricks_booking_busiest
+theme: drubricks
+region: dashboard
+weight: 302
+provider: null
+plugin: drubricks_examples_booking_busiest
+settings:
+  id: drubricks_examples_booking_busiest
+  label: 'Busiest resources · 7 days'
+  label_display: visible
+  provider: drubricks_examples_booking
+visibility: {}

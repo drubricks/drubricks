@@ -1,0 +1,349 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_core
+    - drubricks_examples_crm
+    - options
+id: crm_deal_table
+label: 'Deals (table)'
+module: views
+description: 'Table view of the deals in the app: filters, sorting, bulk operations, row actions, pager.'
+tag: drubricks
+base_table: crm_deal
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Deals
+      fields:
+        id:
+          id: id
+          table: crm_deal
+          field: id
+          entity_type: crm_deal
+          entity_field: id
+          plugin_id: field
+          label: ID
+          exclude: true
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+        crm_deal_bulk_form:
+          id: crm_deal_bulk_form
+          table: crm_deal
+          field: crm_deal_bulk_form
+          entity_type: crm_deal
+          plugin_id: bulk_form
+          label: ''
+          action_title: Action
+          include_exclude: include
+          selected_actions:
+            - crm_deal_delete_action
+            - crm_deal_publish_action
+            - crm_deal_unpublish_action
+        name:
+          id: name
+          table: crm_deal
+          field: name
+          entity_type: crm_deal
+          entity_field: name
+          plugin_id: field
+          label: Name
+          alter:
+            alter_text: false
+            make_link: true
+            path: '/apps/crm/deals/table?open={{ id }}'
+          type: string
+          settings:
+            link_to_entity: false
+        company:
+          id: company
+          table: crm_deal
+          field: company
+          entity_type: crm_deal
+          entity_field: company
+          plugin_id: field
+          label: Company
+          type: entity_reference_label
+          settings:
+            link: true
+        stage:
+          id: stage
+          table: crm_deal
+          field: stage
+          entity_type: crm_deal
+          entity_field: stage
+          plugin_id: field
+          label: Stage
+          type: list_default
+          settings: {}
+        value:
+          id: value
+          table: crm_deal
+          field: value
+          entity_type: crm_deal
+          entity_field: value
+          plugin_id: field
+          label: Value
+          type: number_decimal
+          settings:
+            thousand_separator: ' '
+            decimal_separator: .
+            scale: 0
+            prefix_suffix: true
+        close_date:
+          id: close_date
+          table: crm_deal
+          field: close_date
+          entity_type: crm_deal
+          entity_field: close_date
+          plugin_id: field
+          label: 'Close date'
+          type: datetime_custom
+          settings:
+            timezone_override: ''
+            date_format: 'j M Y'
+        uid:
+          id: uid
+          table: crm_deal
+          field: uid
+          entity_type: crm_deal
+          entity_field: uid
+          plugin_id: field
+          label: Owner
+          type: entity_reference_label
+          settings:
+            link: false
+        status:
+          id: status
+          table: crm_deal
+          field: status
+          entity_type: crm_deal
+          entity_field: status
+          plugin_id: field
+          label: Active
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
+        operations:
+          id: operations
+          table: crm_deal
+          field: operations
+          entity_type: crm_deal
+          plugin_id: entity_operations
+          label: Operations
+          destination: true
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 5
+          total_pages: null
+          id: 0
+          tags:
+            next: ›
+            previous: ‹
+            first: «
+            last: »
+          expose:
+            items_per_page: false
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {}
+      cache:
+        type: tag
+        options: {}
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No deals match the filters.'
+      sorts: {}
+      filters:
+        name:
+          id: name
+          table: crm_deal
+          field: name
+          entity_type: crm_deal
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: Name
+            identifier: name
+            placeholder: 'Search deals'
+        stage:
+          id: stage
+          table: crm_deal
+          field: stage
+          entity_type: crm_deal
+          entity_field: stage
+          plugin_id: list_field
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: stage_op
+            label: Stage
+            identifier: stage
+            multiple: false
+            reduce: false
+        company:
+          id: company
+          table: crm_deal
+          field: company
+          entity_type: crm_deal
+          entity_field: company
+          plugin_id: entity_reference
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: company_op
+            label: Company
+            identifier: company
+            multiple: false
+            reduce: false
+          reduce_duplicates: false
+          sub_handler: 'default:crm_company'
+          widget: select
+          sub_handler_settings:
+            target_bundles: null
+            sort:
+              field: name
+              direction: ASC
+            auto_create: false
+        value:
+          id: value
+          table: crm_deal
+          field: value
+          entity_type: crm_deal
+          entity_field: value
+          plugin_id: numeric
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          exposed: true
+          expose:
+            operator_id: value_op
+            label: 'Value at least'
+            identifier: min_value
+            placeholder: '0'
+        close_date:
+          id: close_date
+          table: crm_deal
+          field: close_date
+          entity_type: crm_deal
+          entity_field: close_date
+          plugin_id: datetime
+          operator: between
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          exposed: true
+          expose:
+            operator_id: close_date_op
+            label: 'Close date'
+            identifier: close_date
+        status:
+          id: status
+          table: crm_deal
+          field: status
+          entity_type: crm_deal
+          entity_field: status
+          plugin_id: boolean
+          value: All
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Active
+            identifier: status
+          is_grouped: true
+          group_info:
+            label: Active
+            identifier: status
+            default_group: All
+            group_items:
+              1:
+                title: Active
+                operator: '='
+                value: '1'
+              2:
+                title: Inactive
+                operator: '='
+                value: '0'
+      style:
+        type: table
+        options:
+          columns:
+            crm_deal_bulk_form: crm_deal_bulk_form
+            name: name
+            company: company
+            stage: stage
+            value: value
+            close_date: close_date
+            uid: uid
+            status: status
+            operations: operations
+          default: close_date
+          info:
+            name:
+              sortable: true
+              default_sort_order: asc
+            stage:
+              sortable: true
+              default_sort_order: asc
+            value:
+              sortable: true
+              default_sort_order: desc
+              align: views-align-right
+            close_date:
+              sortable: true
+              default_sort_order: asc
+            status:
+              sortable: true
+              default_sort_order: asc
+          sticky: false
+          order: asc
+          empty_table: true
+      row:
+        type: fields
+      show_admin_links: false
+      display_extenders: {}
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+      tags: {}

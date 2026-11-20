@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Board view of an entity type: one details pane with the UI.board island.
+ *
+ * Variables: title, subtitle (the record count), views (Board / List switch), add{url,title,attributes},
+ * filter{label,options[{id,label}],selected}, board{lanes,items,endpoint,order,sum,currency},
+ * inspector: the record opened with ?open=ID (cards open there; the board stays).
+ */
+#}
+<main class="content" id="drubricks-detail" tabindex="-1" aria-label="{{ title }}">
+  {% embed '@drubricks_core/drubricks-screen-header.html.twig' with {title: title, subtitle: subtitle, views: views, add: add, filter: filter} only %}
+    {% block filters %}
+      {% if filter %}
+        <div class="filter">
+          <label for="drubricks-board-filter">{{ filter.label }}</label>
+          <select class="field" id="drubricks-board-filter" data-board-filter>
+            <option value="0">{{ 'All'|t }}</option>
+            {% for option in filter.options %}
+              <option value="{{ option.id }}"{{ option.id == filter.selected ? ' selected' }}>{{ option.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+    {% endblock %}
+  {% endembed %}
+  <div class="pane-body">
+    <p class="vh">{{ 'Drag cards between lanes, or focus a card and press Alt + arrow keys.'|t }}</p>
+    <div class="drubricks-board" data-drubricks-board-island="{{ board|json_encode }}"></div>
+  </div>
+</main>
+{{ inspector }}

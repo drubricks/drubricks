@@ -1,0 +1,7 @@
+{# Kit chip: button.chip[.on]. #}
+{% set attributes = attributes.addClass(['chip', attribute(_context, 'on') ? 'on']|filter(c => c)) %}
+{% if url %}
+  <a{{ attributes.setAttribute('href', url) }}>{{ icon('kit', 'i-' ~ (icon)) }} {{ label }}</a>
+{% else %}
+  <button{{ attributes.setAttribute('type', 'button').setAttribute('aria-pressed', attribute(_context, 'on') ? 'true' : 'false') }}>{{ icon('kit', 'i-' ~ (icon)) }} {{ label }}</button>
+{% endif %}

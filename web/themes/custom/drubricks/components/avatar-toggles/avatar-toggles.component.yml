@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Avatar toggles
+status: stable
+group: Buttons & controls
+description: 'Kit avatar toggles (.avatar-toggles): one toggle button per person, e.g. to filter a board by assignee.'
+props:
+  type: object
+  required: [people]
+  properties:
+    people:
+      type: array
+      title: People
+      items:
+        type: object
+        properties:
+          name: { type: string, description: 'Full name: title + initials.' }
+          initials: { type: string }
+          color: { type: string, description: 'Colour token (teal, purple …).' }
+          'on': { type: boolean }
+          value: { type: string }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

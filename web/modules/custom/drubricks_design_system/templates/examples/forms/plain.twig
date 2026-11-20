@@ -1,0 +1,10 @@
+{% embed 'drubricks:group' with {attributes: create_attribute({'class': ['max-w-md']})} only %}
+  {% block content %}
+    {% embed 'drubricks:group-row' only %}{% block content %}
+      <span class="w-24 text-ink-2">Title</span>{% include 'drubricks:field' with {plain: true, value: 'Head of Operations', aria_label: 'Title', attributes: create_attribute({'class': ['flex-1']})} only %}
+    {% endblock %}{% endembed %}
+    {% embed 'drubricks:group-row' only %}{% block content %}
+      <span class="w-24 text-ink-2">Phone</span>{% include 'drubricks:field' with {plain: true, type: 'tel', value: '+1 206 555 0142', aria_label: 'Phone', attributes: create_attribute({'class': ['flex-1']})} only %}
+    {% endblock %}{% endembed %}
+  {% endblock %}
+{% endembed %}

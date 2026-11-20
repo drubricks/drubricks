@@ -1,0 +1,9 @@
+{% set today = 'now'|date('Y-m-d') %}
+{% include 'drubricks:date-picker' with {
+  date: today,
+  name: 'due',
+  range: ['monday this week'|date('Y-m-d'), 'sunday this week'|date('Y-m-d')],
+  marks: {('+2 days'|date('Y-m-d')): 'orange', ('+5 days'|date('Y-m-d')): 'green'},
+  label: 'Due date',
+} only %}
+<span class="demo-out" data-ds-out="date">drubricks:date — pick a day</span>

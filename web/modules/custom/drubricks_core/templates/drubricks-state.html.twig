@@ -1,0 +1,8 @@
+{# Empty / error state inside a pane. Variables: icon, title, message. #}
+<div class="empty-state drubricks-state">
+  <div>
+    {{ icon('kit', 'i-' ~ (icon)) }}
+    {% if title %}<div class="mt-2">{{ title }}</div>{% endif %}
+    {% if message %}<div class="mt-1 text-sm text-ink-3">{{ message }}</div>{% endif %}
+  </div>
+</div>

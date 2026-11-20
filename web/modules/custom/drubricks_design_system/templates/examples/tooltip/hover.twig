@@ -1,0 +1,8 @@
+{% include 'drubricks:icon-button' with {icon: 'archive', title: 'Archive', tip: 'Archive'} only %}
+{% include 'drubricks:icon-button' with {icon: 'flag', title: 'Flag', tip: 'Flag as important', tip_kbd: '⇧⌘L'} only %}
+{% include 'drubricks:icon-button' with {icon: 'chevron-down', title: 'More', tip: 'Opens below', tip_side: 'bottom'} only %}
+{% include 'drubricks:button' with {label: 'Save & notify', tip: 'Saves the draft and notifies everyone who follows this deal'} only %}
+{% include 'drubricks:pill' with {label: 'On hold', color: 'orange', tip: 'Waiting for the customer since Nov 6'} only %}
+{% embed 'drubricks:tooltip' with {text: 'Maya Lindqvist'} only %}
+  {% block content %}{% include 'drubricks:avatar' with {initials: 'ML', color: 'teal', size: 'sm'} only %}{% endblock %}
+{% endembed %}

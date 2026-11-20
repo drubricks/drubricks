@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Kit data table: .data-table-wrap > table.data-table[.click][.compact].
+ */
+#}
+{% set body_html %}{% block body %}{{ body }}{% endblock %}{% endset %}
+<div{{ attributes.addClass(['data-table-wrap', max_height]|filter(c => c)) }}>
+  <table class="data-table{{ clickable ? ' click' }}{{ compact ? ' compact' }}"{{ sortable ? ' data-drubricks-sort' }}>
+    {%- if caption %}<caption class="vh">{{ caption }}</caption>{% endif %}
+    <thead><tr>
+      {%- for column in columns %}
+        <th{{ column.num ? ' class="num"' }}{% if column.sort %} aria-sort="{{ column.sort }}"{% endif %} scope="col">
+          {%- if column.sort and column.url %}<a href="{{ column.url }}">{{ column.label }}</a>
+          {%- elseif column.sort %}<button type="button">{{ column.label }}</button>
+          {%- else %}{{ column.label }}{% endif -%}
+        </th>
+      {%- endfor %}
+    </tr></thead>
+    <tbody>
+      {%- if body_html|trim is not empty %}
+        {{ body_html }}
+      {%- else %}
+        {%- for row in rows %}
+          {% set classes = [row.selected ? 'selected', row.click or row.url ? 'click']|filter(c => c) %}
+          <tr{% if classes %} class="{{ classes|join(' ') }}"{% endif %}{% if row.url %} data-href="{{ row.url }}" tabindex="0"{% elseif clickable %} tabindex="0"{% endif %}>
+            {%- for cell in row.cells %}
+              <td{{ columns[loop.index0].num ? ' class="num"' }}>{{ cell }}</td>
+            {%- endfor -%}
+          </tr>
+        {%- endfor %}
+      {%- endif %}
+    </tbody>
+  </table>
+</div>

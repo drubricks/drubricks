@@ -1,0 +1,9 @@
+{
+    "name": "drubricks/drubricks_examples_booking_demo",
+    "description": "Demo data for the Booking example.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12"
+    }
+}

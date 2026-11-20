@@ -1,0 +1,37 @@
+{# The header of every app view (drubricks_core's drubricks-screen-header.html.twig):
+   title + record count, the view switch and "+" in one height; the toolbar row
+   below with the search / filters at the start and the view's controls at the end. #}
+<div class="w-full">
+  {% embed 'drubricks:toolbar' with {title: 'Deals', subtitle: '9 items'} only %}
+    {% block end %}
+      {% include 'drubricks:seg' with {view: true, label: 'View', items: [
+        {icon: 'board', title: 'Board', url: '#', active: true},
+        {icon: 'table', title: 'Table', url: '#'},
+        {icon: 'list', title: 'List', url: '#'},
+      ]} only %}
+      {% embed 'drubricks:tb-group' only %}{% block content %}
+        {% include 'drubricks:tb-btn' with {icon: 'plus', tip: 'New deal'} only %}
+      {% endblock %}{% endembed %}
+    {% endblock %}
+  {% endembed %}
+  {% embed 'drubricks:pane-toolbar' only %}
+    {% block start %}
+      <div class="filter">
+        <label for="ds-vh-company">Company</label>
+        <select class="field" id="ds-vh-company"><option>All</option><option>Atlas Robotics</option><option>Harbor &amp; Co</option></select>
+      </div>
+    {% endblock %}
+    {% block end %}
+      {% embed 'drubricks:tb-group' only %}{% block content %}
+        {% include 'drubricks:tb-btn' with {icon: 'chevron-left', title: 'Previous'} only %}
+        {% include 'drubricks:tb-btn' with {label: 'Today'} only %}
+        {% include 'drubricks:tb-btn' with {icon: 'chevron-right', title: 'Next'} only %}
+      {% endblock %}{% endembed %}
+      {% include 'drubricks:seg' with {label: 'Calendar view', items: [
+        {label: 'Day', value: 'day'},
+        {label: 'Week', value: 'week', active: true},
+        {label: 'Agenda', value: 'agenda'},
+      ]} only %}
+    {% endblock %}
+  {% endembed %}
+</div>

@@ -1,0 +1,21 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Form item
+status: stable
+group: Forms
+description: 'A labelled control for anything that is not a field (a segmented control, a date picker, chips): label, the control slot, an error and a hint, styled like the kit stacked form. drubricks:field, select, textarea and password render their own label.'
+props:
+  type: object
+  properties:
+    label: { type: string, title: Label }
+    for: { type: string, title: Id of the control (label for=) }
+    required: { type: boolean, title: Required mark }
+    hint: { type: string, title: Hint (.field-hint) }
+    error: { type: string, title: Error (.field-error) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  control:
+    title: Control
+    description: The input / select / textarea (e.g. drubricks:field).

@@ -1,0 +1,4 @@
+{# Kit key caps: <span class="kbd"> per key. #}
+<span{{ attributes.addClass('inline-flex', 'gap-1', 'items-center') }}>
+  {%- for key in keys %}<span class="kbd">{{ key }}</span>{% endfor -%}
+</span>

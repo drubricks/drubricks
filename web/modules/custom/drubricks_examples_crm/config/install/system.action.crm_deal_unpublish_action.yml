@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+id: crm_deal_unpublish_action
+label: 'Deactivate deals'
+type: crm_deal
+plugin: 'entity:unpublish_action:crm_deal'
+configuration: {}

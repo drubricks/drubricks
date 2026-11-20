@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: a492c17a-c42c-5d36-a457-fc2dfab1ef10
+  depends:
+    ca56c6c0-1b51-5239-a403-c0019c8a3ba2: user
+    2485eaf9-ce06-5209-a74c-c820050e6c4c: booking_resource
+default:
+  uid:
+    -
+      entity: ca56c6c0-1b51-5239-a403-c0019c8a3ba2
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Podcast recording'
+  resource:
+    -
+      entity: 2485eaf9-ce06-5209-a74c-c820050e6c4c
+  starts:
+    -
+      value: '2026-11-17T09:00:00'
+  ends:
+    -
+      value: '2026-11-17T11:00:00'
+  state:
+    -
+      value: pending

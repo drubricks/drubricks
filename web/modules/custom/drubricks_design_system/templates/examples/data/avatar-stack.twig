@@ -1,0 +1,12 @@
+{% include 'drubricks:avatar-stack' with {max: 3, people: [
+  {name: 'Maya Lindqvist', color: 'teal'},
+  {name: 'Priya Raman', color: 'purple'},
+  {name: 'Daniel Okafor', color: 'green'},
+  {name: 'Alex Morgan'}, {name: 'Sofia Alvarez'}, {name: 'Tom Smith'},
+]} only %}
+{% embed 'drubricks:group' only %}{% block content %}
+  {% embed 'drubricks:group-row' with {attributes: create_attribute({'class': ['gap-3']})} only %}{% block content %}
+    On a raised surface
+    {% include 'drubricks:avatar-stack' with {people: [{name: 'Anna Kowalska', color: 'orange'}, {name: 'Tom Smith', color: 'blue'}]} only %}
+  {% endblock %}{% endembed %}
+{% endblock %}{% endembed %}

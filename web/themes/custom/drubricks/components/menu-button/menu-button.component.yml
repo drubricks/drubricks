@@ -1,0 +1,28 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Menu button
+status: stable
+group: Menus & popovers
+description: 'A button that opens a kit dropdown (UI.menu) with the given items. Choosing an item fires "drubricks:menu" ({ value, label }; preventDefault() cancels its url / hud).'
+props:
+  type: object
+  required: [items]
+  properties:
+    label: { type: string, title: Trigger label }
+    icon: { type: string, title: Trigger icon (icon-only when there is no label) }
+    title: { type: string, title: Title of an icon-only trigger }
+    variant: { type: string, title: Trigger look, enum: [default, primary, destructive, icon], default: default }
+    items:
+      type: array
+      title: Menu items
+      description: "UI.menu items: { label, icon, shortcut, danger, disabled, value, url, hud }, { header }, or \"-\" for a separator. Labels are escaped by the kit."
+      items: { type: [object, string] }
+    align: { type: string, enum: [left, right], default: left }
+    width: { type: integer, title: Menu width (px) }
+    menu_label: { type: string, title: Accessible name of the menu }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

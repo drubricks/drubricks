@@ -1,0 +1,7 @@
+{# Kit radio: <label> with input.radio and its text. #}
+{% set input_attributes = create_attribute({'type': 'radio', 'class': ['radio']}) %}
+{% if name %}{% set input_attributes = input_attributes.setAttribute('name', name) %}{% endif %}
+{% if value is defined and value is not null %}{% set input_attributes = input_attributes.setAttribute('value', value) %}{% endif %}
+{% if id %}{% set input_attributes = input_attributes.setAttribute('id', id) %}{% endif %}
+{% if invalid %}{% set input_attributes = input_attributes.setAttribute('aria-invalid', 'true') %}{% endif %}
+<label{{ attributes.addClass('flex', 'items-center', 'gap-2', 'text-[13px]', 'font-normal', disabled ? 'text-ink-2' : 'text-ink') }}><input{{ input_attributes }}{{ checked ? ' checked' }}{{ required ? ' required' }}{{ disabled ? ' disabled' }}> {{ label }}</label>

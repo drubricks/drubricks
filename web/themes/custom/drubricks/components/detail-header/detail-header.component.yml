@@ -1,0 +1,28 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Detail header
+status: stable
+group: Detail view
+description: 'Kit record header (.detail > .d-head): avatar or letter tile, an editable title (input.d-title) or a heading, a sub line (slot) and actions (slot). Put the rest of the record (groups, minis, composer) in the content slot.'
+props:
+  type: object
+  required: [title]
+  properties:
+    title: { type: string, title: Title }
+    editable: { type: boolean, title: Editable title (input.d-title) }
+    title_label: { type: string, title: Accessible label of the title input, default: Name }
+    name: { type: string, title: Input name }
+    avatar_color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    tile: { type: boolean, title: Letter tile instead of an avatar }
+    no_avatar: { type: boolean, title: No avatar / tile }
+    subtitle: { type: string, title: Sub line text }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  subtitle_markup:
+    title: Sub line markup
+  actions:
+    title: Actions (.d-actions)
+  content:
+    title: Record body

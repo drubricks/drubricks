@@ -1,0 +1,3 @@
+{# Kit tag: span.tag style="--c: …" (no colour = accent). #}
+{% if color %}{% set attributes = attributes.setAttribute('style', '--c: ' ~ color(color)) %}{% endif %}
+<span{{ attributes.addClass('tag') }}>{{ label }}</span>

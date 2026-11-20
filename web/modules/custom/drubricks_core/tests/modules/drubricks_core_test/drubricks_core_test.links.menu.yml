@@ -1,0 +1,55 @@
+# Account menu (core's "account" menu): links of this module.
+drubricks_core_test.help:
+  title: 'Help'
+  menu_name: account
+  route_name: drubricks_core.home
+  weight: 500
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-info
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_core_test.section:
+  title: 'Test app'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 20
+drubricks_core_test.records:
+  title: 'Records'
+  menu_name: drubricks
+  parent: drubricks_core_test.section
+  route_name: entity.drubricks_test_record.collection
+  weight: 5
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-folder
+  metadata:
+    count: drubricks_test_record
+# A class-based link (dynamic title), placed before "Records" by weight.
+drubricks_core_test.dynamic:
+  title: 'Dynamic'
+  menu_name: drubricks
+  parent: drubricks_core_test.section
+  route_name: drubricks_core.home
+  class: Drupal\drubricks_core_test\Plugin\Menu\DynamicMenuLink
+  weight: 1
+drubricks_core_test.empty_section:
+  title: 'Empty section'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 30
+drubricks_core_test.early_section:
+  title: 'Early section'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: -5
+drubricks_core_test.early_item:
+  title: 'Early item'
+  menu_name: drubricks
+  parent: drubricks_core_test.early_section
+  route_name: drubricks_core.home
+  weight: 0

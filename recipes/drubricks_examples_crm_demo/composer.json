@@ -1,0 +1,9 @@
+{
+    "name": "drubricks/drubricks_examples_crm_demo",
+    "description": "Demo data for the CRM example.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12"
+    }
+}

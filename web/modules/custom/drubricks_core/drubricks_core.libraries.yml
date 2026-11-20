@@ -1,0 +1,60 @@
+# The shell behaviour: UI.init / UI.attach / UI.detach via Drupal.behaviors,
+# navigation state after HTMX swaps, modal forms, messages, errors.
+# The kit itself (window.UI) is provided by the active theme.
+shell:
+  js:
+    js/shell.js: {}
+  css:
+    base:
+      # Cascade layer order of the page (Tailwind v4 + the kit). Module CSS is
+      # always aggregated before theme CSS, so the order is declared here.
+      css/layers.css: { weight: -100 }
+    component:
+      css/shell.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.message
+    - core/drupalSettings
+    - core/once
+    - core/drupal.htmx
+    # The kit (kit/ui.js) is initialised when this script runs.
+    - drubricks/global
+
+# Brand look of the Gin Login pages (rendered in the admin theme).
+login:
+  css:
+    theme:
+      css/login.css: {}
+
+# Board view island (BoardController).
+board:
+  js:
+    js/board.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+# Calendar view island (CalendarController).
+calendar:
+  js:
+    js/calendar.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+# Reference list field widget (ReferenceListWidget).
+reference-list:
+  js:
+    js/reference-list.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+# Admin sidebar (core's Navigation): mark and open the current page's trail.
+navigation_active_trail:
+  js:
+    js/navigation-active-trail.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

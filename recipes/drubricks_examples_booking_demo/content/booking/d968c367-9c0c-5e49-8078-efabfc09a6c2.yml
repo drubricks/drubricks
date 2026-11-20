@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: d968c367-9c0c-5e49-8078-efabfc09a6c2
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    464c0e74-7dc4-5994-a69c-ba9f52d8a8ef: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Back pain follow-up'
+  resource:
+    -
+      entity: 464c0e74-7dc4-5994-a69c-ba9f52d8a8ef
+  starts:
+    -
+      value: '2026-11-11T11:00:00'
+  ends:
+    -
+      value: '2026-11-11T11:45:00'
+  state:
+    -
+      value: confirmed

@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Letter tile
+status: stable
+group: Avatars, tags & badges
+description: 'Kit letter tile (.tile, .tile.xl) for companies, projects…: first letter of the name on a colour token.'
+props:
+  type: object
+  properties:
+    name: { type: string, title: Name (first letter is shown; also the title) }
+    letter: { type: string, title: Letter }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    size: { type: string, enum: [md, xl], default: md }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

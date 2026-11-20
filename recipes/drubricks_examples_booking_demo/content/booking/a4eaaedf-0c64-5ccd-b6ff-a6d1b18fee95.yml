@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: a4eaaedf-0c64-5ccd-b6ff-a6d1b18fee95
+  depends:
+    ca56c6c0-1b51-5239-a403-c0019c8a3ba2: user
+    f677f057-309c-58fe-9079-3caca93fee52: booking_resource
+default:
+  uid:
+    -
+      entity: ca56c6c0-1b51-5239-a403-c0019c8a3ba2
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Strength session'
+  resource:
+    -
+      entity: f677f057-309c-58fe-9079-3caca93fee52
+  starts:
+    -
+      value: '2026-11-12T16:00:00'
+  ends:
+    -
+      value: '2026-11-12T17:00:00'
+  state:
+    -
+      value: confirmed

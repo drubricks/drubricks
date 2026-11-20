@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Kit pane header: .pane-header > [show-sidebar] [back] .title | .insp-kind, actions, .spacer, end.
+ */
+#}
+{% set actions_html %}{% block actions %}{{ actions }}{% endblock %}{% endset %}
+{% set end_html %}{% block end %}{{ end }}{% endblock %}{% endset %}
+<header{{ attributes.addClass('pane-header') }}>
+  {%- if sidebar_toggle %}<button class="icon-btn show-sidebar-btn" type="button" data-action="toggle-sidebar" title="{{ 'Show Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>{% endif %}
+  {%- if back %}<button class="tb-group tb-btn back-btn" type="button" data-action="back">{{ icon('kit', 'i-chevron-left') }}<span>{{ 'Back'|t }}</span></button>{% endif %}
+  {%- if kind %}<span class="insp-kind">{{ kind }}</span>{% endif %}
+  {%- if title %}<div class="title"><h1>{{ title }}</h1>{% if subtitle %}<p>{{ subtitle }}</p>{% endif %}</div>{% endif %}
+  {{ actions_html }}
+  {%- if end_html|trim is not empty or inspector_toggle %}<div class="spacer"></div>{% endif %}
+  {{ end_html }}
+  {%- if inspector_toggle %}<button class="icon-btn" type="button" data-action="toggle-inspector" title="{{ 'Show Inspector'|t }}">{{ icon('kit', 'i-sidebar-right') }}</button>{% endif %}
+</header>

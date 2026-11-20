@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 3eb29a4c-dffb-5a08-bc7a-ee8b0d2f6375
+  depends:
+    dd7c322a-b246-53da-88d1-5846f3e5f810: user
+    e1618160-5fcf-548b-af38-e873cb42dd00: booking_resource
+default:
+  uid:
+    -
+      entity: dd7c322a-b246-53da-88d1-5846f3e5f810
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Site survey photos'
+  resource:
+    -
+      entity: e1618160-5fcf-548b-af38-e873cb42dd00
+  starts:
+    -
+      value: '2026-11-11T08:00:00'
+  ends:
+    -
+      value: '2026-11-11T12:00:00'
+  state:
+    -
+      value: confirmed

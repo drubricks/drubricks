@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          tools: composer:v2
+      - run: composer install --no-interaction --no-progress
+      - name: phpcs
+        run: vendor/bin/phpcs
+      - name: phpstan
+        run: vendor/bin/phpstan analyse --no-progress --memory-limit=1G
+
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mariadb:11.8
+        env:
+          MARIADB_DATABASE: db
+          MARIADB_USER: db
+          MARIADB_PASSWORD: db
+          MARIADB_ROOT_PASSWORD: root
+        ports: ['3306:3306']
+        options: --health-cmd="healthcheck.sh --connect" --health-interval=5s --health-retries=20
+    env:
+      SIMPLETEST_DB: mysql://db:db@127.0.0.1:3306/db
+      SIMPLETEST_BASE_URL: http://127.0.0.1:8080
+      BROWSERTEST_OUTPUT_DIRECTORY: ${{ github.workspace }}/web/sites/simpletest/browser_output
+    steps:
+      - uses: actions/checkout@v5
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: gd, pdo_mysql
+          tools: composer:v2
+      - run: composer install --no-interaction --no-progress
+      - name: PHPUnit (unit + kernel)
+        run: vendor/bin/phpunit --testsuite unit,kernel
+      # Functional tests (the browser installer, every App recipe) need a web
+      # server for the test site: PHP's built-in server with core's router.
+      - name: PHPUnit (functional)
+        run: |
+          mkdir -p "$BROWSERTEST_OUTPUT_DIRECTORY"
+          # Started in web/ like core's docs: the router path must not depend
+          # on the working directory (batches change it).
+          (cd web && php -S 127.0.0.1:8080 .ht.router.php > /tmp/php-server.log 2>&1 &)
+          vendor/bin/phpunit --testsuite functional || { tail -50 /tmp/php-server.log; exit 1; }
+      - name: Install with every app recipe (drush site:install, non-interactive)
+        run: |
+          vendor/bin/drush site:install drubricks_installer --db-url="$SIMPLETEST_DB" \
+            --account-name=admin --account-pass=admin -y \
+            drubricks_installer_apps.apps=all
+          # keep_profile: false — no installation profile afterwards.
+          test -z "$(vendor/bin/drush status --field=install-profile)"
+      # A project started from the starter (stamped extensions, no
+      # starter .git) installs the same way.
+      - name: Start your own project, then install again
+        run: |
+          git config --global user.email "ci@example.invalid"
+          git config --global user.name "CI"
+          scripts/start-own-project.sh --yes
+          grep -q "^starter_source: 'drubricks:" web/modules/custom/drubricks_core/drubricks_core.info.yml
+          grep -q "^starter_source: 'drubricks:" web/themes/custom/drubricks/drubricks.info.yml
+          test "$(git log --oneline | wc -l)" -eq 1
+          # A second run leaves the project alone.
+          scripts/start-own-project.sh --yes | grep -q "Already your own project"
+          vendor/bin/drush site:install drubricks_installer --db-url="$SIMPLETEST_DB" \
+            --account-name=admin --account-pass=admin -y \
+            drubricks_installer_apps.apps=all
+          test "$(vendor/bin/drush php:eval 'print \Drupal::service("extension.list.module")->getExtensionInfo("drubricks_core")["starter_source"] ?? "";')" != ""

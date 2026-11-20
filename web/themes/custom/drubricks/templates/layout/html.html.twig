@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Document. The kit's theme.js (head library) sets data-scheme / palette
+ * before the first paint. No icon sprite inline: icons use the "kit" icon pack (kit/icons.<hash>.svg).
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  {# Login / register / password / reset pages: core's logged_in and root_path variables. #}
+  <body{{ attributes.addClass(not logged_in and root_path == 'user' ? 'auth-page') }}>
+    <a href="#drubricks-detail" class="vh focusable skip-link">{{ 'Skip to main content'|t }}</a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

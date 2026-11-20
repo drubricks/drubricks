@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Calendar view of an entity type: one details pane with the UI.calendar
+ * island and the record panel (?open=ID) — events never leave the view.
+ *
+ * Variables: title, views (view switch), add{url,title,attributes},
+ * calendar{events,resources,view,date,hours,step,endpoint,addUrl,addTitle,key}, inspector.
+ */
+#}
+<main class="content" id="drubricks-detail" tabindex="-1" aria-label="{{ title }}">
+  {% embed '@drubricks_core/drubricks-screen-header.html.twig' with {title: title, views: views, add: add, resources: calendar.resources is not empty} only %}
+    {# The date range of the shown days, written by js/calendar.js. #}
+    {% block subtitle %}<p data-cal-range></p>{% endblock %}
+    {% block controls %}
+      <div class="tb-group">
+        <button class="tb-btn" type="button" data-cal-nav="-1" title="{{ 'Previous'|t }}">{{ icon('kit', 'i-chevron-left') }}</button>
+        <button class="tb-btn" type="button" data-cal-nav="0">{{ 'Today'|t }}</button>
+        <button class="tb-btn" type="button" data-cal-nav="1" title="{{ 'Next'|t }}">{{ icon('kit', 'i-chevron-right') }}</button>
+      </div>
+      <div class="seg" role="group" aria-label="{{ 'Calendar view'|t }}">
+        <button type="button" data-cal-view="day">{{ 'Day'|t }}</button>
+        <button type="button" data-cal-view="week">{{ 'Week'|t }}</button>
+        {% if resources %}<button type="button" data-cal-view="resources">{{ 'Resources'|t }}</button>{% endif %}
+        <button type="button" data-cal-view="agenda">{{ 'Agenda'|t }}</button>
+      </div>
+    {% endblock %}
+  {% endembed %}
+  <div class="pane-body drubricks-calendar-body">
+    <div class="drubricks-calendar" data-drubricks-calendar-island="{{ calendar|json_encode }}"></div>
+  </div>
+</main>
+{{ inspector }}

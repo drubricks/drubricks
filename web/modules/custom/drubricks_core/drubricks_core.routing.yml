@@ -1,0 +1,96 @@
+drubricks_core.home:
+  path: '/apps'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\AppController::home'
+    _title: 'Home'
+  options:
+    _drubricks_screen: TRUE
+  requirements:
+    _user_is_logged_in: 'TRUE'
+drubricks_core.sidebar:
+  path: '/apps/_sidebar'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\AppController::sidebar'
+    _title: 'Sidebar'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+drubricks_core.settings:
+  path: '/admin/config/drubricks'
+  defaults:
+    _form: '\Drupal\drubricks_core\Form\SettingsForm'
+    _title: 'Drubricks'
+  requirements:
+    _permission: 'administer site configuration'
+
+# Saves a move on a board view (lane + order fields only, validated).
+drubricks_core.board_move:
+  path: '/apps/_board/{entity_type_id}/{entity}'
+  methods: [PATCH]
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\BoardController::move'
+  options:
+    _drubricks_api: TRUE
+    parameters:
+      entity:
+        type: 'entity:{entity_type_id}'
+  requirements:
+    _drubricks_screen_access: 'entity_type_id'
+    _entity_access: 'entity.update'
+    _csrf_request_header_token: 'TRUE'
+    _content_type_format: json
+    entity: '\d+'
+
+# Saves a moved / resized event of a calendar view (start, end, resource).
+drubricks_core.calendar_move:
+  path: '/apps/_calendar/{entity_type_id}/{entity}'
+  methods: [PATCH]
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\CalendarController::move'
+  options:
+    _drubricks_api: TRUE
+    parameters:
+      entity:
+        type: 'entity:{entity_type_id}'
+  requirements:
+    _drubricks_screen_access: 'entity_type_id'
+    _entity_access: 'entity.update'
+    _csrf_request_header_token: 'TRUE'
+    _content_type_format: json
+    entity: '\d+'
+
+# The application's admin home (admin theme, "Application" in the admin
+# sidebar): a panel per child menu link, like /admin/config.
+drubricks_core.admin_app:
+  path: '/admin/app'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::overview'
+    link_id: 'drubricks_core.admin_app'
+    _title: 'Application'
+  requirements:
+    _permission: 'access administration pages'
+# Admin views of the app entities: each app module links its views here.
+drubricks_core.admin_app_entities:
+  path: '/admin/app/entities'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Entity records'
+  requirements:
+    _permission: 'access administration pages'
+# Settings of the application every project has (sidebar menu, dashboard,
+# branding, locale): Application is visible from the first install.
+drubricks_core.admin_app_settings:
+  path: '/admin/app/settings'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Settings'
+  requirements:
+    _permission: 'access administration pages'
+# Fields and displays of the app entities (Field UI): a link per entity type
+# to its admin page (EntityStructureMenuLinks).
+drubricks_core.admin_app_structure:
+  path: '/admin/app/structure'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Entity structure'
+  requirements:
+    _permission: 'access administration pages'

@@ -1,0 +1,9 @@
+name: 'Drubricks example: Project management'
+type: module
+description: 'Example app: projects and tasks with a task board (JS island). Independent of the CRM example; adds its own sidebar section and an account-menu link with plugins only.'
+package: Drubricks examples
+core_version_requirement: ^12
+dependencies:
+  - drubricks_core:drubricks_core
+  - drupal:datetime
+  - drupal:options

@@ -1,0 +1,71 @@
+{# The markup a core View gets in the drubricks theme (views-exposed-form,
+   bulk form, views-view-table, dropbutton, pager): build the View in the
+   Views UI and name it in ScreenHandler::table() — see crm_deal_table. #}
+{{ attach_library('core/drupal.tableselect') }}
+{{ attach_library('core/drupal.dropbutton') }}
+{% set stages = {Lead: 'gray', Proposal: 'blue', Won: 'green', Lost: 'red'} %}
+{% set deals = [
+  [1, 'Supply chain analytics', 'Copperleaf Foods', 'Lead', '36 000', '29 Dec 2026', 'Alex Morgan', true],
+  [2, 'Spring campaign site', 'Harbor & Co', 'Proposal', '9 500', '24 Dec 2026', 'Priya Raman', true],
+  [3, 'Loyalty app', 'Harbor & Co', 'Won', '51 000', '20 Dec 2026', 'Alex Morgan', true],
+  [4, 'Factory IoT pilot', 'Atlas Robotics', 'Lost', '18 000', '2 Dec 2026', 'Daniel Okafor', false],
+] %}
+<div class="drubricks-table-view">
+  <form class="form drubricks-form" action="#" method="get" onsubmit="return false">
+    <div class="drubricks-filters">
+      <div class="form-item"><label class="form-label" for="ds-v-name">Name</label><input class="field" id="ds-v-name" type="text" placeholder="Search deals"></div>
+      <div class="form-item"><label class="form-label" for="ds-v-stage">Stage</label>
+        <select class="field" id="ds-v-stage"><option>- Any -</option>{% for s in stages|keys %}<option>{{ s }}</option>{% endfor %}</select></div>
+      <div class="form-item"><label class="form-label" for="ds-v-value">Value at least</label><input class="field" id="ds-v-value" type="number" placeholder="0"></div>
+      <fieldset class="form-item form-fieldset"><legend class="form-legend"><span class="fieldset-legend">Close date</span></legend>
+        <div class="fieldset-wrapper">
+          <div class="form-item"><label class="form-label" for="ds-v-min">Start date</label><input class="field" id="ds-v-min" type="date"></div>
+          <div class="form-item"><label class="form-label" for="ds-v-max">End date</label><input class="field" id="ds-v-max" type="date"></div>
+        </div>
+      </fieldset>
+      <div class="form-actions"><button class="btn" type="submit">Filter</button></div>
+    </div>
+  </form>
+  <form class="form drubricks-form" action="#" method="post" onsubmit="return false">
+    <div data-drupal-selector="edit-header"><div class="form-wrapper">
+      <div class="form-item"><label class="form-label" for="ds-v-action">Action</label>
+        <select class="field" id="ds-v-action"><option>- Select -</option><option>Activate deals</option><option>Deactivate deals</option><option>Delete deals</option></select></div>
+      <div class="form-actions"><button class="btn" type="submit">Apply to selected items</button></div>
+    </div></div>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead><tr>
+          <th class="select-all" scope="col"></th>
+          <th scope="col" aria-sort="none"><a href="#">Name</a></th>
+          <th scope="col">Company</th>
+          <th scope="col">Stage</th>
+          <th class="num" scope="col" aria-sort="descending"><a href="#">Value</a></th>
+          <th scope="col" aria-sort="none"><a href="#">Close date</a></th>
+          <th scope="col">Owner</th>
+          <th scope="col">Operations</th>
+        </tr></thead>
+        <tbody>
+          {% for d in deals %}
+            <tr>
+              <td><div class="form-item form-type-checkbox"><input class="checkbox" type="checkbox" name="ds_deal_bulk_form[{{ loop.index0 }}]" value="{{ d[0] }}" aria-label="Select {{ d[1] }}"></div></td>
+              <td class="views-field-name"><a href="#">{{ d[1] }}</a></td>
+              <td><a href="#">{{ d[2] }}</a></td>
+              <td>{% include 'drubricks:pill' with {label: d[3], color: stages[d[3]]} only %}</td>
+              <td class="num">{{ d[4] }}</td>
+              <td>{{ d[5] }}</td>
+              <td>{{ d[6] }}</td>
+              <td class="views-field-operations">
+                <div class="dropbutton-wrapper"><div class="dropbutton-widget"><ul class="dropbutton">
+                  <li data-action-key="edit"><a href="#" aria-label="Edit {{ d[1] }}">Edit</a></li>
+                  <li data-action-key="view"><a href="#" aria-label="View {{ d[1] }}">View</a></li>
+                  <li data-action-key="delete"><a href="#" aria-label="Delete {{ d[1] }}">Delete</a></li>
+                </ul></div></div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </form>
+  {% include 'drubricks:pager' with {current: 1, total: 3, url: '?page={page}'} only %}
+</div>

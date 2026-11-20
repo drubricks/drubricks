@@ -1,0 +1,9 @@
+{
+    "name": "drubricks/drubricks_examples_project_management",
+    "description": "Projects, tasks and a task board (example app).",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12"
+    }
+}

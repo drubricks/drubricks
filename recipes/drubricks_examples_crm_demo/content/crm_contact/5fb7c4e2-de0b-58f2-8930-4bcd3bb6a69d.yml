@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: 5fb7c4e2-de0b-58f2-8930-4bcd3bb6a69d
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    2b4fbf4d-9672-5d00-aa85-07a263a08762: crm_company
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Ken Watanabe'
+  job_title:
+    -
+      value: 'IT Director'
+  company:
+    -
+      entity: 2b4fbf4d-9672-5d00-aa85-07a263a08762
+  stage:
+    -
+      value: prospect
+  email:
+    -
+      value: ken.watanabe@bluefinhealth.example
+  phone:
+    -
+      value: '+1 617 555 0193'
+  last_contacted:
+    -
+      value: '2026-11-07'

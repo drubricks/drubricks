@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_project_management
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: board
+    color: ''
+id: drubricks_pm_tasks_by_status
+theme: drubricks
+region: dashboard
+weight: 203
+provider: null
+plugin: drubricks_examples_project_management_tasks_by_status
+settings:
+  id: drubricks_examples_project_management_tasks_by_status
+  label: 'Tasks by status'
+  label_display: visible
+  provider: drubricks_examples_project_management
+visibility: {}

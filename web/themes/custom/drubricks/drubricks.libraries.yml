@@ -1,0 +1,57 @@
+# Self-hosted fonts of the kit (Geist, Geist Mono, Fraunces): their own
+# licence, kit/fonts/OFL.txt. The OFL is a free licence for fonts; the FSF
+# lists it as not GPL-compatible, which does not matter for fonts shipped next
+# to the code.
+kit-fonts:
+  header: true
+  license:
+    name: OFL-1.1
+    url: https://openfontlicense.org
+    gpl-compatible: false
+  css:
+    base:
+      kit/fonts/fonts.css: { preprocess: false }
+
+# Light / dark before the first paint + the fonts.
+kit-head:
+  header: true
+  dependencies:
+    - drubricks/kit-fonts
+  js:
+    kit/theme.js: { preprocess: false, attributes: { data-no-tailwind: true } }
+
+# Compiled CSS (Tailwind + kit tokens/components) and the kit behaviour.
+# drubricks_core/shell (attached by the module) calls UI.init / UI.attach.
+global:
+  css:
+    theme:
+      css/app.css: {}
+      # The project's own colour palettes (next to the kit's).
+      css/palettes.css: {}
+  js:
+    kit/ui.js: {}
+    js/drubricks.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.message
+    - core/once
+
+# Helpers shared by the JS-driven SDC components (menu, modal, popover,
+# calendar, date picker, board): JSON options, cancellable events.
+kit-components:
+  js:
+    js/kit-components.js: {}
+  dependencies:
+    - drubricks/global
+    - core/once
+    # The component behaviors run after the shell has initialised the kit.
+    - drubricks_core/shell
+
+# Bulk form of a View: the selection count in its action bar (libraries-extend
+# of core/drupal.tableselect in drubricks.info.yml).
+views-bulk:
+  js:
+    js/views-bulk.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Avatar stack
+status: stable
+group: Avatars, tags & badges
+description: 'Kit .avatar-stack: overlapping avatars and a "+N" avatar for the rest. The ring takes --stack-bg (set automatically inside .group, .panel, .mini, .stat, .board-card).'
+props:
+  type: object
+  required: [people]
+  properties:
+    people:
+      type: array
+      title: People
+      items:
+        type: object
+        properties:
+          name: { type: string }
+          initials: { type: string }
+          color: { type: string }
+    size: { type: string, title: Avatar size, enum: [xs, sm, md, xl], default: sm }
+    max: { type: integer, title: Show at most (the rest become +N), default: 4 }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

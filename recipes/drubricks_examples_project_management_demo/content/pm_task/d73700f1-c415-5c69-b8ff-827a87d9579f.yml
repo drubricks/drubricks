@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: d73700f1-c415-5c69-b8ff-827a87d9579f
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    31a6e2e0-5c5f-5820-afe9-bbd548f52ace: pm_project
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Migrate blog posts'
+  project:
+    -
+      entity: 31a6e2e0-5c5f-5820-afe9-bbd548f52ace
+  state:
+    -
+      value: review
+  priority:
+    -
+      value: medium
+  assignee:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  due_date:
+    -
+      value: '2026-11-14'
+  weight:
+    -
+      value: 0

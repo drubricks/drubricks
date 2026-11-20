@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Panel
+status: stable
+group: Dashboard
+description: 'Kit panel (.panel): an h3 header with icon and an optional link on the right, then .p-row or .bar-row lines (or anything).'
+props:
+  type: object
+  properties:
+    title: { type: string, title: Title }
+    icon: { type: string, title: Icon }
+    link_label: { type: string, title: Header link label, examples: ['Show all'] }
+    link_url: { type: string, title: Header link URL }
+    busy: { type: boolean, title: 'Loading (aria-busy)' }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Rows

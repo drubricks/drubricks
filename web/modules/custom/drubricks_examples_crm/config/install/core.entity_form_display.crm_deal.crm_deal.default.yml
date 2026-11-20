@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_examples_crm
+id: crm_deal.crm_deal.default
+targetEntityType: crm_deal
+bundle: crm_deal
+mode: default
+content:
+  close_date:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {}
+    third_party_settings: {}
+  company:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {}
+    third_party_settings: {}
+  contact:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {}
+    third_party_settings: {}
+  name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {}
+  stage:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {}
+    third_party_settings: {}
+  value:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {}
+hidden:
+  color: true
+  status: true
+  uid: true

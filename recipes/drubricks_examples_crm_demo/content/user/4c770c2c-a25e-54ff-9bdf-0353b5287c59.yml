@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  default_langcode: en
+default:
+  name:
+    -
+      value: 'Jun Park'
+  mail:
+    -
+      value: jun.park@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

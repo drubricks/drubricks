@@ -1,0 +1,7 @@
+{# Trigger for UI.hud. #}
+{% set icon_only = icon and not label %}
+{% set classes = icon_only or variant == 'icon' ? ['icon-btn'] : ['btn', variant in ['primary', 'destructive'] ? variant]|filter(c => c) %}
+{% set attributes = attributes.addClass(classes).setAttribute('type', 'button').setAttribute('data-drubricks-hud', message) %}
+{% if undo_message %}{% set attributes = attributes.setAttribute('data-undo', undo_message) %}{% endif %}
+{% if title %}{% set attributes = attributes.setAttribute('title', title) %}{% endif %}
+<button{{ attributes }}>{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}</button>

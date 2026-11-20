@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: b3034d01-8a7e-5875-948f-0309074a3063
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Hana Kobayashi'
+  mail:
+    -
+      value: hana.kobayashi@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

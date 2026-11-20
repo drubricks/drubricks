@@ -1,0 +1,11 @@
+# Kit palette of the site (users choose only light / dark / auto): cobalt,
+# lagoon, sage, berry or indigo; or the project's own palettes (css/palettes.css:
+# orange).
+default_palette: cobalt
+# The sidebar shows the theme's logo.svg (the Drubricks mark) next to the site
+# name; upload your own logo in Appearance → Settings → Drubricks.
+logo:
+  use_default: true
+features:
+  logo: true
+  name: true

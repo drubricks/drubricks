@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: b0d495ae-0210-5d4a-9838-19326910fdfb
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    59403561-5f5d-54fa-9c14-e834595d2314: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Focus time'
+  resource:
+    -
+      entity: 59403561-5f5d-54fa-9c14-e834595d2314
+  starts:
+    -
+      value: '2026-11-10T12:00:00'
+  ends:
+    -
+      value: '2026-11-10T14:00:00'
+  state:
+    -
+      value: confirmed

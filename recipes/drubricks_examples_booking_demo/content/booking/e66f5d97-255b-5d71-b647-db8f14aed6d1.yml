@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: e66f5d97-255b-5d71-b647-db8f14aed6d1
+  depends:
+    f77f2b70-4721-5859-8d63-ef2b3a22148c: user
+    0a55cc14-c473-5699-8c2b-e1c9d475f985: booking_resource
+default:
+  uid:
+    -
+      entity: f77f2b70-4721-5859-8d63-ef2b3a22148c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Flu vaccination'
+  resource:
+    -
+      entity: 0a55cc14-c473-5699-8c2b-e1c9d475f985
+  starts:
+    -
+      value: '2026-11-10T10:00:00'
+  ends:
+    -
+      value: '2026-11-10T10:20:00'
+  state:
+    -
+      value: confirmed

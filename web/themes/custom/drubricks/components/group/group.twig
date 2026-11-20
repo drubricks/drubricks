@@ -1,0 +1,3 @@
+{# Kit group: [.group-title] + .group > .group-row… #}
+{% if title %}<div class="group-title{{ first ? ' !mt-0' }}">{{ title }}</div>{% endif %}
+<div{{ attributes.addClass('group') }}>{% block content %}{{ content }}{% endblock %}</div>

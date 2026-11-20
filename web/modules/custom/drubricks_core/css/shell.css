@@ -1,0 +1,71 @@
+/* Shell glue between Drupal markup and the kit grid. */
+@layer components {
+  .drubricks-loading .pane-body { opacity: .55; transition: opacity .15s .1s; }
+  .drubricks-loading { cursor: progress; }
+  .drubricks-modal-slot .form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  .tile-link { border-radius: 12px; }
+}
+@layer components {
+  /* JS islands that fill the pane (e.g. a board) */
+  .drubricks-board { min-height: 60vh; }
+  .drubricks-board .bc-meta { font-size: 12px; color: var(--label-2); }
+}
+/* Drupal autocomplete (entity reference fields). Unlayered on purpose: core's
+   jQuery UI CSS is unlayered and would beat any @layer rule. jQuery UI appends
+   the list to <body>, so it must sit above kit modals. */
+.ui-autocomplete.ui-front {
+  z-index: 1000;
+  position: absolute;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 5px;
+  list-style: none;
+  background: var(--bg-menu);
+  backdrop-filter: blur(20px);
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--overlay-shadow);
+  font: 13px/1.4 var(--font);
+  color: var(--label);
+}
+.ui-autocomplete .ui-menu-item-wrapper {
+  display: block;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  cursor: default;
+}
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
+  margin: 0;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.ui-helper-hidden-accessible { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@layer components {
+  /* Calendar view island fills the pane. */
+  .drubricks-calendar-body { display: flex; flex-direction: column; }
+  /* 1px above: the calendar's outline is a shadow outside its box, and the
+     scrolling pane body would clip its top edge (the kit's unlayered
+     .content .pane-body padding wins over this layer, so not there). */
+  .drubricks-calendar { flex: 1; min-height: 70vh; padding-top: 1px; }
+}
+@layer components {
+  /* Reference list widget (js/reference-list.js). */
+  .drubricks-reflist { display: flex; flex-direction: column; gap: 8px; }
+  .drubricks-reflist .reflist-items { list-style: none; margin: 0; padding: 0; border-radius: var(--radius); background: var(--bg-raised); box-shadow: var(--control-shadow); }
+  .drubricks-reflist .reflist-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px 6px 10px; min-height: 40px; }
+  .drubricks-reflist .reflist-item + .reflist-item { border-top: 1px solid var(--sep); }
+  .drubricks-reflist .reflist-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .drubricks-reflist .reflist-empty { padding: 10px; color: var(--label-3); }
+  .drubricks-reflist .reflist-add { position: relative; }
+  .drubricks-reflist .reflist-add .search { width: 100%; }
+  .drubricks-reflist .reflist-suggestions {
+    position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 5px; list-style: none;
+    max-height: 240px; overflow-y: auto; background: var(--bg-menu); backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg); box-shadow: var(--overlay-shadow);
+  }
+  .drubricks-reflist .reflist-option { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: var(--radius-sm); cursor: default; }
+  .drubricks-reflist .reflist-option[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+  .drubricks-reflist .reflist-none { padding: 6px 8px; color: var(--label-3); }
+}

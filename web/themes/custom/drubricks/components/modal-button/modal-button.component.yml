@@ -1,0 +1,43 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Modal button
+status: stable
+group: Popups & HUD
+description: 'A button that opens a kit popup: UI.modal with the slot content and actions, or UI.confirm when confirm is set. Closing fires "drubricks:modal" with { value } (the action value, true / false for a confirm, null for Esc). For a Drupal form in a popup use form_url (drubricks_core loads it with HTMX).'
+props:
+  type: object
+  properties:
+    label: { type: string, title: Trigger label }
+    icon: { type: string, title: Trigger icon (icon-only when there is no label) }
+    title: { type: string, title: Title of an icon-only trigger }
+    variant: { type: string, title: Trigger look, enum: [default, primary, destructive, icon], default: default }
+    modal_title: { type: string, title: Popup title }
+    message: { type: string, title: Popup message (secondary line) }
+    modal_icon: { type: string, title: Popup icon }
+    width: { type: integer, title: Max width (px) }
+    close_button: { type: boolean, title: 'An X in the header (form popups always have one)' }
+    draggable: { type: boolean, title: 'Drag the popup by its header (form popups always can)' }
+    actions:
+      type: array
+      title: Actions
+      items:
+        type: object
+        properties:
+          label: { type: string }
+          primary: { type: boolean }
+          destructive: { type: boolean }
+          value: { type: string }
+          hud: { type: string, description: 'Message shown after this action.' }
+    confirm: { type: boolean, title: Confirm dialog (UI.confirm) }
+    confirm_label: { type: string, title: Confirm button label }
+    destructive: { type: boolean, title: Destructive confirm }
+    form_url: { type: string, title: URL of a Drupal form to load into the popup }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Popup body
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

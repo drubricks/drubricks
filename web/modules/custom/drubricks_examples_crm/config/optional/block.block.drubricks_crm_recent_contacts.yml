@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_crm
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: users
+    color: ''
+id: drubricks_crm_recent_contacts
+theme: drubricks
+region: dashboard
+weight: 103
+provider: null
+plugin: drubricks_examples_crm_recent_contacts
+settings:
+  id: drubricks_examples_crm_recent_contacts
+  label: 'Recently contacted'
+  label_display: visible
+  provider: drubricks_examples_crm
+visibility: {}

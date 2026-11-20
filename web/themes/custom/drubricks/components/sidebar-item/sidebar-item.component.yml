@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Sidebar item
+status: stable
+group: Sidebar
+description: 'Kit sidebar item (.sb-item): icon (tinted with a colour token), label, count. .active = current page; add = the dimmed "add …" entry (.sb-add, data-no-select); drop_target = highlighted while dragging over it. A link when url is set.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Label }
+    icon: { type: string, title: Icon, default: circle }
+    icon_color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    count: { type: [integer, string], title: Count }
+    url: { type: string, title: URL }
+    key: { type: string, title: 'Key (data-key, sent with ui:navigate)' }
+    active: { type: boolean, title: Active }
+    add: { type: boolean, title: '"Add …" entry' }
+    drop_target: { type: boolean, title: Drop target state }
+    no_select: { type: boolean, title: 'Click does not select it (data-no-select)' }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

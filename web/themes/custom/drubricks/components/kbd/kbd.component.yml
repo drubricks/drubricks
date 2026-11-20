@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Key cap
+status: stable
+group: Buttons & controls
+description: 'Kit key cap (.kbd) for shortcuts in text, menus and help. One cap per key.'
+props:
+  type: object
+  required: [keys]
+  properties:
+    keys:
+      type: array
+      title: Keys
+      items: { type: string }
+      examples: [['⌘', 'K']]
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_crm
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: dollar
+    color: ''
+id: drubricks_crm_closing_soon
+theme: drubricks
+region: dashboard
+weight: 101
+provider: null
+plugin: drubricks_examples_crm_closing_soon
+settings:
+  id: drubricks_examples_crm_closing_soon
+  label: 'Closing soon'
+  label_display: visible
+  provider: drubricks_examples_crm
+visibility: {}

@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Fields of Manage display that a designed screen does not place itself
+ * (ScreenHandler::displayFields()): label / value rows, nothing when empty.
+ *
+ * Variables: content (field render arrays in the display's order).
+ */
+#}
+{% set markup = content|render %}
+{% if markup|trim is not empty %}
+  <div class="drubricks-detail-body drubricks-fields mt-2">{{ markup }}</div>
+{% endif %}

@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: e48f131e-d150-5ef3-a8d6-5e4f3255dd12
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    b31b51e7-42f6-54ea-a25c-1155d40e9ec3: crm_company
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Owen Price'
+  job_title:
+    -
+      value: CEO
+  company:
+    -
+      entity: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  stage:
+    -
+      value: prospect
+  email:
+    -
+      value: owen.price@harborco.example
+  phone:
+    -
+      value: '+1 503 555 0159'
+  last_contacted:
+    -
+      value: '2026-11-09'

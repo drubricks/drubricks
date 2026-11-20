@@ -1,0 +1,12 @@
+{% embed 'drubricks:form-layout' with {attributes: create_attribute({'class': ['max-w-md']})} only %}
+  {% block content %}
+    {% include 'drubricks:field' with {label: 'Email', type: 'email', value: 'alex@', error: 'Enter a valid email address.'} only %}
+    {% include 'drubricks:password' with {label: 'Password', value: 'Sunny-Day', meter: true, score: 3, hint: 'Use 8+ characters with a number and a symbol.'} only %}
+    {% embed 'drubricks:form-item' with {label: 'Priority', hint: 'drubricks:form-item labels any control.'} only %}
+      {% block control %}{% include 'drubricks:seg' with {label: 'Priority', items: [{label: 'Low'}, {label: 'Medium', active: true}, {label: 'High'}]} only %}{% endblock %}
+    {% endembed %}
+    {% include 'drubricks:checkbox' with {label: 'Keep me signed in', checked: true} only %}
+    {% include 'drubricks:button' with {label: 'Sign in', variant: 'primary', size: 'large', full: true, type: 'submit'} only %}
+    {% include 'drubricks:button' with {label: 'Signing in…', size: 'large', full: true, loading: true} only %}
+  {% endblock %}
+{% endembed %}

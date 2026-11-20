@@ -1,0 +1,29 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Alert
+status: stable
+group: Alerts
+description: 'Kit inline banner (.alert): info, success, warning, danger, neutral or accent (no modifier); any colour token via color. Icon, optional bold title, message, actions slot, dismiss button (alert.js). Use role alert / status for alerts that appear later.'
+props:
+  type: object
+  properties:
+    type: { type: string, title: Type, enum: [accent, info, success, warning, danger, neutral], default: accent }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    icon: { type: string, title: Icon, description: 'Default by type: info, checkmark-circle, alert, clock, sparkles.' }
+    title: { type: string, title: Title (.alert-title) }
+    message: { type: string, title: Message }
+    dismissible: { type: boolean, title: Dismiss button }
+    role: { type: string, title: Live region role, enum: ['', alert, status] }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Message markup
+    description: Replaces message.
+  actions:
+    title: Actions
+    description: 'Buttons (.btn.small) on the right; one button goes without .alert-actions.'
+libraryOverrides:
+  dependencies:
+    - drubricks/global

@@ -1,0 +1,42 @@
+/* Docs-only styles of the design system page (the components themselves
+   come from the theme). */
+@layer components {
+  .doc { max-width: 980px; margin: 0 auto; padding: 8px 0 80px; }
+  .doc-section { scroll-margin-top: 12px; padding-top: 44px; }
+  .doc-section:first-child { padding-top: 12px; }
+  .doc-h2 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .doc-lead { margin: 6px 0 18px; max-width: 70ch; line-height: 1.6; color: var(--label-2); font-size: 13.5px; }
+  .doc code:not(pre code) { font-family: var(--font-mono); font-size: 12px; padding: 1px 5px; border-radius: 5px; background: var(--accent-soft); color: var(--accent); }
+  .demo { margin-bottom: 18px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--sep); }
+  .demo-title { padding: 8px 14px; font-size: 12px; line-height: 1.7; font-weight: 600; color: var(--label-2); background: var(--bg-raised); border-bottom: 1px solid var(--sep); }
+  .demo-preview { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 22px; background: var(--bg); }
+  .demo-preview.block { display: block; }
+  .demo-code { position: relative; border-top: 1px solid var(--sep); background: var(--bg-raised); }
+  .demo-title + .demo-code { border-top: 0; }
+  .demo-code pre { max-height: 340px; overflow: auto; padding: 14px 16px; font: 12px/1.6 var(--font-mono); white-space: pre; user-select: text; -webkit-user-select: text; }
+  .demo-code .copy { position: absolute; right: 8px; top: 8px; height: 24px; padding: 0 9px; border-radius: 6px; font-size: 11.5px; font-weight: 600; color: var(--label-2); background: var(--bg-control); box-shadow: var(--control-shadow); }
+  .demo-code .copy:hover { color: var(--accent); }
+  .demo-code details > summary { list-style: none; cursor: pointer; padding: 8px 14px; font-size: 12px; font-weight: 600; color: var(--label-2); }
+  .demo-code details > summary::-webkit-details-marker { display: none; }
+  .demo-code details:not([open]) > .copy { display: none; }
+  .tk-tag { color: var(--accent); } .tk-attr { color: var(--purple); } .tk-str { color: var(--green); } .tk-com { color: var(--label-3); } .tk-kw { color: var(--pink); }
+  .mock { border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--sep); background: var(--bg); }
+  .mock.grid { overflow-x: auto; }
+  .api td, .api th { padding: 7px 12px; text-align: left; vertical-align: top; border-top: 1px solid var(--sep); }
+  .api th { font-size: 11.5px; font-weight: 600; color: var(--label-2); border-top: 0; background: var(--bg-raised); }
+  .api td:first-child { min-width: 120px; font-family: var(--font-mono); font-size: 12px; color: var(--accent); overflow-wrap: anywhere; }
+  @media (min-width: 760px) { .api td:first-child { white-space: nowrap; } }
+  .api-wrap { overflow-x: auto; margin-bottom: 18px; padding: 1px; }
+  .demo-out { min-height: 34px; padding: 8px 12px; border-radius: 8px; font: 12px/1.5 var(--font-mono); color: var(--label-2); background: var(--bg-raised); box-shadow: inset 0 0 0 .5px var(--sep); overflow-wrap: anywhere; user-select: text; -webkit-user-select: text; }
+
+  /* Drubricks additions: component chips under the lead, TOC column. */
+  .ds-components { display: flex; flex-wrap: wrap; gap: 6px; margin: -6px 0 18px; }
+  .ds-chip { font: 11.5px/1 var(--font-mono); padding: 5px 8px; border-radius: 6px; color: var(--label-2); background: var(--bg-raised); box-shadow: inset 0 0 0 .5px var(--sep); }
+  .ds-chip:hover { color: var(--accent); }
+  .ds-props code { display: inline-block; margin: 1px 0; font-family: var(--font-mono); font-size: 11.5px; color: var(--label-2); }
+  .app:has(> .ds-toc-pane) { --column-w: 260px; }   /* a narrow table of contents (still resizable) */
+  .ds-toc { padding: 0 10px 16px; }
+  .ds-toc .list-section { padding-left: 8px; }
+  .ds-toc .sb-item { width: 100%; }
+  .api tr:target td { background: var(--accent-soft); }
+}

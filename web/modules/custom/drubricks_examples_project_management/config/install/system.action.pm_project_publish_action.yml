@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+id: pm_project_publish_action
+label: 'Activate projects'
+type: pm_project
+plugin: 'entity:publish_action:pm_project'
+configuration: {}

@@ -1,0 +1,13 @@
+{% embed 'drubricks:tabs' with {items: [
+  {id: 'overview', label: 'Overview', active: true},
+  {id: 'tasks', label: 'Tasks', count: 3},
+  {id: 'files', label: 'Files', icon: 'paperclip', count: 12},
+  {id: 'billing', label: 'Billing', disabled: true},
+], attributes: create_attribute({'class': ['max-w-xl'], 'id': 'ds-tabs'})} only %}
+  {% block panels %}
+    {% include 'drubricks:tab-panel' with {id: 'overview', active: true, content: 'Overview panel — the first tab is active.', attributes: create_attribute({'class': ['py-3']})} only %}
+    {% include 'drubricks:tab-panel' with {id: 'tasks', content: 'Tasks panel — three open tasks.', attributes: create_attribute({'class': ['py-3']})} only %}
+    {% include 'drubricks:tab-panel' with {id: 'files', content: 'Files panel — twelve attachments.', attributes: create_attribute({'class': ['py-3']})} only %}
+    {% include 'drubricks:tab-panel' with {id: 'billing', content: 'Billing panel.', attributes: create_attribute({'class': ['py-3']})} only %}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Dropbutton (entity operations of a View, …) in the kit look: the first
+ * action as a button, the others in a menu under the arrow. Core's
+ * dropbutton.js adds the arrow and opens the menu; src/views.css styles it.
+ */
+#}
+{% if links -%}
+  <ul{{ attributes.addClass('dropbutton') }}>
+    {%- for key, item in links -%}
+      <li{{ item.attributes.setAttribute('data-action-key', key) }}>
+        {%- if item.link -%}
+          {{ item.link }}
+        {%- elseif item.text_attributes -%}
+          <span{{ item.text_attributes }}>{{ item.text }}</span>
+        {%- else -%}
+          {{ item.text }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif %}

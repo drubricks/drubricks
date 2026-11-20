@@ -1,0 +1,10 @@
+{# Kit switch: <input type="checkbox" class="switch">. #}
+{% set input_attributes = create_attribute({'type': 'checkbox', 'class': ['switch']}) %}
+{% if name %}{% set input_attributes = input_attributes.setAttribute('name', name) %}{% endif %}
+{% if value %}{% set input_attributes = input_attributes.setAttribute('value', value) %}{% endif %}
+{% if id %}{% set input_attributes = input_attributes.setAttribute('id', id) %}{% endif %}
+{% if label_visible %}
+  <label{{ attributes.addClass('inline-flex', 'items-center', 'gap-2', 'text-ink') }}><input{{ input_attributes }}{{ checked ? ' checked' }}{{ disabled ? ' disabled' }}> {{ label }}</label>
+{% else %}
+  <input{{ attributes.merge(input_attributes).setAttribute('aria-label', label) }}{{ checked ? ' checked' }}{{ disabled ? ' disabled' }}>
+{% endif %}

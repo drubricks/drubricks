@@ -1,0 +1,34 @@
+drubricks_examples_project_management.my_tasks:
+  path: '/apps/pm/my-tasks'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\ScreenController::collection'
+    _title: 'My tasks'
+    entity_type_id: pm_task
+    mine: true
+  options:
+    _drubricks_screen: TRUE
+  requirements:
+    _permission: 'administer project management+view any pm_task+view own pm_task+create pm_task'
+
+# Admin pages of the entity types: the base routes of their Field UI tabs
+# (field_ui_base_route), like core's entity.user.admin_form.
+entity.pm_task.settings:
+  path: '/admin/app/structure/pm/tasks'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: pm_task
+  requirements:
+    _permission: 'administer project management'
+  options:
+    _admin_route: TRUE
+entity.pm_project.settings:
+  path: '/admin/app/structure/pm/projects'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: pm_project
+  requirements:
+    _permission: 'administer project management'
+  options:
+    _admin_route: TRUE

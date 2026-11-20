@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * A resource: header (tile, kind, location), stats (capacity, hours, booked
+ * time), opening hours, rules, upcoming bookings and details.
+ * compact: the side panel (no header).
+ */
+#}
+{% set sub %}
+  {%- if kind %}<span class="inline-flex items-center gap-1">{{ icon('kit', 'i-' ~ (kind.icon), {class: 'dim'}) }}{{ kind.label }}</span>{% endif %}
+  {%- if location %}{% if kind %}<span aria-hidden="true">·</span>{% endif %}<span class="inline-flex items-center gap-1">{{ icon('kit', 'i-map-pin', {class: 'dim'}) }}{{ location }}</span>{% endif %}
+{% endset %}
+{% set body %}
+  {% embed 'drubricks:stats' with {stats: stats, attributes: create_attribute({'class': ['!mt-0', compact ? '[grid-template-columns:1fr_1fr]' : '[grid-template-columns:repeat(3,minmax(0,1fr))]']})} only %}
+    {% block content %}{% for stat in stats %}{{ include('drubricks:stat', stat, with_context = false) }}{% endfor %}{% endblock %}
+  {% endembed %}
+
+  <div class="{{ compact ? '' : 'grid gap-x-6 [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]' }}">
+    {% if hours %}
+    <div>
+      {{ include('drubricks:group-title', {title: 'Opening hours'|t}, with_context = false) }}
+      {% embed 'drubricks:group' with {hours: hours} only %}
+        {% block content %}
+          {% for day in hours %}
+            {% embed 'drubricks:group-row' with {label: day.label, muted: not day.today, day: day} only %}
+              {% block content %}
+                {%- if day.today %}{{ include('drubricks:pill', {label: 'Today'|t, color: day.open ? 'green' : 'gray'}, with_context = false) }}{% endif -%}
+                <span class="tabular-nums{{ day.open ? '' : ' dim' }}{{ day.today ? ' font-semibold' }}">{{ day.value }}</span>
+              {% endblock %}
+            {% endembed %}
+          {% endfor %}
+        {% endblock %}
+      {% endembed %}
+    </div>
+    {% endif %}
+    {% if rules is not null %}
+    <div>
+      {{ include('drubricks:group-title', {title: 'Rules'|t}, with_context = false) }}
+      {% if rules %}
+        {% embed 'drubricks:group' with {rules: rules} only %}
+          {% block content %}
+            {% for rule in rules %}
+              <div class="group-row items-start">{{ icon('kit', 'i-circle-check-big', {class: 'text-green shrink-0 mt-0.5'}) }}<span class="grow">{{ rule }}</span></div>
+            {% endfor %}
+          {% endblock %}
+        {% endembed %}
+      {% else %}
+        {{ include('drubricks:empty-line', {text: 'No special rules'|t}, with_context = false) }}
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="group-title">{{ 'Upcoming bookings'|t }} <span class="dim">{{ bookings|length }}</span></div>
+  {% if bookings %}
+    {% embed 'drubricks:panel' with {bookings: bookings, color: color, attributes: create_attribute({'class': ['[&>.p-row:first-child]:border-t-0']})} only %}
+      {% block content %}
+        {% for booking in bookings %}
+          {% embed 'drubricks:p-row' with {title: booking.title, subtitle: booking.subtitle, booking: booking, color: color}|merge(booking.link) only %}
+            {% block leading %}<span class="feed-ic solid" style="--c: {{ color(color|default('blue')) }}">{{ icon('kit', 'i-calendar') }}</span>{% endblock %}
+            {% block trailing %}{{ include('drubricks:pill', booking.status, with_context = false) }}{% endblock %}
+          {% endembed %}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  {% else %}
+    {{ include('drubricks:empty-line', {text: 'Nothing booked'|t}, with_context = false) }}
+  {% endif %}
+
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {title: 'Details'|t, facts: facts} only %}
+  {{ fields }}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  <div class="d-sub mb-3">{{ sub }}</div>
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, tile: true, avatar_color: color|default(''), sub: sub, body: body} only %}
+    {% block subtitle_markup %}{{ sub }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

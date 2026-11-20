@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * A block in the dashboard's stat strip (region "dashboard_stats"): one
+ * drubricks:stat tile. The wrapper is the strip's grid item and carries the
+ * block's attributes (contextual links: "Configure block").
+ */
+#}
+<div{{ attributes.addClass('grid') }}>
+  {{ title_prefix }}
+  {{ content }}
+  {{ title_suffix }}
+</div>

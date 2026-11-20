@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+    - link
+    - user
+id: crm_company.crm_company.default
+targetEntityType: crm_company
+bundle: crm_company
+mode: default
+content:
+  city:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {}
+    weight: 1
+    region: content
+  industry:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {}
+    weight: 0
+    region: content
+  size:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {}
+    weight: 2
+    region: content
+  uid:
+    type: author
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 90
+    region: content
+  website:
+    type: link
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {}
+    weight: 3
+    region: content
+hidden:
+  changed: true
+  color: true
+  created: true
+  name: true

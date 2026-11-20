@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * A company: header (tile, industry, city), stats, details, people (avatar
+ * stack + rows) and deals. compact: the side panel (no header).
+ */
+#}
+{% set actions %}
+  {%- if website %}{{ include('drubricks:button', {label: 'Website'|t, icon: 'link', url: website, size: compact ? 'small' : 'default'}, with_context = false) }}{% endif %}
+{% endset %}
+{% set body %}
+  {% embed 'drubricks:stats' with {stats: stats, attributes: create_attribute({'class': ['!mt-0', compact ? '[grid-template-columns:1fr_1fr]' : '']|filter(c => c)})} only %}
+    {% block content %}{% for stat in stats %}{{ include('drubricks:stat', stat, with_context = false) }}{% endfor %}{% endblock %}
+  {% endembed %}
+
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {facts: facts} only %}
+  {{ fields }}
+
+  <div class="group-title flex items-center gap-2">{{ 'People'|t }} <span class="dim">{{ contacts|length }}</span>
+    {%- if contacts %}<span class="grow"></span>{{ include('drubricks:avatar-stack', {people: contacts|map(c => {name: c.name, color: c.color}), size: 'xs', max: 5}, with_context = false) }}{% endif %}
+  </div>
+  {% if contacts %}
+    {% embed 'drubricks:panel' with {contacts: contacts, attributes: create_attribute({'class': ['[&>.p-row:first-child]:border-t-0']})} only %}
+      {% block content %}
+        {% for person in contacts %}
+          {% embed 'drubricks:p-row' with {title: person.name, subtitle: person.subtitle, person: person}|merge(person.link) only %}
+            {% block leading %}{{ include('drubricks:avatar', {name: person.name, color: person.color, size: 'sm'}, with_context = false) }}{% endblock %}
+            {% block trailing %}{{ include('drubricks:pill', {label: person.stage.label, color: person.stage.color}, with_context = false) }}{% endblock %}
+          {% endembed %}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  {% else %}
+    {{ include('drubricks:empty-line', {text: 'No contacts yet'|t}, with_context = false) }}
+  {% endif %}
+
+  <div class="group-title">{{ 'Deals'|t }} <span class="dim">{{ deals|length }}</span></div>
+  {{ deal_rows }}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  {% if subtitle %}<div class="d-sub mb-3">{{ subtitle }}</div>{% endif %}
+  {% if actions|trim is not empty %}<div class="d-actions mb-3">{{ actions }}</div>{% endif %}
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, tile: true, avatar_color: color|default(''), subtitle: subtitle, actions: actions, body: body} only %}
+    {% block actions %}{{ actions }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

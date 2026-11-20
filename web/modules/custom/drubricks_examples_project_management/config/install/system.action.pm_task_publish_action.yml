@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+id: pm_task_publish_action
+label: 'Activate tasks'
+type: pm_task
+plugin: 'entity:publish_action:pm_task'
+configuration: {}

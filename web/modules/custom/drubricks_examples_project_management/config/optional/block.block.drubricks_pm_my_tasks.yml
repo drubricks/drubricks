@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_project_management
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: checkmark-circle
+    color: ''
+id: drubricks_pm_my_tasks
+theme: drubricks
+region: dashboard
+weight: 201
+provider: null
+plugin: drubricks_examples_project_management_my_tasks
+settings:
+  id: drubricks_examples_project_management_my_tasks
+  label: 'My tasks'
+  label_display: visible
+  provider: drubricks_examples_project_management
+visibility: {}

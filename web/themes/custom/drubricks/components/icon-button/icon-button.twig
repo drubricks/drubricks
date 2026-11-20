@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Kit icon button: .icon-btn [.small] [.on].
+ */
+#}
+{% set attributes = attributes.addClass(['icon-btn', size == 'small' ? 'small', attribute(_context, 'on') ? 'on']|filter(c => c)) %}
+{% if tip %}
+  {% set attributes = attributes.setAttribute('data-tip', tip).setAttribute('aria-label', title) %}
+  {% if tip_kbd %}{% set attributes = attributes.setAttribute('data-tip-kbd', tip_kbd) %}{% endif %}
+  {% if tip_side %}{% set attributes = attributes.setAttribute('data-side', tip_side) %}{% endif %}
+{% else %}
+  {% set attributes = attributes.setAttribute('title', title) %}
+{% endif %}
+{% if action %}{% set attributes = attributes.setAttribute('data-action', action) %}{% endif %}
+{% if url %}
+  <a{{ attributes.setAttribute('href', url) }}>{{ icon('kit', 'i-' ~ (icon)) }}</a>
+{% else %}
+  <button{{ attributes.setAttribute('type', 'button') }}{{ disabled ? ' disabled' }}>{{ icon('kit', 'i-' ~ (icon)) }}</button>
+{% endif %}

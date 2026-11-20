@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Greeting
+status: stable
+group: Dashboard
+description: 'Kit dashboard greeting (.dash-hello): a heading and a line of text.'
+props:
+  type: object
+  required: [title]
+  properties:
+    title: { type: string, title: Heading }
+    text: { type: string, title: Text }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

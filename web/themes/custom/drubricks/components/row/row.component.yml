@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: List row
+status: stable
+group: List rows
+description: 'Kit list row (.row) for the .column pane: title, meta on the right, subtitle, two lines of text, a dot in the gutter. The kit handles selection (click, ↑ ↓) and fires ui:select with data-id. A link when url is set.'
+props:
+  type: object
+  required: [title]
+  properties:
+    title: { type: string, title: Title }
+    meta: { type: string, title: Meta (right) }
+    subtitle: { type: string, title: Subtitle }
+    text: { type: string, title: Text (two lines) }
+    dot: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    row_id: { type: [string, integer], title: Row id (data-id) }
+    url: { type: string, title: URL }
+    selected: { type: boolean, title: Selected }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  text_markup:
+    title: Text markup
+    description: 'Replaces text, e.g. with <mark> highlights.'

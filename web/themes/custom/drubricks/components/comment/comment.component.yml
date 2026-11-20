@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Comment
+status: stable
+group: Comments & feed
+description: 'Kit comment (.cmt): avatar, .cmt-head (author, time), .cmt-text, .cmt-actions links. .cmt.highlight for a new / linked-to comment. Text is escaped; use the text slot for markup such as mentions (span.mention, .mention.me).'
+props:
+  type: object
+  required: [author]
+  properties:
+    author: { type: string, title: Author }
+    initials: { type: string, title: Initials }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    accent: { type: boolean, title: Accent avatar (the current user) }
+    time: { type: string, title: Time, examples: ['2 h ago'] }
+    text: { type: string, title: Text }
+    highlight: { type: boolean, title: Highlight }
+    actions:
+      type: array
+      title: Actions
+      items:
+        type: object
+        properties:
+          label: { type: string }
+          url: { type: string }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  text_markup:
+    title: Text markup

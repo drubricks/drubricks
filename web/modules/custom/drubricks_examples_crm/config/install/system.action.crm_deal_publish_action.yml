@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+id: crm_deal_publish_action
+label: 'Activate deals'
+type: crm_deal
+plugin: 'entity:publish_action:crm_deal'
+configuration: {}

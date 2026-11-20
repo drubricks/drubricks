@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: a7a6f8e1-36c8-5d11-b7e3-e82629932cab
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+    cf8411e6-f6e4-5a89-8acc-f731b83e79d0: crm_contact
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Factory IoT pilot'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  contact:
+    -
+      entity: cf8411e6-f6e4-5a89-8acc-f731b83e79d0
+  value:
+    -
+      value: '85000.00'
+  stage:
+    -
+      value: qualified
+  close_date:
+    -
+      value: '2026-12-13'

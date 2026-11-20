@@ -1,0 +1,7 @@
+drubricks.settings:
+  type: theme_settings
+  label: 'Drubricks theme settings'
+  mapping:
+    default_palette:
+      type: string
+      label: 'UI kit colour palette of the site'

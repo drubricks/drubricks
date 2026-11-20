@@ -1,0 +1,454 @@
+# Polish translation of drubricks_core (Drubricks starter).
+msgid ""
+msgstr ""
+"Project-Id-Version: drubricks_core\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
+
+msgid "%type: create"
+msgstr "%type: tworzenie"
+
+msgid "%type: delete any"
+msgstr "%type: usuwanie wszystkich"
+
+msgid "%type: delete own"
+msgstr "%type: usuwanie własnych"
+
+msgid "%type: edit any"
+msgstr "%type: edycja wszystkich"
+
+msgid "%type: edit own"
+msgstr "%type: edycja własnych"
+
+msgid "%type: view any"
+msgstr "%type: podgląd wszystkich"
+
+msgid "%type: view own"
+msgstr "%type: podgląd własnych"
+
+msgid "- None -"
+msgstr "- Brak -"
+
+msgid "1 card"
+msgid_plural "@count cards"
+msgstr[0] "1 karta"
+msgstr[1] "@count karty"
+msgstr[2] "@count kart"
+
+msgid "@app: fields, form and display of @type."
+msgstr "@app: pola, formularz i wyświetlanie – @type."
+
+msgid "@type settings"
+msgstr "Ustawienia: @type"
+
+msgid "A UI kit colour token, e.g. teal."
+msgstr "Kolor z palety UI kitu, np. teal."
+
+msgid "A colour of the UI kit palette."
+msgstr "Kolor z palety UI kitu."
+
+msgid "A kit icon name (e.g. <em>users</em>) or <em>pack:icon</em>."
+msgstr "Nazwa ikony kitu (np. <em>users</em>) albo <em>pakiet:ikona</em>."
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "Active"
+msgstr "Aktywne"
+
+msgid "Add a person…"
+msgstr "Dodaj osobę…"
+
+msgid "Added @name"
+msgstr "Dodano: @name"
+
+msgid "Add…"
+msgstr "Dodaj…"
+
+msgid "Admin list of the records"
+msgstr "Lista rekordów w panelu administracyjnym"
+
+msgid "Administer the application."
+msgstr "Administracja aplikacją."
+
+msgid "Agenda"
+msgstr "Agenda"
+
+msgid "All"
+msgstr "Wszystko"
+
+msgid "App sidebar"
+msgstr "Menu boczne aplikacji"
+
+msgid "Application"
+msgstr "Aplikacja"
+
+msgid "Apps"
+msgstr "Aplikacje"
+
+msgid "BCP 47 tag for dates and numbers, e.g. pl-PL. Empty: the current language."
+msgstr "Znacznik BCP 47 dla dat i liczb, np. pl-PL. Pusty: bieżący język."
+
+msgid "Back"
+msgstr "Wstecz"
+
+msgid "Bad request."
+msgstr "Nieprawidłowe żądanie."
+
+msgid "Board"
+msgstr "Tablica"
+
+msgid "Browse, filter, edit and delete the records of the apps; bulk operations."
+msgstr "Przeglądanie, filtrowanie, edycja i usuwanie rekordów aplikacji; operacje zbiorcze."
+
+msgid "Calendar"
+msgstr "Kalendarz"
+
+msgid "Calendar view"
+msgstr "Widok kalendarza"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Changed"
+msgstr "Zmieniono"
+
+msgid "Chosen records one under another, with a search field to add more."
+msgstr "Wybrane rekordy jeden pod drugim, z wyszukiwarką do dodawania kolejnych."
+
+msgid "Class"
+msgstr "Klasa"
+
+msgid "Clear"
+msgstr "Wyczyść"
+
+msgid "Colour"
+msgstr "Kolor"
+
+msgid "Counts the records the user may see; the tile links to their list."
+msgstr "Liczy rekordy widoczne dla użytkownika; kafelek prowadzi do ich listy."
+
+msgid "Created"
+msgstr "Utworzono"
+
+msgid "Created @type %label."
+msgstr "Utworzono: @type %label."
+
+msgid "Currency"
+msgstr "Waluta"
+
+msgid "Dashboard"
+msgstr "Pulpit"
+
+msgid "Dashboard panel"
+msgstr "Panel pulpitu"
+
+msgid "Day"
+msgstr "Dzień"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "Delete @label"
+msgstr "Usuń @label"
+
+msgid "Delete @label?"
+msgstr "Usunąć @label?"
+
+msgid "Details"
+msgstr "Szczegóły"
+
+msgid "Drag cards between lanes, or focus a card and press Alt + arrow keys."
+msgstr "Przeciągaj karty między kolumnami albo zaznacz kartę i użyj Alt + strzałek."
+
+msgid "Drubricks"
+msgstr "Drubricks"
+
+msgid "Drubricks list (UI kit rows)"
+msgstr "Lista Drubricks (wiersze UI kitu)"
+
+msgid "Drubricks sidebar"
+msgstr "Menu boczne Drubricks"
+
+msgid "Drupal core shows /user/ID/edit in the administration theme."
+msgstr "Drupal pokazuje /user/ID/edit w motywie administracyjnym."
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Edit @label"
+msgstr "Edytuj @label"
+
+msgid "Edit profile"
+msgstr "Edytuj profil"
+
+msgid "Edit the user profile in the app theme"
+msgstr "Edycja profilu użytkownika w motywie aplikacji"
+
+msgid "Entity records"
+msgstr "Rekordy"
+
+msgid "Entity structure"
+msgstr "Struktura danych"
+
+msgid "Error @status"
+msgstr "Błąd @status"
+
+msgid "Fields of %type records: the base fields come with the app (code); add your own in <em>Manage fields</em>, arrange the add / edit form in <em>Manage form display</em> and the record details in <em>Manage display</em>. The app screens follow these settings."
+msgstr "Pola rekordów %type: pola podstawowe pochodzą z aplikacji (kod); własne dodasz w <em>Zarządzaj polami</em>, formularz dodawania / edycji ułożysz w <em>Zarządzaj wyświetlaniem formularza</em>, a szczegóły rekordu w <em>Zarządzaj wyświetlaniem</em>. Ekrany aplikacji stosują te ustawienia."
+
+msgid "Fields, form and display of the records of the apps (Manage fields, form display, display)."
+msgstr "Pola, formularze i wyświetlanie rekordów aplikacji (pola, wyświetlanie formularza, wyświetlanie)."
+
+msgid "Full row"
+msgstr "Cały wiersz"
+
+msgid "Heading icon"
+msgstr "Ikona nagłówka"
+
+msgid "Hello, @name"
+msgstr "Cześć, @name"
+
+msgid "Hide"
+msgstr "Ukryj"
+
+msgid "Hide Inspector"
+msgstr "Ukryj panel informacji"
+
+msgid "Hide Sidebar"
+msgstr "Ukryj menu boczne"
+
+msgid "Home"
+msgstr "Strona główna"
+
+msgid "ISO 4217 code, e.g. EUR or PLN."
+msgstr "Kod ISO 4217, np. EUR albo PLN."
+
+msgid "Icon"
+msgstr "Ikona"
+
+msgid "Icon colour"
+msgstr "Kolor ikony"
+
+msgid "Icons of the Drubricks links in the admin Navigation."
+msgstr "Ikony linków Drubricks w nawigacji panelu administracyjnego."
+
+msgid "Inactive"
+msgstr "Nieaktywny"
+
+msgid "Info"
+msgstr "Informacja"
+
+msgid "Inspector"
+msgstr "Panel informacji"
+
+msgid "Invalid date."
+msgstr "Nieprawidłowa data."
+
+msgid "Link field (URL of the row, e.g. \"Link to entity\" as URL)"
+msgstr "Pole linku (adres wiersza, np. „Link do encji” jako URL)"
+
+msgid "List"
+msgstr "Lista"
+
+msgid "List with search (Drubricks)"
+msgstr "Lista z wyszukiwarką (Drubricks)"
+
+msgid "Locale"
+msgstr "Język"
+
+msgid "Locale and currency"
+msgstr "Ustawienia regionalne i waluta"
+
+msgid "Locale and currency of the Drubricks apps."
+msgstr "Ustawienia regionalne i waluta aplikacji Drubricks."
+
+msgid "Logo, name and colours"
+msgstr "Logo, nazwa i kolory"
+
+msgid "Logo, site name in the sidebar and the colour palette (theme settings)."
+msgstr "Logo, nazwa strony w menu bocznym i paleta kolorów (ustawienia motywu)."
+
+msgid "Manage fields"
+msgstr "Zarządzaj polami"
+
+msgid "Meta field (right of the title)"
+msgstr "Pole meta (na prawo od tytułu)"
+
+msgid "Name"
+msgstr "Nazwa"
+
+msgid "Network error — check your connection."
+msgstr "Błąd sieci — sprawdź połączenie."
+
+msgid "New @type"
+msgstr "Nowy rekord: @type"
+
+msgid "Next"
+msgstr "Dalej"
+
+msgid "No matches"
+msgstr "Brak wyników"
+
+msgid "Nobody yet."
+msgstr "Jeszcze nikogo."
+
+msgid "Not found."
+msgstr "Nie znaleziono."
+
+msgid "Nothing here yet"
+msgstr "Jeszcze nic tu nie ma"
+
+msgid "Nothing on your dashboard yet. Apps place their dashboard blocks here: install an app recipe (e.g. drubricks_examples_crm) or build your own app."
+msgstr "Pulpit jest jeszcze pusty. Aplikacje umieszczają tu swoje bloki: zainstaluj aplikację albo zbuduj własną."
+
+msgid "Number and date formats and the currency of the apps."
+msgstr "Formaty liczb i dat oraz waluta aplikacji."
+
+msgid "One column"
+msgstr "Jedna kolumna"
+
+msgid "Open the full page"
+msgstr "Otwórz pełną stronę"
+
+msgid "Overdue:"
+msgstr "Po terminie:"
+
+msgid "Owner"
+msgstr "Właściciel"
+
+msgid "Previous"
+msgstr "Poprzednie"
+
+msgid "Record count"
+msgstr "Liczba rekordów"
+
+msgid "Records"
+msgstr "Rekordy"
+
+msgid "Remove"
+msgstr "Usuń"
+
+msgid "Remove @name"
+msgstr "Usuń @name"
+
+msgid "Removed @name"
+msgstr "Usunięto: @name"
+
+msgid "Resources"
+msgstr "Zasoby"
+
+msgid "Rows of the UI kit list column."
+msgstr "Wiersze kolumny listy UI kitu."
+
+msgid "Saved %label."
+msgstr "Zapisano: %label."
+
+msgid "Saved."
+msgstr "Zapisano."
+
+msgid "Search"
+msgstr "Szukaj"
+
+msgid "Sections and screens of the sidebar: order, names, extra links (Menu UI)."
+msgstr "Sekcje i ekrany menu bocznego: kolejność, nazwy, dodatkowe linki (Menu)."
+
+msgid "Select an item"
+msgstr "Wybierz element"
+
+msgid "Server error."
+msgstr "Błąd serwera."
+
+msgid "Set a class for this icon."
+msgstr "Ustaw klasę ikony."
+
+msgid "Set a size for this icon."
+msgstr "Ustaw rozmiar ikony."
+
+msgid "Settings"
+msgstr "Ustawienia"
+
+msgid "Show Inspector"
+msgstr "Pokaż panel informacji"
+
+msgid "Show Sidebar"
+msgstr "Pokaż menu boczne"
+
+msgid "Show all"
+msgstr "Pokaż wszystkie"
+
+msgid "Sidebar"
+msgstr "Pasek boczny"
+
+msgid "Size"
+msgstr "Rozmiar"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Subtitle field"
+msgstr "Pole podtytułu"
+
+msgid "Text field (two lines)"
+msgstr "Pole tekstu (dwie linie)"
+
+msgid "The app sidebar, the dashboard, logo and colours, locale and currency."
+msgstr "Menu boczne aplikacji, pulpit, logo i kolory, ustawienia regionalne i waluta."
+
+msgid "The change could not be saved."
+msgstr "Nie udało się zapisać zmiany."
+
+msgid "Tiles and panels of the home page: the dashboard regions of the Block layout."
+msgstr "Kafelki i panele strony startowej: regiony pulpitu w układzie bloków."
+
+msgid "Title field"
+msgstr "Pole tytułu"
+
+msgid "Today"
+msgstr "Dziś"
+
+msgid "Tomorrow"
+msgstr "Jutro"
+
+msgid "Two columns (when there is room)"
+msgstr "Dwie kolumny (gdy jest miejsce)"
+
+msgid "Unknown lane."
+msgstr "Nieznana kolumna."
+
+msgid "View"
+msgstr "Widok"
+
+msgid "View profile"
+msgstr "Pokaż profil"
+
+msgid "Week"
+msgstr "Tydzień"
+
+msgid "Width"
+msgstr "Szerokość"
+
+msgid "Yesterday"
+msgstr "Wczoraj"
+
+msgid "You are not allowed to do this."
+msgstr "Nie masz uprawnień do tej operacji."
+
+msgid "You cannot change this record."
+msgstr "Nie możesz zmienić tego rekordu."
+
+msgid "1 item"
+msgid_plural "@count items"
+msgstr[0] "1 element"
+msgstr[1] "@count elementy"
+msgstr[2] "@count elementów"
+
+# Masquerade's account menu link (contrib, in the starter's account menu).
+msgid "Unmasquerade"
+msgstr "Wróć na swoje konto"
+
+msgid "Table"
+msgstr "Tabela"

@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Date / time element wrapper → a form item (label-like title instead of
+ * core's <h4>, inline error, hint).
+ */
+#}
+{%
+  set title_classes = [
+    'form-label',
+    required ? 'js-form-required',
+    required ? 'form-required',
+  ]
+%}
+<div class="form-item form-type-datetime{{ errors ? ' form-item--error' }}">
+  {% if title %}
+    <span{{ title_attributes.addClass(title_classes) }}>{{ title }}</span>
+  {% endif %}
+  {{ content }}
+  {% if errors %}
+    <div class="form-item--error-message field-error">{{ errors }}</div>
+  {% endif %}
+  {% if description %}
+    <div{{ description_attributes.addClass('description', 'field-hint') }}>{{ description }}</div>
+  {% endif %}
+</div>

@@ -1,0 +1,42 @@
+/* UI kit — Tailwind v4 theme: utilities mapped to the kit's design tokens (bg-surface, text-ink-2, border-line,
+   bg-accent, text-red …) and dark: bound to <html data-scheme="dark">. Keep in step with theme.js (the same tokens).
+   Use with the Tailwind CLI (tailwindcss 4.3.3):
+     @import "tailwindcss";
+     @import "./kit/tailwind-theme.css";
+     @import "./kit/ui.css";
+   Load kit/theme.js in <head> (data-no-tailwind) for light / dark before the first paint. */
+@custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *));
+@theme inline {
+  --font-sans: var(--font);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-ink: var(--label);
+  --color-ink-2: var(--label-2);
+  --color-ink-3: var(--label-3);
+  --color-ink-4: var(--label-4);
+  --color-surface: var(--bg);
+  --color-sidebar: var(--bg-sidebar);
+  --color-inspector: var(--bg-inspector);
+  --color-raised: var(--bg-raised);
+  --color-control: var(--bg-control);
+  --color-lane: var(--bg-lane);
+  --color-card: var(--bg-card);
+  --color-line: var(--sep);
+  --color-line-strong: var(--sep-strong);
+  --color-hover: var(--hover);
+  --color-red: var(--red);
+  --color-orange: var(--orange);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-teal: var(--teal);
+  --color-blue: var(--blue);
+  --color-indigo: var(--indigo);
+  --color-purple: var(--purple);
+  --color-pink: var(--pink);
+  --color-gray: var(--gray);
+}
+/* class names ui.js writes into the page (e.g. min-w-0 in the account menu) */
+@source "./ui.js";

@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Trigger for UI.menu: the items travel as JSON in data-options.
+ */
+#}
+{% set icon_only = icon and not label %}
+{% set classes = icon_only or variant == 'icon' ? ['icon-btn'] : ['btn', variant in ['primary', 'destructive'] ? variant]|filter(c => c) %}
+{% set attributes = attributes.addClass(classes).setAttribute('type', 'button').setAttribute('data-drubricks-menu', '').setAttribute('aria-haspopup', 'menu').setAttribute('aria-expanded', 'false') %}
+{% set attributes = attributes.setAttribute('data-options', {items: items, align: align|default('left'), width: width, label: menu_label ?: label}|json_encode) %}
+{% if title %}{% set attributes = attributes.setAttribute('title', title) %}{% endif %}
+<button{{ attributes }}>{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}{% if label %} {{ icon('kit', 'i-chevron-down') }}{% endif %}</button>

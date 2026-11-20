@@ -1,0 +1,11 @@
+name: 'CRM example: demo data'
+description: 'Demo records for the CRM example (exported with drush content:export). Dates move to the install day.'
+type: 'Demo'
+recipes:
+  - drubricks_examples_crm
+extra:
+  drubricks_core:
+    # The day the content was exported; dates are shifted by (today - this).
+    demo_reference_date: '2026-11-13'
+    # Timezone of the site it was exported from; times keep their wall-clock value.
+    demo_timezone: Europe/Warsaw

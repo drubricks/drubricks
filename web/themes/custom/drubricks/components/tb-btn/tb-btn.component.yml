@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Toolbar button
+status: stable
+group: Toolbar
+description: 'Kit toolbar button (.tb-btn) inside a drubricks:tb-group: icon (+ optional label), .on when toggled, a link when url is set. Icon-only buttons need a title (or tip).'
+props:
+  type: object
+  properties:
+    icon: { type: string, title: Icon }
+    label: { type: string, title: Visible label }
+    title: { type: string, title: Title / accessible name }
+    'on': { type: boolean, title: Toggled on }
+    danger: { type: boolean, title: Destructive look (.danger) }
+    url: { type: string, title: URL }
+    action: { type: string, title: Kit action (data-action) }
+    tip: { type: string, title: Kit tooltip (used instead of title) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

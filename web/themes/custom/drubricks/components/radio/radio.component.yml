@@ -1,0 +1,21 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Radio
+status: stable
+group: Forms
+description: 'Kit radio (input.radio) with its label next to it. Same name = one group; wrap a group in drubricks:fieldset.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Label }
+    value: { type: string, title: Value }
+    checked: { type: boolean, title: Checked }
+    name: { type: string, title: Name }
+    id: { type: string, title: Id }
+    required: { type: boolean, title: Required }
+    disabled: { type: boolean, title: Disabled }
+    invalid: { type: boolean, title: Invalid (aria-invalid) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

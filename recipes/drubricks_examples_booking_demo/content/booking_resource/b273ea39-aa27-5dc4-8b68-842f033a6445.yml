@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: b273ea39-aa27-5dc4-8b68-842f033a6445
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Transit van · HM 19 VAN'
+  color:
+    -
+      value: orange
+  kind:
+    -
+      value: car
+  location:
+    -
+      value: 'Car park P2'
+  capacity:
+    -
+      value: 3
+  opens:
+    -
+      value: 6
+  closes:
+    -
+      value: 22
+  rules:
+    -
+      value: |-
+        Needs approval by Facilities.
+        Van licence (category B+E) required for the trailer.

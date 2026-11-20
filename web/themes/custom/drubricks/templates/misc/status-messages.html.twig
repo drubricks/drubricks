@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Drupal messages → kit alerts. Status messages become a HUD toast (theme JS
+ * and drubricks_core shell.js read data-drubricks-message); warnings and
+ * errors stay as alerts with a close button.
+ */
+#}
+<div data-drupal-messages class="drubricks-messages flex flex-col gap-2 mb-3">
+  {% for type, messages in message_list %}
+    {% set alert = alert_types[type]|default({'class': 'info', 'icon': 'info'}) %}
+    {% for message in messages %}
+      <div class="alert {{ alert.class }}" role="{{ type == 'error' ? 'alert' : 'status' }}" data-drubricks-message="{{ type }}">
+        {{ icon('kit', 'i-' ~ (alert.icon)) }}
+        <div class="alert-main">{{ message }}</div>
+        {% if type != 'status' %}
+          <button type="button" class="icon-btn small" data-drubricks-dismiss title="{{ 'Close'|t }}">{{ icon('kit', 'i-xmark') }}</button>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>

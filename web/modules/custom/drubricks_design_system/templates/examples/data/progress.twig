@@ -1,0 +1,6 @@
+<div class="grid max-w-md gap-3">
+  {% include 'drubricks:progress' with {value: 65, color: 'green', label: '13 / 20'} only %}
+  {# Text helpers are plain kit classes: .dim, .link, .overdue #}
+  <p>Owner: <a class="link">Priya Raman</a> · <span class="dim">updated 2 days ago</span> · <span class="overdue">Due yesterday</span></p>
+  {% include 'drubricks:empty-line' with {text: 'No tasks yet'} only %}
+</div>

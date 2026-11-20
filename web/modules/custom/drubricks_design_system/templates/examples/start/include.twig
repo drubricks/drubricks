@@ -1,0 +1,10 @@
+{# A component with props only: include it, "only" keeps the caller's variables out. #}
+{% include 'drubricks:button' with {label: 'Save', variant: 'primary', icon: 'checkmark'} only %}
+
+{# The same as a function call (handy inside {% set %} or a ternary). #}
+{{ include('drubricks:pill', {label: 'Won', color: 'green', icon: 'checkmark'}, with_context = false) }}
+
+{# A component with slots: embed it and fill the blocks. #}
+{% embed 'drubricks:alert' with {type: 'info', title: 'Slots'} only %}
+  {% block content %}Markup in a slot — <b>not escaped</b> by the component.{% endblock %}
+{% endembed %}

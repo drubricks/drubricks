@@ -1,0 +1,6 @@
+{# Kit tooltip on any content: span[data-tip][tabindex=0]. #}
+{% set attributes = attributes.addClass('inline-flex').setAttribute('data-tip', text) %}
+{% if kbd %}{% set attributes = attributes.setAttribute('data-tip-kbd', kbd) %}{% endif %}
+{% if side == 'bottom' %}{% set attributes = attributes.setAttribute('data-side', 'bottom') %}{% endif %}
+{% if focusable is not defined or focusable %}{% set attributes = attributes.setAttribute('tabindex', '0') %}{% endif %}
+<span{{ attributes }}>{% block content %}{{ content }}{% endblock %}</span>

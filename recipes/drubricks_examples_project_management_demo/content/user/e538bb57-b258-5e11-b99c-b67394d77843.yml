@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: e538bb57-b258-5e11-b99c-b67394d77843
+  default_langcode: en
+default:
+  name:
+    -
+      value: 'Alex Morgan'
+  mail:
+    -
+      value: alex.morgan@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

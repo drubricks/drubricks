@@ -1,0 +1,8 @@
+{# Kit sidebar item: .sb-item[.active][.sb-add][.drop-target] > icon + .label + .count. #}
+{% set tag = url ? 'a' : 'button' %}
+{% set attributes = attributes.addClass(['sb-item', active ? 'active', add ? 'sb-add', drop_target ? 'drop-target']|filter(c => c)) %}
+{% set attributes = url ? attributes.setAttribute('href', url) : attributes.setAttribute('type', 'button') %}
+{% if key %}{% set attributes = attributes.setAttribute('data-key', key) %}{% endif %}
+{% if add or no_select %}{% set attributes = attributes.setAttribute('data-no-select', '') %}{% endif %}
+{% if active and url %}{% set attributes = attributes.setAttribute('aria-current', 'page') %}{% endif %}
+<{{ tag }}{{ attributes }}>{{ icon('kit', 'i-' ~ (add ? 'plus' : icon|default('circle')), {class: icon_color|default('')}) }}<span class="label">{{ label }}</span>{% if count is not null and count is defined %}<span class="count">{{ count }}</span>{% endif %}</{{ tag }}>

@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * <input> → kit controls: text-like inputs get .field, checkboxes .checkbox
+ * (or keep .switch when the element asks for it), radios .radio, submit /
+ * button inputs .btn (+ .primary for #button_type primary, .destructive for
+ * #button_type danger or the class "destructive"). Errors → .invalid.
+ */
+#}
+{% set input_type = attributes.type ~ '' %}
+{% if input_type in ['text', 'email', 'password', 'number', 'date', 'search', 'tel', 'url', 'time', 'datetime-local', 'month', 'week'] %}
+  {% set attributes = attributes.addClass('field') %}
+{% elseif input_type == 'checkbox' %}
+  {% set attributes = attributes.addClass(attributes.hasClass('switch') ? 'switch' : 'checkbox') %}
+{% elseif input_type == 'radio' %}
+  {% set attributes = attributes.addClass('radio') %}
+{% elseif input_type in ['submit', 'button', 'reset', 'image'] %}
+  {%
+    set attributes = attributes.addClass([
+      'btn',
+      attributes.hasClass('button--primary') ? 'primary',
+      attributes.hasClass('button--danger') ? 'destructive',
+      attributes.hasClass('button--small') ? 'small',
+    ]|filter(c => c))
+  %}
+{% endif %}
+{% if attributes.hasClass('error') %}
+  {% set attributes = attributes.addClass('invalid').setAttribute('aria-invalid', 'true') %}
+{% endif %}
+<input{{ attributes }} />{{ children }}

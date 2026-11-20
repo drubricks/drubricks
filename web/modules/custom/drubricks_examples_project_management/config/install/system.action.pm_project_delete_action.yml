@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+id: pm_project_delete_action
+label: 'Delete projects'
+type: pm_project
+plugin: 'entity:delete_action:pm_project'
+configuration: {}

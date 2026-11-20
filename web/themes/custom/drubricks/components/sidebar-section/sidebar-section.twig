@@ -1,0 +1,5 @@
+{# Kit sidebar section: .sb-section > .sb-heading + .sb-items. #}
+<div{{ attributes.addClass(['sb-section', collapsed ? 'collapsed']|filter(c => c)) }}>
+  {%- if title %}<button class="sb-heading" type="button">{{ title }} <span class="hint">{{ 'Hide'|t }}</span></button>{% endif %}
+  <div class="sb-items">{% block content %}{{ content }}{% endblock %}</div>
+</div>

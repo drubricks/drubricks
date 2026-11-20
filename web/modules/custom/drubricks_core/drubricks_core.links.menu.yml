@@ -1,0 +1,96 @@
+drubricks_core.settings:
+  title: 'Drubricks'
+  description: 'Locale and currency of the Drubricks apps.'
+  parent: system.admin_config_regional
+  route_name: drubricks_core.settings
+# Admin sidebar (Navigation): the application's own admin pages. Weight 5 as
+# Reports — ties are sorted by title, so "Application" comes right before it.
+drubricks_core.admin_app:
+  title: 'Application'
+  description: 'Administer the application.'
+  parent: system.admin
+  route_name: drubricks_core.admin_app
+  weight: 5
+  options:
+    icon:
+      pack_id: drubricks
+      icon_id: application
+drubricks_core.admin_app_entities:
+  title: 'Entity records'
+  description: 'Browse, filter, edit and delete the records of the apps; bulk operations.'
+  parent: drubricks_core.admin_app
+  route_name: drubricks_core.admin_app_entities
+  weight: -10
+drubricks_core.admin_app_settings:
+  title: 'Settings'
+  description: 'The app sidebar, the dashboard, logo and colours, locale and currency.'
+  parent: drubricks_core.admin_app
+  route_name: drubricks_core.admin_app_settings
+  weight: 10
+drubricks_core.admin_app_sidebar:
+  title: 'App sidebar'
+  description: 'Sections and screens of the sidebar: order, names, extra links (Menu UI).'
+  parent: drubricks_core.admin_app_settings
+  route_name: entity.menu.edit_form
+  route_parameters:
+    menu: drubricks
+  weight: 0
+drubricks_core.admin_app_dashboard:
+  title: 'Dashboard'
+  description: 'Tiles and panels of the home page: the dashboard regions of the Block layout.'
+  parent: drubricks_core.admin_app_settings
+  route_name: block.admin_display_theme
+  route_parameters:
+    theme: drubricks
+  weight: 1
+drubricks_core.admin_app_branding:
+  title: 'Logo, name and colours'
+  description: 'Logo, site name in the sidebar and the colour palette (theme settings).'
+  parent: drubricks_core.admin_app_settings
+  route_name: system.theme_settings_theme
+  route_parameters:
+    theme: drubricks
+  weight: 2
+drubricks_core.admin_app_locale:
+  title: 'Locale and currency'
+  description: 'Number and date formats and the currency of the apps.'
+  parent: drubricks_core.admin_app_settings
+  route_name: drubricks_core.settings
+  weight: 3
+drubricks_core.admin_app_structure:
+  title: 'Entity structure'
+  description: 'Fields, form and display of the records of the apps (Manage fields, form display, display).'
+  parent: drubricks_core.admin_app
+  route_name: drubricks_core.admin_app_structure
+  weight: -9
+# Under "Entity structure": the admin page (field_ui_base_route) of every
+# Drubricks entity type.
+drubricks_core.entity_structure:
+  deriver: Drupal\drubricks_core\Plugin\Derivative\EntityStructureMenuLinks
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_core.home:
+  title: 'Home'
+  menu_name: drubricks
+  route_name: drubricks_core.home
+  weight: -100
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-house
+# Account menu (core's "account" menu, the button at the bottom of the
+# sidebar): core's "My account" (as "View profile") and "Log out" get icons
+# and styling in NavigationHooks; this adds "Edit profile". metadata:
+# separator_before (a line above), danger (red).
+drubricks_core.profile_edit:
+  title: 'Edit profile'
+  menu_name: account
+  route_name: entity.user.edit_form
+  class: Drupal\drubricks_core\Plugin\Menu\CurrentUserMenuLink
+  weight: 10
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-gear

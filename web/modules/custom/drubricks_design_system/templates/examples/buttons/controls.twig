@@ -1,0 +1,7 @@
+{% include 'drubricks:icon-button' with {icon: 'gear', title: 'Settings'} only %}
+{% include 'drubricks:icon-button' with {icon: 'filter', title: 'Filter (active)', on: true} only %}
+{% include 'drubricks:seg' with {label: 'Range', items: [{label: 'Day', active: true}, {label: 'Week'}, {label: 'Month'}]} only %}
+{% include 'drubricks:seg' with {view: true, label: 'List / board switch', items: [{icon: 'list', title: 'List', active: true}, {icon: 'board', title: 'Board'}]} only %}
+{% include 'drubricks:switch' with {label: 'Enabled', checked: true} only %}
+{% include 'drubricks:switch' with {label: 'Disabled'} only %}
+{% include 'drubricks:switch' with {label: 'With a visible label', label_visible: true, checked: true} only %}

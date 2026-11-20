@@ -1,0 +1,25 @@
+<div class="dash">
+  {% include 'drubricks:greeting' with {title: 'Good morning, Alex', text: 'You have 2 tasks due today and 1 deal closing this week.'} only %}
+  {% embed 'drubricks:stats' only %}{% block content %}
+    {% include 'drubricks:stat' with {label: 'Open pipeline', icon: 'dollar', color: 'blue', value: '$375K', sub: '7 deals'} only %}
+    {% include 'drubricks:stat' with {label: 'Vacation left', icon: 'checkmark-circle', color: 'green', value: 10, unit: 'days', sub: '4 planned', button: true} only %}
+    {% include 'drubricks:stat' with {label: 'Overdue', icon: 'clock', color: 'red', value: 1, value_color: 'red'} only %}
+  {% endblock %}{% endembed %}
+  {% embed 'drubricks:panels' only %}{% block content %}
+    {% embed 'drubricks:panel' with {title: 'My tasks', icon: 'checkmark-circle', link_label: 'Show all'} only %}{% block content %}
+      {% embed 'drubricks:p-row' with {title: 'Send onboarding summary', subtitle: 'Kestrel Onboarding'} only %}
+        {% block leading %}{% include 'drubricks:check' with {label: 'Mark done'} only %}{% endblock %}
+        {% block trailing %}<span class="overdue text-xs">Yesterday</span>{% endblock %}
+      {% endembed %}
+      {% embed 'drubricks:p-row' with {title: 'Fleet tracking rollout', subtitle: 'Kestrel Freight · Negotiation', trailing_text: '$48K', url: '#dashboard'} only %}
+        {% block leading %}{% include 'drubricks:tile' with {name: 'Kestrel', color: 'indigo'} only %}{% endblock %}
+      {% endembed %}
+    {% endblock %}{% endembed %}
+    {% embed 'drubricks:panel' with {title: 'Pipeline by stage', icon: 'chart'} only %}{% block content %}
+      {% include 'drubricks:bar-row' with {label: 'Lead', percent: 35, color: 'gray', value: '$46K'} only %}
+      {% include 'drubricks:bar-row' with {label: 'Proposal', percent: 100, color: 'blue', value: '$142K'} only %}
+      {% include 'drubricks:bar-row' with {label: 'Negotiation', percent: 34, color: 'orange', value: '$48K'} only %}
+    {% endblock %}{% endembed %}
+  {% endblock %}{% endembed %}
+  <div class="dash-foot">{% include 'drubricks:button' with {label: 'Reset demo data'} only %}</div>
+</div>

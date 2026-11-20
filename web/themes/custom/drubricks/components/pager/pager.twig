@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Kit pager: nav.pager > .pager-info + .pager-btn… + .pager-gap.
+ */
+#}
+{% set pages = [1, current - 1, current, current + 1, total]|filter(n => n >= 1 and n <= total)|reduce((carry, n) => n in carry ? carry : carry|merge([n]), [])|sort %}
+{% macro page_button(n, label, url, extra, title, links) %}
+  {%- if links[n] is defined and n is not null -%}
+    <a class="pager-btn" href="{{ links[n] }}"{{ extra|raw }}{% if title %} title="{{ title }}"{% endif %}>{{ label }}</a>
+  {%- elseif url and n is not null -%}
+    <a class="pager-btn" href="{{ url|replace({'{page}': n - 1}) }}"{{ extra|raw }}{% if title %} title="{{ title }}"{% endif %}>{{ label }}</a>
+  {%- else -%}
+    <button type="button" class="pager-btn"{% if n is not null %} data-go="{{ n }}"{% endif %}{{ extra|raw }}{% if title %} title="{{ title }}"{% endif %}>{{ label }}</button>
+  {%- endif -%}
+{% endmacro %}
+<nav{{ attributes.addClass('pager').setAttribute('aria-label', label|default('Pages'|t)) }}>
+  {%- if info %}<span class="pager-info">{{ info }}</span>{% endif %}
+  {%- if current > 1 %}{{ _self.page_button(current - 1, icon('kit', 'i-chevron-left'), url, '', 'Previous page'|t, links) }}{% else %}<button type="button" class="pager-btn" title="{{ 'Previous page'|t }}" disabled>{{ icon('kit', 'i-chevron-left') }}</button>{% endif %}
+  {%- for n in pages %}
+    {%- if not loop.first and n - pages[loop.index0 - 1] > 1 %}<span class="pager-gap">…</span>{% endif %}
+    {{- _self.page_button(n, n, url, n == current ? ' aria-current="page"' : '', null, links) }}
+  {%- endfor %}
+  {%- if current < total %}{{ _self.page_button(current + 1, icon('kit', 'i-chevron-right'), url, '', 'Next page'|t, links) }}{% else %}<button type="button" class="pager-btn" title="{{ 'Next page'|t }}" disabled>{{ icon('kit', 'i-chevron-right') }}</button>{% endif %}
+</nav>

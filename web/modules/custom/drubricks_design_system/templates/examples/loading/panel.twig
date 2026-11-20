@@ -1,0 +1,3 @@
+{% embed 'drubricks:panel' with {busy: true, attributes: create_attribute({'class': ['max-w-md']})} only %}
+  {% block content %}{% include 'drubricks:skeleton' with {rows: 2} only %}{% endblock %}
+{% endembed %}

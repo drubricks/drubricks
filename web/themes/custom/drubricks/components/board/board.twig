@@ -1,0 +1,2 @@
+{# Mount point for UI.board: lanes and cards as JSON. #}
+<div{{ attributes.addClass('overflow-x-auto').setAttribute('data-drubricks-board', (editable is not defined or editable) ? 'editable' : '').setAttribute('data-options', {lanes: lanes, items: items, create: create, laneMeta: lane_meta, collapsedKey: collapsed_key}|json_encode) }}><div data-board></div></div>

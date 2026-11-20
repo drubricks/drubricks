@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Kit tabs: [data-tabs] > .tabs > .tab[data-tab] (+ .tab-count) and the panels.
+ * Without panels the root is the .tabs bar itself (so .sticky works).
+ */
+#}
+{% set panels_html %}{% block panels %}{{ panels }}{% endblock %}{% endset %}
+{% set has_panels = panels_html|trim is not empty %}
+{% set has_active = items|filter(i => i.active)|length > 0 %}
+{% set tag = (items|first).url ? 'nav' : 'div' %}
+{% set bar_attributes = has_panels ? create_attribute() : attributes %}
+{% if label %}{% set bar_attributes = bar_attributes.setAttribute('aria-label', label) %}{% endif %}
+{% set bar %}
+<{{ tag }}{{ bar_attributes.addClass(['tabs', sticky ? 'sticky']|filter(c => c)) }}>
+  {%- for item in items %}
+    {% set active = item.active or (not has_active and loop.first) %}
+    {% set count %}{% if item.count is defined and item.count is not null %} <span class="tab-count">{{ item.count }}</span>{% endif %}{% endset %}
+    {% if item.url %}
+      <a class="tab{{ active ? ' active' }}" href="{{ item.url }}"{{ active ? ' aria-current="page"' }}>{{ icon('kit', 'i-' ~ (item.icon)) }}{{ item.label }}{{ count }}</a>
+    {%- else %}
+      <button type="button" class="tab{{ active ? ' active' }}" data-tab="{{ item.id }}"{{ item.disabled ? ' disabled' }}>{{ icon('kit', 'i-' ~ (item.icon)) }}{{ item.label }}{{ count }}</button>
+    {%- endif %}
+  {%- endfor %}
+</{{ tag }}>
+{% endset %}
+{% if has_panels %}
+  <div{{ attributes.setAttribute('data-tabs', '') }}>{{ bar }}{{ panels_html }}</div>
+{% else %}
+  {{ bar }}
+{% endif %}

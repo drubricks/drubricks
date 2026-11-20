@@ -1,0 +1,17 @@
+{% set pill = {Lead: 'gray', Proposal: 'blue', Won: 'green', Negotiation: 'orange', Lost: 'red'} %}
+{% set deals = [
+  ['Fernhill', 'Daniel Okafor', 'Won', '$36,900'],
+  ['Kestrel Freight', 'Maya Lindqvist', 'Negotiation', '$48,000'],
+  ['Pinecrest Logistics', 'Alex Morgan', 'Proposal', '$142,000'],
+  ['Skylark Air', 'Alex Morgan', 'Lost', '$8,750'],
+  ['Summit Outfitters', 'Priya Raman', 'Lead', '$12,400'],
+] %}
+{% set rows = [] %}
+{% for d in deals %}
+  {% set rows = rows|merge([{selected: loop.index == 3, cells: [d[0], d[1], include('drubricks:pill', {label: d[2], color: pill[d[2]]}, with_context = false), d[3]]}]) %}
+{% endfor %}
+{% include 'drubricks:data-table' with {
+  columns: [{label: 'Company', sort: 'ascending'}, {label: 'Owner', sort: 'none'}, {label: 'Stage'}, {label: 'Value', num: true, sort: 'none'}],
+  rows: rows, clickable: true, sortable: true, max_height: 'max-h-72', caption: 'Deals',
+} only %}
+{% include 'drubricks:pager' with {current: 1, total: 7, info: '1–20 of 132', url: '?page={page}', attributes: create_attribute({'class': ['mt-3']})} only %}

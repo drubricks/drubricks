@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Round checkbox
+status: stable
+group: Buttons & controls
+description: 'Kit round checkbox (.check, .check.on, .check.big) for tasks and to-dos. A button with aria-pressed; the bundled behaviour toggles it and fires "drubricks:check" with { checked }.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Accessible label, examples: ['Mark done'] }
+    'on': { type: boolean, title: Checked }
+    big: { type: boolean, title: Big }
+    value: { type: string, title: Value }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

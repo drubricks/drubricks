@@ -1,0 +1,26 @@
+name: 'Project management example'
+description: 'Projects, tasks and a task board (example app).'
+type: 'App'
+recipes:
+  - drubricks_base
+install:
+  - drubricks_examples_project_management
+config:
+  # A recipe installs only simple config from the modules: the config
+  # entities of config/install (admin views, bulk actions) are imported here.
+  import:
+    drubricks_examples_project_management: '*'
+  actions:
+    # Everyone signed in works with the app: sees all records, adds new ones,
+    # edits and deletes their own. Grant "edit any" / "delete any" to a
+    # manager role in your site recipe.
+    user.role.authenticated:
+      grantPermissions:
+        - 'view any pm_project'
+        - 'create pm_project'
+        - 'edit own pm_project'
+        - 'delete own pm_project'
+        - 'view any pm_task'
+        - 'create pm_task'
+        - 'edit own pm_task'
+        - 'delete own pm_task'

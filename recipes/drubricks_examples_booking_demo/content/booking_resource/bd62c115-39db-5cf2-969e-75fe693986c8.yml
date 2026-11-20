@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: bd62c115-39db-5cf2-969e-75fe693986c8
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'IT support'
+  color:
+    -
+      value: blue
+  kind:
+    -
+      value: specialist
+  location:
+    -
+      value: 'IT corner · Floor 1'
+  capacity:
+    -
+      value: 1
+  opens:
+    -
+      value: 9
+  closes:
+    -
+      value: 17
+  rules:
+    -
+      value: 'Bring the device and its charger.'

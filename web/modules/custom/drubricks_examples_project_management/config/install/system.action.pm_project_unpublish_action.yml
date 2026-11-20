@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+id: pm_project_unpublish_action
+label: 'Deactivate projects'
+type: pm_project
+plugin: 'entity:unpublish_action:pm_project'
+configuration: {}

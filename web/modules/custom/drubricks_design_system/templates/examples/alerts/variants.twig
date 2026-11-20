@@ -1,0 +1,17 @@
+<div class="grid max-w-2xl gap-2.5">
+  {% include 'drubricks:alert' with {type: 'info', title: 'Scheduled maintenance', message: 'The portal will be read-only on Saturday from 22:00 to 23:00.'} only %}
+  {% include 'drubricks:alert' with {type: 'success', message: 'Your bid was submitted. A confirmation is on its way to your inbox.'} only %}
+  {% embed 'drubricks:alert' with {type: 'warning', title: 'Two documents are missing', message: 'Upload them before the deadline on Friday.'} only %}
+    {% block actions %}
+      {% include 'drubricks:button' with {label: 'Later', size: 'small'} only %}
+      {% include 'drubricks:button' with {label: 'Upload', size: 'small', variant: 'primary'} only %}
+    {% endblock %}
+  {% endembed %}
+  {% include 'drubricks:alert' with {type: 'danger', role: 'alert', title: 'Payment failed', message: 'The card ending in 4242 was declined.', dismissible: true} only %}
+  {% include 'drubricks:alert' with {type: 'neutral', message: 'Draft saved 2 minutes ago.'} only %}
+  {% include 'drubricks:alert' with {message: 'No type — the accent colour of the current palette.'} only %}
+  {% embed 'drubricks:alert' with {color: 'purple', icon: 'star'} only %}
+    {% block content %}Custom colour from <b>--c</b>.{% endblock %}
+    {% block actions %}{% include 'drubricks:button' with {label: 'Details', size: 'small'} only %}{% endblock %}
+  {% endembed %}
+</div>

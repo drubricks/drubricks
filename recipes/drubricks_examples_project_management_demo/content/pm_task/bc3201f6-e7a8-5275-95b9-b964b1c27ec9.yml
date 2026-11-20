@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: bc3201f6-e7a8-5275-95b9-b964b1c27ec9
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    4413d38a-c4f6-54c5-b879-155d0fb9cfe6: pm_project
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Brand guidelines draft'
+  project:
+    -
+      entity: 4413d38a-c4f6-54c5-b879-155d0fb9cfe6
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: medium
+  assignee:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  due_date:
+    -
+      value: '2026-11-25'
+  weight:
+    -
+      value: 7

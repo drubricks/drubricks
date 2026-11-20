@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: 90d43c02-b083-50da-8cd0-4c7193ab35fb
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    b31b51e7-42f6-54ea-a25c-1155d40e9ec3: crm_company
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Grace Liu'
+  job_title:
+    -
+      value: 'Marketing Director'
+  company:
+    -
+      entity: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  stage:
+    -
+      value: lead
+  email:
+    -
+      value: grace.liu@harborco.example
+  phone:
+    -
+      value: '+1 503 555 0134'
+  last_contacted:
+    -
+      value: '2026-11-02'

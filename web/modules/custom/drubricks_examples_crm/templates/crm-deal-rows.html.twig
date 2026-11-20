@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme hook crm_deal_rows: deals as panel rows — name, sub line (company,
+ * close date), value and stage.
+ * Variables: deals[{title, subtitle, value, stage{label, color}, link}], empty.
+ */
+#}
+{% if deals %}
+  {% embed 'drubricks:panel' with {deals: deals, attributes: create_attribute({'class': ['[&>.p-row:first-child]:border-t-0']})} only %}
+    {% block content %}
+      {% for deal in deals %}
+        {% embed 'drubricks:p-row' with {title: deal.title, subtitle: deal.subtitle, deal: deal}|merge(deal.link) only %}
+          {% block leading %}<span class="feed-ic solid" style="--c: {{ color(deal.stage.color) }}">{{ icon('kit', 'i-dollar') }}</span>{% endblock %}
+          {% block trailing %}
+            <span class="flex flex-col items-end gap-0.5">
+              <span class="font-semibold tabular-nums">{{ deal.value }}</span>
+              {{ include('drubricks:pill', {label: deal.stage.label, color: deal.stage.color}, with_context = false) }}
+            </span>
+          {% endblock %}
+        {% endembed %}
+      {% endfor %}
+    {% endblock %}
+  {% endembed %}
+{% else %}
+  {{ include('drubricks:empty-line', {text: empty}, with_context = false) }}
+{% endif %}

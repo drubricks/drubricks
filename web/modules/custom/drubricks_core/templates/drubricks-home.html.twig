@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * App home: greeting, the blocks of the theme's dashboard regions (stat
+ * tiles, then panels), and tiles of the sidebar items grouped by section.
+ *
+ * Variables: name, date, stats (blocks of the "dashboard_stats" region),
+ * panels (blocks of the "dashboard" region, each a panel: see
+ * block--dashboard.html.twig), sections.
+ */
+#}
+  <main class="content" id="drubricks-detail" tabindex="-1">
+    <header class="pane-header">
+      <button class="icon-btn show-sidebar-btn" type="button" data-action="toggle-sidebar" title="{{ 'Show Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>
+      <div class="title"><h1>{{ title }}</h1></div>
+    </header>
+    <div class="pane-body">
+      <div class="dash drubricks-dashboard">
+        {{ include('drubricks:greeting', {title: 'Hello, @name'|t({'@name': name}), text: date|default('')}, with_context = false) }}
+
+        {% if stats %}
+          {# Up to five tiles in a row; a lone tile keeps a tile's width. #}
+          {% set columns = ['[grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))]', 'has-[>:only-child]:[grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))]'] %}
+          {% embed 'drubricks:stats' with {stats: stats, attributes: create_attribute({'class': columns})} only %}
+            {% block content %}{{ stats }}{% endblock %}
+          {% endembed %}
+        {% endif %}
+
+        {% if panels %}
+          {# The grid is a size container: "wide" spans two columns only when two fit. #}
+          {% embed 'drubricks:panels' with {panels: panels, attributes: create_attribute({'class': ['@container', stats ? '' : 'mt-5']|filter(c => c)})} only %}
+            {% block content %}{{ panels }}{% endblock %}
+          {% endembed %}
+        {% endif %}
+
+        {% if not stats and not panels %}
+          {# No dashboard block: no app installed yet (or none the user may see). #}
+          {% set empty_text = 'Nothing on your dashboard yet. Apps place their dashboard blocks here: install an app recipe (e.g. drubricks_examples_crm) or build your own app.'|t %}
+          {{ include('drubricks:empty-state', {icon: 'layout-dashboard', compact: true, text: empty_text, attributes: create_attribute({'class': ['mt-6', 'rounded-xl', 'bg-raised', 'shadow-[inset_0_0_0_.5px_var(--sep)]']})}, with_context = false) }}
+        {% endif %}
+
+        {% for section in sections %}
+          <div class="group-title{{ loop.first ? ' !mt-8' }}">{{ section.title }}</div>
+          <div class="grid gap-3 mb-6 [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))]">
+            {% for item in section.items %}
+              <a class="tile-link group p-4 flex items-center gap-3" href="{{ item.url }}"{{ create_attribute(item.attributes) }}>
+                {% set ref = (item.icon ?: 'link')|split(':', 2) %}{{ icon(ref|length > 1 ? ref|first : 'kit', ref|length > 1 ? ref|last : 'i-' ~ ref|last, {class: item.color ?: ''}) }}
+                <span class="grow font-medium">{{ item.title }}</span>
+                {% if item.count is not null %}<span class="badge">{{ item.count }}</span>{% endif %}
+              </a>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>

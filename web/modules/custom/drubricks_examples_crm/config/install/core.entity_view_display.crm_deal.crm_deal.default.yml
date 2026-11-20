@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_examples_crm
+    - options
+    - user
+id: crm_deal.crm_deal.default
+targetEntityType: crm_deal
+bundle: crm_deal
+mode: default
+content:
+  close_date:
+    type: datetime_custom
+    label: inline
+    settings:
+      timezone_override: ''
+      date_format: 'j M Y'
+    third_party_settings: {}
+    weight: 4
+    region: content
+  company:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {}
+    weight: 0
+    region: content
+  contact:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {}
+    weight: 1
+    region: content
+  stage:
+    type: list_default
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 3
+    region: content
+  uid:
+    type: author
+    label: inline
+    settings: {}
+    third_party_settings: {}
+    weight: 90
+    region: content
+  value:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ' '
+      decimal_separator: .
+      scale: 0
+      prefix_suffix: true
+    third_party_settings: {}
+    weight: 2
+    region: content
+hidden:
+  changed: true
+  color: true
+  created: true
+  name: true

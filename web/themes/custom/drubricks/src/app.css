@@ -1,0 +1,20 @@
+/* Drubricks theme CSS. Build: npm run build  →  css/app.css (committed).
+   Tailwind v4 scans the theme and every custom module, so utilities used in
+   any Drubricks template, component or PHP render array end up in the CSS.
+   A client sub-theme builds its own CSS the same way (see docs/theming.md). */
+@import "tailwindcss" source(none);
+@import "../kit/tailwind-theme.css";
+@import "../kit/ui.css";
+
+@source "../templates";
+@source "../components";
+@source "../js";
+@source "../../../../modules/custom";
+@source "../../../../profiles/custom";
+
+/* Drupal markup → kit look (things a template can't add classes to). */
+@import "./drupal.css";
+/* Drupal forms → kit controls and layout. */
+@import "./forms.css";
+/* Views in the app: filter bar, bulk form, table, dropbutton. */
+@import "./views.css";

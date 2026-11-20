@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * A deal: header (stage pill, company), value, stage progress, details,
+ * company and contact cards and a timeline. compact: the side panel.
+ */
+#}
+{% set sub %}
+  {%- if stage %}{{ include('drubricks:pill', {label: stage.label, color: stage.color}, with_context = false) }}{% endif %}
+  {%- if company %}{% if stage %}<span aria-hidden="true">·</span>{% endif %}{% if company.link %}<a class="link" href="{{ company.link.url }}"{{ company.link.attributes }}>{{ company.title }}</a>{% else %}<span>{{ company.title }}</span>{% endif %}{% endif %}
+{% endset %}
+{% set body %}
+  {% if value %}
+  <div class="flex items-baseline gap-2 mb-3">
+    <span class="{{ compact ? 'text-[22px]' : 'text-[28px]' }} font-bold tabular-nums tracking-tight">{{ value }}</span>
+    <span class="dim text-sm">{{ 'deal value'|t }}</span>
+  </div>
+  {% endif %}
+  {% if stages %}
+  <ol class="flex gap-[3px] mb-2" aria-label="{{ 'Stage'|t }}">
+    {% for step in stages %}
+      <li class="flex-1 min-w-0 grid place-items-center px-0.5 {{ compact ? 'h-[26px] text-[10.5px]' : 'h-[30px] text-xs' }} font-semibold truncate first:rounded-l-lg last:rounded-r-lg
+        {{- step.state == 'current' ? ' bg-[var(--c)] text-on-accent' : (step.state == 'past' ? ' bg-[color-mix(in_srgb,var(--c)_18%,var(--bg-raised))] text-[color-mix(in_srgb,var(--c)_55%,var(--label))]' : ' bg-raised text-ink-2 shadow-[inset_0_0_0_.5px_var(--sep)]') }}"
+        style="--c: {{ color(step.color) }}"{% if step.state == 'current' %} aria-current="step"{% endif %} title="{{ step.label }}">
+        <span class="truncate max-w-full">{{ step.label }}</span>{% if step.state == 'past' %}<span class="vh"> {{ '(passed)'|t }}</span>{% elseif step.state == 'current' %}<span class="vh"> {{ '(current)'|t }}</span>{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {title: 'Details'|t, facts: facts} only %}
+  {{ fields }}
+
+  {% if company or contact %}
+    {{ include('drubricks:group-title', {title: 'Company & contact'|t}, with_context = false) }}
+    {% embed 'drubricks:minis' with {company: company, contact: contact} only %}
+      {% block content %}
+        {%- if company %}{{ include('drubricks:mini', {title: company.title, subtitle: company.subtitle, tile_color: company.color}|merge(company.link), with_context = false) }}{% endif %}
+        {%- if contact %}{{ include('drubricks:mini', {title: contact.name, subtitle: contact.subtitle|default('Contact'|t), icon: 'person'}|merge(contact.link), with_context = false) }}{% endif %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
+
+  {% if feed %}
+    {{ include('drubricks:group-title', {title: 'Timeline'|t}, with_context = false) }}
+    {% embed 'drubricks:feed' with {feed: feed} only %}
+      {% block content %}{% for event in feed %}
+        {% embed 'drubricks:feed-item' with {icon: event.icon, color: event.color, solid: true, meta: event.meta, event: event} only %}
+          {% block text_markup %}{{ event.text }}{% endblock %}
+        {% endembed %}
+      {% endfor %}{% endblock %}
+    {% endembed %}
+  {% endif %}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  <div class="d-sub mb-3">{{ sub }}</div>
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, no_avatar: true, sub: sub, body: body} only %}
+    {% block subtitle_markup %}{{ sub }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

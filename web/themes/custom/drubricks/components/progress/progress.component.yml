@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Progress bar
+status: stable
+group: Avatars, tags & badges
+description: 'Kit progress bar (.progress > i), colour from a token, optional label next to it (e.g. "13 / 20").'
+props:
+  type: object
+  required: [value]
+  properties:
+    value: { type: number, title: Percent (0–100), minimum: 0, maximum: 100 }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    label: { type: string, title: Label next to the bar }
+    aria_label: { type: string, title: Accessible name }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

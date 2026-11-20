@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Atlas Robotics'
+  color:
+    -
+      value: indigo
+  industry:
+    -
+      value: Manufacturing
+  city:
+    -
+      value: Munich
+  size:
+    -
+      value: 900
+  website:
+    -
+      uri: 'https://atlas-robotics.example'
+      title: null
+      options: {}

@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 655e7dc7-603d-550e-93dc-d64ad95a492e
+  depends:
+    dc0cb19f-65ec-54fa-866f-ffd690b2ccf0: user
+    03a18068-cfdf-5d4a-b391-f0acbe2ae444: booking_resource
+default:
+  uid:
+    -
+      entity: dc0cb19f-65ec-54fa-866f-ffd690b2ccf0
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Product sync'
+  resource:
+    -
+      entity: 03a18068-cfdf-5d4a-b391-f0acbe2ae444
+  starts:
+    -
+      value: '2026-11-17T13:00:00'
+  ends:
+    -
+      value: '2026-11-17T14:00:00'
+  state:
+    -
+      value: confirmed

@@ -1,0 +1,11 @@
+# Docs-only styles and behaviour of the design system page (the components
+# themselves come from the theme: kit CSS + SDC component libraries).
+page:
+  css:
+    component:
+      css/design-system.css: {}
+  js:
+    js/design-system.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

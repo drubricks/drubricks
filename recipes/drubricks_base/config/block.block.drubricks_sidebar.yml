@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+  theme:
+    - drubricks
+id: drubricks_sidebar
+theme: drubricks
+region: sidebar
+weight: 0
+provider: null
+plugin: drubricks_sidebar
+settings:
+  id: drubricks_sidebar
+  label: 'Sidebar'
+  label_display: '0'
+  provider: drubricks_core
+visibility: {  }

@@ -1,0 +1,15 @@
+name: Drubricks Core
+type: module
+description: 'Shared patterns for Drubricks applications: entity base classes, access, list + details screens, HTMX helpers, app navigation and the JS bridge to the UI kit.'
+package: Drubricks
+configure: drubricks_core.settings
+core_version_requirement: ^12
+dependencies:
+  - drupal:block
+  - drupal:user
+  - drupal:views
+  - drupal:inline_form_errors
+# Interface translations shipped with the code (translations/<project>.<langcode>.po),
+# imported by core's locale module when a language is added or updated.
+interface translation project: drubricks_core
+interface translation server pattern: 'modules/custom/%project/translations/%project.%language.po'

@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Header of every app view (list, board, calendar, table) — one layout:
+ *
+ * 1. .pane-header: the title with its subtitle (the record count, or the
+ *    calendar's date range) on the left; the view switch and the "add" button
+ *    on the right, all controls in one height.
+ * 2. drubricks:pane-toolbar (only when the view has some): search and filters
+ *    at the start, the view's own controls (date navigation, calendar mode) at
+ *    the end.
+ *
+ * Used with {% embed %} by the view templates; blocks: subtitle, filters,
+ * controls. Variables: title, subtitle, views (view switch), add{url,title,attributes}.
+ */
+#}
+{% set filters_html %}{% block filters %}{% endblock %}{% endset %}
+{% set controls_html %}{% block controls %}{% endblock %}{% endset %}
+<header class="pane-header">
+  <button class="icon-btn show-sidebar-btn" type="button" data-action="toggle-sidebar" title="{{ 'Show Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>
+  <div class="title"><h1>{{ title }}</h1>{% block subtitle %}<p>{{ subtitle }}</p>{% endblock %}</div>
+  <div class="spacer"></div>
+  {% if views %}{% include '@drubricks_core/drubricks-view-switch.html.twig' with {views: views} only %}{% endif %}
+  {% if add %}
+    <div class="tb-group">
+      <a class="tb-btn" href="{{ add.url }}" data-tip="{{ add.title }}" title="{{ add.title }}"{{ create_attribute(add.attributes) }}>{{ icon('kit', 'i-plus') }}</a>
+    </div>
+  {% endif %}
+</header>
+{% if filters_html|trim is not empty or controls_html|trim is not empty %}
+  {{ include('drubricks:pane-toolbar', {start: filters_html, end: controls_html}, with_context = false) }}
+{% endif %}

@@ -1,0 +1,17 @@
+{% embed 'drubricks:detail-header' with {title: 'Maya Lindqvist', editable: true, avatar_color: 'teal'} only %}
+  {% block subtitle_markup %}Head of Operations · <a class="link">Kestrel Freight</a> {% include 'drubricks:pill' with {label: 'Customer', color: 'green'} only %}{% endblock %}
+  {% block actions %}
+    {% include 'drubricks:button' with {label: 'Email', icon: 'envelope'} only %}
+    {% include 'drubricks:button' with {label: 'Call', icon: 'phone'} only %}
+    {% include 'drubricks:button' with {label: 'Task', icon: 'plus'} only %}
+  {% endblock %}
+  {% block content %}
+    {% include 'drubricks:group-title' with {title: 'Deals'} only %}
+    {% embed 'drubricks:minis' only %}{% block content %}
+      {% include 'drubricks:mini' with {title: 'Fleet tracking rollout', subtitle: '$48,000 · Negotiation', icon: 'dollar'} only %}
+      {% include 'drubricks:mini' with {title: 'Kestrel Freight', subtitle: 'Logistics · Seattle', tile_color: 'indigo'} only %}
+    {% endblock %}{% endembed %}
+    {% include 'drubricks:group-title' with {title: 'Activity'} only %}
+    {% include 'drubricks:composer' with {placeholder: 'Log a call, email or note…', button: 'Log'} only %}
+  {% endblock %}
+{% endembed %}

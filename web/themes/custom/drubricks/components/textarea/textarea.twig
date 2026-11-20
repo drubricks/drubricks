@@ -1,0 +1,19 @@
+{# Kit textarea: textarea.field. #}
+{% set field_id = id ?: (label ? 'textarea'|clean_unique_id) %}
+{% set ta_attributes = attributes.addClass('field').setAttribute('rows', rows|default(3)) %}
+{% if field_id %}{% set ta_attributes = ta_attributes.setAttribute('id', field_id) %}{% endif %}
+{% if name %}{% set ta_attributes = ta_attributes.setAttribute('name', name) %}{% endif %}
+{% if placeholder %}{% set ta_attributes = ta_attributes.setAttribute('placeholder', placeholder) %}{% endif %}
+{% if aria_label %}{% set ta_attributes = ta_attributes.setAttribute('aria-label', aria_label) %}{% endif %}
+{% if invalid or error %}{% set ta_attributes = ta_attributes.setAttribute('aria-invalid', 'true') %}{% endif %}
+{% set control %}<textarea{{ ta_attributes }}{{ required ? ' required' }}{{ disabled ? ' disabled' }}>{{ value }}</textarea>{% endset %}
+{% if label or hint or error %}
+  <label for="{{ field_id }}">
+    {%- if label %}<span{{ required ? ' class="form-required"' }}>{{ label }}</span>{% endif %}
+    {{ control }}
+    {%- if error %}<span class="field-error">{{ error }}</span>{% endif %}
+    {%- if hint %}<span class="field-hint">{{ hint }}</span>{% endif -%}
+  </label>
+{% else %}
+  {{ control }}
+{% endif %}

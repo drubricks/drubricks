@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: dd7c322a-b246-53da-88d1-5846f3e5f810
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Jonas Lindgren'
+  mail:
+    -
+      value: jonas.lindgren@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

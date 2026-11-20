@@ -1,0 +1,261 @@
+# Sections of the design system page, in their groups and order. Each example is templates/examples/<file>.twig: it is
+# rendered (unless render: false) and its source is shown (unless source: false).
+#
+#   title, group, icon (sidebar of the page), keywords (filter), lead / notes
+#   (HTML), components (SDC names documented here), examples[]:
+#     title (HTML), file, block (preview is a block, not a flex row),
+#     wrap (classes of a presentational wrapper, not part of the snippet),
+#     preview (extra classes of the preview, e.g. !p-0), lang (twig | php),
+#     render, source.
+start:
+  title: 'Getting started'
+  group: 'Foundations'
+  icon: sparkles
+  keywords: 'setup include embed render array sdc component props slots'
+  lead: 'Every component of the UI kit (<code>kit/ui.css</code>, <code>kit/ui.js</code>) is a Single Directory Component of the drubricks theme: <code>components/&lt;name&gt;/</code> with <code>&lt;name&gt;.component.yml</code> (props and slots), <code>&lt;name&gt;.twig</code> and, for components with behaviour, <code>&lt;name&gt;.js</code>. Props mirror the kit modifiers; text props are escaped, slots take markup. Use them from any template or render array. How to add one: <code>docs/components.md</code>.'
+  examples:
+    - { title: 'In a Twig template — include for props, embed for slots', file: start/include }
+    - { title: 'In PHP — a render array of #type component', file: start/render-array, lang: php, render: false }
+shell:
+  title: 'App shell'
+  group: 'Layout'
+  icon: sidebar
+  keywords: 'layout grid panes column content inspector screen'
+  lead: 'One grid with four areas: <code>.sidebar</code> (drubricks_core renders it from the "drubricks" menu), the optional <code>.column</code>, <code>.content</code> and the optional <code>.inspector</code>. Routes with <code>_drubricks_screen: TRUE</code> render their own panes as direct children of <code>.app</code>; every other page gets one details pane.'
+  components: [pane]
+  examples:
+    - { title: 'The four areas', file: shell/mock, block: true, source: false }
+    - { title: 'An app screen template with drubricks:pane', file: shell/screen, render: false }
+sidebar:
+  title: 'Sidebar'
+  group: 'Layout'
+  icon: list
+  keywords: 'navigation items sections account brand tints'
+  lead: 'Sections with collapsible headings, items with an icon, a label and a count. The app sidebar is built by drubricks_core from the <code>drubricks</code> menu (links in <code>MODULE.links.menu.yml</code>, editable in Menu UI); these components are for other navigation lists.'
+  components: [sidebar-section, sidebar-item, sidebar-account, brand]
+  examples:
+    - { title: 'Navigation', file: sidebar/navigation, wrap: 'mock w-64 bg-sidebar p-2.5' }
+    - { title: 'Icon tints &amp; drop target — <code>icon_color</code>, <code>drop_target</code>', file: sidebar/tints, wrap: 'mock grid w-full max-w-xl grid-cols-2 gap-0.5 bg-sidebar p-2.5' }
+    - { title: 'Account button (sidebar footer) — opens the account menu', file: sidebar/account, wrap: 'mock w-64 bg-sidebar' }
+    - { title: 'App brand (sidebar header)', file: sidebar/brand, wrap: 'mock w-64 bg-sidebar' }
+toolbar:
+  title: 'Toolbar'
+  group: 'Layout'
+  icon: ellipsis
+  keywords: 'header pane-header pane-toolbar title count view switch filters buttons groups search tb-btn'
+  lead: 'Pane headers hold a title, capsule groups of toolbar buttons, a spacer and a search field (clear and Esc are handled by the kit). Toggled buttons get <code>on</code>. Every app view (list, board, calendar, table) has the same header: the title with the record count (or the calendar''s date range), the view switch and <code>+</code> on the right in one height, and a <code>drubricks:pane-toolbar</code> row below it with the search or filters at the start and the view''s own controls at the end.'
+  components: [toolbar, pane-toolbar, tb-group, tb-btn, search]
+  examples:
+    - { title: 'View header — title + count, view switch, <code>+</code>; toolbar row with filters and view controls', file: toolbar/view-header, block: true, preview: '!p-0' }
+    - { title: 'Header', file: toolbar/header, block: true, preview: '!p-0' }
+    - { title: 'Search with a scope token — <code>token</code>', file: toolbar/search-token }
+buttons:
+  title: 'Buttons & controls'
+  group: 'Components'
+  icon: checkmark-circle
+  keywords: 'button icon segmented switch chips kbd check'
+  lead: 'Push buttons, icon buttons, segmented controls, switches and filter chips. Every component takes <code>attributes</code> for Tailwind utilities, e.g. <code>create_attribute({''class'': [''rounded-full'']})</code>.'
+  components: [button, icon-button, kbd, seg, switch, chip, avatar-toggles, check]
+  examples:
+    - { title: 'Push buttons — <code>variant</code>, <code>size</code>, <code>icon</code>, <code>url</code>', file: buttons/push }
+    - { title: 'Small button — <code>size: ''small''</code> (24px; dense rows, alerts, table cells)', file: buttons/small }
+    - { title: 'Small icon button — <code>size: ''small''</code>; grows in narrow mode and on touch screens', file: buttons/icon-small }
+    - { title: 'Key cap — <code>drubricks:kbd</code>', file: buttons/kbd }
+    - { title: 'Icon buttons, segmented control, switch', file: buttons/controls }
+    - { title: 'Chips &amp; avatar toggles (board filter bar)', file: buttons/chips }
+    - { title: 'Round checkbox — <code>drubricks:check</code> (fires <code>drubricks:check</code>)', file: buttons/check }
+forms:
+  title: 'Forms'
+  group: 'Components'
+  icon: pencil
+  keywords: 'fields input select textarea date password strength checkbox radio validation'
+  lead: 'Kit controls as components for hand-written forms. With a <code>label</code>, <code>hint</code> or <code>error</code> a control renders a whole form item. Drupal Form API forms need none of this — see Drupal forms.'
+  components: [form-layout, form-row, form-item, field, select, textarea, checkbox, radio, fieldset, password]
+  examples:
+    - { title: 'Stacked form', file: forms/stacked, block: true }
+    - { title: 'Validation, password field, strength meter, checkbox, full-width &amp; loading buttons', file: forms/validation, block: true }
+    - { title: 'Radio — same <code>name</code> = one group, in a <code>drubricks:fieldset</code>', file: forms/radio, block: true }
+    - { title: 'Inline-edit field — <code>plain: true</code> looks like text until hovered / focused', file: forms/plain, block: true }
+drupal-forms:
+  title: 'Drupal forms'
+  group: 'Components'
+  icon: doc
+  keywords: 'form api element textfield select checkbox radios details fieldset submit inline errors password confirm'
+  lead: 'Every Drupal form rendered by the drubricks theme looks like the kit: <code>templates/form/*.html.twig</code> add the kit classes and <code>src/forms.css</code> lays them out. <code>#button_type</code> primary / danger give <code>.btn.primary</code> / <code>.btn.destructive</code>; a checkbox with the class <code>switch</code> is a switch; <code>details</code> is a kit group; errors of inline_form_errors appear under their field.'
+  form: true
+  examples:
+    - { title: 'The form array below (excerpt)', file: forms/drupal-form, lang: php, render: false }
+lists:
+  title: 'List rows'
+  group: 'Components'
+  icon: tray
+  keywords: 'list rows column selection empty state'
+  lead: 'Rows go in the <code>.column</code> pane. The kit handles selection (click, ↑ ↓) and fires <code>ui:select</code> with the row''s <code>data-id</code> (<code>row_id</code>). Inside a focused column the selected row turns accent-coloured.'
+  components: [row, list-section, empty-state]
+  examples:
+    - { title: 'Rows with sections', file: lists/rows, block: true, wrap: 'column focused mock w-[340px] !border-r-0 p-2' }
+    - { title: 'Empty state', file: lists/empty, block: true, wrap: 'mock h-32' }
+groups:
+  title: 'Grouped lists'
+  group: 'Components'
+  icon: gear
+  keywords: 'settings group rows title'
+  lead: 'Settings-style rounded groups: <code>drubricks:group</code> with <code>drubricks:group-row</code> children and a title above.'
+  components: [group, group-row, group-title]
+  examples:
+    - { title: 'Settings group', file: groups/settings, block: true, wrap: 'max-w-lg' }
+data:
+  title: 'Avatars, tags & badges'
+  group: 'Components'
+  icon: person
+  keywords: 'avatars stack tags badges pills tiles priority points progress mark text helpers'
+  lead: 'Small data-display pieces. Colours are token names (<code>teal</code>, <code>red</code> …), rendered as <code>var(--teal)</code> — never hex values.'
+  components: [avatar, avatar-stack, badge, tag, priority, points, pill, tile, progress, empty-line]
+  examples:
+    - { title: 'Avatars — initials from <code>name</code>, sizes xs · sm · md · xl, <code>accent</code>', file: data/avatars }
+    - { title: 'Avatar stack — overlapping, “+N” for the rest (<code>max</code>)', file: data/avatar-stack }
+    - { title: 'Tags, priority, story points, highlight', file: data/tags }
+    - { title: 'Status pills &amp; letter tiles — colour from a token', file: data/pills }
+    - { title: 'Progress bar &amp; text helpers — <code>.dim</code>, <code>.link</code>, <code>.overdue</code>, empty line', file: data/progress, block: true }
+tabs:
+  title: 'Tabs'
+  group: 'Components'
+  icon: bookmark
+  keywords: 'tabs panels underline count sticky ui:tab'
+  lead: 'Underline tabs. The kit wires them up by itself — click and ← → Home End switch tabs, roles and <code>aria-selected</code> are added, the matching <code>drubricks:tab-panel</code> is shown and <code>ui:tab</code> fires on <code>document</code>. Tabs with <code>url</code> are links (Drupal local tasks).'
+  components: [tabs, tab-panel]
+  examples:
+    - { title: 'Tabs with panels', file: tabs/panels, block: true }
+    - { title: 'Without panels (a filter bar) and <code>sticky</code> — stays at the top of its scroll container', file: tabs/sticky, block: true, wrap: 'mock h-40 overflow-auto px-3' }
+table:
+  title: 'Data table & pager'
+  group: 'Components'
+  icon: chart
+  keywords: 'table pager pagination sort sortable columns rows compact num'
+  lead: 'A data table with a sticky header, hover rows, <code>num</code> columns, selected rows and <code>compact</code> rows. Columns with <code>sort</code> get a header button and <code>aria-sort</code>; <code>sortable: true</code> sorts in the browser. The pager links to <code>?page=</code> like a Drupal pager.'
+  components: [data-table, pager]
+  examples:
+    - { title: 'Sortable table with a pager', file: table/sortable, block: true }
+    - { title: 'Compact — <code>compact: true</code>; single clickable rows with <code>click</code>', file: table/compact, block: true }
+views-table:
+  title: 'Table view (Views)'
+  group: 'Patterns'
+  icon: grid
+  keywords: 'views table exposed filters bulk operations checkbox select all actions operations dropbutton split button pager'
+  lead: 'A core View in the app: exposed filters in a row (on an app page they sit in the view header''s toolbar row — core''s “exposed form in a block”), a bulk action bar (“2 selected · Action · Apply”, inactive until a row is ticked, select-all in the header), the kit data table with sortable columns and a split button per row — the first action visible, the others in the kit menu under the arrow. Nothing here is custom markup: build the View in the Views UI (table style, exposed filters, bulk form, entity operations, full pager), name it in <code>ScreenHandler::table()</code> and the drubricks theme gives it this look (<code>templates/views/</code>, <code>src/views.css</code>, <code>js/dropbutton.js</code>). Live example: CRM → Deals → Table.'
+  components: [data-table, pager, pill]
+  examples:
+    - { title: 'Filters, bulk actions, row actions, pager', file: table/views, block: true }
+alerts:
+  title: 'Alerts'
+  group: 'Components'
+  icon: alert
+  keywords: 'alert banner callout notice info success warning danger neutral dismiss'
+  lead: 'Inline banners: <code>type</code> info, success, warning, danger, neutral (none = accent colour; any token with <code>color</code>), a title, a message and actions. An alert that appears later should be announced: <code>role: ''alert''</code> for errors, <code>''status''</code> for the rest. For a short confirmation use the HUD.'
+  components: [alert]
+  examples:
+    - { title: 'Variants', file: alerts/variants, block: true }
+loading:
+  title: 'Skeleton & spinner'
+  group: 'Components'
+  icon: clock
+  keywords: 'skeleton spinner loading placeholder busy shimmer'
+  lead: 'A spinner for short waits, a skeleton for content that is on its way. Skeletons are decoration: mark the region <code>aria-busy</code> while they show. For a button use <code>loading: true</code>.'
+  components: [spinner, skeleton]
+  examples:
+    - { title: 'Spinner &amp; skeleton', file: loading/spinner }
+    - { title: 'Loading a panel — skeleton rows in a busy panel', file: loading/panel, block: true }
+comments:
+  title: 'Comments & feed'
+  group: 'Components'
+  icon: reply
+  keywords: 'comments thread mention bubbles feed activity timeline'
+  lead: 'A comment thread of <code>drubricks:comment</code> and an activity feed of <code>drubricks:feed-item</code>. Text props are escaped; use the <code>text_markup</code> slot for mentions.'
+  components: [thread, comment, feed, feed-item]
+  examples:
+    - { title: 'Comments — <code>highlight</code>, <code>.mention</code> and <code>.mention.me</code>', file: comments/thread, block: true }
+    - { title: 'Speech bubbles — <code>bubbles: true</code>', file: comments/bubbles, block: true }
+    - { title: 'Activity feed — icon colour from a token, <code>solid</code>, a link with <code>url</code>', file: comments/feed, block: true }
+calendar:
+  title: 'Month grid & date picker'
+  group: 'Components'
+  icon: calendar
+  keywords: 'calendar month grid date picker datepicker days'
+  lead: 'A server-rendered month grid with day states (today, selected, marks in a colour), and the kit''s keyboard date picker (<code>UI.datePicker</code>), which can write the picked day into a hidden form input.'
+  components: [month-grid, date-picker]
+  examples:
+    - { title: 'Month — click a day', file: calendar/month }
+    - { title: 'Date picker — one tab stop, ← → ↑ ↓ by a day / week, PgUp PgDn by a month, ↩ picks', file: calendar/picker }
+week-calendar:
+  title: 'Week calendar'
+  group: 'Components'
+  icon: clock
+  keywords: 'week calendar day resources agenda schedule booking events drag resize'
+  lead: 'The kit''s time grid (<code>UI.calendar</code>): week, day, resources or agenda; drag to create, move and resize, or use the keyboard. Every change fires a cancellable <code>drubricks:calendar</code> event — save it on the server, or call <code>preventDefault()</code> to snap it back.'
+  components: [calendar]
+  examples:
+    - { title: 'Live calendar — drag, or Tab into the grid', file: week-calendar/live, block: true }
+board:
+  title: 'Board'
+  group: 'Components'
+  icon: board
+  keywords: 'board kanban lanes cards drag drop'
+  lead: 'Kanban by <code>UI.board</code>: lanes with counts and WIP limits, collapsible lanes, drag &amp; drop and Alt + arrows, inline “+ Create”. Cards are built from item fields and escaped. Moves fire a cancellable <code>drubricks:board</code> event.'
+  components: [board]
+  examples:
+    - { title: 'Live board', file: board/live, block: true }
+dashboard:
+  title: 'Dashboard'
+  group: 'Patterns'
+  icon: grid
+  keywords: 'dashboard stats panels tiles kpi bar chart greeting'
+  lead: 'Greeting, stat tiles and panels for home screens. <code>stats</code> / <code>panels</code> are responsive grids; panels hold panel rows or bar-chart rows.'
+  components: [greeting, stats, stat, panels, panel, p-row, bar-row]
+  examples:
+    - { title: 'Home screen', file: dashboard/home, block: true }
+detail:
+  title: 'Detail view'
+  group: 'Patterns'
+  icon: doc
+  keywords: 'detail record header title actions linked minis composer inspector'
+  lead: 'The record page used in the content pane and in the inspector: a header with an avatar or tile, an editable title, a sub line and actions; then groups, linked records as mini cards and a composer.'
+  components: [detail-header, minis, mini, composer]
+  examples:
+    - { title: 'Record header, linked records, composer', file: detail/record, block: true }
+    - { title: 'Inspector header label &amp; empty state', file: detail/inspector, block: true, wrap: 'mock h-56 w-80 bg-inspector' }
+menus:
+  title: 'Menus & popovers'
+  group: 'Overlays'
+  icon: chevron-down
+  keywords: 'menus dropdown context menu popover'
+  lead: 'Dropdowns, right-click menus and popovers. Items are data (labels are escaped by the kit): <code>{ label, icon, shortcut, danger, value, url, hud }</code>, <code>{ header }</code> or <code>''-''</code>. Choosing one fires <code>drubricks:menu</code>; popover content is a slot rendered by Twig.'
+  components: [menu-button, context-menu, popover-button]
+  examples:
+    - { title: 'Dropdown, context menu, popover', file: menus/dropdown }
+popups:
+  title: 'Popups & HUD'
+  group: 'Overlays'
+  icon: bubble
+  keywords: 'popups modal dialog confirm hud toast form'
+  lead: 'A modal with a slot body and actions, a confirm, and the HUD. Focus moves into the popup and back; Esc and a click outside close it. Closing fires <code>drubricks:modal</code> with the chosen value. <code>close_button</code> adds an X to the header and <code>draggable</code> turns it into a title bar to drag the popup by (<code>UI.modal({ closeButton, draggable })</code>); a Drupal form in a popup (<code>form_url</code>) always has both.'
+  components: [modal-button, hud-button]
+  examples:
+    - { title: 'Modal, confirm, HUD', file: popups/modal }
+    - { title: 'A Drupal form in a popup — <code>form_url</code>', file: popups/form }
+tooltip:
+  title: 'Tooltip'
+  group: 'Overlays'
+  icon: help
+  keywords: 'tooltip tip hint hover'
+  lead: 'Buttons take <code>tip</code> (and <code>tip_kbd</code>, <code>tip_side</code>); anything else goes in <code>drubricks:tooltip</code>, which makes it focusable. The text is plain text. No JavaScript of your own.'
+  components: [tooltip]
+  examples:
+    - { title: 'Hover or Tab to these', file: tooltip/hover }
+inspector:
+  title: 'Inspector'
+  group: 'Overlays'
+  icon: sidebar-right
+  keywords: 'inspector right sidebar details panel'
+  lead: 'The optional right sidebar for record details — inline next to the content on wide windows, sliding over it otherwise. Clicking outside closes the slide-over, except on elements with <code>data-inspect</code>. This page has one — try it.'
+  examples:
+    - { title: 'Open it', file: inspector/open }

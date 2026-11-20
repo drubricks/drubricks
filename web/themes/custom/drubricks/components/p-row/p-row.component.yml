@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Panel row
+status: stable
+group: Dashboard
+description: 'Kit panel line (.p-row): something on the left (slot: check, tile, avatar), .grow with .t title and .s subtitle, something on the right (trailing slot or text). Clickable (.p-row.click) when url is set.'
+props:
+  type: object
+  required: [title]
+  properties:
+    title: { type: string, title: Title (.t) }
+    subtitle: { type: string, title: Subtitle (.s) }
+    trailing_text: { type: string, title: Text on the right }
+    url: { type: string, title: URL }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  leading:
+    title: Leading (check, tile, avatar)
+  trailing:
+    title: Trailing (pill, value)

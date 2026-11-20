@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 2f97d76a-d6df-5dde-8037-5fc1c532374d
+  depends:
+    f77f2b70-4721-5859-8d63-ef2b3a22148c: user
+    58f2b90d-ede8-55e8-b976-36f783a55ce9: booking_resource
+default:
+  uid:
+    -
+      entity: f77f2b70-4721-5859-8d63-ef2b3a22148c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Board meeting'
+  resource:
+    -
+      entity: 58f2b90d-ede8-55e8-b976-36f783a55ce9
+  starts:
+    -
+      value: '2026-11-12T09:00:00'
+  ends:
+    -
+      value: '2026-11-12T11:00:00'
+  state:
+    -
+      value: confirmed
+  notes:
+    -
+      value: 'Catering for 14 people.'

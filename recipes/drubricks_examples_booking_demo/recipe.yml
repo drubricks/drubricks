@@ -1,0 +1,12 @@
+name: 'Booking example: demo data'
+description: 'Resources and a fortnight of bookings from the UI kit booking demo. Dates move to the install week.'
+type: 'Demo'
+recipes:
+  - drubricks_examples_booking
+extra:
+  drubricks_core:
+    # The day the content was exported; dates are shifted by whole weeks.
+    demo_reference_date: '2026-11-13'
+    # Timezone of the site it was exported from; times keep their wall-clock value.
+    demo_timezone: Europe/Warsaw
+    demo_shift: weeks

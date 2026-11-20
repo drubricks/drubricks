@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Tooltip
+status: stable
+group: Tooltip
+description: 'Kit tooltip (data-tip, no JavaScript of your own) on any content: wraps the slot in a focusable span. On buttons use their tip prop instead (drubricks:button, icon-button, tb-btn).'
+props:
+  type: object
+  required: [text]
+  properties:
+    text: { type: string, title: Tooltip text (plain text) }
+    kbd: { type: string, title: Shortcut key cap (data-tip-kbd) }
+    side: { type: string, enum: [top, bottom], default: top }
+    focusable: { type: boolean, title: Reachable with Tab (tabindex=0), default: true }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Content

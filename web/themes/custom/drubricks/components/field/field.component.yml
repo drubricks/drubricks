@@ -1,0 +1,29 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Field
+status: stable
+group: Forms
+description: 'Kit text input (input.field): text, email, number, date, time, url, tel. With a label, hint or error it renders a whole form item. plain = inline-edit look (.field.plain).'
+props:
+  type: object
+  properties:
+    type:
+      type: string
+      title: Input type
+      enum: [text, email, number, date, time, datetime-local, url, tel, search, password]
+      default: text
+    value: { type: [string, number], title: Value }
+    placeholder: { type: string, title: Placeholder }
+    plain: { type: boolean, title: Inline-edit look (.field.plain) }
+    aria_label: { type: string, title: Accessible label (when there is no visible label) }
+    name: { type: string, title: Name }
+    id: { type: string, title: Id }
+    required: { type: boolean, title: Required }
+    disabled: { type: boolean, title: Disabled }
+    invalid: { type: boolean, title: Invalid (aria-invalid) }
+    label: { type: string, title: Label, description: Shown above the control (inside a .form it uses the kit label style). }
+    hint: { type: string, title: Hint (.field-hint) }
+    error: { type: string, title: Error message (.field-error), description: Also marks the control invalid. }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+id: crm_contact_publish_action
+label: 'Activate contacts'
+type: crm_contact
+plugin: 'entity:publish_action:crm_contact'
+configuration: {}

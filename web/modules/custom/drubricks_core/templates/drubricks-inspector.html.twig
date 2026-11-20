@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Inspector (kit .inspector, right sidebar). "open" asks the JS to show it.
+ * actions[{key,title,url,icon,danger,attributes,disabled,reason}]: toolbar of the record
+ * (used when a board opens a record here instead of leaving the board).
+ *
+ * Without content (no record selected, or a record without facts) only an
+ * empty placeholder keeps the swap target: no .inspector, so the kit gives the
+ * screen its full width and the toggle (⌥⌘I) has nothing to open.
+ */
+#}
+{% if not content %}
+<div id="drubricks-inspector" hidden></div>
+{% else %}
+<aside class="inspector" id="drubricks-inspector" aria-label="{{ 'Inspector'|t }}"{{ open ? ' data-drubricks-open' }}>
+  <div class="resizer"></div>
+  <header class="pane-header">
+    {% if actions %}
+      <div class="tb-group">
+        {% for key, action in actions %}
+          {% set ref = action.icon|split(':', 2) %}
+          {% if action.disabled %}
+            {# Not possible now (e.g. Delete while other records use this one): say why. #}
+            <button type="button" class="tb-btn" aria-disabled="true" data-tip="{{ action.reason }}" title="{{ action.title }}: {{ action.reason }}" aria-label="{{ action.title }}: {{ action.reason }}" data-action-key="{{ key }}">{{ icon(ref|length > 1 ? ref|first : 'kit', ref|length > 1 ? ref|last : 'i-' ~ ref|last) }}</button>
+          {% else %}
+            <a class="tb-btn{{ action.danger ? ' danger' }}" href="{{ action.url }}" data-tip="{{ action.title }}" title="{{ action.title }}" data-action-key="{{ key }}"{{ create_attribute(action.attributes) }}>{{ icon(ref|length > 1 ? ref|first : 'kit', ref|length > 1 ? ref|last : 'i-' ~ ref|last) }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <span class="font-bold">{{ 'Info'|t }}</span>
+    {% endif %}
+    <div class="spacer"></div>
+    <button class="icon-btn" type="button" data-action="toggle-inspector" title="{{ 'Hide Inspector'|t }}">{{ icon('kit', 'i-xmark') }}</button>
+  </header>
+  <div class="pane-body">
+    {% if title %}<h3 class="mt-1 mb-3 text-[17px] font-bold">{{ title }}</h3>{% endif %}
+    {{ content }}
+  </div>
+</aside>
+{% endif %}

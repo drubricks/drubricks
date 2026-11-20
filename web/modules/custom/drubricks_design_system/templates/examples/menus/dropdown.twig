@@ -1,0 +1,18 @@
+{% set items = [
+  {label: 'Rename', icon: 'pencil', shortcut: '↩', value: 'rename'},
+  {label: 'Duplicate', icon: 'doc', shortcut: '⌘D', value: 'duplicate'},
+  '-',
+  {header: 'Move to'},
+  {label: 'Archive', icon: 'archive', hud: 'Archived'},
+  '-',
+  {label: 'Delete', icon: 'trash', danger: true, hud: 'Deleted'},
+] %}
+{% include 'drubricks:menu-button' with {label: 'Open menu', items: items} only %}
+{% include 'drubricks:menu-button' with {icon: 'ellipsis', title: 'More actions', items: items, align: 'right'} only %}
+{% embed 'drubricks:popover-button' with {label: 'Show popover', width: 260} only %}
+  {% block content %}<h3>Popover</h3><p class="text-ink-2">Any markup: filters, a mini form, a profile card…</p>{% endblock %}
+{% endembed %}
+{% embed 'drubricks:context-menu' with {items: items, attributes: create_attribute({'class': ['grid', 'h-16', 'min-w-56', 'flex-1', 'place-items-center', 'rounded-lg', 'border', 'border-dashed', 'border-line-strong', 'text-ink-2']})} only %}
+  {% block content %}Right-click here{% endblock %}
+{% endembed %}
+<span class="demo-out" data-ds-out="menu">drubricks:menu — choose an item</span>

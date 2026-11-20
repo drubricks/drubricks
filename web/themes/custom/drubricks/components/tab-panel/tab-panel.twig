@@ -1,0 +1,2 @@
+{# Kit tab panel: [data-tab-panel="id"], hidden unless active. #}
+<div{{ attributes.setAttribute('data-tab-panel', id) }}{{ active ? '' : ' hidden' }}>{% block content %}{{ content }}{% endblock %}</div>

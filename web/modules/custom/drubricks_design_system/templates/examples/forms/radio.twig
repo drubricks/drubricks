@@ -1,0 +1,7 @@
+{% embed 'drubricks:fieldset' with {legend: 'Notify me', attributes: create_attribute({'class': ['max-w-md']})} only %}
+  {% block content %}
+    {% include 'drubricks:radio' with {label: 'About everything', name: 'notify', value: 'all', checked: true} only %}
+    {% include 'drubricks:radio' with {label: 'Only mentions', name: 'notify', value: 'mentions'} only %}
+    {% include 'drubricks:radio' with {label: 'Never (disabled)', name: 'notify', value: 'never', disabled: true} only %}
+  {% endblock %}
+{% endembed %}

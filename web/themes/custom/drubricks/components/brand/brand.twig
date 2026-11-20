@@ -1,0 +1,11 @@
+{# Kit brand: .brand > .brand-mark (or the site logo) + name. #}
+{% set tag = url ? 'a' : 'div' %}
+{% if url %}{% set attributes = attributes.setAttribute('href', url) %}{% endif %}
+<{{ tag }}{{ attributes.addClass('brand') }}>
+  {%- if logo -%}
+    <img class="brand-logo h-6 w-auto max-w-40 shrink-0" src="{{ logo }}" alt="{{ hide_name ? name : '' }}">
+  {%- else -%}
+    <span class="brand-mark"></span>
+  {%- endif -%}
+  {%- if not hide_name %}<span class="brand-name truncate">{{ name }}</span>{% endif -%}
+</{{ tag }}>

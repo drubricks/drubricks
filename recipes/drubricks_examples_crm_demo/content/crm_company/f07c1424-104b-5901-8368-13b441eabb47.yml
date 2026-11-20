@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: f07c1424-104b-5901-8368-13b441eabb47
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Lumen Studio'
+  color:
+    -
+      value: purple
+  industry:
+    -
+      value: 'Design agency'
+  city:
+    -
+      value: Lisbon
+  size:
+    -
+      value: 35
+  website:
+    -
+      uri: 'https://lumen.example'
+      title: null
+      options: {}

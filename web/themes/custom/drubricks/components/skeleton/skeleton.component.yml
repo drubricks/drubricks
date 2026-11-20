@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Skeleton
+status: stable
+group: Skeleton & spinner
+description: 'Kit skeleton (.skeleton) for content on its way: text lines (widths as utilities), an optional avatar circle, or list rows like .p-row. Decorative (aria-hidden): mark the region aria-busy.'
+props:
+  type: object
+  properties:
+    lines:
+      type: array
+      title: Line widths
+      items: { type: string }
+      default: [w-2/3, w-full, w-1/2]
+      description: 'One Tailwind width utility per line.'
+    avatar: { type: boolean, title: Avatar circle on the left }
+    rows: { type: integer, title: 'Panel rows (.p-row) instead of lines', minimum: 0 }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

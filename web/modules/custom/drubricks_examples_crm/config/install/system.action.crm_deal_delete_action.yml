@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+id: crm_deal_delete_action
+label: 'Delete deals'
+type: crm_deal
+plugin: 'entity:delete_action:crm_deal'
+configuration: {}

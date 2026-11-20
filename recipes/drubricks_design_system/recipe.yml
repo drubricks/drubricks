@@ -1,0 +1,13 @@
+name: 'Design system'
+description: 'Living style guide: every UI kit component of the drubricks theme with live examples and Twig snippets.'
+type: 'App'
+recipes:
+  - drubricks_base
+install:
+  - drubricks_design_system
+config:
+  actions:
+    # Every signed-in user may see the design system.
+    user.role.authenticated:
+      grantPermissions:
+        - 'access drubricks design system'

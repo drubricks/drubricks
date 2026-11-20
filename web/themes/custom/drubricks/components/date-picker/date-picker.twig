@@ -1,0 +1,6 @@
+{# Mount point for UI.datePicker (+ hidden input when name is set). #}
+{% set options = {date: date, month: month, min: min, max: max, range: range, marks: marks, weekStart: week_start ?? 1, label: label}|filter(v => v is not null) %}
+<div{{ attributes.addClass((panel is not defined or panel) ? ['panel', 'w-64'] : []).setAttribute('data-drubricks-date-picker', '').setAttribute('data-options', options|json_encode) }}>
+  {%- if name %}<input type="hidden" name="{{ name }}" value="{{ date }}">{% endif -%}
+  <div data-picker></div>
+</div>

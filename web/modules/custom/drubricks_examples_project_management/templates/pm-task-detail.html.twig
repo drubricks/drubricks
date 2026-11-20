@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * A task: header (key, status and priority tags, project), details
+ * (assignee, due date with overdue colour), description, project card.
+ * compact: the side panel (no header).
+ */
+#}
+{% set sub %}
+  <span class="font-mono text-xs dim">{{ key }}</span>
+  {%- if status %}{{ include('drubricks:tag', {label: status.label, color: status.color}, with_context = false) }}{% endif %}
+  {%- if priority %}{{ include('drubricks:tag', {label: '@priority priority'|t({'@priority': priority.label}), color: {high: 'red', medium: 'orange', low: 'gray'}[priority.level]}, with_context = false) }}{% endif %}
+  {%- if project %}<span aria-hidden="true">·</span>{% if project.link %}<a class="link" href="{{ project.link.url }}"{{ project.link.attributes }}>{{ project.title }}</a>{% else %}<span>{{ project.title }}</span>{% endif %}{% endif %}
+{% endset %}
+{% set body %}
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {title: 'Details'|t, first: compact, facts: facts} only %}
+  {{ fields }}
+
+  {% if description %}
+    {{ include('drubricks:group-title', {title: 'Description'|t}, with_context = false) }}
+    <div class="group px-3 py-2.5 whitespace-pre-line leading-relaxed">{{ description }}</div>
+  {% endif %}
+
+  {% if project %}
+    {{ include('drubricks:group-title', {title: 'Project'|t}, with_context = false) }}
+    {% embed 'drubricks:minis' with {project: project} only %}
+      {% block content %}{{ include('drubricks:mini', {title: project.title, subtitle: project.subtitle, tile_color: project.color}|merge(project.link), with_context = false) }}{% endblock %}
+    {% endembed %}
+  {% endif %}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  <div class="d-sub mb-3">{{ sub }}</div>
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, no_avatar: true, sub: sub, body: body} only %}
+    {% block subtitle_markup %}{{ sub }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

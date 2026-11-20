@@ -1,0 +1,84 @@
+/* Drupal forms → kit look. Every form gets .form (templates/form/form.html.twig);
+   the rules below also cover forms that opted out of the stacked layout.
+   Controls get kit classes in the templates (.field, .checkbox, .radio, .btn);
+   this file only does what a template can't: layout, labels, hints, errors,
+   details, password strength. Colours are kit tokens (light + dark). */
+@layer components {
+  /* Stacked layout: 12px between items, 5px inside an item (kit .form). */
+  form.drubricks-form.form { max-width: 640px; }
+  .drubricks-form :is(.form-wrapper:not(.form-item):not(.form-actions), .fieldset-wrapper, .details-wrapper) { display: grid; gap: 12px; min-width: 0; }
+  .drubricks-form .form-wrapper:empty { display: none; }
+  .form-item { display: grid; gap: 5px; min-width: 0; margin: 0; }
+  .form-item.form-type-password-confirm { gap: 12px; }
+  .form-options { display: grid; gap: 8px; }
+  .form .field, .drubricks-form .field { width: 100%; }
+  .form-item-affix { display: flex; align-items: center; gap: 8px; }
+  .form-item-affix .field { flex: 1; min-width: 0; }
+  .field-prefix, .field-suffix { font-size: 13px; color: var(--label-2); }
+
+  /* Labels (kit: 12px, medium, secondary text) and the required mark. */
+  .form-label, .form label.form-label { display: block; font-size: 12px; font-weight: 500; color: var(--label-2); }
+  .form-required::after { content: " *"; color: var(--red); }
+  label.option, .form label.option { display: inline; font-size: 13px; font-weight: 400; color: var(--label); cursor: pointer; }
+  .form-disabled label.option { color: var(--label-3); cursor: default; }
+
+  /* Checkbox / radio / switch: control, label next to it, hint and error under the label. */
+  .form-item:is(.form-type-checkbox, .form-type-radio) { grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; row-gap: 2px; align-items: center; }
+  .form-item:is(.form-type-checkbox, .form-type-radio) > :not(input):not(label.option) { grid-column: 2; }
+
+  /* Hints, inline errors. */
+  .form-item .description, .drubricks-form .description { font-size: 12px; font-weight: 400; color: var(--label-2); line-height: 1.45; }
+  .drubricks-form .description a, .form-item .description a { color: var(--accent); }
+  .form-item--error-message { font-size: 12px; font-weight: 500; color: var(--red); }
+  .form-item--error-message a { color: inherit; text-decoration: underline; }
+
+  /* Fieldset: a small legend over its items (kit radio group). */
+  .form-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .form-fieldset > .form-legend { padding: 0; margin-bottom: 6px; }
+  .form-fieldset > .form-legend .fieldset-legend { font-size: 12px; font-weight: 600; color: var(--label-2); }
+  .form-fieldset > .fieldset-wrapper { gap: 8px; }
+
+  /* Details: a kit .group with a summary row and a chevron. */
+  .form-details { overflow: hidden; }
+  .form-details-summary { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: var(--label); cursor: pointer; list-style: none; border-radius: var(--radius-lg); }
+  .form-details-summary::-webkit-details-marker { display: none; }
+  .form-details-summary:hover { background: var(--hover); }
+  .form-details-summary:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--accent-ring); }
+  .form-details-summary .summary { margin-left: auto; font-weight: 400; color: var(--label-2); }
+  .form-details-chevron { width: 14px; height: 14px; color: var(--label-3); transition: transform .15s; }
+  .form-details[open] > .form-details-summary { border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: .5px solid var(--sep); }
+  .form-details[open] > .form-details-summary .form-details-chevron { transform: rotate(90deg); }
+  .form-details > .details-wrapper { padding: 12px 14px 14px; }
+  .form-details .field { background-color: var(--bg-control); }
+
+  /* Date + time side by side. */
+  .form-datetime { display: flex; flex-wrap: wrap; gap: 8px; }
+  .form-datetime > .form-item { flex: 1 1 140px; }
+
+  /* Buttons at the end. */
+  .drubricks-form .form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+  .drubricks-form .form-actions .btn { min-width: 72px; }
+
+  /* Multi-value widgets (core table) without the admin theme. */
+  .drubricks-form .field-multiple-table { width: 100%; border-collapse: collapse; }
+  .drubricks-form .field-multiple-table th { text-align: left; font-size: 12px; font-weight: 500; color: var(--label-2); padding: 0 0 5px; }
+  .drubricks-form .field-multiple-table td { padding: 4px 0; }
+  .drubricks-form .field-add-more-submit { justify-self: start; }
+}
+
+/* Password confirm + strength (core user.js markup). Outside the layers on purpose:
+   core's user.module.css is unlayered and may load after this file, so the
+   selectors are one class more specific than core's. */
+.password-strength { display: grid; gap: 5px; margin-top: 2px; }
+.password-strength .password-strength__meter { height: 4px; margin-top: 0; border-radius: 2px; background: var(--sep-strong); overflow: hidden; }
+.password-strength .password-strength__indicator { height: 100%; width: 0; border-radius: 2px; background: var(--red); transition: width .2s, background .2s; }
+.password-strength .password-strength__indicator.is-weak { background: var(--red); }
+.password-strength .password-strength__indicator.is-fair { background: var(--orange); }
+.password-strength .password-strength__indicator.is-good { background: var(--yellow); }
+.password-strength .password-strength__indicator.is-strong { background: var(--green); }
+.password-strength .password-strength__title, .password-confirm-message { font-size: 12px; color: var(--label-2); }
+.password-confirm-message .ok, .password-strength__text { color: var(--label); font-weight: 500; }
+.password-confirm-message .error { color: var(--red); font-weight: 500; }
+.password-suggestions { font-size: 12px; line-height: 1.5; color: var(--label-2); }
+.password-suggestions:not(:empty) { padding: 8px 12px; border-radius: 8px; background: var(--bg-raised); box-shadow: inset 0 0 0 .5px var(--sep); }
+.password-suggestions ul { margin: 4px 0 0; padding-left: 18px; list-style: disc; }

@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Feed item
+status: stable
+group: Comments & feed
+description: 'Kit feed line (.feed-item): icon (.feed-ic, colour from a token, .solid for a filled one), text and meta. A link (.feed-item.click) when url is set.'
+props:
+  type: object
+  properties:
+    icon: { type: string, title: Icon }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    solid: { type: boolean, title: Filled icon }
+    text: { type: string, title: Text }
+    meta: { type: string, title: Meta, examples: ['2 h ago · $48,000'] }
+    url: { type: string, title: URL }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  text_markup:
+    title: Text markup
+    description: 'Replaces text, e.g. with <b> names.'

@@ -1,0 +1,9 @@
+{#
+/**
+ * @file
+ * Theme hook pm_widget_due: a due date at the end of a dashboard row; an
+ * overdue date says so (not by colour alone).
+ * Variables: date, late.
+ */
+#}
+<span class="text-xs whitespace-nowrap {{ late ? 'overdue' : 'dim' }}">{% if late %}<span class="vh">{{ 'Overdue:'|t }} </span>{% endif %}{{ date }}</span>

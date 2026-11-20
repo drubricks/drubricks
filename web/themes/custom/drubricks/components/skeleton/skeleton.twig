@@ -1,0 +1,11 @@
+{# Kit skeleton: .skeleton lines, .skeleton.circle, or skeleton .p-row lines. #}
+{% if rows %}
+  <div{{ attributes }} aria-hidden="true">
+    {%- for i in 1..rows %}<div class="p-row"><div class="skeleton circle size-6"></div><div class="grow grid gap-1.5"><div class="skeleton w-2/5"></div><div class="skeleton w-3/5 h-2.5"></div></div></div>{% endfor -%}
+  </div>
+{% else %}
+  <div{{ attributes.addClass('flex', 'items-center', 'gap-3') }} aria-hidden="true">
+    {%- if avatar %}<div class="skeleton circle"></div>{% endif %}
+    <div class="grid flex-1 gap-2">{% for w in lines|default(['w-2/3', 'w-full', 'w-1/2']) %}<div class="skeleton {{ w }}"></div>{% endfor %}</div>
+  </div>
+{% endif %}

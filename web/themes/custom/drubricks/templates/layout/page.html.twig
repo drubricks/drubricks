@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * The kit app shell: .app → sidebar | (column) | content | (inspector).
+ *
+ * The panes are direct children of .app (the kit CSS needs .app > .pane).
+ * App screens (drubricks_screen) bring their own panes; other pages get one
+ * details pane with the page title and tabs in its header. Sidebar links swap
+ * the whole #drubricks-app; the sidebar block renders the <aside> itself.
+ */
+#}
+{% if not logged_in and not page.sidebar %}
+  {# Anonymous pages (login, password reset): centred card like the kit auth pages. #}
+  <main class="auth-shell min-h-screen grid place-items-center p-6 bg-surface" id="drubricks-detail">
+    <div class="w-full max-w-[400px]">
+      {{ page.header }}
+      {{ page.content }}
+    </div>
+  </main>
+{% else %}
+<div class="app" id="drubricks-app">
+  {{ page.sidebar }}
+  {% if drubricks_screen %}
+    {{ page.content }}
+  {% else %}
+    <main class="content" id="drubricks-detail" tabindex="-1">
+      <header class="pane-header">
+        <button class="icon-btn show-sidebar-btn" type="button" data-action="toggle-sidebar" title="{{ 'Show Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>
+        {{ page.header }}
+      </header>
+      <div class="pane-body selectable">
+        <div class="drubricks-detail-body max-w-[860px]">
+          {{ page.content }}
+        </div>
+      </div>
+    </main>
+  {% endif %}
+</div>
+{% endif %}
+{{ page.hidden }}

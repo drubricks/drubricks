@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * A booking: header (resource tile, status, resource), a "when & where" card,
+ * attendees, notes and details. compact: the side panel of the calendar.
+ */
+#}
+{% set sub %}
+  {%- if status %}{{ include('drubricks:pill', status, with_context = false) }}{% endif %}
+  {%- if resource %}{% if status %}<span aria-hidden="true">·</span>{% endif %}{% if resource.link %}<a class="link" href="{{ resource.link.url }}"{{ resource.link.attributes }}>{{ resource.title }}</a>{% else %}<span>{{ resource.title }}</span>{% endif %}{% endif %}
+{% endset %}
+{% set body %}
+  {% if when %}
+    {{ include('drubricks:group-title', {title: 'When & where'|t, attributes: create_attribute({'class': compact ? ['!mt-0'] : []})}, with_context = false) }}
+    {% embed 'drubricks:panel' with {when: when, color: color, attributes: create_attribute({'class': ['[&>.p-row:first-child]:border-t-0']})} only %}
+      {% block content %}
+        {% for line in when %}
+          {% embed 'drubricks:p-row' with {title: line.title, subtitle: line.subtitle, line: line, color: color}|merge(line.link|default({})) only %}
+            {% block leading %}<span class="feed-ic solid" style="--c: {{ color(color|default('blue')) }}">{{ icon('kit', 'i-' ~ (line.icon)) }}</span>{% endblock %}
+          {% endembed %}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
+
+  <div class="group-title flex items-center gap-2">{{ 'Attendees'|t }} <span class="dim">{{ attendees|length }}</span>
+    {%- if attendees %}<span class="grow"></span>{{ include('drubricks:avatar-stack', {people: attendees, size: 'xs', max: 6}, with_context = false) }}{% endif %}
+  </div>
+  {% if attendees %}
+    <div class="flex flex-wrap gap-1.5">
+      {% for person in attendees %}{{ include('drubricks:tag', {label: person.name, color: person.color}, with_context = false) }}{% endfor %}
+    </div>
+  {% else %}
+    {{ include('drubricks:empty-line', {text: 'No attendees listed'|t}, with_context = false) }}
+  {% endif %}
+
+  {% if notes %}
+    {{ include('drubricks:group-title', {title: 'Notes'|t}, with_context = false) }}
+    <div class="group px-3 py-2.5 whitespace-pre-line leading-relaxed">{{ notes }}</div>
+  {% endif %}
+
+  {% include '@drubricks_core/drubricks-facts.html.twig' with {title: 'Details'|t, facts: facts} only %}
+  {{ fields }}
+{% endset %}
+
+<div class="[&_:is(a.p-row,a.mini,a.stat,a.feed-item)]:text-inherit">
+{% if compact %}
+  <div class="d-sub mb-3">{{ sub }}</div>
+  {{ body }}
+{% else %}
+  {% embed 'drubricks:detail-header' with {title: title, tile: true, avatar_color: color|default(''), sub: sub, body: body} only %}
+    {% block subtitle_markup %}{{ sub }}{% endblock %}
+    {% block content %}{{ body }}{% endblock %}
+  {% endembed %}
+{% endif %}
+</div>

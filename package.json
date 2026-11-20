@@ -1,0 +1,12 @@
+{
+  "name": "drubricks",
+  "private": true,
+  "description": "Optional Node tooling for Drubricks: end-to-end tests (Playwright).",
+  "scripts": {
+    "test:e2e": "node tests/e2e/run.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.65.0",
+    "@axe-core/playwright": "4.11.0"
+  }
+}

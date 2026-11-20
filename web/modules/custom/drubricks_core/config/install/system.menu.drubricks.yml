@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: drubricks
+label: 'App sidebar'
+description: 'Sections and screens of the apps in the sidebar of the app shell. Top-level links without a target are section headings.'
+locked: true

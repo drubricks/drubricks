@@ -1,0 +1,11 @@
+{% embed 'drubricks:feed' with {attributes: create_attribute({'class': ['max-w-xl']})} only %}
+  {% block content %}
+    {% embed 'drubricks:feed-item' with {icon: 'checkmark', color: 'green', meta: '2 h ago · $48,000'} only %}
+      {% block text_markup %}<b>Maya</b> won the deal <b>Fleet tracking rollout</b>{% endblock %}
+    {% endembed %}
+    {% embed 'drubricks:feed-item' with {icon: 'envelope', color: 'blue', solid: true, meta: 'Yesterday'} only %}
+      {% block text_markup %}<b>Priya</b> sent the proposal to Pinecrest Logistics{% endblock %}
+    {% endembed %}
+    {% include 'drubricks:feed-item' with {icon: 'doc', text: 'Contract draft uploaded — a clickable line (here a link)', meta: '3 days ago · contract-v2.pdf', url: '#comments'} only %}
+  {% endblock %}
+{% endembed %}

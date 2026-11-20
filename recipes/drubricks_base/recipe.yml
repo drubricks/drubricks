@@ -1,0 +1,85 @@
+name: 'Drubricks base'
+description: 'Drubricks theme, the drubricks_core module and the configuration shared by every Drubricks application.'
+type: 'Base'
+recipes:
+  - core/recipes/core_recommended_admin_theme
+  - core/recipes/core_recommended_performance
+  - core/recipes/core_recommended_maintenance
+  - core/recipes/administrator_role
+  - core/recipes/restricted_html_format
+install:
+  - drubricks_core
+  - drubricks
+  - dblog
+  - field_ui
+  - views_ui
+  - options
+  - datetime
+  - link
+  - menu_ui
+  - inline_form_errors
+  # Login / register / password pages like Drupal CMS (styled by Default Admin).
+  - gin_login
+  # Admin sidebar (like Drupal CMS) for users with "access navigation":
+  # shown next to the app shell, links to the standard admin pages.
+  - navigation
+  - login_emailusername
+  # Switch to another user's account to check what they see (roles,
+  # record-level access): Masquerade.
+  - masquerade
+  # Every configuration change (Views, fields, settings…) in the site's log:
+  # who changed what and when (Config Log).
+  - config_log
+  # Browse drupal.org modules and recipes in Extend (like Drupal CMS). Browse
+  # only (allow_ui_install stays off): a project adds modules with Composer and
+  # recipes, so they are in its code and git.
+  - project_browser
+config:
+  # Re-applied by every App recipe: existing (possibly changed) config wins.
+  strict: false
+  import:
+    # The sidebar menu ("drubricks"): a config entity, which a recipe does not
+    # install with the module by itself.
+    drubricks_core:
+      - system.menu.drubricks
+    # Like core's standard recipe: Navigation's layout and its menus.
+    navigation:
+      - navigation.block_layout
+      - navigation.settings
+      - system.menu.content
+      - system.menu.navigation-user-links
+    # /admin/people as a View with exposed filters above the table (name or
+    # email, role, permission, status), like Drupal CMS. It is optional config
+    # of the user module, which a recipe does not install by itself.
+    user:
+      - views.view.user_admin_people
+  actions:
+    system.theme:
+      simpleConfigUpdate:
+        default: drubricks
+    system.site:
+      simpleConfigUpdate:
+        page.front: /apps
+    user.settings:
+      simpleConfigUpdate:
+        register: admin_only
+    # Admin theme and login pages in the brand colour (kit palette Cobalt).
+    default_admin.settings:
+      simpleConfigUpdate:
+        preset_accent_color: custom
+        accent_color: '#1b2cc1'
+    gin_login.settings:
+      simpleConfigUpdate:
+        logo:
+          use_default: false
+          path: themes/custom/drubricks/images/logo-wordmark.svg
+        brand_image:
+          use_default: false
+          path: themes/custom/drubricks/images/login-brand.svg
+    # Other themes (admin): the Drubricks wordmark. The drubricks theme itself
+    # uses its own logo.svg (the mark; its settings: logo.use_default).
+    system.theme.global:
+      simpleConfigUpdate:
+        logo:
+          use_default: false
+          path: themes/custom/drubricks/images/logo-wordmark.svg

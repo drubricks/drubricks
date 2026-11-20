@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: a9ab2e59-2c67-5dcf-9566-3be895c26403
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    c473735e-7d42-53da-9a4c-abfdfd4bc3c8: pm_project
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Configure driver app permissions'
+  project:
+    -
+      entity: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: medium
+  assignee:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  due_date:
+    -
+      value: '2026-11-17'
+  weight:
+    -
+      value: 2

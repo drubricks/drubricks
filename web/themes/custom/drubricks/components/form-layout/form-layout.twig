@@ -1,0 +1,6 @@
+{# Kit stacked form: .form. #}
+{% if action %}
+  <form{{ attributes.addClass('form').setAttribute('action', action).setAttribute('method', method|default('post')) }}>{% block content %}{{ content }}{% endblock %}</form>
+{% else %}
+  <div{{ attributes.addClass('form') }}>{{ block('content') }}</div>
+{% endif %}

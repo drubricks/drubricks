@@ -1,0 +1,9 @@
+{
+    "name": "drubricks/drubricks_examples_crm",
+    "description": "Companies, contacts and deals (example app).",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12"
+    }
+}

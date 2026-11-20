@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Core's Views table → the kit data table (.data-table-wrap > table.data-table).
+ *
+ * Same variables as views-view-table.html.twig of core. Click-sortable
+ * columns get aria-sort (the kit draws the arrow), columns aligned right in
+ * the table settings get the kit's "num" (tabular numbers). The bulk form
+ * column keeps core's select-all (tableselect).
+ */
+#}
+{% set classes = ['data-table', 'cols-' ~ header|length, sticky ? 'sticky-header'] %}
+<div class="data-table-wrap">
+<table{{ attributes.addClass(classes) }}>
+  {% if caption_needed %}
+    <caption>
+      {{ caption ?: title }}
+      {% if summary_element is not empty %}{{ summary_element }}{% endif %}
+    </caption>
+  {% endif %}
+  {% if header %}
+    <thead>
+      <tr>
+        {% for key, column in header %}
+          {% set column_classes = column.default_classes ? ['views-field', 'views-field-' ~ fields[key]] : [] %}
+          {% if column.attributes.hasClass('views-align-right') %}{% set column_classes = column_classes|merge(['num']) %}{% endif %}
+          {% set th = column.attributes.addClass(column_classes).setAttribute('scope', 'col') %}
+          {% if column.url %}
+            {# Core's indicator style is the order of the next click: the
+               current order is the other one. #}
+            {% set next = column.sort_indicator['#style']|default(null) %}
+            {% set th = th.setAttribute('aria-sort', next == 'desc' ? 'ascending' : (next == 'asc' ? 'descending' : 'none')) %}
+          {% endif %}
+          <th{{ th }}>
+            {%- if column.url -%}
+              <a href="{{ column.url }}" title="{{ column.title }}" rel="nofollow">{{ column.content }}</a>
+            {%- else -%}
+              {{- column.content -}}
+            {%- endif -%}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+  {% endif %}
+  <tbody>
+    {% for row in rows %}
+      <tr{{ row.attributes }}>
+        {% for key, column in row.columns %}
+          {% set column_classes = ['views-field'] %}
+          {% for field in column.fields %}
+            {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+          {% endfor %}
+          {% if column.attributes.hasClass('views-align-right') %}{% set column_classes = column_classes|merge(['num']) %}{% endif %}
+          <td{{ column.attributes.addClass(column.default_classes ? column_classes : []) }}>
+            {%- for content in column.content -%}
+              {{- content.separator }}{{ content.field_output -}}
+            {%- endfor -%}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>

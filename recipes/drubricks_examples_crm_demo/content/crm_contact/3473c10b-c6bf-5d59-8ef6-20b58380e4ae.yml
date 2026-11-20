@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: 3473c10b-c6bf-5d59-8ef6-20b58380e4ae
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    c79ee643-7a28-5a14-b053-9d6fda47c304: crm_company
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Marcus Reed'
+  job_title:
+    -
+      value: COO
+  company:
+    -
+      entity: c79ee643-7a28-5a14-b053-9d6fda47c304
+  stage:
+    -
+      value: lead
+  email:
+    -
+      value: marcus.reed@copperleaf.example
+  phone:
+    -
+      value: '+1 512 555 0166'
+  last_contacted:
+    -
+      value: '2026-10-24'

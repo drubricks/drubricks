@@ -1,0 +1,67 @@
+/* Glue between Drupal core markup and the UI kit. Keep it small: prefer kit
+   classes in templates. Everything stays in @layer components so Tailwind
+   utilities can override it. */
+@layer components {
+  .visually-hidden { position: absolute !important; clip: rect(1px, 1px, 1px, 1px); overflow: hidden; height: 1px; width: 1px; word-wrap: normal; }
+  .hidden { display: none; }
+  [hidden] { display: none !important; }
+
+  /* Field display (entity view): label / value rows like the kit .group */
+  .drubricks-detail-body .field--label-inline { display: grid; grid-template-columns: minmax(120px, 30%) 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--sep); font-size: 14px; }
+  .drubricks-detail-body .field--label-inline .field__label { color: var(--label-2); }
+  .drubricks-detail-body .field--label-above { padding: 9px 0; }
+  .drubricks-detail-body .field--label-above .field__label { color: var(--label-2); font-size: 12px; margin-bottom: 4px; }
+  .drubricks-detail-body a { color: var(--accent); }
+
+  /* Messages on app screens (server-rendered and Drupal.Message): a fixed
+     alert layer top right — the panes stay the only grid children of .app. */
+  .app > [data-drupal-messages] { position: fixed; top: 60px; right: 16px; z-index: 900; width: min(380px, calc(100vw - 24px)); margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .app > [data-drupal-messages] .messages__wrapper { display: flex; flex-direction: column; gap: 8px; }
+  .app > [data-drupal-messages] .alert { box-shadow: var(--shadow-lg, 0 8px 24px rgb(0 0 0 / .15)); }
+
+  /* An action the user may not run now (e.g. Delete while other records use the
+     record): kit :disabled look, but still focusable so the reason (tooltip,
+     aria-label) reaches keyboard and screen reader users. */
+  .tb-btn[aria-disabled="true"] { opacity: .32; cursor: not-allowed; }
+  .tb-btn[aria-disabled="true"]:hover { background: none; }
+
+  /* Local tasks (tabs on non-screen pages) */
+  .drubricks-tabs { display: flex; gap: 4px; }
+
+  /* Pager → kit look */
+  .pager__items { display: flex; gap: 4px; justify-content: center; list-style: none; padding: 12px 0; margin: 0; font-size: 13px; }
+  .pager__item a { padding: 4px 9px; border-radius: 7px; color: var(--label-2); }
+  .pager__item.is-active a { background: var(--accent-soft); color: var(--accent); }
+}
+
+@layer components {
+  /* Messages on app screens sit above the panes, not in the grid. */
+  .app > .drubricks-messages { position: fixed; top: 12px; right: 12px; z-index: 60; width: min(420px, calc(100vw - 24px)); }
+  .app > .drubricks-messages:empty { display: none; }
+}
+
+@layer components {
+  /* Core Navigation (admin sidebar + top bar, for admins) displaces the page
+     with Drupal.displace(); the fixed kit shell and its slide-over panels
+     (the sidebar and the inspector in compact / narrow mode) follow those
+     offsets through the kit's --shell-* room, so they never slide under it. */
+  .app {
+    --shell-top: var(--drupal-displace-offset-top, 0px);
+    --shell-right: var(--drupal-displace-offset-right, 0px);
+    --shell-bottom: var(--drupal-displace-offset-bottom, 0px);
+    --shell-left: var(--drupal-displace-offset-left, 0px);
+  }
+}
+
+/* Core's admin sidebar (Navigation) on app pages looks as on admin pages,
+   where Default Admin styles it: the label colour of the admin theme
+   (its --admin-color-text, through Navigation's --drupal-admin-color-*
+   hook) and normal font smoothing (the kit's antialiased body thins the
+   bold labels). Outside the layers: Navigation's CSS is not layered. */
+:root {
+  --drupal-admin-color-gray-800: #222330;
+}
+.admin-toolbar {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}

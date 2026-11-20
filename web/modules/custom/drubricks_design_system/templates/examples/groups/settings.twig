@@ -1,0 +1,13 @@
+{% embed 'drubricks:group' with {title: 'Notifications', first: true} only %}
+  {% block content %}
+    {% embed 'drubricks:group-row' with {label: 'Email digest'} only %}{% block content %}
+      {% include 'drubricks:switch' with {label: 'Email digest', checked: true} only %}
+    {% endblock %}{% endembed %}
+    {% embed 'drubricks:group-row' with {label: 'Frequency'} only %}{% block content %}
+      {% include 'drubricks:seg' with {label: 'Frequency', items: [{label: 'Daily', active: true}, {label: 'Weekly'}]} only %}
+    {% endblock %}{% endembed %}
+    {% embed 'drubricks:group-row' with {label: 'Send to'} only %}{% block content %}
+      {% include 'drubricks:field' with {type: 'email', value: 'alex@example.com', aria_label: 'Send to'} only %}
+    {% endblock %}{% endembed %}
+  {% endblock %}
+{% endembed %}

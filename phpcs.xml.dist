@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drubricks">
+  <description>Drupal coding standards for Drubricks custom code.</description>
+  <file>web/modules/custom</file>
+  <file>web/themes/custom</file>
+  <file>web/profiles/custom</file>
+  <arg name="extensions" value="php,module,inc,install,profile,theme,yml"/>
+  <arg name="colors"/>
+  <config name="ignore_warnings_on_exit" value="1"/>
+  <arg value="sp"/>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/dist/*</exclude-pattern>
+  <exclude-pattern>*/kit/*</exclude-pattern>
+  <rule ref="Drupal"/>
+  <rule ref="DrupalPractice"/>
+</ruleset>

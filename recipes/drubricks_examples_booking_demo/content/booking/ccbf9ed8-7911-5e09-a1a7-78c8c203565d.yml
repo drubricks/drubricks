@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: ccbf9ed8-7911-5e09-a1a7-78c8c203565d
+  depends:
+    b3034d01-8a7e-5875-948f-0309074a3063: user
+    a77309f1-43e1-5955-b6e3-965af22de921: booking_resource
+default:
+  uid:
+    -
+      entity: b3034d01-8a7e-5875-948f-0309074a3063
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Client workshop kit'
+  resource:
+    -
+      entity: a77309f1-43e1-5955-b6e3-965af22de921
+  starts:
+    -
+      value: '2026-11-13T12:00:00'
+  ends:
+    -
+      value: '2026-11-13T14:00:00'
+  state:
+    -
+      value: confirmed

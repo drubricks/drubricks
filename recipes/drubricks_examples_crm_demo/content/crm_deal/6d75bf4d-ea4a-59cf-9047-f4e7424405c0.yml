@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 6d75bf4d-ea4a-59cf-9047-f4e7424405c0
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    b31b51e7-42f6-54ea-a25c-1155d40e9ec3: crm_company
+    90d43c02-b083-50da-8cd0-4c7193ab35fb: crm_contact
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Spring campaign site'
+  company:
+    -
+      entity: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  contact:
+    -
+      entity: 90d43c02-b083-50da-8cd0-4c7193ab35fb
+  value:
+    -
+      value: '9500.00'
+  stage:
+    -
+      value: lead
+  close_date:
+    -
+      value: '2026-12-23'

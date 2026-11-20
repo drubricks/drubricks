@@ -1,0 +1,22 @@
+/* Colour palettes of this project, next to the kit's (kit/ui.css: cobalt,
+   lagoon, sage, berry, indigo).
+   Same tokens as the kit's palettes; chosen in Appearance → Settings →
+   Drubricks → "Colour palette". The kit's JS manages only its own palettes
+   (data-palette), so ThemeHooks::preprocessHtml() renders a theme palette as
+   <html data-theme-palette="…"> on top of the kit's default (lagoon). */
+
+/* Orange (3English) — #FFF6F0 · #F6C7A6 · #E0763A · #2B2523.
+   The accent is darker than the brand orange so that white text on it and
+   accent text on the sidebar reach 4.5:1 (WCAG AA); the dark scheme uses a
+   lighter orange with dark text on it. */
+:root[data-theme-palette="orange"] {
+  --palette-1: #fff6f0; --palette-2: #f6c7a6; --palette-3: #e0763a; --palette-4: #2b2523;
+  --accent-rgb: 173 79 28; --ink-rgb: 34 28 26;
+  --bg: #ffffff; --bg-sidebar: #f8f1ec; --bg-inspector: #fcf8f5; --bg-raised: #faf5f1;
+  --bg-lane: #f5ede7; --bg-card: #ffffff; --bg-menu: rgb(253 250 248 / .95); --mark: rgb(246 199 166 / .9);
+}
+:root[data-theme-palette="orange"][data-scheme="dark"] {
+  --accent-rgb: 240 149 94; --ink-rgb: 245 236 230; --line-rgb: 246 199 166;
+  --bg: #221a16; --bg-sidebar: #1a1411; --bg-inspector: #1e1714; --bg-raised: #2a211c;
+  --bg-lane: #261e19; --bg-card: #31271f; --bg-menu: rgb(36 28 24 / .95); --mark: rgb(var(--accent-rgb) / .38);
+}

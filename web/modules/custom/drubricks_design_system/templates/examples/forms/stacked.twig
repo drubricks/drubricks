@@ -1,0 +1,12 @@
+{% embed 'drubricks:form-layout' with {attributes: create_attribute({'class': ['max-w-md']})} only %}
+  {% block content %}
+    {% include 'drubricks:field' with {label: 'Title', placeholder: 'What needs to be done?'} only %}
+    {% embed 'drubricks:form-row' only %}
+      {% block content %}
+        {% include 'drubricks:select' with {label: 'Status', options: [{value: 'todo', label: 'To Do'}, {value: 'doing', label: 'In Progress'}, {value: 'done', label: 'Done'}]} only %}
+        {% include 'drubricks:field' with {label: 'Due date', type: 'date'} only %}
+      {% endblock %}
+    {% endembed %}
+    {% include 'drubricks:textarea' with {label: 'Notes', rows: 3, placeholder: 'Add details…'} only %}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,18 @@
+{# Kit detail view: .detail > .d-head (avatar/tile + .d-head-main) + body. #}
+{% set sub_html %}{% block subtitle_markup %}{{ subtitle_markup }}{% endblock %}{% endset %}
+{% set actions_html %}{% block actions %}{{ actions }}{% endblock %}{% endset %}
+<div{{ attributes.addClass('detail') }}>
+  <div class="d-head">
+    {%- if not no_avatar %}
+      {%- if tile %}{{ include('drubricks:tile', {name: title, color: avatar_color, size: 'xl'}|filter(v => v is not null), with_context = false) }}
+      {%- else %}{{ include('drubricks:avatar', {name: title, color: avatar_color, size: 'xl'}|filter(v => v is not null), with_context = false) }}{% endif %}
+    {%- endif %}
+    <div class="d-head-main">
+      {%- if editable %}<input class="d-title" value="{{ title }}" aria-label="{{ title_label|default('Name'|t) }}"{% if name %} name="{{ name }}"{% endif %}>
+      {%- else %}<h2 class="d-title">{{ title }}</h2>{% endif %}
+      {%- if sub_html|trim is not empty or subtitle %}<div class="d-sub">{{ sub_html|trim is not empty ? sub_html : subtitle }}</div>{% endif %}
+      {%- if actions_html|trim is not empty %}<div class="d-actions">{{ actions_html }}</div>{% endif %}
+    </div>
+  </div>
+  {% block content %}{{ content }}{% endblock %}
+</div>

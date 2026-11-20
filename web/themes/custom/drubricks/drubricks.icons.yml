@@ -1,0 +1,33 @@
+# Icons of the UI kit — core Icon API, core's svg_sprite extractor:
+#   Twig: {{ icon('kit', 'i-pencil') }}, {{ icon('kit', 'i-star', {class: 'orange'}) }}
+#   PHP:  ['#type' => 'icon', '#pack_id' => 'kit', '#icon_id' => 'i-pencil']
+# Icon IDs are the sprite's symbol IDs, "i-<name>" (the kit's JavaScript uses
+# the same form). The sprite is kit/icons.<hash>.svg: add an icon as one more
+# <symbol id="i-<name>"> (e.g. a Lucide icon's SVG paths, ISC licence), then
+# rename the file to a new <hash> (e.g. the first 8 characters of its md5) so
+# browsers never keep a stale sprite, and `ddev drush cr`. It holds the kit's
+# icons and the Lucide icons Drubricks uses;
+# an app module can ship its own pack (MODULE.icons.yml) and use "pack:icon"
+# names in its sidebar items, actions and dashboard widgets.
+kit:
+  enabled: true
+  label: 'UI kit'
+  description: 'Icons of the UI kit sprite.'
+  # The icons come from Lucide (some derived from Feather, MIT): see
+  # THIRD-PARTY-NOTICES.md in the project root.
+  license:
+    name: ISC
+    url: https://lucide.dev/license
+    gpl-compatible: true
+  extractor: svg_sprite
+  config:
+    sources:
+      - kit/icons.*.svg
+  settings:
+    class:
+      title: 'Class'
+      description: 'Extra classes, e.g. a kit colour (orange) or "dim".'
+      type: 'string'
+      default: ''
+  template: >-
+    <svg{{ attributes.addClass('ic', class).setAttribute('aria-hidden', 'true') }}><use href="{{ source }}#{{ icon_id }}"/></svg>

@@ -1,0 +1,10 @@
+{# Kit toolbar button: .tb-btn[.on]. #}
+{% set attributes = attributes.addClass(['tb-btn', attribute(_context, 'on') ? 'on', danger ? 'danger']|filter(c => c)) %}
+{% if tip %}{% set attributes = attributes.setAttribute('data-tip', tip).setAttribute('aria-label', title ?: tip) %}{% elseif title %}{% set attributes = attributes.setAttribute('title', title) %}{% endif %}
+{% if action %}{% set attributes = attributes.setAttribute('data-action', action) %}{% endif %}
+{% if attribute(_context, 'on') and not url %}{% set attributes = attributes.setAttribute('aria-pressed', 'true') %}{% endif %}
+{% if url %}
+  <a{{ attributes.setAttribute('href', url) }}>{% if icon %}{{ icon('kit', 'i-' ~ icon) }}{% endif %}{% if label %}<span>{{ label }}</span>{% endif %}</a>
+{% else %}
+  <button{{ attributes.setAttribute('type', 'button') }}>{% if icon %}{{ icon('kit', 'i-' ~ icon) }}{% endif %}{% if label %}<span>{{ label }}</span>{% endif %}</button>
+{% endif %}

@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: c79ee643-7a28-5a14-b053-9d6fda47c304
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Copperleaf Foods'
+  color:
+    -
+      value: orange
+  industry:
+    -
+      value: 'Food & Beverage'
+  city:
+    -
+      value: Austin
+  size:
+    -
+      value: 480
+  website:
+    -
+      uri: 'https://copperleaf.example'
+      title: null
+      options: {}

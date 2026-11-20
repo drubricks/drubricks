@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Empty state
+status: stable
+group: States
+description: 'Kit empty state (.empty-state): centred text for an empty pane or list. Optional icon (uses .insp-empty in the inspector).'
+props:
+  type: object
+  required: [text]
+  properties:
+    text: { type: string, title: Text }
+    icon: { type: string, title: Icon }
+    compact: { type: boolean, title: No minimum height }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

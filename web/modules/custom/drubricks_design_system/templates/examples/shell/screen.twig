@@ -1,0 +1,14 @@
+{# my_module/templates/my-screen.html.twig — the template of a route with _drubricks_screen: TRUE.
+   No wrapper: the panes are direct children of .app (drubricks_core renders the sidebar). #}
+{% embed 'drubricks:pane' with {kind: 'column', label: 'Inbox'} only %}
+  {% block header %}{% include 'drubricks:toolbar' with {title: 'Inbox', subtitle: '12 messages', sidebar_toggle: true} only %}{% endblock %}
+  {% block body %}{% include 'drubricks:row' with {title: 'Project kickoff', meta: '9:41 AM', row_id: 1} only %}{% endblock %}
+{% endembed %}
+{% embed 'drubricks:pane' with {kind: 'content', id: 'drubricks-detail', selectable: true} only %}
+  {% block header %}{% include 'drubricks:toolbar' with {back: true, inspector_toggle: true} only %}{% endblock %}
+  {% block body %}…{% endblock %}
+{% endembed %}
+{% embed 'drubricks:pane' with {kind: 'inspector', id: 'drubricks-inspector'} only %}
+  {% block header %}{% include 'drubricks:toolbar' with {kind: 'Inspector'} only %}{% endblock %}
+  {% block body %}…{% endblock %}
+{% endembed %}

@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 2485eaf9-ce06-5209-a74c-c820050e6c4c
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Studio
+  color:
+    -
+      value: orange
+  kind:
+    -
+      value: room
+  location:
+    -
+      value: 'HQ · Basement'
+  capacity:
+    -
+      value: 3
+  opens:
+    -
+      value: 9
+  closes:
+    -
+      value: 18
+  rules:
+    -
+      value: |-
+        Needs approval by Facilities.
+        Book the sound engineer separately.

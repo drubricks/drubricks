@@ -1,0 +1,56 @@
+# Admin views of the Booking records (Application → Entities in the admin sidebar).
+drubricks_examples_booking.admin_resources:
+  title: 'Resources'
+  description: 'Booking: browse and filter resources, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.booking_resource_admin.page_1
+  weight: 30
+drubricks_examples_booking.admin_bookings:
+  title: 'Bookings'
+  description: 'Booking: browse and filter bookings, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.booking_admin.page_1
+  weight: 31
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_examples_booking.section:
+  title: 'Booking'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 30
+drubricks_examples_booking.calendar:
+  title: 'Calendar'
+  menu_name: drubricks
+  parent: drubricks_examples_booking.section
+  route_name: entity.booking.drubricks_calendar
+  weight: 0
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-calendar
+drubricks_examples_booking.bookings:
+  title: 'Bookings'
+  menu_name: drubricks
+  parent: drubricks_examples_booking.section
+  route_name: entity.booking.collection
+  weight: 10
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-list
+  metadata:
+    count: booking
+drubricks_examples_booking.resources:
+  title: 'Resources'
+  menu_name: drubricks
+  parent: drubricks_examples_booking.section
+  route_name: entity.booking_resource.collection
+  weight: 20
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-grid
+  metadata:
+    count: booking_resource

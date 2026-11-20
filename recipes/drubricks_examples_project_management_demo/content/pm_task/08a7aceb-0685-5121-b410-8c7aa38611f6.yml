@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 08a7aceb-0685-5121-b410-8c7aa38611f6
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    c473735e-7d42-53da-9a4c-abfdfd4bc3c8: pm_project
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Training session for dispatchers'
+  project:
+    -
+      entity: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: medium
+  assignee:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  due_date:
+    -
+      value: '2026-11-23'
+  weight:
+    -
+      value: 3

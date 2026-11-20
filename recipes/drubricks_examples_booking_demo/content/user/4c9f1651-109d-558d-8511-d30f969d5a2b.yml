@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Priya Raman'
+  mail:
+    -
+      value: priya.raman@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

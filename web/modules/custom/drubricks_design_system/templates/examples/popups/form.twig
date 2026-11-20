@@ -1,0 +1,2 @@
+{# A Drupal form in a popup: drubricks_core loads it with HTMX; validation errors re-render it inside the popup. #}
+{% include 'drubricks:modal-button' with {label: 'Edit my account', icon: 'person', form_url: path('entity.user.edit_form', {user: user.id}), modal_title: 'My account'} only %}

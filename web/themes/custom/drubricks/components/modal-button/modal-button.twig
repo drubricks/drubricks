@@ -1,0 +1,11 @@
+{# Trigger for UI.modal / UI.confirm (or a Drupal form via data-drubricks-modal). #}
+{% set icon_only = icon and not label %}
+{% set classes = icon_only or variant == 'icon' ? ['icon-btn'] : ['btn', variant in ['primary', 'destructive'] ? variant]|filter(c => c) %}
+{% set attributes = attributes.addClass(classes).setAttribute('type', 'button').setAttribute('aria-haspopup', 'dialog') %}
+{% if title %}{% set attributes = attributes.setAttribute('title', title) %}{% endif %}
+{% if form_url %}
+  <button{{ attributes.setAttribute('data-drubricks-modal', form_url).setAttribute('data-drubricks-modal-title', modal_title ?: label) }}>{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}</button>
+{% else %}
+  {% set attributes = attributes.setAttribute('data-drubricks-modal-button', '').setAttribute('data-options', {title: modal_title, message: message, icon: modal_icon, width: width, actions: actions, confirm: confirm, confirmLabel: confirm_label, destructive: destructive, closeButton: close_button, draggable: draggable}|json_encode) %}
+  <button{{ attributes }}>{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}</button><template data-drubricks-modal-content>{% block content %}{{ content }}{% endblock %}</template>
+{% endif %}

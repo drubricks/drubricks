@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 752fa84d-5267-5f40-81fd-45b9233d6908
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    6fe12233-fbc9-5ec6-9002-2c9544e46b7a: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Site visit — Eastgate depot'
+  resource:
+    -
+      entity: 6fe12233-fbc9-5ec6-9002-2c9544e46b7a
+  starts:
+    -
+      value: '2026-11-10T07:00:00'
+  ends:
+    -
+      value: '2026-11-10T11:00:00'
+  state:
+    -
+      value: confirmed

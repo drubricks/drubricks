@@ -1,0 +1,30 @@
+name: 'CRM example'
+description: 'Companies, contacts and deals (example app).'
+type: 'App'
+recipes:
+  - drubricks_base
+install:
+  - drubricks_examples_crm
+config:
+  # A recipe installs only simple config from the modules: the config
+  # entities of config/install (admin views, bulk actions) are imported here.
+  import:
+    drubricks_examples_crm: '*'
+  actions:
+    # Everyone signed in works with the app: sees all records, adds new ones,
+    # edits and deletes their own. Grant "edit any" / "delete any" to a
+    # manager role in your site recipe.
+    user.role.authenticated:
+      grantPermissions:
+        - 'view any crm_company'
+        - 'create crm_company'
+        - 'edit own crm_company'
+        - 'delete own crm_company'
+        - 'view any crm_contact'
+        - 'create crm_contact'
+        - 'edit own crm_contact'
+        - 'delete own crm_contact'
+        - 'view any crm_deal'
+        - 'create crm_deal'
+        - 'edit own crm_deal'
+        - 'delete own crm_deal'

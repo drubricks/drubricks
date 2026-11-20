@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 2ecf4338-b7cf-5b6a-bad9-9f2c1ebf2e64
+  depends:
+    b9ee8592-2c50-5a18-99a0-e5b2de2f35d1: user
+    2c38f585-e849-5f3a-80b9-31effd6366b9: booking_resource
+default:
+  uid:
+    -
+      entity: b9ee8592-2c50-5a18-99a0-e5b2de2f35d1
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Loaner for new joiner'
+  resource:
+    -
+      entity: 2c38f585-e849-5f3a-80b9-31effd6366b9
+  starts:
+    -
+      value: '2026-11-09T08:00:00'
+  ends:
+    -
+      value: '2026-11-09T16:00:00'
+  state:
+    -
+      value: confirmed

@@ -1,0 +1,83 @@
+/* Gin Login pages (login, password, register) in the Drubricks brand.
+   They render in the admin theme; Default Admin marks dark mode with
+   html.dark-mode. Selectors start with "html" to beat gin_login's own CSS,
+   which is aggregated after module CSS. */
+html body.gin-login {
+  --db-bg: #ffffff;
+  --db-ink: #091540;
+  --db-ink-2: rgb(9 21 64 / .72);
+  --db-accent: #1b2cc1;
+  --db-accent-hover: #15229a;
+  --db-on-accent: #ffffff;
+  --db-field: #ffffff;
+  --db-line: rgb(9 21 64 / .16);
+  --db-ring: rgb(27 44 193 / .3);
+  background: var(--db-bg);
+  color: var(--db-ink);
+  font-family: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+html.dark-mode body.gin-login {
+  --db-bg: #0b1534;
+  --db-ink: #ecf2ff;
+  --db-ink-2: rgb(236 242 255 / .74);
+  --db-accent: #7692ff;
+  --db-accent-hover: #93a9ff;
+  --db-on-accent: #0b1534;
+  --db-field: #16224b;
+  --db-line: rgb(171 210 250 / .22);
+  --db-ring: rgb(118 146 255 / .38);
+}
+html body.gin-login .user-form-page__user-form,
+html body.gin-login .user-form-page__user-form form,
+html body.gin-login .user-form-page__user-form .form-wrapper {
+  background: var(--db-bg);
+  color: var(--db-ink);
+  box-shadow: none;
+}
+html body.gin-login .user-form-page__page-title,
+html body.gin-login h1 {
+  color: var(--db-ink);
+  letter-spacing: -0.02em;
+}
+html body.gin-login .form-item__label,
+html body.gin-login label {
+  color: var(--db-ink) !important;
+  font-weight: 550;
+}
+html body.gin-login .form-item__description,
+html body.gin-login .description {
+  color: var(--db-ink-2) !important;
+}
+html body.gin-login .form-required::after { color: #d64545; }
+html body.gin-login input.form-element,
+html body.gin-login input[type="text"],
+html body.gin-login input[type="email"],
+html body.gin-login input[type="password"] {
+  background: var(--db-field) !important;
+  color: var(--db-ink) !important;
+  border: 1px solid var(--db-line) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+html body.gin-login input:focus {
+  border-color: var(--db-accent) !important;
+  box-shadow: 0 0 0 4px var(--db-ring) !important;
+  outline: none !important;
+}
+html body.gin-login .button--primary,
+html body.gin-login input[type="submit"].button--primary {
+  background: var(--db-accent) !important;
+  color: var(--db-on-accent) !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgb(9 21 64 / .2) !important;
+}
+html body.gin-login .button--primary:hover { background: var(--db-accent-hover) !important; }
+html body.gin-login .button:not(.button--primary) {
+  background: transparent !important;
+  color: var(--db-accent) !important;
+  border: 1px solid var(--db-line) !important;
+  border-radius: 10px !important;
+}
+html body.gin-login a { color: var(--db-accent); }
+html body.gin-login .user-form-page__user-form img { max-width: 200px; height: auto; }

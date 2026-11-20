@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: 094fa199-12ca-50e8-9c24-c1910979e6af
+  depends:
+    198dd971-3995-52f3-abc4-99fa2901062c: user
+    bd62c115-39db-5cf2-969e-75fe693986c8: booking_resource
+default:
+  uid:
+    -
+      entity: 198dd971-3995-52f3-abc4-99fa2901062c
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Laptop setup'
+  resource:
+    -
+      entity: bd62c115-39db-5cf2-969e-75fe693986c8
+  starts:
+    -
+      value: '2026-11-09T09:00:00'
+  ends:
+    -
+      value: '2026-11-09T09:30:00'
+  state:
+    -
+      value: confirmed

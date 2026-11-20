@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+id: pm_task_unpublish_action
+label: 'Deactivate tasks'
+type: pm_task
+plugin: 'entity:unpublish_action:pm_task'
+configuration: {}

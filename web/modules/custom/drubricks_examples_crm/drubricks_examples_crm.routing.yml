@@ -1,0 +1,32 @@
+# Admin pages of the entity types: the base routes of their Field UI tabs
+# (field_ui_base_route), like core's entity.user.admin_form.
+entity.crm_deal.settings:
+  path: '/admin/app/structure/crm/deals'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: crm_deal
+  requirements:
+    _permission: 'administer crm'
+  options:
+    _admin_route: TRUE
+entity.crm_contact.settings:
+  path: '/admin/app/structure/crm/contacts'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: crm_contact
+  requirements:
+    _permission: 'administer crm'
+  options:
+    _admin_route: TRUE
+entity.crm_company.settings:
+  path: '/admin/app/structure/crm/companies'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: crm_company
+  requirements:
+    _permission: 'administer crm'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,10 @@
+{# Kit account button: footer.sb-footer > button.sb-account[data-account]. #}
+{% set initials = name|split(' ')|filter(w => w)|slice(0, 2)|map(w => w|first|upper)|join %}
+{% set button %}
+<button{{ attributes.addClass('sb-account').setAttribute('type', 'button').setAttribute('data-account', '').setAttribute('data-name', name).setAttribute('data-email', email|default('')).setAttribute('aria-haspopup', 'menu').setAttribute('aria-expanded', 'false').setAttribute('title', 'Account'|t) }}>
+  <span class="avatar sm bg-none bg-accent text-on-accent">{{ initials }}</span>
+  <span class="sb-account-text"><span class="sb-account-name">{{ name }}</span>{% if sub or email %}<span class="sb-account-sub">{{ sub ?: email }}</span>{% endif %}</span>
+  {{ icon('kit', 'i-chevrons-up-down') }}
+</button>
+{% endset %}
+{% if footer is not defined or footer %}<footer class="sb-footer">{{ button }}</footer>{% else %}{{ button }}{% endif %}

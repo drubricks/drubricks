@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Bar row
+status: stable
+group: Dashboard
+description: 'Kit bar-chart line (.bar-row): label, bar (.bar > i, width in %, colour token), value.'
+props:
+  type: object
+  required: [label, percent]
+  properties:
+    label: { type: string, title: Label }
+    percent: { type: number, title: Bar width (0–100), minimum: 0, maximum: 100 }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    value: { type: string, title: Value }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

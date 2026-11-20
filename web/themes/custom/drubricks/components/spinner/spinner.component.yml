@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Spinner
+status: stable
+group: Skeleton & spinner
+description: 'Kit spinner (.spinner, .large) for short waits. Stand-alone it is a status with a label; with text it sits next to the text.'
+props:
+  type: object
+  properties:
+    size: { type: string, enum: [default, large], default: default }
+    label: { type: string, title: Accessible label, default: Loading }
+    text: { type: string, title: Visible text next to it }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

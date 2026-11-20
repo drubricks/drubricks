@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Kit month grid: .cal-grid > .cal-wd × 7 + .cal-day × 35–42 (Monday first).
+ */
+#}
+{% set first = date((month ?: 'now'|date('Y-m')) ~ '-01') %}
+{% set lead = first|date('N') - 1 %}
+{% set days = first|date('t') %}
+{% set prev_last = first|date_modify('-1 day')|date('j') %}
+{% set cells = ((lead + days) / 7)|round(0, 'ceil') * 7 %}
+{% set today = today ?: 'now'|date('Y-m-d') %}
+{% set tag = interactive ? 'button' : 'span' %}
+<div{{ attributes.setAttribute('data-drubricks-month', interactive ? 'interactive' : '') }}>
+  {%- if title is not defined or title %}
+    <div class="mb-2 flex items-center gap-1">
+      <b class="grow pl-1">{{ first|date('U')|format_date('custom', 'F Y') }}</b>
+      {% if prev_url %}<a class="icon-btn" href="{{ prev_url }}" title="{{ 'Previous month'|t }}">{{ icon('kit', 'i-chevron-left') }}</a>{% endif %}
+      {% if next_url %}<a class="icon-btn" href="{{ next_url }}" title="{{ 'Next month'|t }}">{{ icon('kit', 'i-chevron-right') }}</a>{% endif %}
+    </div>
+  {%- endif %}
+  <div class="cal-grid">
+    {%- for i in 0..6 %}<span class="cal-wd" aria-hidden="true">{{ first|date_modify((i - lead) ~ ' days')|date('U')|format_date('custom', 'D')|slice(0, 2) }}</span>{% endfor %}
+    {%- for i in 0..cells - 1 %}
+      {% set d = first|date_modify((i - lead) ~ ' days') %}
+      {% set ymd = d|date('Y-m-d') %}
+      {% set mark = marks[ymd] ?? null %}
+      {% set out = i < lead or i >= lead + days %}
+      {% set classes = ['cal-day', out ? 'out', ymd == today ? 'today', ymd == selected ? 'sel', mark ? (mark.style|default('fill') == 'ring' ? 'ring' : 'fill')]|filter(c => c) %}
+      <{{ tag }} class="{{ classes|join(' ') }}"{% if interactive %} type="button" data-date="{{ ymd }}" aria-label="{{ d|date('U')|format_date('custom', 'l, F j, Y') }}"{{ ymd == selected ? ' aria-pressed="true"' }}{% endif %}{% if mark %} style="--c: {{ color(mark.color) }}"{% if mark.title %} title="{{ mark.title }}"{% endif %}{% endif %}>{{ d|date('j') }}</{{ tag }}>
+    {%- endfor %}
+  </div>
+</div>

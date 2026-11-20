@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Clara Weiss'
+  mail:
+    -
+      value: clara.weiss@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

@@ -1,0 +1,10 @@
+{# Kit panel row: .p-row[.click] > leading + .grow (.t, .s) + trailing. #}
+{% set tag = url ? 'a' : 'div' %}
+{% set attributes = attributes.addClass(['p-row', url ? 'click']|filter(c => c)) %}
+{% if url %}{% set attributes = attributes.setAttribute('href', url) %}{% endif %}
+<{{ tag }}{{ attributes }}>
+  {% block leading %}{{ leading }}{% endblock %}
+  <div class="grow"><div class="t">{{ title }}</div>{% if subtitle %}<div class="s">{{ subtitle }}</div>{% endif %}</div>
+  {% block trailing %}{{ trailing }}{% endblock %}
+  {%- if trailing_text %}<span class="font-semibold">{{ trailing_text }}</span>{% endif %}
+</{{ tag }}>

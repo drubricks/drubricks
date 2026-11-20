@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * A field in an entity view: label / value rows in the kit look.
+ */
+#}
+{% set classes = ['drubricks-field', 'field--name-' ~ field_name|clean_class, 'field--label-' ~ label_display] %}
+{% if label_hidden %}
+  <div{{ attributes.addClass(classes) }}>
+    {% for item in items %}<div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>{% endfor %}
+  </div>
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass('field__label', label_display == 'visually_hidden' ? 'visually-hidden') }}>{{ label }}</div>
+    <div class="field__items">
+      {% for item in items %}<div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>{% endfor %}
+    </div>
+  </div>
+{% endif %}

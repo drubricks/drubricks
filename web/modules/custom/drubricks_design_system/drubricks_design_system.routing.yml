@@ -1,0 +1,9 @@
+drubricks_design_system.page:
+  path: '/apps/design-system'
+  defaults:
+    _controller: '\Drupal\drubricks_design_system\Controller\DesignSystemController::page'
+    _title: 'Design system'
+  options:
+    _drubricks_screen: TRUE
+  requirements:
+    _permission: 'access drubricks design system'

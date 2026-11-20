@@ -1,0 +1,8 @@
+name: Drubricks Core test
+type: module
+description: 'Test entity, menu links and dashboard blocks for drubricks_core tests.'
+package: Testing
+core_version_requirement: ^12
+dependencies:
+  - drubricks_core:drubricks_core
+  - drupal:options

@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * List column (kit .column): the shared header (search in its toolbar row)
+ * and the rows (kit .row).
+ *
+ * Variables: title, subtitle (the record count), rows[{id,url,title,meta,subtitle,text,color,avatar,pill,selected,attributes}],
+ * add{url,title,attributes}, search, search_attributes, pager,
+ * views[{title,url,icon,active,attributes}] (Board / List switch).
+ */
+#}
+<section class="column" aria-label="{{ title }}">
+  {% embed '@drubricks_core/drubricks-screen-header.html.twig' with {title: title, subtitle: subtitle, views: views, add: add, search: search, search_attributes: search_attributes} only %}
+    {% block filters %}
+      <label class="search">
+        {{ icon('kit', 'i-search') }}
+        <input type="search" name="q" value="{{ search }}" placeholder="{{ 'Search'|t }}" aria-label="{{ 'Search'|t }}" aria-controls="drubricks-list"{{ create_attribute(search_attributes) }}>
+        <button class="search-clear" type="button" aria-label="{{ 'Clear'|t }}">{{ icon('kit', 'i-xmark-fill') }}</button>
+      </label>
+    {% endblock %}
+  {% endembed %}
+  <div class="pane-body" id="drubricks-list">
+    {% for row in rows %}
+      {% if row.section is defined and row.section != previous_section|default(null) %}
+        <div class="list-section">{{ row.section }}</div>
+        {% set previous_section = row.section %}
+      {% endif %}
+      <a class="row{{ row.selected ? ' selected' }}" href="{{ row.url }}" data-id="{{ row.id }}"{{ row.selected ? ' aria-current="true"' }}{{ create_attribute(row.attributes) }}>
+        {% if row.avatar|default('') %}
+          <div class="row-gutter !w-8 !pt-0.5">{{ include('drubricks:avatar', {name: row.avatar, size: 'sm', color: row.color|default('')}, with_context = false) }}</div>
+        {% else %}
+          <div class="row-gutter">{% if row.color %}<span class="dot" style="--c: {{ color(row.color) }}; background: var(--c)"></span>{% endif %}</div>
+        {% endif %}
+        <div class="row-body">
+          <div class="row-top"><span class="row-title">{{ row.title }}</span>
+            {%- if row.pill|default(null) %}{{ include('drubricks:pill', {label: row.pill.label, color: row.pill.color|default('gray'), attributes: create_attribute({'class': ['shrink-0', 'self-center', '[.column.focused_.row.selected_&]:!text-on-accent', '[.column.focused_.row.selected_&]:!bg-[color-mix(in_srgb,var(--on-accent)_22%,transparent)]']})}, with_context = false) }}{% endif %}
+            {%- if row.meta %}<span class="row-meta">{{ row.meta }}</span>{% endif %}</div>
+          {% if row.subtitle %}<div class="row-subtitle">{{ row.subtitle }}</div>{% endif %}
+          {% if row.text %}<div class="row-text">{{ row.text }}</div>{% endif %}
+        </div>
+      </a>
+    {% else %}
+      <div class="empty-state">{{ search ? 'No matches'|t : 'Nothing here yet'|t }}</div>
+    {% endfor %}
+    {{ pager }}
+  </div>
+  <div class="resizer"></div>
+</section>

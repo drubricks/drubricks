@@ -1,0 +1,4 @@
+# "Settings" tab of every Drubricks entity type's admin page (its
+# field_ui_base_route); Field UI adds its tabs next to it.
+drubricks_core.entity_settings:
+  deriver: Drupal\drubricks_core\Plugin\Derivative\EntitySettingsLocalTasks

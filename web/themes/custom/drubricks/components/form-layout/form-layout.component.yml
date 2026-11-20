@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Form layout
+status: stable
+group: Forms
+description: 'Kit stacked form (.form): labels above controls, 12px between items. Use drubricks:form-row for two fields side by side. Renders a <form> when action is set, a <div> otherwise.'
+props:
+  type: object
+  properties:
+    action: { type: string, title: Form action URL }
+    method: { type: string, enum: [get, post], default: post }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Content
+    description: Fields, rows, buttons.

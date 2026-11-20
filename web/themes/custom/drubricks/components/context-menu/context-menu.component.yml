@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Context menu
+status: stable
+group: Menus & popovers
+description: 'A region with a kit right-click menu (UI.contextMenu). Items as in drubricks:menu-button; "drubricks:menu" fires on the region. UI.detach removes the listener.'
+props:
+  type: object
+  required: [items]
+  properties:
+    items:
+      type: array
+      title: Menu items
+      description: "UI.menu items: { label, icon, shortcut, danger, disabled, value, url, hud }, { header }, or \"-\" for a separator. Labels are escaped by the kit."
+      items: { type: [object, string] }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Region content
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

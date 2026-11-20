@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_project_management
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: folder
+    color: ''
+id: drubricks_pm_projects
+theme: drubricks
+region: dashboard
+weight: 202
+provider: null
+plugin: drubricks_examples_project_management_projects
+settings:
+  id: drubricks_examples_project_management_projects
+  label: 'Projects'
+  label_display: visible
+  provider: drubricks_examples_project_management
+visibility: {}

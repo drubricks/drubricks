@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Kit push button: .btn [.primary|.destructive] [.small|.large] [.full] [.loading].
+ */
+#}
+{% set classes = [
+  'btn',
+  variant in ['primary', 'destructive'] ? variant,
+  size in ['small', 'large'] ? size,
+  full ? 'full',
+  loading ? 'loading',
+]|filter(c => c) %}
+{% set attributes = attributes.addClass(classes) %}
+{% if title %}{% set attributes = attributes.setAttribute('title', title) %}{% endif %}
+{% if tip %}{% set attributes = attributes.setAttribute('data-tip', tip) %}{% endif %}
+{% if tip_kbd %}{% set attributes = attributes.setAttribute('data-tip-kbd', tip_kbd) %}{% endif %}
+{% set inner %}{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}{{ icon('kit', 'i-' ~ (icon_after)) }}{% endset %}
+{% if url and not disabled %}
+  <a{{ attributes.setAttribute('href', url) }}>{{ inner }}</a>
+{% else %}
+  <button{{ attributes.setAttribute('type', type|default('button')) }}{{ disabled or loading ? ' disabled' }}>{{ inner }}</button>
+{% endif %}

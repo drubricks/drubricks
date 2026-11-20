@@ -1,0 +1,32 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Tabs
+status: stable
+group: Tabs
+description: 'Kit underline tabs (.tabs > .tab[data-tab]). The kit wires them up (click, ← → Home End, roles, aria-selected, ui:tab) and shows the matching [data-tab-panel] (drubricks:tab-panel) in the panels slot. Items with url render links (no panels), e.g. Drupal local tasks.'
+props:
+  type: object
+  required: [items]
+  properties:
+    items:
+      type: array
+      title: Tabs
+      items:
+        type: object
+        properties:
+          id: { type: string, description: 'data-tab value; matches a tab-panel id.' }
+          label: { type: string }
+          icon: { type: string }
+          count: { type: [integer, string] }
+          active: { type: boolean }
+          disabled: { type: boolean }
+          url: { type: string }
+    sticky: { type: boolean, title: Sticky (.tabs.sticky) }
+    label: { type: string, title: Accessible label }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  panels:
+    title: Panels
+    description: drubricks:tab-panel elements (one per tab id).

@@ -1,0 +1,58 @@
+drubricks_core.settings:
+  type: config_object
+  label: 'Drubricks settings'
+  mapping:
+    locale:
+      type: string
+      label: 'Locale for UI.fmt (BCP 47, empty = current language)'
+    currency:
+      type: string
+      label: 'Currency code (ISO 4217)'
+    user_edit_in_app_theme:
+      type: boolean
+      label: 'Show the user edit form in the app theme (not the admin theme)'
+
+# Panel settings of a block placed in the theme's "dashboard" region.
+block.block.*.third_party.drubricks_core:
+  type: mapping
+  label: 'Dashboard panel'
+  mapping:
+    size:
+      type: string
+      label: 'Width'
+      constraints:
+        Choice:
+          choices:
+            - narrow
+            - wide
+            - full
+    icon:
+      type: string
+      label: 'Heading icon'
+    color:
+      type: string
+      label: 'Heading icon colour'
+
+block.settings.drubricks_record_count:
+  type: block_settings
+  label: 'Record count block'
+  mapping:
+    entity_type:
+      type: string
+      label: 'Entity type'
+    icon:
+      type: string
+      label: 'Icon'
+    color:
+      type: string
+      label: 'Colour'
+
+# The widget extends core's autocomplete (tags) widget and keeps its settings.
+field.widget.settings.drubricks_reference_list:
+  type: field.widget.settings.entity_reference_autocomplete_tags
+  label: 'Reference list widget settings'
+
+# The bulk form of Drubricks entities (DrubricksBulkForm): core's options.
+views.field.drubricks_bulk_form:
+  type: views.field.bulk_form
+  label: 'Bulk form (rows and actions the user may use)'

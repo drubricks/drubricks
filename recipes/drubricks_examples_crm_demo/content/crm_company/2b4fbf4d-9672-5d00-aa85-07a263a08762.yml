@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: 2b4fbf4d-9672-5d00-aa85-07a263a08762
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Bluefin Health'
+  color:
+    -
+      value: blue
+  industry:
+    -
+      value: Healthcare
+  city:
+    -
+      value: Boston
+  size:
+    -
+      value: 1200
+  website:
+    -
+      uri: 'https://bluefinhealth.example'
+      title: null
+      options: {}

@@ -1,0 +1,34 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 459014c0-3425-5d53-b32d-52a41729a1bc
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Saloon · HM 22 SLN'
+  color:
+    -
+      value: blue
+  kind:
+    -
+      value: car
+  location:
+    -
+      value: 'Car park P1 · bay 7'
+  capacity:
+    -
+      value: 5
+  opens:
+    -
+      value: 6
+  closes:
+    -
+      value: 22

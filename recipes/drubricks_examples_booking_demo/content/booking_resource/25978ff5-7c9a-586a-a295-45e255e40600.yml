@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 25978ff5-7c9a-586a-a295-45e255e40600
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Atlas
+  color:
+    -
+      value: indigo
+  kind:
+    -
+      value: room
+  location:
+    -
+      value: 'HQ · Floor 3'
+  capacity:
+    -
+      value: 12
+  opens:
+    -
+      value: 7
+  closes:
+    -
+      value: 20
+  rules:
+    -
+      value: 'Step-free access from the east lift.'

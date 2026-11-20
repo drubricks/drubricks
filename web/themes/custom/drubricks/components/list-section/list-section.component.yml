@@ -1,0 +1,14 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: List section
+status: stable
+group: List rows
+description: 'Kit list section heading (.list-section) between rows, e.g. "Today".'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Label }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_company
+  uuid: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Harbor & Co'
+  color:
+    -
+      value: pink
+  industry:
+    -
+      value: Retail
+  city:
+    -
+      value: Portland
+  size:
+    -
+      value: 120
+  website:
+    -
+      uri: 'https://harborco.example'
+      title: null
+      options: {}

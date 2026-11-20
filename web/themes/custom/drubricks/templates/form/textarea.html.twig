@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * <textarea> → kit .field (resizes vertically).
+ */
+#}
+{% set attributes = attributes.addClass('field') %}
+{% if attributes.hasClass('error') %}
+  {% set attributes = attributes.addClass('invalid').setAttribute('aria-invalid', 'true') %}
+{% endif %}
+<div{{ wrapper_attributes.addClass('form-textarea-wrapper') }}>
+  <textarea{{ attributes }}>{{ value }}</textarea>
+</div>

@@ -1,0 +1,9 @@
+{# Kit stat: .stat > .stat-label + .stat-value (+ .unit) + .stat-sub. #}
+{% set tag = url ? 'a' : (button ? 'button' : 'div') %}
+{% set attributes = attributes.addClass('stat') %}
+{% if url %}{% set attributes = attributes.setAttribute('href', url) %}{% elseif button %}{% set attributes = attributes.setAttribute('type', 'button') %}{% endif %}
+<{{ tag }}{{ attributes }}>
+  <div class="stat-label"{% if color %} style="--c: {{ color(color) }}"{% endif %}>{{ icon('kit', 'i-' ~ (icon)) }} {{ label }}</div>
+  <div class="stat-value{{ value_color ? ' ' ~ value_color }}">{{ value }}{% if unit %} <span class="unit">{{ unit }}</span>{% endif %}</div>
+  {%- if sub %}<div class="stat-sub">{{ sub }}</div>{% endif %}
+</{{ tag }}>

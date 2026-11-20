@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Kit form item for any control: label (12px, secondary) + control + error + hint.
+ * With "for" the label points at the control; without it the item is a
+ * labelled group (so a group of buttons is not inside a <label>).
+ */
+#}
+{% set label_id = 'form-item-label'|clean_unique_id %}
+{% set attributes = attributes.addClass('grid', 'gap-[5px]') %}
+{% if not for %}{% set attributes = attributes.setAttribute('role', 'group').setAttribute('aria-labelledby', label_id) %}{% endif %}
+<div{{ attributes }}>
+  {%- if label %}<{{ for ? 'label' : 'span' }} id="{{ label_id }}" class="text-[12px] font-medium text-ink-2{{ required ? ' form-required' }}"{% if for %} for="{{ for }}"{% endif %}>{{ label }}</{{ for ? 'label' : 'span' }}>{% endif %}
+  {% block control %}{{ control }}{% endblock %}
+  {%- if error %}<span class="field-error" role="alert">{{ error }}</span>{% endif %}
+  {%- if hint %}<span class="field-hint">{{ hint }}</span>{% endif -%}
+</div>

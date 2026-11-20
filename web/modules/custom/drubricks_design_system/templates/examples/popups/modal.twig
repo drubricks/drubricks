@@ -1,0 +1,16 @@
+{% embed 'drubricks:modal-button' with {label: 'Open popup', variant: 'primary', modal_title: 'New item', modal_icon: 'plus',
+  close_button: true, draggable: true,
+  actions: [{label: 'Cancel', value: 'cancel'}, {label: 'Create', primary: true, value: 'create', hud: 'Created'}]} only %}
+  {% block content %}
+    {% embed 'drubricks:form-layout' only %}{% block content %}
+      {% include 'drubricks:field' with {label: 'Name', name: 'name', placeholder: 'Untitled'} only %}
+      {% embed 'drubricks:form-row' only %}{% block content %}
+        {% include 'drubricks:select' with {label: 'Type', options: [{value: 'note', label: 'Note'}, {value: 'task', label: 'Task'}]} only %}
+        {% include 'drubricks:field' with {label: 'Due', type: 'date'} only %}
+      {% endblock %}{% endembed %}
+    {% endblock %}{% endembed %}
+  {% endblock %}
+{% endembed %}
+{% include 'drubricks:modal-button' with {label: 'Delete…', confirm: true, modal_title: 'Delete this item?', message: 'This can’t be undone.', confirm_label: 'Delete', destructive: true} only %}
+{% include 'drubricks:hud-button' with {label: 'Show HUD', message: 'Moved to Archive', undo_message: 'Restored'} only %}
+<span class="demo-out" data-ds-out="modal">drubricks:modal — close a popup</span>

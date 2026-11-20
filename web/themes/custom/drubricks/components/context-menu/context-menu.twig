@@ -1,0 +1,2 @@
+{# Region with UI.contextMenu: items as JSON in data-options. #}
+<div{{ attributes.setAttribute('data-drubricks-context-menu', '').setAttribute('data-options', {items: items}|json_encode) }}>{% block content %}{{ content }}{% endblock %}</div>

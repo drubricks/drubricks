@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  default_langcode: en
+default:
+  name:
+    -
+      value: 'Daniel Okafor'
+  mail:
+    -
+      value: daniel.okafor@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

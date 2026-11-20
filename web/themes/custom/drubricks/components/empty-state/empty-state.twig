@@ -1,0 +1,6 @@
+{# Kit empty state: .empty-state (or .insp-empty with an icon). #}
+{% if icon %}
+  <div{{ attributes.addClass(['insp-empty', compact ? '!h-auto', compact ? 'py-6']|filter(c => c)) }}>{{ icon('kit', 'i-' ~ (icon)) }}<div>{{ text }}</div></div>
+{% else %}
+  <div{{ attributes.addClass(['empty-state', compact ? '!min-h-0']|filter(c => c)) }}>{{ text }}</div>
+{% endif %}

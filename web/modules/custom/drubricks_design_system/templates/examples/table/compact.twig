@@ -1,0 +1,8 @@
+{% include 'drubricks:data-table' with {compact: true, attributes: create_attribute({'class': ['max-w-md']}),
+  columns: [{label: 'Ticket'}, {label: 'Type'}, {label: 'Sold', num: true}],
+  rows: [
+    {cells: ['Early bird', 'Paid', 120], click: true},
+    {cells: ['Standard', 'Paid', 342], click: true},
+    {cells: ['Speaker', 'Free', 18]},
+  ],
+} only %}

@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: f6a002e7-bbe7-5e4f-bca7-63200b3c2c53
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    b43cb71a-a3af-5da2-898d-e7a2bbf9d82d: pm_project
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Offline mode spec'
+  project:
+    -
+      entity: b43cb71a-a3af-5da2-898d-e7a2bbf9d82d
+  state:
+    -
+      value: review
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  due_date:
+    -
+      value: '2026-11-16'
+  weight:
+    -
+      value: 1

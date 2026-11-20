@@ -1,0 +1,9 @@
+{
+    "name": "drubricks/drubricks_design_system",
+    "description": "Drubricks design system demo (all SDC components).",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^12"
+    }
+}

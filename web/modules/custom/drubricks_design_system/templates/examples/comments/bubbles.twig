@@ -1,0 +1,6 @@
+{% embed 'drubricks:thread' with {bubbles: true, attributes: create_attribute({'class': ['max-w-xl']})} only %}
+  {% block content %}
+    {% include 'drubricks:comment' with {author: 'Daniel Okafor', color: 'green', time: 'Yesterday', text: 'Can we move the kickoff to Thursday?'} only %}
+    {% include 'drubricks:comment' with {author: 'Alex Morgan', accent: true, time: 'Yesterday', text: "Thursday works. I'll update the invite."} only %}
+  {% endblock %}
+{% endembed %}

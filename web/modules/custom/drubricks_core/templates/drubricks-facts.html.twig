@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Label / value rows (kit .group of drubricks:group-row).
+ *
+ * Variables: title (optional group title), first (no top margin), facts[{
+ *   label, value, url, attributes (link), avatar (a name: xs avatar),
+ *   people ([{name, color}]: an avatar stack),
+ *   avatar_color, pill {label, color, icon}, priority (high|medium|low),
+ *   icon, late (overdue colour + "Overdue:" for screen readers)}].
+ * Module templates include it: {% include '@drubricks_core/drubricks-facts.html.twig' with {facts: …} only %}.
+ */
+#}
+{% embed 'drubricks:group' with {facts: facts, title: title|default(''), first: first|default(false)} only %}
+  {% block content %}
+    {% for fact in facts %}
+      {% embed 'drubricks:group-row' with {label: fact.label, muted: true, fact: fact} only %}
+        {% block content %}
+          <span class="flex items-center justify-end gap-2 min-w-0">
+            {%- if fact.icon|default('') %}{{ icon('kit', 'i-' ~ (fact.icon), {class: 'dim'}) }}{% endif %}
+            {%- if fact.priority|default('') %}{{ include('drubricks:priority', {level: fact.priority}, with_context = false) }}{% endif %}
+            {%- if fact.people|default([]) %}{{ include('drubricks:avatar-stack', {people: fact.people, size: 'xs', max: 5}, with_context = false) }}{% endif %}
+            {%- if fact.avatar|default('') %}{{ include('drubricks:avatar', {name: fact.avatar, size: 'xs', color: fact.avatar_color|default('')}, with_context = false) }}{% endif %}
+            {%- if fact.pill|default(null) %}{{ include('drubricks:pill', {label: fact.pill.label, color: fact.pill.color|default('gray'), icon: fact.pill.icon|default('')}, with_context = false) }}{% endif %}
+            {%- if fact.value is defined and fact.value is not same as('') and fact.value is not null %}
+              {%- if fact.url|default('') %}<a class="link truncate" href="{{ fact.url }}"{{ fact.attributes|default('') }}>{{ fact.value }}</a>
+              {%- else %}<span class="truncate{{ fact.late|default(false) ? ' overdue' }}">{% if fact.late|default(false) %}<span class="vh">{{ 'Overdue:'|t }} </span>{% endif %}{{ fact.value }}</span>{% endif %}
+            {%- endif -%}
+          </span>
+        {% endblock %}
+      {% endembed %}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

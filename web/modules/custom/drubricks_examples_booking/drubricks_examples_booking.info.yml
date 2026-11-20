@@ -1,0 +1,9 @@
+name: 'Drubricks example: Booking'
+type: module
+description: 'Example app: rooms, equipment, cars and specialists booked in a calendar, with no double bookings and opening hours. Adds a Booking section to the sidebar.'
+package: Drubricks examples
+core_version_requirement: ^12
+dependencies:
+  - drubricks_core:drubricks_core
+  - drupal:datetime
+  - drupal:options

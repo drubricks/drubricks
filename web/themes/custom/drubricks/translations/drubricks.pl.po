@@ -1,0 +1,422 @@
+# Polish translation of drubricks (Drubricks starter).
+msgid ""
+msgstr ""
+"Project-Id-Version: drubricks\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
+
+msgid "@count more"
+msgstr "@count więcej"
+
+msgid "@count points"
+msgstr "@count pkt"
+
+msgid "@level priority"
+msgstr "Priorytet: @level"
+
+msgid "@n pts"
+msgstr "@n pkt"
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "Agenda"
+msgstr "Agenda"
+
+msgid "Back"
+msgstr "Wstecz"
+
+msgid "Berry"
+msgstr "Jagodowa"
+
+msgid "Class"
+msgstr "Klasa"
+
+msgid "Clear"
+msgstr "Wyczyść"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "Cobalt"
+msgstr "Kobaltowa"
+
+msgid "Colour palette"
+msgstr "Paleta kolorów"
+
+msgid "Colours of the app for every user. Users choose only light, dark or auto (the system setting) in the account menu."
+msgstr "Kolory aplikacji dla wszystkich użytkowników. Użytkownicy wybierają tylko tryb jasny, ciemny lub automatyczny (wg systemu) w menu konta."
+
+msgid "Day"
+msgstr "Dzień"
+
+msgid "Dismiss"
+msgstr "Zamknij"
+
+msgid "Extra classes, e.g. a kit colour (orange) or \"dim\"."
+msgstr "Dodatkowe klasy, np. kolor kitu (orange) albo „dim”."
+
+msgid "Hide"
+msgstr "Ukryj"
+
+msgid "Hide password"
+msgstr "Ukryj hasło"
+
+msgid "Icons of the UI kit sprite."
+msgstr "Ikony z zestawu UI kitu."
+
+msgid "Indigo"
+msgstr "Indygo"
+
+msgid "Lagoon"
+msgstr "Lagunowa"
+
+msgid "Loading"
+msgstr "Wczytywanie"
+
+msgid "Message"
+msgstr "Wiadomość"
+
+msgid "Name"
+msgstr "Nazwa"
+
+msgid "New event"
+msgstr "Nowe wydarzenie"
+
+msgid "Next"
+msgstr "Dalej"
+
+msgid "Next month"
+msgstr "Następny miesiąc"
+
+msgid "Next page"
+msgstr "Następna strona"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Pages"
+msgstr "Strony"
+
+msgid "Previous"
+msgstr "Poprzednie"
+
+msgid "Previous month"
+msgstr "Poprzedni miesiąc"
+
+msgid "Previous page"
+msgstr "Poprzednia strona"
+
+msgid "Resources"
+msgstr "Zasoby"
+
+msgid "Sage"
+msgstr "Szałwiowa"
+
+msgid "Search"
+msgstr "Szukaj"
+
+msgid "Send"
+msgstr "Wyślij"
+
+msgid "Show Inspector"
+msgstr "Pokaż panel informacji"
+
+msgid "Show Sidebar"
+msgstr "Pokaż menu boczne"
+
+msgid "Show password"
+msgstr "Pokaż hasło"
+
+msgid "Skip to main content"
+msgstr "Przejdź do treści"
+
+msgid "Tabs"
+msgstr "Zakładki"
+
+msgid "Today"
+msgstr "Dziś"
+
+msgid "UI kit"
+msgstr "UI kit"
+
+msgid "View"
+msgstr "Widok"
+
+msgid "Week"
+msgstr "Tydzień"
+
+msgctxt "UI kit"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "UI kit"
+msgid "All day"
+msgstr "Cały dzień"
+
+msgctxt "UI kit"
+msgid "Arrow keys choose a time slot, Shift+Up and Shift+Down change its length, Enter creates a booking there. On an event: Enter opens it, Alt+arrow keys move it, Alt+Shift+Up and Alt+Shift+Down change its length."
+msgstr "Strzałki wybierają termin, Shift+↑ i Shift+↓ zmieniają jego długość, Enter tworzy tam wpis. Na wydarzeniu: Enter otwiera je, Alt+strzałki przesuwają, Alt+Shift+↑ i Alt+Shift+↓ zmieniają długość."
+
+msgctxt "UI kit"
+msgid "Auto"
+msgstr "Auto"
+
+msgctxt "UI kit"
+msgid "Berry"
+msgstr "Jagodowa"
+
+msgctxt "UI kit"
+msgid "Billing"
+msgstr "Płatności"
+
+msgctxt "UI kit"
+msgid "Calendar"
+msgstr "Kalendarz"
+
+msgctxt "UI kit"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "UI kit"
+msgid "Choose a day"
+msgstr "Wybierz dzień"
+
+msgctxt "UI kit"
+msgid "Cobalt"
+msgstr "Kobaltowa"
+
+msgctxt "UI kit"
+msgid "Collapse"
+msgstr "Zwiń"
+
+msgctxt "UI kit"
+msgid "Colors"
+msgstr "Kolory"
+
+msgctxt "UI kit"
+msgid "Create"
+msgstr "Utwórz"
+
+msgctxt "UI kit"
+msgid "Dark"
+msgstr "Ciemny"
+
+msgctxt "UI kit"
+msgid "Dark mode"
+msgstr "Tryb ciemny"
+
+msgctxt "UI kit"
+msgid "Dialog"
+msgstr "Okno"
+
+msgctxt "UI kit"
+msgid "Expand"
+msgstr "Rozwiń"
+
+msgctxt "UI kit"
+msgid "Help & feedback"
+msgstr "Pomoc i opinie"
+
+msgctxt "UI kit"
+msgid "Hide"
+msgstr "Ukryj"
+
+msgctxt "UI kit"
+msgid "Hide Inspector"
+msgstr "Ukryj panel informacji"
+
+msgctxt "UI kit"
+msgid "Hide Sidebar"
+msgstr "Ukryj menu boczne"
+
+msgctxt "UI kit"
+msgid "Indigo"
+msgstr "Indygo"
+
+msgctxt "UI kit"
+msgid "Keyboard shortcuts"
+msgstr "Skróty klawiszowe"
+
+msgctxt "UI kit"
+msgid "Lagoon"
+msgstr "Lagunowa"
+
+msgctxt "UI kit"
+msgid "Light"
+msgstr "Jasny"
+
+msgctxt "UI kit"
+msgid "Log out"
+msgstr "Wyloguj"
+
+msgctxt "UI kit"
+msgid "Match system"
+msgstr "Jak w systemie"
+
+msgctxt "UI kit"
+msgid "Moved {title} to {lane}, position {pos} of {total}"
+msgstr "Przeniesiono {title} do {lane}, pozycja {pos} z {total}"
+
+msgctxt "UI kit"
+msgid "Moved {title} to {when}"
+msgstr "Przeniesiono {title} na {when}"
+
+msgctxt "UI kit"
+msgid "Next month"
+msgstr "Następny miesiąc"
+
+msgctxt "UI kit"
+msgid "Not available"
+msgstr "Niedostępne"
+
+msgctxt "UI kit"
+msgid "Nothing scheduled"
+msgstr "Nic nie zaplanowano"
+
+msgctxt "UI kit"
+msgid "Notifications"
+msgstr "Powiadomienia"
+
+msgctxt "UI kit"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "UI kit"
+msgid "Previous month"
+msgstr "Poprzedni miesiąc"
+
+msgctxt "UI kit"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "UI kit"
+msgid "Sage"
+msgstr "Szałwiowa"
+
+msgctxt "UI kit"
+msgid "Settings"
+msgstr "Ustawienia"
+
+msgctxt "UI kit"
+msgid "Show"
+msgstr "Pokaż"
+
+msgctxt "UI kit"
+msgid "Show Inspector"
+msgstr "Pokaż panel informacji"
+
+msgctxt "UI kit"
+msgid "Show Sidebar"
+msgstr "Pokaż menu boczne"
+
+msgctxt "UI kit"
+msgid "Switch account…"
+msgstr "Przełącz konto…"
+
+msgctxt "UI kit"
+msgid "Theme"
+msgstr "Motyw"
+
+msgctxt "UI kit"
+msgid "Today"
+msgstr "Dziś"
+
+msgctxt "UI kit"
+msgid "Tomorrow"
+msgstr "Jutro"
+
+msgctxt "UI kit"
+msgid "Undo"
+msgstr "Cofnij"
+
+msgctxt "UI kit"
+msgid "What needs to be done?"
+msgstr "Co trzeba zrobić?"
+
+msgctxt "UI kit"
+msgid "Yesterday"
+msgstr "Wczoraj"
+
+msgctxt "UI kit"
+msgid "just now"
+msgstr "przed chwilą"
+
+msgctxt "UI kit"
+msgid "{name} palette"
+msgstr "Paleta {name}"
+
+msgctxt "UI kit"
+msgid "{n} days ago"
+msgstr "{n} dni temu"
+
+msgctxt "UI kit"
+msgid "{n} h ago"
+msgstr "{n} godz. temu"
+
+msgctxt "UI kit"
+msgid "{n} min ago"
+msgstr "{n} min temu"
+
+msgctxt "UI kit"
+msgid "{n} mo ago"
+msgstr "{n} mies. temu"
+
+msgctxt "UI kit"
+msgid "{n} wk ago"
+msgstr "{n} tyg. temu"
+
+msgctxt "UI kit"
+msgid "{n} yr ago"
+msgstr "{n} lat temu"
+
+msgctxt "UI kit"
+msgid "{title} now {when}"
+msgstr "{title} teraz: {when}"
+
+msgid "Orange"
+msgstr "Pomarańczowa"
+
+# Palette names in the theme settings ("Colour palette").
+msgctxt "Colour palette"
+msgid "Cobalt"
+msgstr "Kobaltowa"
+
+msgctxt "Colour palette"
+msgid "Lagoon"
+msgstr "Lagunowa"
+
+msgctxt "Colour palette"
+msgid "Indigo"
+msgstr "Indygo"
+
+msgctxt "Colour palette"
+msgid "Berry"
+msgstr "Jagodowa"
+
+msgctxt "Colour palette"
+msgid "Sage"
+msgstr "Szałwiowa"
+
+msgctxt "Colour palette"
+msgid "Orange"
+msgstr "Pomarańczowa"
+
+msgid "More actions"
+msgstr "Więcej akcji"
+
+msgid "Select rows for bulk actions"
+msgstr "Zaznacz wiersze, aby wykonać akcję"
+
+msgid "1 selected"
+msgid_plural "@count selected"
+msgstr[0] "Zaznaczono 1"
+msgstr[1] "Zaznaczono @count"
+msgstr[2] "Zaznaczono @count"
+
+msgctxt "UI kit"
+msgid "Close"
+msgstr "Zamknij"

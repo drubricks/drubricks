@@ -1,0 +1,45 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Data table
+status: stable
+group: Data table & pager
+description: 'Kit data table (.data-table-wrap > table.data-table): sticky header, hover rows, .num columns, tr.selected, .compact. Columns with sort get a header button and aria-sort; sortable: true sorts the rows in the browser (data-table.js). Rows with url open on click / Enter.'
+props:
+  type: object
+  required: [columns]
+  properties:
+    columns:
+      type: array
+      title: Columns
+      items:
+        type: object
+        properties:
+          label: { type: string }
+          num: { type: boolean, description: 'Right-aligned number column (.num).' }
+          sort: { type: string, enum: [none, ascending, descending], description: 'Sortable header with its current state.' }
+          url: { type: string, description: 'Server-side sort link for the header.' }
+    rows:
+      type: array
+      title: Rows
+      items:
+        type: object
+        properties:
+          cells: { type: array, description: 'Text or markup per column.' }
+          selected: { type: boolean }
+          url: { type: string }
+          click: { type: boolean, description: 'Pointer cursor on this row (tr.click).' }
+    compact: { type: boolean, title: Compact rows }
+    clickable: { type: boolean, title: All rows clickable (table.click) }
+    sortable: { type: boolean, title: Sort in the browser }
+    caption: { type: string, title: Caption (visually hidden) }
+    max_height: { type: string, title: Max height utility for a sticky header, examples: [max-h-72] }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  body:
+    title: Body
+    description: Your own <tr> rows instead of rows.
+libraryOverrides:
+  dependencies:
+    - drubricks/global

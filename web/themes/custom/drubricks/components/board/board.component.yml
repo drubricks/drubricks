@@ -1,0 +1,30 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Board
+status: stable
+group: Board
+description: 'Kit kanban board (UI.board): lanes with counts and WIP limits, collapsible lanes, drag & drop and Alt + arrows, inline "+ Create". Cards are built from item fields (key, title, sub, tags, prio, points, value, assignee) and escaped. Changes fire a cancellable "drubricks:board" event ({ type: open | move | create, id, lane, index, fromLane, title }); editable boards apply them locally. UI.detach destroys it.'
+props:
+  type: object
+  required: [lanes, items]
+  properties:
+    lanes:
+      type: array
+      title: Lanes
+      description: '[{ id, title, color, limit }]'
+      items: { type: object }
+    items:
+      type: array
+      title: Cards
+      description: '[{ id, lane, key, title, sub, tags: [{ label, color }], prio: high|medium|low, points, value, assignee: { name, color } }]'
+      items: { type: object }
+    editable: { type: boolean, title: Apply moves / creates locally, default: true }
+    create: { type: boolean, title: '"+ Create" in every lane' }
+    lane_meta: { type: string, title: Lane header sum, enum: ['', points, count], description: 'points = sum of story points.' }
+    collapsed_key: { type: string, title: Storage key for collapsed lanes }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

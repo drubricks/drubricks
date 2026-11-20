@@ -1,0 +1,12 @@
+# Admin pages of the entity types: the base routes of their Field UI tabs
+# (field_ui_base_route), like core's entity.user.admin_form.
+entity.drubricks_test_record.settings:
+  path: '/admin/app/structure/test/records'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: drubricks_test_record
+  requirements:
+    _permission: 'administer drubricks test records'
+  options:
+    _admin_route: TRUE

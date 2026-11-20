@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: c45f7cc5-aa0b-5baa-b72e-bbe093a0b881
+  depends:
+    dd7c322a-b246-53da-88d1-5846f3e5f810: user
+    b273ea39-aa27-5dc4-8b68-842f033a6445: booking_resource
+default:
+  uid:
+    -
+      entity: dd7c322a-b246-53da-88d1-5846f3e5f810
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Trade fair stand delivery'
+  resource:
+    -
+      entity: b273ea39-aa27-5dc4-8b68-842f033a6445
+  starts:
+    -
+      value: '2026-11-18T06:00:00'
+  ends:
+    -
+      value: '2026-11-18T12:00:00'
+  state:
+    -
+      value: confirmed

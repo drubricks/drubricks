@@ -1,0 +1,12 @@
+{# Kit avatar stack: .avatar-stack > .avatar… [+N]. #}
+{% set max = max|default(4) %}
+{% set size_class = size|default('sm') in ['xs', 'sm', 'xl'] ? ' ' ~ size|default('sm') : '' %}
+<span{{ attributes.addClass('avatar-stack') }}>
+  {%- for person in people|slice(0, max) -%}
+    {% set initials = person.initials ?: (person.name|default('')|split(' ')|filter(w => w)|slice(0, 2)|map(w => w|first|upper)|join) %}
+    <span class="avatar{{ size_class }}"{% if person.color %} style="background: {{ color(person.color) }}"{% endif %}{% if person.name %} title="{{ person.name }}"{% endif %}>{{ initials }}</span>
+  {%- endfor -%}
+  {%- if people|length > max -%}
+    <span class="avatar{{ size_class }}" title="{{ '@count more'|t({'@count': people|length - max}) }}">+{{ people|length - max }}</span>
+  {%- endif -%}
+</span>

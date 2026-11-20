@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Stat
+status: stable
+group: Dashboard
+description: 'Kit stat tile (.stat): label with an icon in a colour token, big value (+ unit), sub line. A link or button (hover ring) when url or button is set.'
+props:
+  type: object
+  required: [label, value]
+  properties:
+    label: { type: string, title: Label }
+    icon: { type: string, title: Icon }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    value: { type: [string, number], title: Value }
+    unit: { type: string, title: Unit }
+    sub: { type: string, title: Sub line }
+    value_color: { type: string, title: Value colour class, enum: ['', red, green, orange] }
+    url: { type: string, title: URL }
+    button: { type: boolean, title: Render a <button> }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,21 @@
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_design_system.section:
+  title: 'Design system'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 90
+drubricks_design_system.components:
+  title: 'Components'
+  menu_name: drubricks
+  parent: drubricks_design_system.section
+  route_name: drubricks_design_system.page
+  weight: 0
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-sparkles
+  metadata:
+    color: purple

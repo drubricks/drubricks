@@ -1,0 +1,24 @@
+{# Dates relative to this week: day[0] is Monday. #}
+{% set day = [0, 1, 2, 3, 4, 6]|map(i => ('monday this week +' ~ i ~ ' days')|date('Y-m-d')) %}
+{% set today = 'now'|date('Y-m-d') %}
+{% include 'drubricks:calendar' with {
+  view: 'week',
+  resources: [
+    {id: 'fjord', title: 'Fjord', sub: '6 seats', color: 'teal'},
+    {id: 'atlas', title: 'Atlas', sub: '12 seats', color: 'indigo'},
+    {id: 'van', title: 'Van', sub: 'Cargo · 3 seats', color: 'orange', hours: {start: 6, end: 20, days: [1, 2, 3, 4, 5, 6]}},
+  ],
+  events: [
+    {id: 'e1', title: 'Design review', start: day[0] ~ 'T09:00', end: day[0] ~ 'T10:30', resource: 'fjord'},
+    {id: 'e2', title: '1:1 Maya', start: day[0] ~ 'T09:30', end: day[0] ~ 'T10:00', resource: 'atlas'},
+    {id: 'e3', title: 'Quick sync', start: day[1] ~ 'T11:00', end: day[1] ~ 'T11:15', resource: 'fjord'},
+    {id: 'e4', title: 'Board prep (pending)', start: day[2] ~ 'T13:00', end: day[2] ~ 'T15:00', resource: 'atlas', tentative: true},
+    {id: 'e5', title: 'Site visit', start: day[3] ~ 'T08:00', end: day[3] ~ 'T12:00', resource: 'van'},
+    {id: 'e6', title: 'Team offsite', start: day[4], end: day[5], allDay: true, color: 'purple'},
+    {id: 'e7', title: 'Stand-up', start: today ~ 'T10:00', end: today ~ 'T10:30', resource: 'fjord'},
+  ],
+  blocked: [{start: day[2] ~ 'T16:00', end: day[2] ~ 'T18:00', resource: 'atlas', label: 'AV maintenance'}],
+  hours: {start: 8, end: 18, days: [1, 2, 3, 4, 5]},
+  start_hour: 7, end_hour: 20, step: 15,
+} only %}
+<span class="demo-out mt-3 block" data-ds-out="calendar">drubricks:calendar — drag, resize or open an event</span>

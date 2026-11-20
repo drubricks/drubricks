@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Avatar
+status: stable
+group: Avatars, tags & badges
+description: 'Kit avatar (.avatar xs|sm|md|xl): initials (from name when not given) on a colour token, or on the accent (text-on-accent).'
+props:
+  type: object
+  properties:
+    name: { type: string, title: Full name (title + initials) }
+    initials: { type: string, title: Initials }
+    size: { type: string, title: Size, enum: [xs, sm, md, xl], default: md }
+    color: { type: string, title: Colour token, description: "red, orange, yellow, green, teal, blue, indigo, purple, pink, gray", enum: ["", red, orange, yellow, green, teal, blue, indigo, purple, pink, gray] }
+    accent: { type: boolean, title: Accent background }
+    tip: { type: string, title: Kit tooltip (data-tip) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

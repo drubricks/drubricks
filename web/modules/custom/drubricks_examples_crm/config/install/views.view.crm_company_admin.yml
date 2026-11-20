@@ -1,0 +1,252 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_crm
+    - user
+id: crm_company_admin
+label: 'Companies (admin)'
+module: views
+description: 'Admin list of companies: filters, bulk operations, edit and delete.'
+tag: drubricks_admin
+base_table: crm_company
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Companies
+      fields:
+        crm_company_bulk_form:
+          id: crm_company_bulk_form
+          table: crm_company
+          field: crm_company_bulk_form
+          entity_type: crm_company
+          plugin_id: bulk_form
+          label: ''
+          action_title: Action
+          include_exclude: include
+          selected_actions:
+            - crm_company_delete_action
+            - crm_company_publish_action
+            - crm_company_unpublish_action
+        name:
+          id: name
+          table: crm_company
+          field: name
+          entity_type: crm_company
+          entity_field: name
+          plugin_id: field
+          label: Name
+          type: string
+          settings:
+            link_to_entity: true
+        industry:
+          id: industry
+          table: crm_company
+          field: industry
+          entity_type: crm_company
+          entity_field: industry
+          plugin_id: field
+          label: Industry
+          type: string
+          settings: {}
+        city:
+          id: city
+          table: crm_company
+          field: city
+          entity_type: crm_company
+          entity_field: city
+          plugin_id: field
+          label: City
+          type: string
+          settings: {}
+        size:
+          id: size
+          table: crm_company
+          field: size
+          entity_type: crm_company
+          entity_field: size
+          plugin_id: field
+          label: Employees
+          type: number_integer
+          settings: {}
+        uid:
+          id: uid
+          table: crm_company
+          field: uid
+          entity_type: crm_company
+          entity_field: uid
+          plugin_id: field
+          label: Owner
+          type: entity_reference_label
+          settings:
+            link: false
+        status:
+          id: status
+          table: crm_company
+          field: status
+          entity_type: crm_company
+          entity_field: status
+          plugin_id: field
+          label: Active
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
+        changed:
+          id: changed
+          table: crm_company
+          field: changed
+          entity_type: crm_company
+          entity_field: changed
+          plugin_id: field
+          label: Changed
+          type: timestamp
+          settings:
+            date_format: short
+        operations:
+          id: operations
+          table: crm_company
+          field: operations
+          entity_type: crm_company
+          plugin_id: entity_operations
+          label: Operations
+          destination: true
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+      access:
+        type: perm
+        options:
+          perm: 'administer crm'
+      cache:
+        type: tag
+        options: {}
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No companies match the filters.'
+      filters:
+        name:
+          id: name
+          table: crm_company
+          field: name
+          entity_type: crm_company
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Name contains'
+            identifier: name
+        status:
+          id: status
+          table: crm_company
+          field: status
+          entity_type: crm_company
+          entity_field: status
+          plugin_id: boolean
+          value: All
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Active
+            identifier: status
+          is_grouped: true
+          group_info:
+            label: Active
+            identifier: status
+            default_group: All
+            group_items:
+              1:
+                title: Active
+                operator: '='
+                value: '1'
+              2:
+                title: Inactive
+                operator: '='
+                value: '0'
+      style:
+        type: table
+        options:
+          columns:
+            name: name
+            industry: industry
+            city: city
+            size: size
+            uid: uid
+            status: status
+            changed: changed
+          default: changed
+          info:
+            name:
+              sortable: true
+              default_sort_order: asc
+            industry:
+              sortable: true
+              default_sort_order: asc
+            city:
+              sortable: true
+              default_sort_order: asc
+            size:
+              sortable: true
+              default_sort_order: asc
+            uid:
+              sortable: false
+              default_sort_order: asc
+            status:
+              sortable: true
+              default_sort_order: asc
+            changed:
+              sortable: true
+              default_sort_order: asc
+          sticky: true
+          order: desc
+          empty_table: true
+      row:
+        type: fields
+      display_extenders: {}
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {}
+      path: admin/app/entities/crm/companies
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}

@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Toolbar
+status: stable
+group: Toolbar
+description: 'Kit pane header (.pane-header, 52px): show-sidebar / back buttons, a .title (h1 + p) or an inspector label (.insp-kind), toolbar groups (actions slot), a .spacer, then the end slot (search, icon buttons) and an optional inspector toggle.'
+props:
+  type: object
+  properties:
+    title: { type: string, title: Title (h1) }
+    subtitle: { type: string, title: Subtitle (p) }
+    kind: { type: string, title: Inspector label (.insp-kind) }
+    sidebar_toggle: { type: boolean, title: Show-sidebar button (visible when the sidebar is hidden) }
+    back: { type: boolean, title: 'Back button (narrow mode, detail pane)' }
+    inspector_toggle: { type: boolean, title: Inspector toggle button }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  actions:
+    title: Actions (after the title)
+    description: drubricks:tb-group, buttons…
+  end:
+    title: End (after the spacer)
+    description: Search, segmented control, icon buttons…

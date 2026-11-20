@@ -1,0 +1,65 @@
+# Admin views of the CRM records (Application → Entities in the admin sidebar).
+drubricks_examples_crm.admin_companies:
+  title: 'Companies'
+  description: 'CRM: browse and filter companies, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.crm_company_admin.page_1
+  weight: 10
+drubricks_examples_crm.admin_contacts:
+  title: 'Contacts'
+  description: 'CRM: browse and filter contacts, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.crm_contact_admin.page_1
+  weight: 11
+drubricks_examples_crm.admin_deals:
+  title: 'Deals'
+  description: 'CRM: browse and filter deals, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.crm_deal_admin.page_1
+  weight: 12
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_examples_crm.section:
+  title: 'CRM'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 10
+drubricks_examples_crm.contacts:
+  title: 'Contacts'
+  menu_name: drubricks
+  parent: drubricks_examples_crm.section
+  route_name: entity.crm_contact.collection
+  weight: 0
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-users
+  metadata:
+    count: crm_contact
+drubricks_examples_crm.companies:
+  title: 'Companies'
+  menu_name: drubricks
+  parent: drubricks_examples_crm.section
+  route_name: entity.crm_company.collection
+  weight: 10
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-building
+  metadata:
+    count: crm_company
+drubricks_examples_crm.deals:
+  title: 'Deals'
+  menu_name: drubricks
+  parent: drubricks_examples_crm.section
+  route_name: entity.crm_deal.drubricks_board
+  weight: 20
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-dollar
+  metadata:
+    count: crm_deal
+    color: green

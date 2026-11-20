@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Composer
+status: stable
+group: Detail view
+description: 'Kit composer (.composer): a field and a primary button, for notes or comments under a record or thread. A <form> when action is set.'
+props:
+  type: object
+  properties:
+    placeholder: { type: string, title: Placeholder }
+    button: { type: string, title: Button label, default: Send }
+    name: { type: string, title: Field name, default: body }
+    label: { type: string, title: Accessible label of the field }
+    action: { type: string, title: Form action }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 2a5b86d0-38ee-58c0-8633-cddf0e7b529f
+  depends:
+    4c770c2c-a25e-54ff-9bdf-0353b5287c59: user
+    4413d38a-c4f6-54c5-b879-155d0fb9cfe6: pm_project
+default:
+  uid:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Logo explorations'
+  project:
+    -
+      entity: 4413d38a-c4f6-54c5-b879-155d0fb9cfe6
+  state:
+    -
+      value: doing
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  due_date:
+    -
+      value: '2026-11-16'
+  weight:
+    -
+      value: 3

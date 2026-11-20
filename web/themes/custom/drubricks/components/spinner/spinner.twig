@@ -1,0 +1,6 @@
+{# Kit spinner: span.spinner[.large]. #}
+{% if text %}
+  <span{{ attributes.addClass('flex', 'items-center', 'gap-2', 'text-ink-2') }} role="status"><span class="spinner{{ size == 'large' ? ' large' }}"></span> {{ text }}</span>
+{% else %}
+  <span{{ attributes.addClass(['spinner', size == 'large' ? 'large']|filter(c => c)) }} role="status" aria-label="{{ label|default('Loading'|t) }}"></span>
+{% endif %}

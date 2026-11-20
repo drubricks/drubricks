@@ -1,0 +1,9 @@
+{#
+/**
+ * @file
+ * Exposed filters of a View → a kit filter bar: the filters side by side,
+ * the buttons at the end of the row (src/views.css).
+ */
+#}
+{% if q is not empty %}{{ q }}{% endif %}
+<div class="drubricks-filters">{{ form }}</div>

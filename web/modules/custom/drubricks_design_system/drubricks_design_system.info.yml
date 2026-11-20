@@ -1,0 +1,7 @@
+name: 'Drubricks design system'
+type: module
+description: 'Living style guide: every SDC component of the drubricks theme with live examples and Twig snippets. Adds "Design system" to the sidebar (/apps/design-system).'
+package: Drubricks
+core_version_requirement: ^12
+dependencies:
+  - drubricks_core:drubricks_core

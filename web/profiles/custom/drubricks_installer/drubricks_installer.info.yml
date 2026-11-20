@@ -1,0 +1,14 @@
+name: Drubricks
+type: profile
+description: 'Installs Drubricks: the base recipe and the applications you choose (with their demo data).'
+core_version_requirement: ^12
+# The profile is removed when installation finishes; everything it sets up
+# lives in recipes, so it never blocks updates on production.
+keep_profile: false
+distribution:
+  name: Drubricks
+  install:
+    theme: default_admin
+    finish_url: 'apps'
+themes:
+  - default_admin

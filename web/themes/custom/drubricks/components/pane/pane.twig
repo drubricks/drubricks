@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Kit shell pane: section.column | main.content | aside.inspector.
+ */
+#}
+{% set kind = kind|default('content') %}
+{% set tag = {column: 'section', content: 'main', inspector: 'aside'}[kind] %}
+{% set attributes = attributes.addClass(kind) %}
+{% if id %}{% set attributes = attributes.setAttribute('id', id) %}{% endif %}
+{% if label %}{% set attributes = attributes.setAttribute('aria-label', label) %}{% endif %}
+{% if kind == 'content' %}{% set attributes = attributes.setAttribute('tabindex', '-1') %}{% endif %}
+{% set has_resizer = resizer is not defined or resizer %}
+<{{ tag }}{{ attributes }}>
+  {%- if kind == 'inspector' and has_resizer %}<div class="resizer"></div>{% endif %}
+  {% block header %}{{ header }}{% endblock %}
+  <div class="pane-body{{ selectable ? ' selectable' }}"{% if body_id %} id="{{ body_id }}"{% endif %}>{% block body %}{{ body }}{% endblock %}</div>
+  {%- if kind == 'column' and has_resizer %}<div class="resizer"></div>{% endif %}
+</{{ tag }}>

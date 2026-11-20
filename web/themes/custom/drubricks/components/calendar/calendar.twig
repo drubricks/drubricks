@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Mount point for UI.calendar, with optional view / navigation controls.
+ */
+#}
+{% set options = {view: view|default('week'), date: date, events: events|default([]), resources: resources, blocked: blocked, hours: hours, startHour: start_hour, endHour: end_hour, step: step, readOnly: read_only, label: label}|filter(v => v is not null) %}
+<div{{ attributes.setAttribute('data-drubricks-calendar', (editable is not defined or editable) ? 'editable' : '').setAttribute('data-options', options|json_encode) }}>
+  {%- if controls is not defined or controls %}
+    <div class="mb-3 flex flex-wrap items-center gap-2">
+      <div class="seg" role="group" aria-label="{{ 'View'|t }}">
+        {%- for v, l in {week: 'Week'|t, day: 'Day'|t, resources: 'Resources'|t, agenda: 'Agenda'|t} %}
+          {% if v != 'resources' or resources %}<button type="button" data-cal-view="{{ v }}" class="{{ v == view|default('week') ? 'active' }}" aria-pressed="{{ v == view|default('week') ? 'true' : 'false' }}">{{ l }}</button>{% endif %}
+        {%- endfor -%}
+      </div>
+      <div class="tb-group">
+        <button class="tb-btn" type="button" data-cal-nav="-1" title="{{ 'Previous'|t }}">{{ icon('kit', 'i-chevron-left') }}</button>
+        <button class="tb-btn" type="button" data-cal-nav="0">{{ 'Today'|t }}</button>
+        <button class="tb-btn" type="button" data-cal-nav="1" title="{{ 'Next'|t }}">{{ icon('kit', 'i-chevron-right') }}</button>
+      </div>
+    </div>
+  {%- endif %}
+  <div class="{{ height|default('h-[520px]') }}" data-cal></div>
+</div>

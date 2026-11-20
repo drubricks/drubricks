@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 198dd971-3995-52f3-abc4-99fa2901062c
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Nadia Okafor'
+  mail:
+    -
+      value: nadia.okafor@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

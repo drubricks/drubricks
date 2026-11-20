@@ -1,0 +1,34 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 0111125f-4353-54a7-b7b8-a393cc8fe542
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Lantern
+  color:
+    -
+      value: green
+  kind:
+    -
+      value: room
+  location:
+    -
+      value: 'HQ · Floor 3'
+  capacity:
+    -
+      value: 6
+  opens:
+    -
+      value: 7
+  closes:
+    -
+      value: 20

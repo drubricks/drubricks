@@ -1,0 +1,5 @@
+{# Kit control group: fieldset.grid > legend + controls. #}
+<fieldset{{ attributes.addClass('grid', 'gap-2') }}>
+  <legend class="mb-1 text-[12px] font-semibold text-ink-2">{{ legend }}</legend>
+  {% block content %}{{ content }}{% endblock %}
+</fieldset>

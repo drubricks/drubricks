@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_project
+  uuid: b43cb71a-a3af-5da2-898d-e7a2bbf9d82d
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    4c770c2c-a25e-54ff-9bdf-0353b5287c59: user
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Mobile App v2'
+  color:
+    -
+      value: orange
+  state:
+    -
+      value: planned
+  due_date:
+    -
+      value: '2027-01-02'
+  members:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843

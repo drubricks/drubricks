@@ -1,0 +1,6 @@
+{# Kit group row: .group-row > .grow label + control. #}
+<div{{ attributes.addClass('group-row') }}>
+  {%- if label %}<span class="grow{{ muted ? ' text-ink-2' }}">{{ label }}</span>{% endif %}
+  {%- if value %}<span>{{ value }}</span>{% endif %}
+  {% block content %}{{ content }}{% endblock %}
+</div>

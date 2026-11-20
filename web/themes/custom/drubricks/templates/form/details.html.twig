@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Details → a kit grouped panel (.group): the summary is a row with a
+ * chevron, the content is padded below it.
+ */
+#}
+<details{{ attributes.addClass('group', 'form-details') }}>
+  {%
+    set summary_classes = [
+      'form-details-summary',
+      required ? 'js-form-required',
+      required ? 'form-required',
+    ]
+  %}
+  {%- if title -%}
+    <summary{{ summary_attributes.addClass(summary_classes) }}>{{ icon('kit', 'i-chevron-right', {class: 'form-details-chevron'}) }}<span class="form-details-title">{{ title }}</span></summary>
+  {%- endif -%}
+  <div class="details-wrapper">
+    {% if errors %}
+      <div class="form-item--error-message field-error">{{ errors }}</div>
+    {% endif %}
+    {%- if description -%}
+      {% set description_attributes = create_attribute({id: attributes['aria-describedby']}) %}
+      <div{{ description_attributes.addClass('description', 'field-hint') }}>{{ description }}</div>
+    {%- endif -%}
+    {{ children }}
+    {{ value }}
+  </div>
+</details>

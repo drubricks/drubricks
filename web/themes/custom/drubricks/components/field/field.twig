@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Kit text input: input.field [.plain], aria-invalid when there is an error.
+ */
+#}
+{% set field_id = id ?: (label ? 'field'|clean_unique_id) %}
+{% set input_attributes = attributes.addClass(['field', plain ? 'plain']|filter(c => c)).setAttribute('type', type|default('text')) %}
+{% if field_id %}{% set input_attributes = input_attributes.setAttribute('id', field_id) %}{% endif %}
+{% if name %}{% set input_attributes = input_attributes.setAttribute('name', name) %}{% endif %}
+{% if value is not null and value is defined %}{% set input_attributes = input_attributes.setAttribute('value', value) %}{% endif %}
+{% if placeholder %}{% set input_attributes = input_attributes.setAttribute('placeholder', placeholder) %}{% endif %}
+{% if aria_label %}{% set input_attributes = input_attributes.setAttribute('aria-label', aria_label) %}{% endif %}
+{% if invalid or error %}{% set input_attributes = input_attributes.setAttribute('aria-invalid', 'true') %}{% endif %}
+{% set control %}<input{{ input_attributes }}{{ required ? ' required' }}{{ disabled ? ' disabled' }}>{% endset %}
+{% if label or hint or error %}
+  <label for="{{ field_id }}">
+    {%- if label %}<span{{ required ? ' class="form-required"' }}>{{ label }}</span>{% endif %}
+    {{ control }}
+    {%- if error %}<span class="field-error">{{ error }}</span>{% endif %}
+    {%- if hint %}<span class="field-hint">{{ hint }}</span>{% endif -%}
+  </label>
+{% else %}
+  {{ control }}
+{% endif %}

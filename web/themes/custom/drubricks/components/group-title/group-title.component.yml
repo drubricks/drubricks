@@ -1,0 +1,14 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Group title
+status: stable
+group: Grouped lists
+description: 'Kit .group-title: a heading above a group, a list of minis or any block of a detail view.'
+props:
+  type: object
+  required: [title]
+  properties:
+    title: { type: string, title: Title }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

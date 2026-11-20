@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 493267f6-352f-5915-9fa7-d38dc5c5ac8c
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    c473735e-7d42-53da-9a4c-abfdfd4bc3c8: pm_project
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Kickoff call with Kestrel'
+  project:
+    -
+      entity: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  state:
+    -
+      value: done
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  due_date:
+    -
+      value: '2026-11-07'
+  weight:
+    -
+      value: 1

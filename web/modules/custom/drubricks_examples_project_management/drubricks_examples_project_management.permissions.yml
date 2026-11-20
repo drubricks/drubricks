@@ -1,0 +1,3 @@
+administer project management:
+  title: 'Administer projects and tasks'
+  restrict access: true

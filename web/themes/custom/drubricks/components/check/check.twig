@@ -1,0 +1,2 @@
+{# Kit round checkbox: button.check[.on][.big]. #}
+<button{{ attributes.addClass(['check', attribute(_context, 'on') ? 'on', big ? 'big']|filter(c => c)).setAttribute('type', 'button').setAttribute('aria-label', label).setAttribute('aria-pressed', attribute(_context, 'on') ? 'true' : 'false').setAttribute('data-drubricks-check', value|default('')) }}>{{ icon('kit', 'i-checkmark') }}</button>

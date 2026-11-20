@@ -1,0 +1,254 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_core
+    - drubricks_examples_booking
+    - options
+    - user
+id: booking_resource_admin
+label: 'Resources (admin)'
+module: views
+description: 'Admin list of resources: filters, bulk operations, edit and delete.'
+tag: drubricks_admin
+base_table: booking_resource
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Resources
+      fields:
+        booking_resource_bulk_form:
+          id: booking_resource_bulk_form
+          table: booking_resource
+          field: booking_resource_bulk_form
+          entity_type: booking_resource
+          plugin_id: bulk_form
+          label: ''
+          action_title: Action
+          include_exclude: include
+          selected_actions:
+            - booking_resource_delete_action
+            - booking_resource_publish_action
+            - booking_resource_unpublish_action
+        name:
+          id: name
+          table: booking_resource
+          field: name
+          entity_type: booking_resource
+          entity_field: name
+          plugin_id: field
+          label: Name
+          type: string
+          settings:
+            link_to_entity: true
+        kind:
+          id: kind
+          table: booking_resource
+          field: kind
+          entity_type: booking_resource
+          entity_field: kind
+          plugin_id: field
+          label: Kind
+          type: list_default
+          settings: {}
+        location:
+          id: location
+          table: booking_resource
+          field: location
+          entity_type: booking_resource
+          entity_field: location
+          plugin_id: field
+          label: Location
+          type: string
+          settings: {}
+        capacity:
+          id: capacity
+          table: booking_resource
+          field: capacity
+          entity_type: booking_resource
+          entity_field: capacity
+          plugin_id: field
+          label: Capacity
+          type: number_integer
+          settings: {}
+        status:
+          id: status
+          table: booking_resource
+          field: status
+          entity_type: booking_resource
+          entity_field: status
+          plugin_id: field
+          label: Active
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
+        changed:
+          id: changed
+          table: booking_resource
+          field: changed
+          entity_type: booking_resource
+          entity_field: changed
+          plugin_id: field
+          label: Changed
+          type: timestamp
+          settings:
+            date_format: short
+        operations:
+          id: operations
+          table: booking_resource
+          field: operations
+          entity_type: booking_resource
+          plugin_id: entity_operations
+          label: Operations
+          destination: true
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+      access:
+        type: perm
+        options:
+          perm: 'administer booking'
+      cache:
+        type: tag
+        options: {}
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No resources match the filters.'
+      filters:
+        name:
+          id: name
+          table: booking_resource
+          field: name
+          entity_type: booking_resource
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Name contains'
+            identifier: name
+        kind:
+          id: kind
+          table: booking_resource
+          field: kind
+          entity_type: booking_resource
+          entity_field: kind
+          plugin_id: list_field
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: kind_op
+            label: Kind
+            identifier: kind
+            multiple: false
+            reduce: false
+        status:
+          id: status
+          table: booking_resource
+          field: status
+          entity_type: booking_resource
+          entity_field: status
+          plugin_id: boolean
+          value: All
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Active
+            identifier: status
+          is_grouped: true
+          group_info:
+            label: Active
+            identifier: status
+            default_group: All
+            group_items:
+              1:
+                title: Active
+                operator: '='
+                value: '1'
+              2:
+                title: Inactive
+                operator: '='
+                value: '0'
+      style:
+        type: table
+        options:
+          columns:
+            name: name
+            kind: kind
+            location: location
+            capacity: capacity
+            status: status
+            changed: changed
+          default: changed
+          info:
+            name:
+              sortable: true
+              default_sort_order: asc
+            kind:
+              sortable: true
+              default_sort_order: asc
+            location:
+              sortable: true
+              default_sort_order: asc
+            capacity:
+              sortable: true
+              default_sort_order: asc
+            status:
+              sortable: true
+              default_sort_order: asc
+            changed:
+              sortable: true
+              default_sort_order: asc
+          sticky: true
+          order: desc
+          empty_table: true
+      row:
+        type: fields
+      display_extenders: {}
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {}
+      path: admin/app/entities/booking/resources
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}

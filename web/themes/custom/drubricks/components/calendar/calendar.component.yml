@@ -1,0 +1,40 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Week calendar
+status: stable
+group: Week calendar
+description: 'Kit time grid (UI.calendar): week, day, resources or agenda; drag to create, move, resize; keyboard. Options as props (events, resources, blocked, hours …). Every change fires a cancellable "drubricks:calendar" event ({ type: open | create | move | resize | date | resource, id, range }) on the root; unless a listener calls preventDefault(), editable calendars apply it locally. UI.detach destroys it.'
+props:
+  type: object
+  properties:
+    view: { type: string, enum: [week, day, resources, agenda], default: week }
+    date: { type: string, title: Day shown (YYYY-MM-DD), description: 'Default: today.' }
+    events:
+      type: array
+      title: Events
+      description: '[{ id, title, start, end, allDay, resource, color, tentative, readOnly }] — local "YYYY-MM-DDTHH:mm"; all-day "YYYY-MM-DD" with an exclusive end.'
+      items: { type: object }
+    resources:
+      type: array
+      title: Resources
+      description: '[{ id, title, sub, color, hours }]'
+      items: { type: object }
+    blocked:
+      type: array
+      title: Blocked time
+      items: { type: object }
+    hours: { type: object, title: 'Business hours { start, end, days }' }
+    start_hour: { type: integer, title: First visible hour, default: 7 }
+    end_hour: { type: integer, title: Last visible hour, default: 20 }
+    step: { type: integer, title: Snap in minutes, default: 15 }
+    editable: { type: boolean, title: Apply create / move / resize locally, default: true }
+    read_only: { type: boolean, title: Read only }
+    controls: { type: boolean, title: 'View switch + previous / today / next above the grid', default: true }
+    height: { type: string, title: Height utility (the calendar fills its container), default: 'h-[520px]' }
+    label: { type: string, title: Accessible name of the grid }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

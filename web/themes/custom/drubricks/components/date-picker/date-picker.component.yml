@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Date picker
+status: stable
+group: Month grid & date picker
+description: 'Kit date picker (UI.datePicker): one tab stop, arrows / PgUp PgDn / Home End / Enter. Options as props; with name the picked day (YYYY-MM-DD) goes into a hidden input, so it works in a form. Fires "drubricks:date" ({ date }); UI.detach destroys it.'
+props:
+  type: object
+  properties:
+    date: { type: string, title: Selected day (YYYY-MM-DD) }
+    month: { type: string, title: Month shown first (YYYY-MM-DD) }
+    min: { type: string, title: Earliest day }
+    max: { type: string, title: Latest day }
+    range: { type: array, title: Tinted range [from, to], items: { type: string } }
+    marks: { type: object, title: 'Dots: { "YYYY-MM-DD": "orange" }' }
+    week_start: { type: integer, title: 'First weekday (1 = Monday, 0 = Sunday)', default: 1 }
+    label: { type: string, title: Accessible name of the grid }
+    name: { type: string, title: Hidden input name }
+    panel: { type: boolean, title: In a .panel (w-64), default: true }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

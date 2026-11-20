@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Theme hook crm_widget_deal_due: a deal's value and close date at the end
+ * of a dashboard row; an overdue date says so (not by colour alone).
+ * Variables: value, date, late.
+ */
+#}
+<div class="text-right">
+  <div class="font-semibold tabular-nums">{{ value }}</div>
+  <div class="text-xs {{ late ? 'overdue' : 'dim' }}">{% if late %}<span class="vh">{{ 'Overdue:'|t }} </span>{% endif %}{{ date }}</div>
+</div>

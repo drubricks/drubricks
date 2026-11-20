@@ -1,0 +1,9 @@
+{# Kit feed item: .feed-item[.click] > .feed-ic + .feed-body (.feed-text, .feed-meta). #}
+{% set text_html %}{% block text_markup %}{{ text_markup }}{% endblock %}{% endset %}
+{% set tag = url ? 'a' : 'div' %}
+{% set attributes = attributes.addClass(['feed-item', url ? 'click']|filter(c => c)) %}
+{% if url %}{% set attributes = attributes.setAttribute('href', url) %}{% endif %}
+<{{ tag }}{{ attributes }}>
+  <span class="feed-ic{{ solid ? ' solid' }}"{% if color %} style="--c: {{ color(color) }}"{% endif %}>{{ icon('kit', 'i-' ~ (icon|default('circle'))) }}</span>
+  <div class="feed-body"><div class="feed-text">{{ text_html|trim is not empty ? text_html : text }}</div>{% if meta %}<div class="feed-meta">{{ meta }}</div>{% endif %}</div>
+</{{ tag }}>

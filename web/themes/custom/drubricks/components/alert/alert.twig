@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Kit alert: .alert[.info|.success|.warning|.danger|.neutral] > .ic + .alert-main (+ .alert-actions).
+ */
+#}
+{% set defaults = {accent: 'sparkles', info: 'info', success: 'checkmark-circle', warning: 'alert', danger: 'alert', neutral: 'clock'} %}
+{% set kind = type|default('accent') %}
+{% set attributes = attributes.addClass(['alert', kind != 'accent' ? kind]|filter(c => c)) %}
+{% if color %}{% set attributes = attributes.setAttribute('style', '--c: ' ~ color(color)) %}{% endif %}
+{% if role %}{% set attributes = attributes.setAttribute('role', role) %}{% endif %}
+{% set content_html %}{% block content %}{{ content }}{% endblock %}{% endset %}
+{% set actions_html %}{% block actions %}{{ actions }}{% endblock %}{% endset %}
+<div{{ attributes }}>
+  {{ icon('kit', 'i-' ~ (icon ?: defaults[kind])) }}
+  <div class="alert-main">{% if title %}<b class="alert-title">{{ title }}</b>{% endif %}{{ content_html|trim is not empty ? content_html : message }}</div>
+  {%- if actions_html|trim is not empty %}<div class="alert-actions">{{ actions_html }}</div>{% endif %}
+  {%- if dismissible %}<button class="icon-btn" type="button" title="{{ 'Dismiss'|t }}" data-dismiss>{{ icon('kit', 'i-xmark') }}</button>{% endif %}
+</div>

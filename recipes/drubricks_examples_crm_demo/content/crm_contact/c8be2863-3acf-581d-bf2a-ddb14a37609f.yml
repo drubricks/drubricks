@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: c8be2863-3acf-581d-bf2a-ddb14a37609f
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Lukas Brandt'
+  job_title:
+    -
+      value: 'Purchasing Manager'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  stage:
+    -
+      value: lead
+  email:
+    -
+      value: lukas.brandt@atlas-robotics.example
+  phone:
+    -
+      value: '+49 89 555 0188'
+  last_contacted:
+    -
+      value: '2026-10-14'

@@ -1,0 +1,66 @@
+# Admin views of the Project management records (Application → Entities in the admin sidebar).
+drubricks_examples_project_management.admin_projects:
+  title: 'Projects'
+  description: 'Project management: browse and filter projects, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.pm_project_admin.page_1
+  weight: 20
+drubricks_examples_project_management.admin_tasks:
+  title: 'Tasks'
+  description: 'Project management: browse and filter tasks, edit, delete, bulk operations.'
+  parent: drubricks_core.admin_app_entities
+  route_name: view.pm_task_admin.page_1
+  weight: 21
+# Account menu (core's "account" menu): links of this module.
+drubricks_examples_project_management.my_tasks:
+  title: 'My tasks'
+  menu_name: account
+  route_name: drubricks_examples_project_management.my_tasks
+  weight: 20
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-checkmark-circle
+# Sidebar (menu "drubricks"): a section is a top-level link without a target
+# (<nolink>), its screens are child links. options.icon: core Icon API;
+# metadata.count: entity type whose records the user may see (the counter);
+# metadata.color: icon colour token. Site builders reorder them in Menu UI.
+drubricks_examples_project_management.section:
+  title: 'Projects'
+  menu_name: drubricks
+  route_name: '<nolink>'
+  weight: 20
+drubricks_examples_project_management.board:
+  title: 'Task board'
+  menu_name: drubricks
+  parent: drubricks_examples_project_management.section
+  route_name: entity.pm_task.drubricks_board
+  weight: 0
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-board
+drubricks_examples_project_management.tasks:
+  title: 'Tasks'
+  menu_name: drubricks
+  parent: drubricks_examples_project_management.section
+  route_name: entity.pm_task.collection
+  weight: 10
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-checkmark-circle
+  metadata:
+    count: pm_task
+drubricks_examples_project_management.projects:
+  title: 'Projects'
+  menu_name: drubricks
+  parent: drubricks_examples_project_management.section
+  route_name: entity.pm_project.collection
+  weight: 20
+  options:
+    icon:
+      pack_id: kit
+      icon_id: i-folder
+  metadata:
+    count: pm_project

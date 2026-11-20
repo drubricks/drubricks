@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_project_management
+  theme:
+    - drubricks
+id: drubricks_pm_open_tasks
+theme: drubricks
+region: dashboard_stats
+weight: 200
+provider: null
+plugin: drubricks_examples_project_management_open_tasks
+settings:
+  id: drubricks_examples_project_management_open_tasks
+  label: 'Open tasks'
+  label_display: '0'
+  provider: drubricks_examples_project_management
+visibility: {}

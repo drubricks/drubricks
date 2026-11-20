@@ -1,0 +1,8 @@
+{# Kit mini card: .mini > icon|tile + .mini-main (.mini-title, .mini-sub). #}
+{% set tag = url ? 'a' : 'button' %}
+{% set attributes = attributes.addClass('mini') %}
+{% set attributes = url ? attributes.setAttribute('href', url) : attributes.setAttribute('type', 'button') %}
+<{{ tag }}{{ attributes }}>
+  {%- if tile_color %}{{ include('drubricks:tile', {name: title, color: tile_color}|filter(v => v is not null), with_context = false) }}{% else %}{{ icon('kit', 'i-' ~ (icon|default('doc'))) }}{% endif -%}
+  <span class="mini-main"><span class="mini-title">{{ title }}</span>{% if subtitle %}<span class="mini-sub">{{ subtitle }}</span>{% endif %}</span>
+</{{ tag }}>

@@ -1,0 +1,14 @@
+{% include 'drubricks:tabs' with {sticky: true, label: 'Deal stage', items: [
+  {id: 'all', label: 'All', count: 24}, {id: 'open', label: 'Open', count: 9}, {id: 'won', label: 'Won'}, {id: 'lost', label: 'Lost'},
+]} only %}
+{% for deal in [
+  {t: 'Fleet tracking rollout', s: 'Kestrel Freight', stage: 'Negotiation', c: 'orange'},
+  {t: 'Warehouse sensors', s: 'Pinecrest Logistics', stage: 'Proposal', c: 'blue'},
+  {t: 'Route planner pilot', s: 'Fernhill', stage: 'Won', c: 'green'},
+  {t: 'Driver app licences', s: 'Summit Outfitters', stage: 'Lead', c: 'gray'},
+  {t: 'Cold-chain monitoring', s: 'Skylark Air', stage: 'Lost', c: 'red'},
+] %}
+  {% embed 'drubricks:p-row' with {title: deal.t, subtitle: deal.s, deal: deal} only %}
+    {% block trailing %}{% include 'drubricks:pill' with {label: deal.stage, color: deal.c} only %}{% endblock %}
+  {% endembed %}
+{% endfor %}

@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 0af75994-077a-5b84-89c0-65a88f6c82dc
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    31a6e2e0-5c5f-5820-afe9-bbd548f52ace: pm_project
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Set up analytics events'
+  project:
+    -
+      entity: 31a6e2e0-5c5f-5820-afe9-bbd548f52ace
+  state:
+    -
+      value: todo
+  priority:
+    -
+      value: low
+  assignee:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  due_date:
+    -
+      value: '2026-11-22'
+  weight:
+    -
+      value: 1

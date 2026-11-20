@@ -1,0 +1,126 @@
+{#
+/**
+ * @file
+ * Design system page (an app screen: the panes are direct children of .app).
+ *
+ * - .column: table of contents, grouped like sections.yml.
+ * - .content (#drubricks-detail): one .doc-section per section, each with
+ *   live examples (.demo) and their Twig source.
+ * - .inspector: a sample inspector for the Inspector section.
+ *
+ * Variables: groups[{title, sections[{id, title, icon, keywords, lead, notes,
+ * kit, components[{id, name}], examples[{id, title, template, source, render,
+ * block, wrap, lang}], form}]}], components (index), form, count.
+ */
+#}
+<section class="column ds-toc-pane" aria-label="{{ 'Sections'|t }}">
+  <header class="pane-header">
+    <button class="icon-btn show-sidebar-btn" type="button" data-action="toggle-sidebar" title="{{ 'Show Sidebar'|t }}">{{ icon('kit', 'i-sidebar') }}</button>
+    <div class="title"><h1>{{ 'Design system'|t }}</h1><p>{{ '@count components'|t({'@count': count}) }}</p></div>
+  </header>
+  <div class="px-3 pb-2">
+    {{ include('drubricks:search', {placeholder: 'Filter sections'|t, name: 'ds-filter', attributes: create_attribute({'class': ['w-full'], 'data-ds-filter': ''})}, with_context = false) }}
+  </div>
+  <nav class="pane-body ds-toc" aria-label="{{ 'Design system sections'|t }}">
+    {% for group in groups %}
+      <div class="ds-toc-group">
+        <div class="list-section">{{ group.title }}</div>
+        {% for section in group.sections %}
+          <a class="sb-item" href="#{{ section.id }}" data-ds-section="{{ section.id }}">{{ icon('kit', 'i-' ~ (section.icon)) }}<span class="label">{{ section.title }}</span>{% if section.examples|length %}<span class="count">{{ section.examples|length }}</span>{% endif %}</a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </nav>
+  <div class="resizer"></div>
+</section>
+
+<main class="content" id="drubricks-detail" tabindex="-1" aria-label="{{ 'Design system'|t }}">
+  <header class="pane-header">
+    <button class="tb-group tb-btn back-btn" type="button" data-action="back">{{ icon('kit', 'i-chevron-left') }}<span>{{ 'Back'|t }}</span></button>
+    <div class="title"><h1>{{ 'Components'|t }}</h1><p>{{ 'Every SDC component of the drubricks theme — live, copy-paste ready'|t }}</p></div>
+    <div class="spacer"></div>
+    {{ include('drubricks:seg', {label: 'Theme'|t, items: [
+      {icon: 'sun', title: 'Light'|t, set_theme: 'light'},
+      {icon: 'moon', title: 'Dark'|t, set_theme: 'dark'},
+      {label: 'Auto'|t, title: 'Match system'|t, set_theme: 'auto'},
+    ]}, with_context = false) }}
+    {{ include('drubricks:icon-button', {icon: 'sidebar-right', title: 'Show Inspector'|t, action: 'toggle-inspector'}, with_context = false) }}
+  </header>
+  <div class="pane-body selectable" id="ds-docs">
+    <div class="doc">
+      {% for group in groups %}
+        {% for section in group.sections %}
+          <section class="doc-section" id="{{ section.id }}" data-title="{{ section.title }} {{ section.keywords }}">
+            <h2 class="doc-h2">{{ section.title }}</h2>
+            {% if section.lead %}<p class="doc-lead">{{ section.lead }}</p>{% endif %}
+            {% if section.components %}
+              <p class="ds-components">
+                {%- for c in section.components %}<a class="ds-chip" href="#{{ ('component-' ~ c.id)|clean_id }}" title="{{ c.name }}">{{ c.id }}</a>{% endfor -%}
+              </p>
+            {% endif %}
+            {% for example in section.examples %}
+              <div class="demo" id="{{ example.id }}">
+                <div class="demo-title">{{ example.title }}</div>
+                {% if example.render %}
+                  <div class="demo-preview{{ example.block ? ' block' }}{{ example.preview ? ' ' ~ example.preview }}">
+                    {%- if example.wrap %}<div class="{{ example.wrap }}">{% endif -%}
+                    {% include example.template %}
+                    {%- if example.wrap %}</div>{% endif -%}
+                  </div>
+                {% endif %}
+                {% if example.source %}
+                  <div class="demo-code" data-lang="{{ example.lang }}">
+                    <details open><summary>{{ example.lang == 'php' ? 'PHP' : 'Twig' }}</summary><button class="copy" type="button">{{ 'Copy'|t }}</button><pre><code>{{ example.source }}</code></pre></details>
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            {% if section.form %}
+              <div class="demo" id="{{ section.id }}-form">
+                <div class="demo-title">{{ 'A Form API form — no classes in PHP: the theme templates (templates/form) give every element the kit look'|t }}</div>
+                <div class="demo-preview block">{{ form }}</div>
+              </div>
+            {% endif %}
+            {% if section.notes %}<p class="doc-lead">{{ section.notes }}</p>{% endif %}
+          </section>
+        {% endfor %}
+      {% endfor %}
+
+      <section class="doc-section" id="reference" data-title="Reference index components props slots">
+        <h2 class="doc-h2">{{ 'Component reference'|t }}</h2>
+        <p class="doc-lead">{{ 'Every SDC component of the theme with its props and slots. Full schemas: components/<name>/<name>.component.yml in the drubricks theme.'|t }}</p>
+        <div class="api-wrap"><table class="api mock w-full text-[13px]">
+          <tr><th>{{ 'Component'|t }}</th><th>{{ 'What it is'|t }}</th><th>{{ 'Props · slots'|t }}</th></tr>
+          {% for c in components %}
+            <tr id="{{ c.anchor }}" data-ds-component="{{ c.id }}">
+              <td>{{ c.id }}{% if c.js %} <span class="tag" style="--c: var(--purple)">JS</span>{% endif %}</td>
+              <td><b>{{ c.name }}</b> — {{ c.description }}{% if c.sections %}<br><span class="dim">{{ 'Examples:'|t }} {% for s in c.sections %}<a class="link" href="#{{ s.id }}">{{ s.title }}</a>{{ not loop.last ? ', ' }}{% endfor %}</span>{% endif %}</td>
+              <td class="ds-props">{% for p in c.props %}<code>{{ p }}{{ p in c.required ? '*' }}</code> {% endfor %}{% if c.slots %}<br>{{ 'Slots:'|t }} {% for s in c.slots %}<code>{{ s }}</code> {% endfor %}{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </table></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<aside class="inspector" id="drubricks-inspector" aria-label="{{ 'Inspector'|t }}">
+  <div class="resizer"></div>
+  <header class="pane-header">
+    <span class="font-bold">{{ 'Inspector'|t }}</span>
+    <div class="spacer"></div>
+    {{ include('drubricks:icon-button', {icon: 'xmark', title: 'Hide Inspector'|t, action: 'toggle-inspector'}, with_context = false) }}
+  </header>
+  <div class="pane-body">
+    <h3 id="ds-insp-title" class="mt-1 mb-3 text-[17px] font-bold">{{ 'Record details'|t }}</h3>
+    {% embed 'drubricks:group' only %}
+      {% block content %}
+        {% embed 'drubricks:group-row' with {label: 'Owner', muted: true} only %}{% block content %}{% include 'drubricks:avatar' with {name: 'Alex Morgan', size: 'sm'} only %} Alex{% endblock %}{% endembed %}
+        {% embed 'drubricks:group-row' with {label: 'Status', muted: true} only %}{% block content %}{% include 'drubricks:tag' with {label: 'In progress', color: 'blue'} only %}{% endblock %}{% endembed %}
+        {% include 'drubricks:group-row' with {label: 'Due', muted: true, value: 'Nov 20'} only %}
+      {% endblock %}
+    {% endembed %}
+    {% include 'drubricks:group-title' with {title: 'Notes'} only %}
+    {% include 'drubricks:textarea' with {rows: 5, placeholder: 'Details, properties, comments…', aria_label: 'Notes', attributes: create_attribute({'class': ['w-full']})} only %}
+  </div>
+</aside>

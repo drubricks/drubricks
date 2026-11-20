@@ -1,0 +1,2 @@
+{# Kit priority icon: svg.ic.prio.<level> (icons prio-high / prio-medium / prio-low). #}
+<span{{ attributes.addClass('inline-flex') }} role="img" aria-label="{{ label|default('@level priority'|t({'@level': level})) }}">{{ icon('kit', 'i-' ~ ('prio-' ~ level), {class: 'prio ' ~ level}) }}</span>

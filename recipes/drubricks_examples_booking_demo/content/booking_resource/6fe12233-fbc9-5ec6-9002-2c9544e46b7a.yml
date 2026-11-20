@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: 6fe12233-fbc9-5ec6-9002-2c9544e46b7a
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'EV hatchback · HM 24 EVN'
+  color:
+    -
+      value: teal
+  kind:
+    -
+      value: car
+  location:
+    -
+      value: 'Car park P1 · charger 2'
+  capacity:
+    -
+      value: 5
+  opens:
+    -
+      value: 6
+  closes:
+    -
+      value: 22
+  rules:
+    -
+      value: 'Plug it in when you return it.'

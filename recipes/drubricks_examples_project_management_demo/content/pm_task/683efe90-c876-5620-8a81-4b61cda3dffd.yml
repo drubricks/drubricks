@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: pm_task
+  uuid: 683efe90-c876-5620-8a81-4b61cda3dffd
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    c473735e-7d42-53da-9a4c-abfdfd4bc3c8: pm_project
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Import fleet data (CSV)'
+  project:
+    -
+      entity: c473735e-7d42-53da-9a4c-abfdfd4bc3c8
+  state:
+    -
+      value: doing
+  priority:
+    -
+      value: high
+  assignee:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  due_date:
+    -
+      value: '2026-11-13'
+  weight:
+    -
+      value: 1

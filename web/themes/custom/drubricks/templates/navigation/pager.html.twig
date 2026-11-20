@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Core pager → the kit pager component (drubricks:pager).
+ * In an app list the shell swaps only the list on click (no page reload).
+ */
+#}
+{% if drubricks_pager.total > 1 %}
+  {{ include('drubricks:pager', drubricks_pager, with_context = false) }}
+{% endif %}

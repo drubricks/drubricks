@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: f77f2b70-4721-5859-8d63-ef2b3a22148c
+  default_langcode: en-gb
+default:
+  name:
+    -
+      value: 'Elena Petrova'
+  mail:
+    -
+      value: elena.petrova@demo.example
+  status:
+    -
+      value: true
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0

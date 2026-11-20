@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Kit segmented control: .seg > button.active.
+ */
+#}
+<div{{ attributes.addClass(['seg', view ? 'view-seg']|filter(c => c)).setAttribute('role', 'group').setAttribute('data-drubricks-seg', '') }}{% if label %} aria-label="{{ label }}"{% endif %}>
+  {%- for item in items -%}
+    {% set item_attributes = create_attribute() %}
+    {% if item.title %}{% set item_attributes = item_attributes.setAttribute('title', item.title) %}{% endif %}
+    {% if item.set_theme %}{% set item_attributes = item_attributes.setAttribute('data-set-theme', item.set_theme) %}{% endif %}
+    {% if item.value is defined %}{% set item_attributes = item_attributes.setAttribute('data-value', item.value) %}{% endif %}
+    {% if item.url %}
+      <a{{ item_attributes.addClass(item.active ? 'active').setAttribute('href', item.url) }}{{ item.active ? ' aria-current="page"' }}>{% if item.icon %}{{ icon('kit', 'i-' ~ item.icon) }}{% endif %}{{ item.label }}</a>
+    {%- else -%}
+      <button{{ item_attributes.addClass(item.active ? 'active').setAttribute('type', 'button') }}{{ item.set_theme ? '' : (item.active ? ' aria-pressed="true"' : ' aria-pressed="false"') }}>{% if item.icon %}{{ icon('kit', 'i-' ~ item.icon) }}{% endif %}{{ item.label }}</button>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

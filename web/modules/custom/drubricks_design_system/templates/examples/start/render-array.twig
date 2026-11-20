@@ -1,0 +1,12 @@
+// The same components from PHP (a controller, a formatter, a block).
+$build['save'] = [
+  '#type' => 'component',
+  '#component' => 'drubricks:button',
+  '#props' => ['label' => $this->t('Save'), 'variant' => 'primary', 'icon' => 'checkmark'],
+];
+$build['alert'] = [
+  '#type' => 'component',
+  '#component' => 'drubricks:alert',
+  '#props' => ['type' => 'info', 'title' => $this->t('Slots')],
+  '#slots' => ['content' => ['#markup' => $this->t('Any render array in a slot.')]],
+];

@@ -1,0 +1,287 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_core
+    - drubricks_examples_booking
+    - options
+    - user
+id: booking_admin
+label: 'Bookings (admin)'
+module: views
+description: 'Admin list of bookings: filters, bulk operations, edit and delete.'
+tag: drubricks_admin
+base_table: booking
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Bookings
+      fields:
+        booking_bulk_form:
+          id: booking_bulk_form
+          table: booking
+          field: booking_bulk_form
+          entity_type: booking
+          plugin_id: bulk_form
+          label: ''
+          action_title: Action
+          include_exclude: include
+          selected_actions:
+            - booking_delete_action
+            - booking_publish_action
+            - booking_unpublish_action
+        name:
+          id: name
+          table: booking
+          field: name
+          entity_type: booking
+          entity_field: name
+          plugin_id: field
+          label: Title
+          type: string
+          settings:
+            link_to_entity: true
+        resource:
+          id: resource
+          table: booking
+          field: resource
+          entity_type: booking
+          entity_field: resource
+          plugin_id: field
+          label: Resource
+          type: entity_reference_label
+          settings:
+            link: true
+        starts:
+          id: starts
+          table: booking
+          field: starts
+          entity_type: booking
+          entity_field: starts
+          plugin_id: field
+          label: Starts
+          type: datetime_custom
+          settings:
+            date_format: 'Y-m-d H:i'
+        ends:
+          id: ends
+          table: booking
+          field: ends
+          entity_type: booking
+          entity_field: ends
+          plugin_id: field
+          label: Ends
+          type: datetime_custom
+          settings:
+            date_format: 'Y-m-d H:i'
+        state:
+          id: state
+          table: booking
+          field: state
+          entity_type: booking
+          entity_field: state
+          plugin_id: field
+          label: Status
+          type: list_default
+          settings: {}
+        uid:
+          id: uid
+          table: booking
+          field: uid
+          entity_type: booking
+          entity_field: uid
+          plugin_id: field
+          label: Owner
+          type: entity_reference_label
+          settings:
+            link: false
+        status:
+          id: status
+          table: booking
+          field: status
+          entity_type: booking
+          entity_field: status
+          plugin_id: field
+          label: Active
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
+        changed:
+          id: changed
+          table: booking
+          field: changed
+          entity_type: booking
+          entity_field: changed
+          plugin_id: field
+          label: Changed
+          type: timestamp
+          settings:
+            date_format: short
+        operations:
+          id: operations
+          table: booking
+          field: operations
+          entity_type: booking
+          plugin_id: entity_operations
+          label: Operations
+          destination: true
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+      access:
+        type: perm
+        options:
+          perm: 'administer booking'
+      cache:
+        type: tag
+        options: {}
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No bookings match the filters.'
+      filters:
+        name:
+          id: name
+          table: booking
+          field: name
+          entity_type: booking
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Title contains'
+            identifier: name
+        state:
+          id: state
+          table: booking
+          field: state
+          entity_type: booking
+          entity_field: state
+          plugin_id: list_field
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: state_op
+            label: Status
+            identifier: state
+            multiple: false
+            reduce: false
+        status:
+          id: status
+          table: booking
+          field: status
+          entity_type: booking
+          entity_field: status
+          plugin_id: boolean
+          value: All
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Active
+            identifier: status
+          is_grouped: true
+          group_info:
+            label: Active
+            identifier: status
+            default_group: All
+            group_items:
+              1:
+                title: Active
+                operator: '='
+                value: '1'
+              2:
+                title: Inactive
+                operator: '='
+                value: '0'
+      style:
+        type: table
+        options:
+          columns:
+            name: name
+            resource: resource
+            starts: starts
+            ends: ends
+            state: state
+            uid: uid
+            status: status
+            changed: changed
+          default: changed
+          info:
+            name:
+              sortable: true
+              default_sort_order: asc
+            resource:
+              sortable: false
+              default_sort_order: asc
+            starts:
+              sortable: true
+              default_sort_order: asc
+            ends:
+              sortable: true
+              default_sort_order: asc
+            state:
+              sortable: true
+              default_sort_order: asc
+            uid:
+              sortable: false
+              default_sort_order: asc
+            status:
+              sortable: true
+              default_sort_order: asc
+            changed:
+              sortable: true
+              default_sort_order: asc
+          sticky: true
+          order: desc
+          empty_table: true
+      row:
+        type: fields
+      display_extenders: {}
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {}
+      path: admin/app/entities/booking/bookings
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}

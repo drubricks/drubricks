@@ -1,0 +1,37 @@
+_meta:
+  version: '1.0'
+  entity_type: booking_resource
+  uuid: a77309f1-43e1-5955-b6e3-965af22de921
+  depends:
+    88ee3642-67c4-556b-a72f-43e9b2aa1c98: user
+default:
+  uid:
+    -
+      entity: 88ee3642-67c4-556b-a72f-43e9b2aa1c98
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Projector kit'
+  color:
+    -
+      value: yellow
+  kind:
+    -
+      value: equipment
+  location:
+    -
+      value: 'IT desk · Floor 1'
+  capacity:
+    -
+      value: 0
+  opens:
+    -
+      value: 8
+  closes:
+    -
+      value: 18
+  rules:
+    -
+      value: 'Pick up and return at the IT desk.'

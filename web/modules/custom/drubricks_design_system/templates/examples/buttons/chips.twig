@@ -1,0 +1,9 @@
+<div class="board-bar !p-0">
+  {% include 'drubricks:avatar-toggles' with {people: [
+    {name: 'Alex Morgan', initials: 'AM', color: 'teal', on: true},
+    {name: 'Priya Raman', color: 'purple'},
+    {name: 'Daniel Okafor', color: 'green'},
+  ]} only %}
+  {% include 'drubricks:chip' with {label: 'Only mine', icon: 'person', on: true} only %}
+  {% include 'drubricks:chip' with {label: 'High priority', icon: 'flag'} only %}
+</div>

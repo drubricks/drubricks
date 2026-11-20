@@ -1,0 +1,3 @@
+administer crm:
+  title: 'Administer the CRM'
+  restrict access: true

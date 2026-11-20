@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Form element label. Required fields get a red asterisk (CSS, .form-required).
+ * Labels after the control (checkbox, radio) get .option.
+ */
+#}
+{%
+  set classes = [
+    'form-label',
+    title_display == 'after' ? 'option',
+    title_display == 'invisible' ? 'visually-hidden',
+    required ? 'js-form-required',
+    required ? 'form-required',
+  ]
+%}
+{% if title is not empty or required -%}
+  <label{{ attributes.addClass(classes) }}>{{ title }}</label>
+{%- endif %}

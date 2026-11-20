@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: 9c2aa88d-e0ae-52d9-8b35-16adfede505f
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    1ddf0b21-e251-5fac-913e-e31dc98e8060: crm_company
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Maya Lindqvist'
+  job_title:
+    -
+      value: 'Head of Operations'
+  company:
+    -
+      entity: 1ddf0b21-e251-5fac-913e-e31dc98e8060
+  stage:
+    -
+      value: customer
+  email:
+    -
+      value: maya.lindqvist@kestrelfreight.example
+  phone:
+    -
+      value: '+1 206 555 0142'
+  last_contacted:
+    -
+      value: '2026-11-11'

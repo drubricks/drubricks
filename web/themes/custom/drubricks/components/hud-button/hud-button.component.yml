@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: HUD button
+status: stable
+group: Popups & HUD
+description: 'A button that shows a kit HUD message (UI.hud), optionally with Undo (undo_message is shown after Undo; "drubricks:undo" fires on the button).'
+props:
+  type: object
+  required: [message]
+  properties:
+    label: { type: string, title: Trigger label }
+    icon: { type: string, title: Trigger icon (icon-only when there is no label) }
+    title: { type: string, title: Title of an icon-only trigger }
+    variant: { type: string, title: Trigger look, enum: [default, primary, destructive, icon], default: default }
+    message: { type: string, title: Message }
+    undo_message: { type: string, title: Message after Undo }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

@@ -1,0 +1,302 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - drubricks_core
+    - drubricks_examples_project_management
+    - options
+    - user
+id: pm_task_admin
+label: 'Tasks (admin)'
+module: views
+description: 'Admin list of tasks: filters, bulk operations, edit and delete.'
+tag: drubricks_admin
+base_table: pm_task
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Tasks
+      fields:
+        pm_task_bulk_form:
+          id: pm_task_bulk_form
+          table: pm_task
+          field: pm_task_bulk_form
+          entity_type: pm_task
+          plugin_id: bulk_form
+          label: ''
+          action_title: Action
+          include_exclude: include
+          selected_actions:
+            - pm_task_delete_action
+            - pm_task_publish_action
+            - pm_task_unpublish_action
+        name:
+          id: name
+          table: pm_task
+          field: name
+          entity_type: pm_task
+          entity_field: name
+          plugin_id: field
+          label: Name
+          type: string
+          settings:
+            link_to_entity: true
+        project:
+          id: project
+          table: pm_task
+          field: project
+          entity_type: pm_task
+          entity_field: project
+          plugin_id: field
+          label: Project
+          type: entity_reference_label
+          settings:
+            link: true
+        state:
+          id: state
+          table: pm_task
+          field: state
+          entity_type: pm_task
+          entity_field: state
+          plugin_id: field
+          label: Status
+          type: list_default
+          settings: {}
+        priority:
+          id: priority
+          table: pm_task
+          field: priority
+          entity_type: pm_task
+          entity_field: priority
+          plugin_id: field
+          label: Priority
+          type: list_default
+          settings: {}
+        assignee:
+          id: assignee
+          table: pm_task
+          field: assignee
+          entity_type: pm_task
+          entity_field: assignee
+          plugin_id: field
+          label: Assignee
+          type: entity_reference_label
+          settings:
+            link: false
+        due_date:
+          id: due_date
+          table: pm_task
+          field: due_date
+          entity_type: pm_task
+          entity_field: due_date
+          plugin_id: field
+          label: 'Due date'
+          type: datetime_custom
+          settings:
+            date_format: Y-m-d
+        status:
+          id: status
+          table: pm_task
+          field: status
+          entity_type: pm_task
+          entity_field: status
+          plugin_id: field
+          label: Active
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
+        changed:
+          id: changed
+          table: pm_task
+          field: changed
+          entity_type: pm_task
+          entity_field: changed
+          plugin_id: field
+          label: Changed
+          type: timestamp
+          settings:
+            date_format: short
+        operations:
+          id: operations
+          table: pm_task
+          field: operations
+          entity_type: pm_task
+          plugin_id: entity_operations
+          label: Operations
+          destination: true
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+      access:
+        type: perm
+        options:
+          perm: 'administer project management'
+      cache:
+        type: tag
+        options: {}
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No tasks match the filters.'
+      filters:
+        name:
+          id: name
+          table: pm_task
+          field: name
+          entity_type: pm_task
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Name contains'
+            identifier: name
+        state:
+          id: state
+          table: pm_task
+          field: state
+          entity_type: pm_task
+          entity_field: state
+          plugin_id: list_field
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: state_op
+            label: Status
+            identifier: state
+            multiple: false
+            reduce: false
+        priority:
+          id: priority
+          table: pm_task
+          field: priority
+          entity_type: pm_task
+          entity_field: priority
+          plugin_id: list_field
+          operator: or
+          value: {}
+          exposed: true
+          expose:
+            operator_id: priority_op
+            label: Priority
+            identifier: priority
+            multiple: false
+            reduce: false
+        status:
+          id: status
+          table: pm_task
+          field: status
+          entity_type: pm_task
+          entity_field: status
+          plugin_id: boolean
+          value: All
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Active
+            identifier: status
+          is_grouped: true
+          group_info:
+            label: Active
+            identifier: status
+            default_group: All
+            group_items:
+              1:
+                title: Active
+                operator: '='
+                value: '1'
+              2:
+                title: Inactive
+                operator: '='
+                value: '0'
+      style:
+        type: table
+        options:
+          columns:
+            name: name
+            project: project
+            state: state
+            priority: priority
+            assignee: assignee
+            due_date: due_date
+            status: status
+            changed: changed
+          default: changed
+          info:
+            name:
+              sortable: true
+              default_sort_order: asc
+            project:
+              sortable: false
+              default_sort_order: asc
+            state:
+              sortable: true
+              default_sort_order: asc
+            priority:
+              sortable: true
+              default_sort_order: asc
+            assignee:
+              sortable: false
+              default_sort_order: asc
+            due_date:
+              sortable: true
+              default_sort_order: asc
+            status:
+              sortable: true
+              default_sort_order: asc
+            changed:
+              sortable: true
+              default_sort_order: asc
+          sticky: true
+          order: desc
+          empty_table: true
+      row:
+        type: fields
+      display_extenders: {}
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {}
+      path: admin/app/entities/pm/tasks
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {}

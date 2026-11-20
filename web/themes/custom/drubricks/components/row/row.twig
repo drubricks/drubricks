@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Kit list row: .row > .row-gutter + .row-body (.row-top, .row-subtitle, .row-text).
+ */
+#}
+{% set tag = url ? 'a' : 'div' %}
+{% set attributes = attributes.addClass(['row', selected ? 'selected']|filter(c => c)) %}
+{% if row_id is not empty %}{% set attributes = attributes.setAttribute('data-id', row_id) %}{% endif %}
+{% if url %}{% set attributes = attributes.setAttribute('href', url) %}{% endif %}
+<{{ tag }}{{ attributes }}>
+  <div class="row-gutter">{% if dot %}<span class="dot" style="background: {{ color(dot) }}"></span>{% endif %}</div>
+  <div class="row-body">
+    <div class="row-top"><span class="row-title">{{ title }}</span>{% if meta %}<span class="row-meta">{{ meta }}</span>{% endif %}</div>
+    {% if subtitle %}<div class="row-subtitle">{{ subtitle }}</div>{% endif %}
+    {% set text_html %}{% block text_markup %}{{ text_markup }}{% endblock %}{% endset %}
+    {% if text_html|trim is not empty %}<div class="row-text">{{ text_html }}</div>{% elseif text %}<div class="row-text">{{ text }}</div>{% endif %}
+  </div>
+</{{ tag }}>

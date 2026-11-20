@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drubricks_examples_crm
+    - link
+id: crm_company.crm_company.default
+targetEntityType: crm_company
+bundle: crm_company
+mode: default
+content:
+  city:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {}
+  color:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {}
+    third_party_settings: {}
+  industry:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {}
+  name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {}
+  size:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {}
+  website:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {}
+hidden:
+  status: true
+  uid: true

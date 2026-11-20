@@ -1,0 +1,19 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Pane toolbar
+status: stable
+group: Toolbar
+description: 'Kit second header row (.pane-toolbar) under a drubricks:toolbar: search and filters (.filter, a View''s exposed form) at the start, the view''s own controls (date navigation, a mode drubricks:seg) at the end. Every app view (list, board, calendar, table) uses it — drubricks_core''s drubricks-screen-header.html.twig.'
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  start:
+    title: Start
+    description: 'drubricks:search, filters (<div class="filter"><label>…</label><select class="field">…</select></div>), an exposed form.'
+  end:
+    title: End
+    description: 'View controls: a drubricks:tb-group, a drubricks:seg.'

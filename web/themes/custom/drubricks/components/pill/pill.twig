@@ -1,0 +1,4 @@
+{# Kit status pill: span.pill style="--c: …". #}
+{% set attributes = attributes.addClass('pill').setAttribute('style', '--c: ' ~ color(color|default('gray'))) %}
+{% if tip %}{% set attributes = attributes.setAttribute('data-tip', tip).setAttribute('tabindex', '0') %}{% endif %}
+<span{{ attributes }}>{{ icon('kit', 'i-' ~ (icon)) }}{{ label }}</span>

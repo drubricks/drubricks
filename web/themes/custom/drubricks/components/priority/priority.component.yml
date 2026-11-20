@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Priority
+status: stable
+group: Avatars, tags & badges
+description: 'Kit priority icon (svg.ic.prio high|medium|low) with an accessible label.'
+props:
+  type: object
+  required: [level]
+  properties:
+    level: { type: string, title: Level, enum: [high, medium, low] }
+    label: { type: string, title: Accessible label, description: 'Default: "<level> priority".' }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

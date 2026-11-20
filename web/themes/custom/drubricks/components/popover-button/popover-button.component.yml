@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Popover button
+status: stable
+group: Menus & popovers
+description: 'A button that opens a kit popover (UI.popover) with the slot content — server-rendered and escaped by Twig, kept in a <template> until it opens.'
+props:
+  type: object
+  properties:
+    label: { type: string, title: Trigger label }
+    icon: { type: string, title: Trigger icon (icon-only when there is no label) }
+    title: { type: string, title: Title of an icon-only trigger }
+    variant: { type: string, title: Trigger look, enum: [default, primary, destructive, icon], default: default }
+    width: { type: integer, title: Width (px), default: 260 }
+    popover_label: { type: string, title: Accessible name (when the content has no h3) }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Popover content
+    description: 'Any markup; an <h3> is styled as its title.'
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

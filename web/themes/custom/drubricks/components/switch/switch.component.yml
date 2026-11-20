@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Switch
+status: stable
+group: Buttons & controls
+description: 'Kit switch (input.switch, a checkbox). With a visible label it is wrapped in a label row; otherwise label is the aria-label.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label:
+      type: string
+      title: Label
+    label_visible:
+      type: boolean
+      title: Show the label next to the switch
+    name: { type: string, title: Name }
+    value: { type: string, title: Value }
+    checked: { type: boolean, title: Checked }
+    disabled: { type: boolean, title: Disabled }
+    id: { type: string, title: Id }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

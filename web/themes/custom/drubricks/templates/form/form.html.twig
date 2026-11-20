@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Every Drupal form → kit stacked form (.form): labels above controls, 12px
+ * rhythm, buttons at the end. Opt out with #attributes['data-drubricks-form'] = 'plain'
+ * (or the core classes form--inline / container-inline), e.g. for one-line filters.
+ */
+#}
+{% set plain = attributes['data-drubricks-form'] ~ '' == 'plain' or attributes.hasClass('form--inline') or attributes.hasClass('container-inline') %}
+<form{{ attributes.addClass(plain ? 'drubricks-form' : ['form', 'drubricks-form']) }}>
+  {{ children }}
+</form>

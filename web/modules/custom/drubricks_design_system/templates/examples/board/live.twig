@@ -1,0 +1,15 @@
+{% include 'drubricks:board' with {
+  create: true,
+  lane_meta: 'points',
+  lanes: [
+    {id: 'todo', title: 'To Do', color: 'gray'},
+    {id: 'doing', title: 'In Progress', color: 'blue', limit: 2},
+    {id: 'done', title: 'Done', color: 'green'},
+  ],
+  items: [
+    {id: 'a', lane: 'todo', key: 'APP-1', title: 'Sketch onboarding flow', sub: 'Mobile app', prio: 'medium', points: 3, tags: [{label: 'design', color: 'purple'}], assignee: {name: 'Alex Morgan'}},
+    {id: 'b', lane: 'doing', key: 'APP-2', title: 'Fix login crash', sub: 'Mobile app', prio: 'high', points: 5, tags: [{label: 'bug', color: 'red'}], assignee: {name: 'Priya Raman', color: 'purple'}},
+    {id: 'c', lane: 'todo', key: 'APP-3', title: 'Write release notes', sub: 'Mobile app', prio: 'low', points: 1, tags: [{label: 'docs', color: 'teal'}]},
+    {id: 'd', lane: 'done', key: 'APP-4', title: 'Dark mode QA', sub: 'Mobile app', prio: 'medium', points: 2, tags: [{label: 'qa', color: 'green'}]},
+  ],
+} only %}

@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: booking
+  uuid: e47253fb-e95c-5270-b233-2dcfb3ba5202
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    58f2b90d-ede8-55e8-b976-36f783a55ce9: booking_resource
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'All-hands rehearsal'
+  resource:
+    -
+      entity: 58f2b90d-ede8-55e8-b976-36f783a55ce9
+  starts:
+    -
+      value: '2026-11-13T13:00:00'
+  ends:
+    -
+      value: '2026-11-13T15:00:00'
+  state:
+    -
+      value: pending

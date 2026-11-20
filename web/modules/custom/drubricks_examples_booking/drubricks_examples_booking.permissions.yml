@@ -1,0 +1,3 @@
+administer booking:
+  title: 'Administer resources and bookings'
+  restrict access: true

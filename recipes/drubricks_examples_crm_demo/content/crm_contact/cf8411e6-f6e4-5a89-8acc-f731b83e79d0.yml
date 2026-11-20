@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_contact
+  uuid: cf8411e6-f6e4-5a89-8acc-f731b83e79d0
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Hannah Vogel'
+  job_title:
+    -
+      value: 'Head of Engineering'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  stage:
+    -
+      value: prospect
+  email:
+    -
+      value: hannah.vogel@atlas-robotics.example
+  phone:
+    -
+      value: '+49 89 555 0120'
+  last_contacted:
+    -
+      value: '2026-11-10'

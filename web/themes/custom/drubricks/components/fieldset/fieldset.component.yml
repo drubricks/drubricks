@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Fieldset
+status: stable
+group: Forms
+description: 'A group of controls with a small legend, as the kit radio group (fieldset.grid > legend). Put drubricks:radio or drubricks:checkbox items in the slot.'
+props:
+  type: object
+  required: [legend]
+  properties:
+    legend: { type: string, title: Legend }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Controls

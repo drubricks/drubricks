@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Segmented control
+status: stable
+group: Buttons & controls
+description: 'Kit segmented control (.seg). Buttons with aria-pressed; the bundled behaviour switches .active and fires "drubricks:seg" with { value } on the .seg element. Items with data-set-theme / url work without it.'
+props:
+  type: object
+  required: [items]
+  properties:
+    items:
+      type: array
+      title: Items
+      items:
+        type: object
+        properties:
+          label: { type: string }
+          icon: { type: string }
+          title: { type: string, description: 'Accessible name (needed for icon-only items).' }
+          value: { type: string }
+          active: { type: boolean }
+          url: { type: string }
+          set_theme: { type: string, enum: [light, dark, auto], description: 'Kit theme switch (data-set-theme).' }
+    label:
+      type: string
+      title: Accessible label of the group
+    view:
+      type: boolean
+      title: List / board switch look (.view-seg)
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+libraryOverrides:
+  dependencies:
+    - drubricks/kit-components

@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Toolbar group
+status: stable
+group: Toolbar
+description: 'Kit capsule group of toolbar buttons (.tb-group). Put drubricks:tb-btn items in the slot.'
+props:
+  type: object
+  properties:
+    label: { type: string, title: Accessible label of the group }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.
+slots:
+  content:
+    title: Buttons

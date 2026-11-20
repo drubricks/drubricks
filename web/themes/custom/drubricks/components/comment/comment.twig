@@ -1,0 +1,10 @@
+{# Kit comment: .cmt > .avatar + .cmt-body (.cmt-head, .cmt-text, .cmt-actions). #}
+{% set text_html %}{% block text_markup %}{{ text_markup }}{% endblock %}{% endset %}
+<div{{ attributes.addClass(['cmt', highlight ? 'highlight']|filter(c => c)) }}>
+  {{ include('drubricks:avatar', {name: author, initials: initials, color: color, accent: accent, size: 'sm'}|filter(v => v is not null), with_context = false) }}
+  <div class="cmt-body">
+    <div class="cmt-head"><b>{{ author }}</b>{% if time %}<span class="dim">{{ time }}</span>{% endif %}</div>
+    <div class="cmt-text">{{ text_html|trim is not empty ? text_html : text }}</div>
+    {%- if actions %}<div class="cmt-actions">{% for a in actions %}<a class="link"{% if a.url %} href="{{ a.url }}"{% endif %}>{{ a.label }}</a>{% endfor %}</div>{% endif %}
+  </div>
+</div>

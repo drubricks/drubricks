@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Chip
+status: stable
+group: Buttons & controls
+description: 'Kit filter chip (.chip, toggled .on) — e.g. in a board filter bar. Gets aria-pressed.'
+props:
+  type: object
+  required: [label]
+  properties:
+    label: { type: string, title: Label }
+    icon: { type: string, title: Icon }
+    'on': { type: boolean, title: Toggled on }
+    url: { type: string, title: URL }
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Extra HTML attributes for the root element.

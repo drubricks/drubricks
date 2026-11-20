@@ -1,0 +1,7 @@
+{# Kit search: label.search > icon + [.search-token] + input + .search-clear. #}
+<label{{ attributes.addClass(['search', value ? 'has-value', hide ? 'hide-' ~ hide]|filter(c => c)) }}>
+  {{ icon('kit', 'i-search') }}
+  {%- if token %}<span class="search-token">{{ token }}</span>{% endif %}
+  <input type="search" name="{{ name|default('q') }}"{% if value %} value="{{ value }}"{% endif %} placeholder="{{ placeholder|default('Search'|t) }}" aria-label="{{ label|default(placeholder|default('Search'|t)) }}">
+  <button class="search-clear" type="button" aria-label="{{ 'Clear'|t }}">{{ icon('kit', 'i-xmark-fill') }}</button>
+</label>

@@ -1,0 +1,24 @@
+{# Kit select: select.field. #}
+{% set field_id = id ?: (label ? 'select'|clean_unique_id) %}
+{% set select_attributes = attributes.addClass('field') %}
+{% if field_id %}{% set select_attributes = select_attributes.setAttribute('id', field_id) %}{% endif %}
+{% if name %}{% set select_attributes = select_attributes.setAttribute('name', name) %}{% endif %}
+{% if aria_label %}{% set select_attributes = select_attributes.setAttribute('aria-label', aria_label) %}{% endif %}
+{% if invalid or error %}{% set select_attributes = select_attributes.setAttribute('aria-invalid', 'true') %}{% endif %}
+{% set control %}
+<select{{ select_attributes }}{{ required ? ' required' }}{{ disabled ? ' disabled' }}>
+  {%- for option in options %}
+    <option value="{{ option.value }}"{{ option.value ~ '' == value ~ '' and value is not null ? ' selected' }}{{ option.disabled ? ' disabled' }}>{{ option.label ?? option.value }}</option>
+  {%- endfor %}
+</select>
+{% endset %}
+{% if label or hint or error %}
+  <label for="{{ field_id }}">
+    {%- if label %}<span{{ required ? ' class="form-required"' }}>{{ label }}</span>{% endif %}
+    {{ control }}
+    {%- if error %}<span class="field-error">{{ error }}</span>{% endif %}
+    {%- if hint %}<span class="field-hint">{{ hint }}</span>{% endif -%}
+  </label>
+{% else %}
+  {{ control }}
+{% endif %}

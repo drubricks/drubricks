@@ -1,0 +1,22 @@
+# Admin pages of the entity types: the base routes of their Field UI tabs
+# (field_ui_base_route), like core's entity.user.admin_form.
+entity.booking.settings:
+  path: '/admin/app/structure/booking/bookings'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: booking
+  requirements:
+    _permission: 'administer booking'
+  options:
+    _admin_route: TRUE
+entity.booking_resource.settings:
+  path: '/admin/app/structure/booking/resources'
+  defaults:
+    _controller: '\Drupal\drubricks_core\Controller\EntitySettingsController::page'
+    _title_callback: '\Drupal\drubricks_core\Controller\EntitySettingsController::title'
+    entity_type_id: booking_resource
+  requirements:
+    _permission: 'administer booking'
+  options:
+    _admin_route: TRUE
