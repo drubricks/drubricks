@@ -289,6 +289,12 @@ For the odd interactive widget there are JSON API helpers for small JavaScript i
 **Can I add fields without code?** Yes: Application → Entity structure → Manage fields. The app's forms and record
 details show new fields on their own.
 
+## Need a team for AI or Drupal?
+
+[Droptica](https://www.droptica.com) can help:
+
+- [droptica.ai](https://www.droptica.ai): AI implementations in companies,
+- [droptica.com](https://www.droptica.com): growth and security for mission-critical Drupal platforms.
 
 ## Security
 
