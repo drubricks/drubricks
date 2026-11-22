@@ -201,3 +201,12 @@ responses, or icons.
   `update()`, or bars keep their old colour). Chart.js from Composer (asset-packagist, `web/libraries`), CDN off.
 - Core / contrib: `charts.api.php` (`hook_chart_alter`, `hook_chart_definition_alter`), `Chartjs::preRender()`.
   drubricks_core `ChartHooks`, `js/charts.js`.
+
+**State of the app shell around an HTMX swap (sidebar scroll, drubricks_core `shell.js`)**
+- Don't: rely on `htmx:after:swap` alone when the swap target replaces itself (`#drubricks-app`): it is dispatched
+  on the target and does not always reach the document (headless Chromium); and don't `scrollIntoView()` during the
+  swap — it scrolls the page and aborts the view transition (the new `<title>` is lost).
+- Do: save the state in `htmx:before:swap`, restore it in `htmx:after:swap` **and** `htmx:after:settle` (always on
+  the document; in Chrome it even comes first), idempotently; bring an element into view by setting `scrollTop` of
+  its own scroll container.
+- Core: htmx 4 events (`htmx:before:swap`, `htmx:after:settle`), `core/misc/htmx/htmx-behaviors.js`.
