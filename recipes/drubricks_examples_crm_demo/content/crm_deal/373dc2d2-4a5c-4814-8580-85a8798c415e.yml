@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 373dc2d2-4a5c-4814-8580-85a8798c415e
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    2b4fbf4d-9672-5d00-aa85-07a263a08762: crm_company
+    bb338e41-def9-5b07-9495-f2142ec8a843: crm_contact
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  name:
+    -
+      value: 'Intranet search'
+  company:
+    -
+      entity: 2b4fbf4d-9672-5d00-aa85-07a263a08762
+  contact:
+    -
+      entity: bb338e41-def9-5b07-9495-f2142ec8a843
+  value:
+    -
+      value: '19000.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-06-09'

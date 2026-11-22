@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: b7147ffd-22ec-4435-b84c-a8ea5e071028
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    b31b51e7-42f6-54ea-a25c-1155d40e9ec3: crm_company
+    e48f131e-d150-5ef3-a8d6-5e4f3255dd12: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  name:
+    -
+      value: 'Website relaunch'
+  company:
+    -
+      entity: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  contact:
+    -
+      entity: e48f131e-d150-5ef3-a8d6-5e4f3255dd12
+  value:
+    -
+      value: '24000.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2025-12-12'

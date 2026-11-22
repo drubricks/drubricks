@@ -742,7 +742,7 @@ button.stat:hover, a.stat:hover { box-shadow: inset 0 0 0 1px var(--accent-ring)
 .stat-value.red { color: var(--red); }
 .stat-value .unit { font-size: 13px; font-weight: 500; color: var(--label-2); }
 .stat-sub { margin-top: 2px; font-size: 12px; color: var(--label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.panels { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 12px; align-items: start; }
+.panels { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); grid-auto-flow: row dense; gap: 12px; align-items: stretch; }
 .panel { min-width: 0; padding: 12px 14px; border-radius: 12px; background: var(--bg-raised); box-shadow: inset 0 0 0 .5px var(--sep); }
 .panel h3 { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; font-size: 13px; font-weight: 700; }
 .panel h3 > .ic { width: 16px; height: 16px; color: var(--accent); }

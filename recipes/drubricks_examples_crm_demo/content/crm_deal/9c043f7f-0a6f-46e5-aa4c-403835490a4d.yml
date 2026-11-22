@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 9c043f7f-0a6f-46e5-aa4c-403835490a4d
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    1ddf0b21-e251-5fac-913e-e31dc98e8060: crm_company
+    dc8a4671-7f5a-50f3-a47b-40389f7bf70b: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  name:
+    -
+      value: 'Partner portal'
+  company:
+    -
+      entity: 1ddf0b21-e251-5fac-913e-e31dc98e8060
+  contact:
+    -
+      entity: dc8a4671-7f5a-50f3-a47b-40389f7bf70b
+  value:
+    -
+      value: '41000.00'
+  stage:
+    -
+      value: lost
+  close_date:
+    -
+      value: '2026-07-22'

@@ -27,8 +27,12 @@
         {% endif %}
 
         {% if panels %}
-          {# The grid is a size container: "wide" spans two columns only when two fit. #}
-          {% embed 'drubricks:panels' with {panels: panels, attributes: create_attribute({'class': ['@container', stats ? '' : 'mt-5']|filter(c => c)})} only %}
+          {# Two columns (one below 652px): apps place their panels in pairs of a
+             similar height, a panel without a pair is "wide"; the panels of a row
+             share its height. The grid is a size container: "wide" spans two
+             columns only when two fit. #}
+          {% set columns = '[grid-template-columns:repeat(auto-fill,minmax(max(min(320px,100%),calc((100%_-_12px)/2)),1fr))]' %}
+          {% embed 'drubricks:panels' with {panels: panels, attributes: create_attribute({'class': ['@container', columns, stats ? '' : 'mt-5']|filter(c => c)})} only %}
             {% block content %}{{ panels }}{% endblock %}
           {% endembed %}
         {% endif %}

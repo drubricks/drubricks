@@ -12,11 +12,12 @@ use Drupal\drubricks_core\Htmx\Swap;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * The views of an entity type: list, board, calendar, table.
+ * The views of an entity type: list, board, calendar, table, chart.
  *
  * A view other than the list exists when the screen handler declares it
- * (board(), calendar(), table()) and the entity type has its link template
- * (drubricks-board, drubricks-calendar, drubricks-table). The view marked 'default' comes
+ * (board(), calendar(), table(), chart()) and the entity type has its link
+ * template (drubricks-board, drubricks-calendar, drubricks-table,
+ * drubricks-chart). The view marked 'default' comes
  * first in the switch, is the sidebar target and the place to return to.
  */
 final class ScreenViews {
@@ -28,6 +29,7 @@ final class ScreenViews {
     'board' => ['drubricks-board', 'drubricks_board', 'board'],
     'calendar' => ['drubricks-calendar', 'drubricks_calendar', 'calendar'],
     'table' => ['drubricks-table', 'drubricks_table', 'table'],
+    'chart' => ['drubricks-chart', 'drubricks_chart', 'chart'],
   ];
 
   /**
@@ -38,7 +40,7 @@ final class ScreenViews {
    */
   public static function available(EntityTypeInterface $type, ScreenHandler $handler): array {
     $views = [];
-    $titles = ['board' => t('Board'), 'calendar' => t('Calendar'), 'table' => t('Table')];
+    $titles = ['board' => t('Board'), 'calendar' => t('Calendar'), 'table' => t('Table'), 'chart' => t('Chart')];
     foreach (self::VIEWS as $key => [$template, $suffix, $icon]) {
       $definition = $type->hasLinkTemplate($template) ? $handler->{$key}() : NULL;
       if ($definition) {

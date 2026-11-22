@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 9dc98fc6-9e65-4a3d-84ff-4b239fad8122
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    2b4fbf4d-9672-5d00-aa85-07a263a08762: crm_company
+    5fb7c4e2-de0b-58f2-8930-4bcd3bb6a69d: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  name:
+    -
+      value: 'Warehouse scanners'
+  company:
+    -
+      entity: 2b4fbf4d-9672-5d00-aa85-07a263a08762
+  contact:
+    -
+      entity: 5fb7c4e2-de0b-58f2-8930-4bcd3bb6a69d
+  value:
+    -
+      value: '26000.00'
+  stage:
+    -
+      value: lead
+  close_date:
+    -
+      value: '2027-03-20'

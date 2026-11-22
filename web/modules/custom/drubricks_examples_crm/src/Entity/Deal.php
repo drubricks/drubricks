@@ -58,6 +58,9 @@ use Drupal\drubricks_examples_crm\Screen\DealScreen;
     'collection' => '/apps/crm/deals/list',
     // A core View (views.view.crm_deal_table) in the app: filters, bulk form.
     'drubricks-table' => '/apps/crm/deals/table',
+    // A core View with the Chart format (views.view.crm_deal_chart): the value
+    // per close month and stage, with filters.
+    'drubricks-chart' => '/apps/crm/deals/chart',
     'add-form' => '/apps/crm/deals/add',
     'canonical' => '/apps/crm/deals/{crm_deal}',
     'edit-form' => '/apps/crm/deals/{crm_deal}/edit',

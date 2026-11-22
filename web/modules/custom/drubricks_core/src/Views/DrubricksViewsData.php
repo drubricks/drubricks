@@ -54,6 +54,21 @@ class DrubricksViewsData extends EntityViewsData {
         && isset($data[$table][$name]['filter']) && $this->moduleHandler->moduleExists('datetime')) {
         $data[$table][$name]['filter']['id'] = 'datetime';
         $data[$table][$name]['filter']['field_name'] = $name;
+        // Sorting by day / month / year (core's datetime sort granularity).
+        $data[$table][$name]['sort']['id'] = 'datetime';
+        $data[$table][$name]['sort']['field_name'] = $name;
+        // The period it falls in, for charts with aggregation ("by month").
+        $data[$table][$name . '_period'] = [
+          'title' => $this->t('@label (period)', ['@label' => $definition->getLabel()]),
+          'help' => $this->t('The year, month or day of the date: group by it (aggregation) for a chart per period; sort by the date with the same granularity.'),
+          'field' => [
+            'id' => 'drubricks_date_period',
+            'field_name' => $name,
+            'entity_type' => $this->entityType->id(),
+            'real field' => $name,
+            'click sortable' => FALSE,
+          ],
+        ];
         continue;
       }
       if (!str_starts_with($definition->getType(), 'list_')) {

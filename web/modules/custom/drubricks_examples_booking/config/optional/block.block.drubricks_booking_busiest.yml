@@ -8,13 +8,13 @@ dependencies:
     - drubricks
 third_party_settings:
   drubricks_core:
-    size: narrow
+    size: wide
     icon: chart
     color: ''
 id: drubricks_booking_busiest
 theme: drubricks
 region: dashboard
-weight: 302
+weight: 303
 provider: null
 plugin: drubricks_examples_booking_busiest
 settings:

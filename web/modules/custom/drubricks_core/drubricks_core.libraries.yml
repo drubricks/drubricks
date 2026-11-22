@@ -44,6 +44,15 @@ calendar:
     - core/drupalSettings
     - core/once
 
+# Charts (contrib, Chart.js library) in the kit look: tokens → colours, kit
+# defaults, light / dark redraw (attached by ChartHooks to Chart.js charts).
+charts:
+  js:
+    js/charts.js: {}
+  dependencies:
+    - core/drupal
+    - charts_chartjs/charts_chartjs
+
 # Reference list field widget (ReferenceListWidget).
 reference-list:
   js:

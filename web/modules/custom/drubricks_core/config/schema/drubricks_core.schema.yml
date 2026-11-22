@@ -56,3 +56,14 @@ field.widget.settings.drubricks_reference_list:
 views.field.drubricks_bulk_form:
   type: views.field.bulk_form
   label: 'Bulk form (rows and actions the user may use)'
+
+# A date field as a period (DatePeriod): year, month or day, for charts.
+views.field.drubricks_date_period:
+  type: views_field
+  label: 'Date period'
+  mapping:
+    granularity:
+      type: string
+      label: 'Period'
+      constraints:
+        Choice: [year, month, day]

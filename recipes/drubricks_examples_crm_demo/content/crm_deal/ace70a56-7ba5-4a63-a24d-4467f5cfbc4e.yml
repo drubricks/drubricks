@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: ace70a56-7ba5-4a63-a24d-4467f5cfbc4e
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+    cf8411e6-f6e4-5a89-8acc-f731b83e79d0: crm_contact
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  name:
+    -
+      value: 'Clinic scheduling'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  contact:
+    -
+      entity: cf8411e6-f6e4-5a89-8acc-f731b83e79d0
+  value:
+    -
+      value: '64000.00'
+  stage:
+    -
+      value: proposal
+  close_date:
+    -
+      value: '2026-12-15'

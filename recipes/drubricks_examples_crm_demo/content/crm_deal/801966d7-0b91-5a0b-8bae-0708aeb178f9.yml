@@ -13,6 +13,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
   name:
     -
       value: 'Security audit'
@@ -30,4 +33,4 @@ default:
       value: lost
   close_date:
     -
-      value: '2026-11-01'
+      value: '2026-11-10'

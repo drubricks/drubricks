@@ -11,6 +11,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
   name:
     -
       value: 'Kestrel Freight'

@@ -1,0 +1,11 @@
+/* Charts (contrib "charts", Chart.js): the markup is Charts' own; colours,
+   font and tooltip come from the kit through drubricks_core's charts.js. */
+@layer components {
+  /* A chart with a set height (Views → Chart settings → dimensions) fills it:
+     Chart.js sizes the canvas to its parent, the figure. */
+  [data-chartjs-render-wrapper] { display: block !important; max-width: 100%; }
+  [data-chartjs-render-wrapper] > .charts-figure { position: relative; height: 100%; }
+  .charts-figure:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+  /* The chart view of an entity type: the chart under the header. */
+  .drubricks-chart-view { display: grid; gap: 12px; align-content: start; }
+}

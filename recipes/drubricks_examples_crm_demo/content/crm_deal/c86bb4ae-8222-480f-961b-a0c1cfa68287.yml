@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: c86bb4ae-8222-480f-961b-a0c1cfa68287
+  depends:
+    4c770c2c-a25e-54ff-9bdf-0353b5287c59: user
+    b31b51e7-42f6-54ea-a25c-1155d40e9ec3: crm_company
+    e48f131e-d150-5ef3-a8d6-5e4f3255dd12: crm_contact
+default:
+  uid:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  name:
+    -
+      value: 'Payroll export'
+  company:
+    -
+      entity: b31b51e7-42f6-54ea-a25c-1155d40e9ec3
+  contact:
+    -
+      entity: e48f131e-d150-5ef3-a8d6-5e4f3255dd12
+  value:
+    -
+      value: '9800.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-08-16'

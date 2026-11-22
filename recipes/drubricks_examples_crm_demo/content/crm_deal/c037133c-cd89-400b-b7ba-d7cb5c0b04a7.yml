@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: c037133c-cd89-400b-b7ba-d7cb5c0b04a7
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    c79ee643-7a28-5a14-b053-9d6fda47c304: crm_company
+    3473c10b-c6bf-5d59-8ef6-20b58380e4ae: crm_contact
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  name:
+    -
+      value: 'Booking widget'
+  company:
+    -
+      entity: c79ee643-7a28-5a14-b053-9d6fda47c304
+  contact:
+    -
+      entity: 3473c10b-c6bf-5d59-8ef6-20b58380e4ae
+  value:
+    -
+      value: '15500.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-04-03'

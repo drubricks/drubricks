@@ -1,0 +1,15 @@
+{# A chart in code: a render array of #type chart (contrib Charts, Chart.js).
+   Series colours are kit tokens; the kit look, light / dark and the data table
+   for screen readers come from drubricks_core. #}
+{{ {
+  '#type': 'chart',
+  '#chart_type': 'column',
+  '#stacking': true,
+  '#legend_position': 'bottom',
+  '#height': 240,
+  '#height_units': 'px',
+  'won': {'#type': 'chart_data', '#title': 'Won', '#data': [24, 31, 12, 46, 15, 52], '#color': 'green'},
+  'open': {'#type': 'chart_data', '#title': 'Open', '#data': [8, 12, 20, 14, 26, 18], '#color': 'blue'},
+  'xaxis': {'#type': 'chart_xaxis', '#labels': ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']},
+  'yaxis': {'#type': 'chart_yaxis', '#title': 'K€'},
+} }}

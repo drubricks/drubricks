@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.pm_task_open_by_assignee
+  module:
+    - drubricks_core
+    - views
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: wide
+    icon: chart
+    color: 'orange'
+id: drubricks_pm_open_by_assignee
+theme: drubricks
+region: dashboard
+weight: 204
+provider: null
+plugin: 'views_block:pm_task_open_by_assignee-block_1'
+settings:
+  id: 'views_block:pm_task_open_by_assignee-block_1'
+  label: 'Open tasks by person'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility: {}

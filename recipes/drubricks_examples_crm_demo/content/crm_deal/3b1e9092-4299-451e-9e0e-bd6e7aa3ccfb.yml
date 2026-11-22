@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 3b1e9092-4299-451e-9e0e-bd6e7aa3ccfb
+  depends:
+    4c770c2c-a25e-54ff-9bdf-0353b5287c59: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+    c8be2863-3acf-581d-bf2a-ddb14a37609f: crm_contact
+default:
+  uid:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
+  name:
+    -
+      value: 'Driver training portal'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  contact:
+    -
+      entity: c8be2863-3acf-581d-bf2a-ddb14a37609f
+  value:
+    -
+      value: '33000.00'
+  stage:
+    -
+      value: negotiation
+  close_date:
+    -
+      value: '2027-01-10'

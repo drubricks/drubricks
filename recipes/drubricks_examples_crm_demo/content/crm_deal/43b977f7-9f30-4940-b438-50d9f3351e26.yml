@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 43b977f7-9f30-4940-b438-50d9f3351e26
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+    cf8411e6-f6e4-5a89-8acc-f731b83e79d0: crm_contact
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  name:
+    -
+      value: 'Mobile ordering app'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  contact:
+    -
+      entity: cf8411e6-f6e4-5a89-8acc-f731b83e79d0
+  value:
+    -
+      value: '46000.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-03-25'

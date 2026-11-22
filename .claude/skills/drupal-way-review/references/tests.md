@@ -26,3 +26,10 @@ should add tests — and for every fix (step 5 of the review: add the test that 
 - `$add['url'] ?? NULL` after `$add` was moved out of the controller passed phpcs and phpstan; the calendar e2e
   ("free slot → add form prefilled") caught it. After extracting a variable into a helper, grep the file for every
   use; keep the e2e step that exercises it.
+
+**Charts built with Views**
+- Do: `ChartViewTestTrait` — `setUpCharts()` (Chart.js as the library, like the base recipe),
+  `assertChartView()` (route, view switch, "Chart" format), `renderChartView()` executes the View and renders the
+  style's chart (not the View's wrapper template, which is the theme's), returning the decoded Chart.js
+  definition: assert labels (periods in order), sums and series. e2e: wait for Chart.js's colour animation before
+  comparing element colours.

@@ -36,6 +36,8 @@ final class BookingTest extends KernelTestBase {
     'inline_form_errors',
     'options',
     'datetime',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_booking',
   ];

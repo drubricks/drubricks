@@ -8,13 +8,13 @@ dependencies:
     - drubricks
 third_party_settings:
   drubricks_core:
-    size: narrow
+    size: wide
     icon: chart
     color: ''
 id: drubricks_crm_pipeline_by_stage
 theme: drubricks
 region: dashboard
-weight: 102
+weight: 105
 provider: null
 plugin: drubricks_examples_crm_pipeline_by_stage
 settings:

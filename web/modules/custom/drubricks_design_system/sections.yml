@@ -146,6 +146,17 @@ views-table:
   components: [data-table, pager, pill]
   examples:
     - { title: 'Filters, bulk actions, row actions, pager', file: table/views, block: true }
+charts:
+  title: 'Charts'
+  group: 'Patterns'
+  icon: chart
+  keywords: 'chart charts graph views aggregation column bar line pie donut doughnut stacked chartjs chart.js dashboard report period month'
+  lead: 'Charts are the contrib <a href="https://www.drupal.org/project/charts">Charts</a> module with its Chart.js library (installed by the base recipe, served from <code>web/libraries</code>). Build them in the Views UI — format <em>Chart</em>, usually with aggregation, e.g. the sum of a value per <em>“&lt;date&gt; (period)”</em> (year, month or day; sort by the date with the same granularity) and a grouping field for stacked series — as a block on the dashboard or as the chart view of an entity type (<code>ScreenHandler::chart()</code>, link template <code>drubricks-chart</code>; its exposed filters sit in the view header). In code: a render array of <code>#type chart</code>. drubricks_core gives every Chart.js chart the kit look: Charts'' default colours become kit colours (a series <code>#color</code> may be a token name), the kit font and lines, light / dark without a reload, and a visually hidden data table for screen readers. Live examples: Home, CRM → Revenue.'
+  examples:
+    - { title: 'Stacked columns — <code>#chart_type: column</code>, <code>#stacking</code>, token colours', file: charts/stacked, block: true }
+    - { title: 'Horizontal bars — <code>bar</code>; a series without a colour takes the next kit colour', file: charts/bars, block: true }
+    - { title: 'Line', file: charts/line, block: true }
+    - { title: 'Doughnut — <code>donut</code>, <code>#colors</code> per slice', file: charts/donut, block: true }
 alerts:
   title: 'Alerts'
   group: 'Components'

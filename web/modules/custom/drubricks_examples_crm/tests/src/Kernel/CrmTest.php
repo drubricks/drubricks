@@ -11,6 +11,7 @@ use Drupal\drubricks_examples_crm\Entity\Contact;
 use Drupal\drubricks_examples_crm\Entity\Deal;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\drubricks_core\Traits\AdminViewTestTrait;
+use Drupal\Tests\drubricks_core\Traits\ChartViewTestTrait;
 use Drupal\Tests\drubricks_core\Traits\TableViewTestTrait;
 use Drupal\Tests\drubricks_core\Traits\FieldUiTestTrait;
 use Drupal\Tests\drubricks_core\Traits\RevisionsTestTrait;
@@ -28,6 +29,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 final class CrmTest extends KernelTestBase {
 
   use AdminViewTestTrait;
+  use ChartViewTestTrait;
   use TableViewTestTrait;
   use FieldUiTestTrait;
   use RevisionsTestTrait;
@@ -44,6 +46,8 @@ final class CrmTest extends KernelTestBase {
     'options',
     'datetime',
     'link',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_crm',
   ];
@@ -262,6 +266,49 @@ final class CrmTest extends KernelTestBase {
     $this->assertFieldUi('drubricks_examples_crm', 'crm_company');
     $this->assertFieldUi('drubricks_examples_crm', 'crm_contact');
     $this->assertFieldUi('drubricks_examples_crm', 'crm_deal');
+  }
+
+  /**
+   * Charts (Views, Chart.js): won revenue per month, forecast, the chart view.
+   */
+  public function testCharts(): void {
+    $this->setUpCharts();
+    $company = Company::create(['name' => 'Acme']);
+    $company->save();
+    $month = static fn (int $offset): \DateTimeImmutable => (new \DateTimeImmutable('first day of this month'))->modify("$offset months")->modify('+9 days');
+    foreach ([[-2, 1000], [-2, 500], [-1, 2000], [-14, 9000]] as [$offset, $value]) {
+      Deal::create([
+        'name' => "Won $value",
+        'stage' => 'won',
+        'value' => $value,
+        'close_date' => $month($offset)->format('Y-m-d'),
+        'company' => $company->id(),
+      ])->save();
+    }
+    Deal::create([
+      'name' => 'Open',
+      'stage' => 'lead',
+      'value' => 700,
+      'close_date' => $month(1)->format('Y-m-d'),
+      'company' => $company->id(),
+    ])->save();
+    $this->assertChartView('drubricks_examples_crm', 'crm_deal');
+
+    // The last 12 months, per month (summed), oldest first; older deals left out.
+    $won = $this->renderChartView('crm_deal_won_by_month', 'block_1')['definition'];
+    $this->assertSame([$month(-2)->format('M Y'), $month(-1)->format('M Y')], $won['data']['labels']);
+    $this->assertEquals([1500, 2000], $won['data']['datasets'][0]['data']);
+    $this->assertSame('bar', $won['type']);
+
+    // Open deals ahead, stacked by stage.
+    $forecast = $this->renderChartView('crm_deal_forecast', 'block_1')['definition'];
+    $this->assertSame([$month(1)->format('M Y')], $forecast['data']['labels']);
+    $this->assertSame(['Lead'], array_column($forecast['data']['datasets'], 'label'));
+
+    // The chart view with an exposed filter: only the won deals.
+    $report = $this->renderChartView('crm_deal_chart', 'default', ['stage' => 'won'])['definition'];
+    $this->assertSame(['Won'], array_column($report['data']['datasets'], 'label'));
+    $this->assertCount(3, $report['data']['labels'], 'every month with a won deal');
   }
 
 }

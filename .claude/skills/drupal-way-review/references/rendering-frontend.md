@@ -191,3 +191,13 @@ responses, or icons.
   icon pack (`*.icons.yml`) — the metadata core reads for its own vendored assets.
 - Core: `core.libraries.yml` (`license:` of ckeditor5, jquery …), `LibraryDiscoveryParser` (default GPL licence),
   `IconPackManager` (icon pack `license:`), `navigation/navigation.icons.yml`.
+
+**Charts (contrib Charts, Chart.js) in the kit look**
+- Don't: a chart library of our own, chart JS per screen, hex colours in the chart settings or code, a CDN.
+- Do: Views with the "Chart" format (or `#type chart` in code); the kit look in one place — `hook_chart_alter()`
+  (library, accessible table) and `hook_chart_definition_alter()` (Charts' default palettes → kit tokens, no fixed
+  title / tick / grid colours, set height → `maintainAspectRatio: false`), a global Chart.js plugin that resolves
+  tokens from CSS variables and repaints on `data-scheme` / `data-palette` changes (`config.clearCache()` + a full
+  `update()`, or bars keep their old colour). Chart.js from Composer (asset-packagist, `web/libraries`), CDN off.
+- Core / contrib: `charts.api.php` (`hook_chart_alter`, `hook_chart_definition_alter`), `Chartjs::preRender()`.
+  drubricks_core `ChartHooks`, `js/charts.js`.

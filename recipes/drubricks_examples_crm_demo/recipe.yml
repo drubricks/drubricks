@@ -6,6 +6,6 @@ recipes:
 extra:
   drubricks_core:
     # The day the content was exported; dates are shifted by (today - this).
-    demo_reference_date: '2026-11-13'
+    demo_reference_date: '2026-11-22'
     # Timezone of the site it was exported from; times keep their wall-clock value.
     demo_timezone: Europe/Warsaw

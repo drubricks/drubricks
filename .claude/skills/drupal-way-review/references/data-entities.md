@@ -50,3 +50,16 @@ for any change to an entity type, its fields, form / view displays, constraints,
 - Do: `DrubricksViewsData` maps them to core's `numeric`, `entity_reference` (select through the selection handler,
   access-aware) and `datetime` plugins — what core gives configurable fields; pick other identifiers (`min_value`).
   `TableViewTestTrait` fails on both.
+
+**Aggregating by month / day in Views (charts)**
+- Don't: a controller or SQL of our own summing per period, or grouping by the raw datetime (one row per day /
+  second).
+- Do: a Views field plugin whose formula is core's — `$query->getDateFormat($query->getDateField(…), 'Ym', TRUE)`
+  (views.date_sql, every database) — with the same formats as core's datetime sort granularity (`Y`, `Ym`, `Ymd`),
+  so "sort by the date, granularity month" orders by the grouped expression. Datetime fields grouped with the
+  timezone offset, date-only fields as stored. drubricks_core `DatePeriod` ("<date> (period)", `DrubricksViewsData`
+  also gives base datetime fields core's `datetime` sort).
+- Core: `datetime/src/Plugin/views/sort/Date.php`, `views/src/Plugin/views/sort/Date.php` (granularity formats),
+  `views/src/Plugin/views/query/DateSqlInterface.php`.
+- Watch: core's list filter (`ManyToOne`) with operator `not` on a base field of the entity table fails
+  (`ManyToOneHelper::ensureMyTable()`); use `or` with the allowed values.

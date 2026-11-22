@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 05755690-2c3b-4325-9860-9992dd7747e7
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    36f943c2-0445-52e2-8b3f-b0155d8a5a70: crm_company
+    c8be2863-3acf-581d-bf2a-ddb14a37609f: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  name:
+    -
+      value: 'Data migration'
+  company:
+    -
+      entity: 36f943c2-0445-52e2-8b3f-b0155d8a5a70
+  contact:
+    -
+      entity: c8be2863-3acf-581d-bf2a-ddb14a37609f
+  value:
+    -
+      value: '28000.00'
+  stage:
+    -
+      value: lost
+  close_date:
+    -
+      value: '2026-03-14'

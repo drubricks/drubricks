@@ -14,7 +14,7 @@ third_party_settings:
 id: drubricks_crm_recent_contacts
 theme: drubricks
 region: dashboard
-weight: 103
+weight: 102
 provider: null
 plugin: drubricks_examples_crm_recent_contacts
 settings:

@@ -47,6 +47,7 @@ class DrubricksRouteProvider implements EntityRouteProviderInterface {
       'drubricks_board' => ['drubricks-board', BoardController::class . '::board', ''],
       'drubricks_calendar' => ['drubricks-calendar', CalendarController::class . '::calendar', ''],
       'drubricks_table' => ['drubricks-table', TableController::class . '::table', ''],
+      'drubricks_chart' => ['drubricks-chart', TableController::class . '::chart', ''],
     ];
     foreach ($routes as $name => [$template, $controller, $access]) {
       if (!$entity_type->hasLinkTemplate($template)) {
@@ -56,14 +57,14 @@ class DrubricksRouteProvider implements EntityRouteProviderInterface {
       $route->setDefault('_controller', $controller);
       $route->setDefault('entity_type_id', $id);
       $route->setDefault('_title_callback', ScreenController::class . '::' . match ($name) {
-        'collection', 'drubricks_board', 'drubricks_calendar', 'drubricks_table' => 'collectionTitle',
+        'collection', 'drubricks_board', 'drubricks_calendar', 'drubricks_table', 'drubricks_chart' => 'collectionTitle',
         'add_form' => 'addTitle',
         'edit_form' => 'editTitle',
         'delete_form' => 'deleteTitle',
         default => 'title',
       });
       $route->setOption('_drubricks_screen', TRUE);
-      if (in_array($name, ['collection', 'drubricks_board', 'drubricks_calendar', 'drubricks_table'], TRUE)) {
+      if (in_array($name, ['collection', 'drubricks_board', 'drubricks_calendar', 'drubricks_table', 'drubricks_chart'], TRUE)) {
         // Any of: admin, view any, view own, create (core's "a+b" syntax).
         $route->setRequirement('_permission', implode('+', array_filter([
           $entity_type->getAdminPermission(),

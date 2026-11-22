@@ -36,6 +36,13 @@ class DealScreen extends ScreenHandler {
   /**
    * {@inheritdoc}
    */
+  public function chart(): array {
+    return ['view' => 'crm_deal_chart'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function board(): array {
     $lanes = [];
     foreach (Deal::stages() as $stage => $label) {

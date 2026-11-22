@@ -388,6 +388,25 @@ class ScreenHandler implements EntityHandlerInterface {
   }
 
   /**
+   * Chart view of the records: a core View with the Chart style, or NULL.
+   *
+   * Needs the link template "drubricks-chart" on the entity type and the
+   * contrib "charts" module with its Chart.js library. Keys like table():
+   * - view: the View id (config of the app module, built in the Views UI:
+   *   "Chart" format, usually with aggregation, e.g. a sum per month of the
+   *   "<date> (period)" field; exposed filters show in the header's toolbar
+   *   row and reload only the chart);
+   * - display: its display (default: 'default');
+   * - default: TRUE when the chart is the main view.
+   *
+   * @return array{view: string, display?: string, default?: bool}|null
+   *   The chart definition.
+   */
+  public function chart(): ?array {
+    return NULL;
+  }
+
+  /**
    * One calendar event: title, colour token (optional), read-only flag.
    *
    * @return array<string, mixed>

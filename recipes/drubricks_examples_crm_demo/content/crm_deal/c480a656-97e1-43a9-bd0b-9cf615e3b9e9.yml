@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: c480a656-97e1-43a9-bd0b-9cf615e3b9e9
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    2b4fbf4d-9672-5d00-aa85-07a263a08762: crm_company
+    bb338e41-def9-5b07-9495-f2142ec8a843: crm_contact
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  name:
+    -
+      value: 'Loyalty program v2'
+  company:
+    -
+      entity: 2b4fbf4d-9672-5d00-aa85-07a263a08762
+  contact:
+    -
+      entity: bb338e41-def9-5b07-9495-f2142ec8a843
+  value:
+    -
+      value: '47000.00'
+  stage:
+    -
+      value: qualified
+  close_date:
+    -
+      value: '2027-04-12'
