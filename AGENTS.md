@@ -215,10 +215,18 @@ rule 2). Then, for each module:
    2. its placement `config/optional/block.block.drubricks_<app>_<name>.yml` (theme `drubricks`): region
       `dashboard_stats` (tiles, `label_display: '0'`) or `dashboard` (panels: the block label is the heading;
       third-party settings `drubricks_core: size` (`narrow` / `wide` / `full`), `icon`, `color`), `weight` = app
-      sidebar weight × 10 + n. Place it in the Block layout UI and export it (`ddev drush config:get
+      sidebar weight × 10 + n. The dashboard has two columns and the panels of a row share its height: place an
+      app's panels in pairs of a similar height (two lists, two charts) and make a panel without a pair `wide`. Place it in the Block layout UI and export it (`ddev drush config:get
       block.block.<id>` without `uuid` / `_core`) or copy the CRM files; the App recipe's `config: import:
       <module>: '*'` and `drush en` install it, uninstalling the app removes it;
    3. a plain counter needs no code: core's "Record count" block (`drubricks_record_count`) in the stat strip;
+      a **chart** needs no code either: a View with the "Chart" format (contrib Charts, Chart.js — in the base
+      recipe), usually with aggregation, as a block display placed in `dashboard` like the panels (see
+      `crm_deal_won_by_month`, `pm_task_open_by_assignee`, `booking_this_week`; "Hide block if the view output is
+      empty" on). Per month / day: the field "<date> (period)" (`drubricks_date_period`) grouped, the date's sort with
+      the same granularity; stacked series: a grouping field and "Stacking". Set a height (Chart settings →
+      dimensions, e.g. 100 % × 260 px). drubricks_core gives it the kit look (`ChartHooks`, `js/charts.js`): Charts'
+      default colours → kit colours, the kit font, light / dark, a hidden data table for screen readers;
    4. kernel test: `DashboardBlocksTestTrait::assertDashboardBlocks()` (placements valid, in order, access, build).
    Site builders rearrange, resize, hide (visibility: roles) or add blocks (Views, content blocks) in the Block layout UI.
 7. **Account menu** (button at the bottom of the sidebar) — core's `account` menu: links with `menu_name: account`
@@ -271,6 +279,13 @@ rule 2). Then, for each module:
      column or action bar for a read-only user; submit keeps core's check. Base fields filter with a value: references (core's `entity_reference` select), dates (`datetime`,
      a date picker), amounts (`numeric`). Never use `value` as a filter identifier (it clashes with the form).
      Kernel test: `TableViewTestTrait::assertTableView()`.
+   - **Chart view** (a core View with the "Chart" format of the contrib Charts, Chart.js): like the table view —
+     build it in the Views UI (aggregation, "<date> (period)" as the label field, a value with SUM / COUNT, a
+     grouping field for stacked series, exposed filters, a height in the chart settings), export it
+     (`views.view.<entity_type>_chart.yml`, see `crm_deal_chart`), return `['view' => '<id>']` from `chart()` and add
+     the link template `drubricks-chart`. It gets the view header (filters in the toolbar row, reload only the
+     chart) and a "Chart" item in the view switch; a sidebar link may point at `entity.<type>.drubricks_chart` (CRM
+     → Revenue). Colours in code: kit token names (`'#color' => 'teal'`), never hex.
    - **One header for every view** (`drubricks-screen-header.html.twig`, used by the list, board, calendar and table
      templates): title + record count (`ScreenViews::count()`, or the calendar's date range), the view switch and the
      `+` button (`ScreenViews::add()`) on the right, and a `drubricks:pane-toolbar` row below with the search /

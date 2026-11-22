@@ -42,6 +42,8 @@ final class ProjectAccessTest extends KernelTestBase {
     'options',
     'datetime',
     'text',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_project_management',
   ];

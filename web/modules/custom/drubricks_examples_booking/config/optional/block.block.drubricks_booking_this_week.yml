@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.booking_this_week
+  module:
+    - drubricks_core
+    - views
+  theme:
+    - drubricks
+third_party_settings:
+  drubricks_core:
+    size: narrow
+    icon: chart
+    color: 'purple'
+id: drubricks_booking_this_week
+theme: drubricks
+region: dashboard
+weight: 302
+provider: null
+plugin: 'views_block:booking_this_week-block_1'
+settings:
+  id: 'views_block:booking_this_week-block_1'
+  label: 'Bookings this week'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility: {}

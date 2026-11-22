@@ -452,3 +452,24 @@ msgstr "Wróć na swoje konto"
 
 msgid "Table"
 msgstr "Tabela"
+
+msgid "Chart"
+msgstr "Wykres"
+
+msgid "@label (period)"
+msgstr "@label (okres)"
+
+msgid "The year, month or day of the date: group by it (aggregation) for a chart per period; sort by the date with the same granularity."
+msgstr "Rok, miesiąc lub dzień daty: grupuj według niego (agregacja), aby dostać wykres w okresach; sortuj według daty z tą samą dokładnością."
+
+msgid "Period"
+msgstr "Okres"
+
+msgid "Year"
+msgstr "Rok"
+
+msgid "Month"
+msgstr "Miesiąc"
+
+msgid "Sort by the date (its sort with the same granularity)."
+msgstr "Sortuj według daty (jej sortowanie z tą samą dokładnością)."

@@ -1,0 +1,214 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - charts
+    - charts_chartjs
+    - datetime
+    - drubricks_core
+    - drubricks_examples_crm
+    - options
+id: crm_deal_won_by_month
+label: 'Won revenue by month'
+module: views
+description: 'Dashboard chart: the value of won deals per close month, last 12 months.'
+tag: Drubricks
+base_table: crm_deal
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Won revenue by month'
+      fields:
+        close_date_period:
+          id: close_date_period
+          table: crm_deal
+          field: close_date_period
+          relationship: none
+          group_type: group
+          entity_type: crm_deal
+          plugin_id: drubricks_date_period
+          label: Month
+          exclude: false
+          granularity: month
+        value:
+          id: value
+          table: crm_deal
+          field: value
+          relationship: none
+          group_type: sum
+          admin_label: ''
+          entity_type: crm_deal
+          entity_field: value
+          plugin_id: field
+          label: Won
+          exclude: false
+          click_sort_column: value
+          type: number_decimal
+          settings:
+            thousand_separator: ''
+            decimal_separator: .
+            scale: 0
+            prefix_suffix: false
+          group_column: value
+          group_columns: {}
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {}
+      cache:
+        type: tag
+        options: {}
+      empty: {}
+      sorts:
+        close_date:
+          id: close_date
+          table: crm_deal
+          field: close_date
+          relationship: none
+          group_type: group
+          entity_type: crm_deal
+          entity_field: close_date
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: month
+      arguments: {}
+      filters:
+        stage:
+          id: stage
+          table: crm_deal
+          field: stage
+          relationship: none
+          group_type: group
+          entity_type: crm_deal
+          entity_field: stage
+          plugin_id: list_field
+          operator: or
+          value:
+            won: won
+        close_date:
+          id: close_date
+          table: crm_deal
+          field: close_date
+          relationship: none
+          group_type: group
+          entity_type: crm_deal
+          entity_field: close_date
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: 'first day of -11 months'
+            type: offset
+      style:
+        type: chart
+        options:
+          grouping: {}
+          chart_settings:
+            library: chartjs
+            type: column
+            fields:
+              label: close_date_period
+              stacking: false
+              data_providers:
+                value:
+                  enabled: true
+                  color: '#006fb0'
+                  weight: 0
+            display:
+              title: ''
+              title_position: out
+              subtitle: ''
+              data_labels: false
+              data_markers: false
+              connect_nulls: false
+              legend_position: ''
+              background: ''
+              three_dimensional: 0
+              polar: 0
+              tooltips: true
+              tooltips_use_html: false
+              dimensions:
+                width: '100'
+                width_units: '%'
+                height: '260'
+                height_units: px
+              gauge:
+                max: ''
+                min: ''
+                green_from: ''
+                green_to: ''
+                yellow_from: ''
+                yellow_to: ''
+                red_from: ''
+                red_to: ''
+              color_changer: false
+              accessible_table: invisible
+            xaxis:
+              title: ''
+              labels_rotation: '0'
+            yaxis:
+              title: ''
+              min: ''
+              max: ''
+              prefix: ''
+              suffix: ''
+              decimal_count: ''
+              labels_rotation: '0'
+      row:
+        type: fields
+        options: {}
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {}
+      relationships: {}
+      group_by: true
+      header: {}
+      footer: {}
+      display_extenders: {}
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {}
+  block_1:
+    id: block_1
+    display_title: Dashboard
+    display_plugin: block
+    position: 1
+    display_options:
+      display_extenders: {}
+      block_description: 'Won revenue by month'
+      block_hide_empty: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {}

@@ -1,0 +1,11 @@
+{# A line chart: two series, kit colours by token. #}
+{{ {
+  '#type': 'chart',
+  '#chart_type': 'line',
+  '#legend_position': 'bottom',
+  '#height': 220,
+  '#height_units': 'px',
+  'bookings': {'#type': 'chart_data', '#title': 'Bookings', '#data': [12, 18, 15, 22, 27, 25, 31], '#color': 'purple'},
+  'cancelled': {'#type': 'chart_data', '#title': 'Cancelled', '#data': [2, 1, 3, 2, 4, 2, 3], '#color': 'red'},
+  'xaxis': {'#type': 'chart_xaxis', '#labels': ['W40', 'W41', 'W42', 'W43', 'W44', 'W45', 'W46']},
+} }}

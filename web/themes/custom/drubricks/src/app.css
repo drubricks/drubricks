@@ -18,3 +18,5 @@
 @import "./forms.css";
 /* Views in the app: filter bar, bulk form, table, dropbutton. */
 @import "./views.css";
+/* Charts (Views "Chart" format, Chart.js): sizing in panels and views. */
+@import "./charts.css";

@@ -8,7 +8,7 @@ dependencies:
     - drubricks
 third_party_settings:
   drubricks_core:
-    size: narrow
+    size: wide
     icon: checkmark-circle
     color: ''
 id: drubricks_pm_my_tasks

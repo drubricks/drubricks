@@ -34,6 +34,11 @@ install:
   # only (allow_ui_install stays off): a project adds modules with Composer and
   # recipes, so they are in its code and git.
   - project_browser
+  # Charts in Views and in code (contrib Charts with its Chart.js library,
+  # served from web/libraries — composer.json, asset-packagist): a View with
+  # the "Chart" format, in the kit look (drubricks_core ChartHooks).
+  - charts
+  - charts_chartjs
 config:
   # Re-applied by every App recipe: existing (possibly changed) config wins.
   strict: false
@@ -60,6 +65,11 @@ config:
     system.site:
       simpleConfigUpdate:
         page.front: /apps
+    # Chart.js for every chart, from the site's own copy (no CDN).
+    charts.settings:
+      simpleConfigUpdate:
+        charts_default_settings.library: chartjs
+        advanced.requirements.cdn: false
     user.settings:
       simpleConfigUpdate:
         register: admin_only

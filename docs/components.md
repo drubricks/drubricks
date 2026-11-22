@@ -260,6 +260,23 @@ closes it).
 - After adding or changing a component: `ddev drush cr` (SDC discovery and
   Twig cache).
 
+## Charts
+
+Charts are not a theme component: they are the contrib [Charts](https://www.drupal.org/project/charts) module with
+its Chart.js library (installed by the base recipe; the JS files are in `web/libraries`, from Composer — no CDN).
+Build a chart in the Views UI (format "Chart", usually with aggregation; the "<date> (period)" field groups by year,
+month or day) or in code as a render array of `#type chart`. drubricks_core (`ChartHooks`, `js/charts.js`) gives
+every Chart.js chart the kit look:
+
+- colours: Charts' default colours (its palettes, by position) become kit colours; a series `#color` (and the
+  `#colors` of a pie / donut) may be a kit token name (`'teal'`) — a hex colour picked in the chart settings stays;
+- the kit font, text and line colours, the tooltip; light / dark and palette changes repaint the charts;
+- a visually hidden data table under the chart for screen readers (Charts' "accessible table");
+- a height set in the chart settings (dimensions) is the chart's height.
+
+Examples: the design system page (section Charts), the dashboard blocks of the examples, CRM → Revenue (the chart
+view of deals with filters, `ScreenHandler::chart()`).
+
 ## The design system module
 
 `drubricks_design_system` (optional, `ddev drush en drubricks_design_system`):

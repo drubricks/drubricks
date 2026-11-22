@@ -12,6 +12,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
   name:
     -
       value: 'Sofia Alvarez'
@@ -32,4 +35,4 @@ default:
       value: '+1 617 555 0110'
   last_contacted:
     -
-      value: '2026-11-12'
+      value: '2026-11-21'

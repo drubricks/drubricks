@@ -5,6 +5,7 @@ package: Drubricks examples
 core_version_requirement: ^12
 dependencies:
   - drubricks_core:drubricks_core
+  - charts:charts_chartjs
   - drupal:datetime
   - drupal:options
   - drupal:link

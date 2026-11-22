@@ -32,6 +32,8 @@ final class DashboardBlocksTest extends KernelTestBase {
     'options',
     'datetime',
     'link',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_booking',
   ];

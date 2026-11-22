@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: da7901fc-fdde-49f2-955e-fd94642a9caa
+  depends:
+    e538bb57-b258-5e11-b99c-b67394d77843: user
+    f07c1424-104b-5901-8368-13b441eabb47: crm_company
+    753ae95b-a210-5cc3-901a-720670faa3de: crm_contact
+default:
+  uid:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: e538bb57-b258-5e11-b99c-b67394d77843
+  name:
+    -
+      value: 'Quality audit tool'
+  company:
+    -
+      entity: f07c1424-104b-5901-8368-13b441eabb47
+  contact:
+    -
+      entity: 753ae95b-a210-5cc3-901a-720670faa3de
+  value:
+    -
+      value: '22500.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-10-07'

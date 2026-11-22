@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 4b6c6a79-45d2-49b5-8ecc-c20931076a88
+  depends:
+    4c9f1651-109d-558d-8511-d30f969d5a2b: user
+    1ddf0b21-e251-5fac-913e-e31dc98e8060: crm_company
+    9c2aa88d-e0ae-52d9-8b35-16adfede505f: crm_contact
+default:
+  uid:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
+  name:
+    -
+      value: 'Inventory sync'
+  company:
+    -
+      entity: 1ddf0b21-e251-5fac-913e-e31dc98e8060
+  contact:
+    -
+      entity: 9c2aa88d-e0ae-52d9-8b35-16adfede505f
+  value:
+    -
+      value: '27500.00'
+  stage:
+    -
+      value: won
+  close_date:
+    -
+      value: '2026-07-06'

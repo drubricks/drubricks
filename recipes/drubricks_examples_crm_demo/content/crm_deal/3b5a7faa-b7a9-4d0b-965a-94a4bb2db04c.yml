@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: crm_deal
+  uuid: 3b5a7faa-b7a9-4d0b-965a-94a4bb2db04c
+  depends:
+    ca51adb9-199a-5447-afdb-ddb4b04dfdaa: user
+    c79ee643-7a28-5a14-b053-9d6fda47c304: crm_company
+    3473c10b-c6bf-5d59-8ef6-20b58380e4ae: crm_contact
+default:
+  uid:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  status:
+    -
+      value: true
+  revision_user:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
+  name:
+    -
+      value: 'Energy monitoring'
+  company:
+    -
+      entity: c79ee643-7a28-5a14-b053-9d6fda47c304
+  contact:
+    -
+      entity: 3473c10b-c6bf-5d59-8ef6-20b58380e4ae
+  value:
+    -
+      value: '72000.00'
+  stage:
+    -
+      value: qualified
+  close_date:
+    -
+      value: '2027-02-05'

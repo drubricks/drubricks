@@ -12,6 +12,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: ca51adb9-199a-5447-afdb-ddb4b04dfdaa
   name:
     -
       value: 'Hannah Vogel'
@@ -32,4 +35,4 @@ default:
       value: '+49 89 555 0120'
   last_contacted:
     -
-      value: '2026-11-10'
+      value: '2026-11-19'

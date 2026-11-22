@@ -12,6 +12,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: 4c770c2c-a25e-54ff-9bdf-0353b5287c59
   name:
     -
       value: 'Inês Costa'
@@ -32,4 +35,4 @@ default:
       value: '+351 21 555 0101'
   last_contacted:
     -
-      value: '2026-10-30'
+      value: '2026-11-08'

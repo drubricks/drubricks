@@ -36,6 +36,8 @@ final class DemoContentTest extends KernelTestBase {
     'views',
     'options',
     'datetime',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_booking',
   ];

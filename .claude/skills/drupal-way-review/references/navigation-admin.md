@@ -54,3 +54,10 @@ sidebar. Field UI / Manage display: see [data-entities.md](data-entities.md); ad
   block) instead of several tiles from one block.
 - Core: `block/src/Plugin/DisplayVariant/BlockPageVariant.php`, `BlockViewBuilder::buildPreRenderableBlock()`,
   `block/src/Hook/BlockThemeHooks.php`, `menu_ui/src/Hook/MenuUiHooks.php` (entity builders).
+
+**Dashboard layout: pairs, not gaps**
+- Don't: place panels one after another regardless of height (a short panel next to a tall one leaves a hole;
+  on a wide screen a third column breaks the pairs).
+- Do: the dashboard grid has two columns and the panels of a row share its height (`drubricks-home.html.twig`,
+  kit `.panels` with `align-items: stretch`, `grid-auto-flow: dense`); each app places its panels in pairs of a
+  similar height by `weight` and makes a panel without a pair `wide` — block placement config, no code.

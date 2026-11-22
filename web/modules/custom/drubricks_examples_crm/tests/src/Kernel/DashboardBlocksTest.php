@@ -32,6 +32,8 @@ final class DashboardBlocksTest extends KernelTestBase {
     'options',
     'datetime',
     'link',
+    'charts',
+    'charts_chartjs',
     'drubricks_core',
     'drubricks_examples_crm',
   ];
@@ -50,8 +52,8 @@ final class DashboardBlocksTest extends KernelTestBase {
       ],
       'dashboard' => [
         'drubricks_crm_closing_soon',
-        'drubricks_crm_pipeline_by_stage',
         'drubricks_crm_recent_contacts',
+        'drubricks_crm_pipeline_by_stage',
       ],
     ], 'administer crm');
   }

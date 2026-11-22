@@ -3,7 +3,7 @@
 Drubricks is licensed under the GNU General Public License, version 2 or later (see `LICENSE.txt`). It ships the
 following third-party works under their own free licences (declared in the theme's `drubricks.libraries.yml` and
 `drubricks.icons.yml` too). Dependencies installed by Composer or npm
-(Drupal core, contributed modules, Drush, Playwright, Tailwind CSS) are not part of this repository and come with
+(Drupal core, contributed modules, Drush, Chart.js and its plugins in `web/libraries`, Playwright, Tailwind CSS) are not part of this repository and come with
 their own licence files.
 
 | Work | Where | Licence |

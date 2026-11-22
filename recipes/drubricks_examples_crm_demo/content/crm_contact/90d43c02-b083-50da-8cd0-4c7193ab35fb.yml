@@ -12,6 +12,9 @@ default:
   status:
     -
       value: true
+  revision_user:
+    -
+      entity: 4c9f1651-109d-558d-8511-d30f969d5a2b
   name:
     -
       value: 'Grace Liu'
@@ -32,4 +35,4 @@ default:
       value: '+1 503 555 0134'
   last_contacted:
     -
-      value: '2026-11-02'
+      value: '2026-11-11'

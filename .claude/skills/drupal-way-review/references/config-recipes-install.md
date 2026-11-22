@@ -99,3 +99,13 @@ the launcher.
 - Watch: swapping a Views handler plugin in `hook_views_data_alter` (e.g. `bulk_form` → `drubricks_bulk_form`)
   makes Views add the plugin's module to every View's `dependencies` on save — re-save and export all affected
   Views, or `InstallerTest` fails the same way.
+
+**Contrib that is not quite ready for Drupal 12 (Charts 5.2)**
+- Don't: edit the module in `web/modules/contrib`, or work around it per chart.
+- Do: fix it the Drupal way in one general place and say when to drop it: Charts registers its template
+  preprocess as `#[Hook('preprocess_charts_chart', module: 'template')]`, which Drupal 12 no longer runs (charts
+  printed nothing) → `hook_theme_registry_alter()` sets the theme hook's `initial preprocess` to that method; its
+  "Chart attachment" display names `views_view` as its theme, so Views registers `views_view` again from the
+  charts folder without core's preprocess (whichever display plugin comes last wins — a kernel test broke, the
+  site did not) → restore core's registration when the template file is missing. drubricks_core `ChartHooks`.
+- Core: `ThemeManager::render()` (`initial preprocess`), `ViewsThemeHooks::theme()`.

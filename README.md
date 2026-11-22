@@ -97,7 +97,8 @@ Everything a business app needs before the first feature is written.
 
 - **`drubricks_core` — the app engine.** Base entity with owner, dates, status, colour and revisions; own/any
   permissions and record-level access; the list + details + inspector screen with modal forms, boards, calendars
-  and tables (core Views with filters and bulk actions in the kit look); HTMX helpers; the sidebar and account menu
+  and tables (core Views with filters and bulk actions in the kit look); charts from Views (contrib Charts with
+  Chart.js, in the kit colours, light and dark); HTMX helpers; the sidebar and account menu
   from core menus (editable in Menu UI); dashboard blocks; Field UI for every entity (fields added in the UI show in
   the forms and the details); JSON API helpers for JS islands; demo-content date shifting; per-record logs.
 - **`drubricks` theme — 75 components.** The UI kit's app shell as single-directory components (SDC), Drupal forms in
