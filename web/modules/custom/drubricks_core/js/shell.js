@@ -56,10 +56,20 @@
     // page. The exact element is detached in htmx:before:swap below.
   };
 
+  // The scroll position of the sidebar survives a swap that replaces it (a
+  // sidebar click swaps the whole app): a long sidebar must not jump back to
+  // the top and hide the item just clicked.
+  const sidebarBody = () => document.querySelector('#drubricks-sidebar .pane-body');
+  let sidebarScroll = null;
+
   // Tear down kit components only in the element that is being replaced.
   document.addEventListener('htmx:before:swap', (e) => {
     const ctx = e.detail && e.detail.ctx;
     const target = ctx && ctx.target;
+    const body = sidebarBody();
+    if (body && target && target.nodeType === 1 && target.contains(body)) {
+      sidebarScroll = body.scrollTop;
+    }
     if (!hasUI() || !window.UI.detach || !target || target.nodeType !== 1) return;
     const style = String(ctx.swap || '').split(/\s/)[0];
     if (/^(outerHTML|innerHTML|outerMorph|innerMorph|textContent)$/.test(style) || style === '') {
@@ -135,6 +145,17 @@
       if (on) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
+    // The active item in view (a page opened directly, or from a link in the
+    // content, whose item is further down a long sidebar). Only the sidebar
+    // scrolls: scrollIntoView() would scroll the page too and abort a view
+    // transition of the swap.
+    const body = sidebarBody();
+    if (best && body) {
+      const item = best.a.getBoundingClientRect();
+      const view = body.getBoundingClientRect();
+      if (item.top < view.top) body.scrollTop -= view.top - item.top + 8;
+      else if (item.bottom > view.bottom) body.scrollTop += item.bottom - view.bottom + 8;
+    }
     // Selected row: the row whose URL is the current path (or its prefix).
     document.querySelectorAll('.column .row[href]').forEach((row) => {
       const href = new URL(row.href, window.location.href).pathname;
@@ -169,9 +190,24 @@
   // htmx sets the title late in the swap; watch the <title> itself.
   new MutationObserver(titleSuffix).observe(document.head, { subtree: true, childList: true, characterData: true });
 
+  // Puts the sidebar back where it was before the swap.
+  function restoreSidebarScroll() {
+    const body = sidebarBody();
+    if (sidebarScroll !== null && body) {
+      body.scrollTop = sidebarScroll;
+    }
+    sidebarScroll = null;
+  }
+
+  // htmx:after:swap is dispatched on the swap target; when the target itself
+  // was replaced (#drubricks-app) it does not always reach the document.
+  // after:settle does (in Chrome even before after:swap): restore there too.
+  document.addEventListener('htmx:after:settle', restoreSidebarScroll);
+
   document.addEventListener('htmx:after:swap', (e) => {
     const ctx = e.detail && e.detail.ctx;
     const level = levelOf(ctx && ctx.target);
+    restoreSidebarScroll();
     if (level === 'sidebar' || level === 'list') {
       syncNavigation({ level: 'none' });
       return;
